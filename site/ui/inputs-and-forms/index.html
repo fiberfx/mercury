@@ -1,0 +1,957 @@
+<!doctype html><html lang="en" class="lms">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UI3, inputs and forms · Mercury</title>
+  <meta name="description" content="Mercury UI&#39;s form composition, Form, Field, Label, Description, FieldError, Fieldset, Legend, FormSection and ErrorSummary, and its text, date and color inputs: Input, Textarea, DateField and ColorField, with the rest of the family by name.">
+  
+  <link rel="canonical" href="https://mercury.jonnify.com/ui/inputs-and-forms">
+  <link rel="describedby" type="text/plain" href="/ui/inputs-and-forms/llms.txt">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Mercury">
+  <meta property="og:title" content="UI3, inputs and forms · Mercury">
+  <meta property="og:description" content="Mercury UI&#39;s form composition, Form, Field, Label, Description, FieldError, Fieldset, Legend, FormSection and ErrorSummary, and its text, date and color inputs: Input, Textarea, DateField and ColorField, with the rest of the family by name.">
+  <meta property="og:url" content="https://mercury.jonnify.com/ui/inputs-and-forms">
+  <meta property="og:image" content="https://mercury.jonnify.com/_lms/assets/mercury-hero.png">
+  <meta property="og:image:alt" content="Mercury">
+  <script type="application/ld+json">[{"@context":"https://schema.org","@type":"TechArticle","description":"Mercury UI's form composition, Form, Field, Label, Description, FieldError, Fieldset, Legend, FormSection and ErrorSummary, and its text, date and color inputs: Input, Textarea, DateField and ColorField, with the rest of the family by name.","inLanguage":"en","name":"UI3, inputs and forms","url":"https://mercury.jonnify.com/ui/inputs-and-forms"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://mercury.jonnify.com/","name":"Mercury","position":1},{"@type":"ListItem","item":"https://mercury.jonnify.com/ui/inputs-and-forms","name":"UI3, inputs and forms","position":2}]}]</script>
+  <meta name="color-scheme" content="light dark">
+  
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#111113" media="(prefers-color-scheme: dark)">
+  <style>html{background-color:rgb(255 255 255)}@media (prefers-color-scheme: dark){html{background-color:rgb(17 17 19)}}</style>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/ui/inputs-and-forms"><link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/ui/inputs-and-forms"><link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/ui/inputs-and-forms">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="/_lms/assets/lms.css">
+  <link rel="stylesheet" href="/_lms/assets/shell.css">
+  
+</head>
+  <body class="lms">
+    <a class="lms-skip" href="#main">Skip to content</a>
+<header class="lms-header">
+  <a class="lms-brand" href="/" aria-label="Mercury, home">
+    <svg viewBox="5 9 30 22" width="30" height="22" aria-hidden="true" focusable="false"><g fill="none" stroke-width="3" stroke-linecap="round"><path d="M7 29V15.5c0-2.5 2-4.5 4.5-4.5S16 13 16 15.5V29M16 16.5c0-3 2-5.5 4.5-5.5" stroke="currentColor"></path><path d="M23 16l10 13M33 16L23 29" stroke="rgb(var(--lms-accent))"></path></g></svg>
+    <span>Mercury</span>
+  </a>
+  <nav class="lms-nav" aria-label="Site">
+    <a href="/#principles">Principles</a><a href="/#foundations">Foundations</a><a href="/#components">Components</a><a href="/#usage">Usage</a>
+  </nav>
+  <div class="lms-actions">
+    <details class="lms-lang">
+  <summary aria-label="Language">English</summary>
+  <ul>
+    <li>
+      <a href="/ui/inputs-and-forms" hreflang="en" lang="en" aria-current="true">English</a>
+      
+    </li><li>
+      <a href="/ru/ui/inputs-and-forms" hreflang="ru" lang="ru">Русский</a>
+      
+    </li>
+  </ul>
+</details>
+    <a class="lms-github" href="/start/install-mx" aria-label="Install Mercury" title="Install Mercury">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    </a>
+    <form class="lms-theme" method="post" action="/_lms/theme">
+      <input type="hidden" name="back" value="/ui/inputs-and-forms">
+      <button class="lms-theme-to-dark" type="submit" name="set" value="dark" aria-label="Dark theme" title="Dark theme">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"></path></svg>
+      </button>
+      <button class="lms-theme-to-light" type="submit" name="set" value="light" aria-label="Light theme" title="Light theme">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></g></svg>
+      </button>
+    </form>
+    <a class="lms-open-docs" href="/start">Open docs</a>
+    <details class="lms-drawer">
+      <summary>
+        <span class="lms-menu-label">Menu</span>
+        <svg class="lms-menu-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
+      </summary>
+      <div class="lms-drawer-panel">
+        <nav class="lms-menu-links" aria-label="Site">
+          <a class="lms-menu-docs" href="/start">Open docs</a>
+          <a href="/#principles">Principles</a><a href="/#foundations">Foundations</a><a href="/#components">Components</a><a href="/#usage">Usage</a>
+          <a href="/start/install-mx">Install Mercury</a>
+        </nav>
+        <div class="lms-menu-language">
+          <details class="lms-lang">
+  <summary aria-label="Language">English</summary>
+  <ul>
+    <li>
+      <a href="/ui/inputs-and-forms" hreflang="en" lang="en" aria-current="true">English</a>
+      
+    </li><li>
+      <a href="/ru/ui/inputs-and-forms" hreflang="ru" lang="ru">Русский</a>
+      
+    </li>
+  </ul>
+</details>
+        </div>
+        <nav aria-label="Courses and pages">
+          <p class="lms-menu-heading">Courses</p>
+          <details class="lms-side-course">
+  <summary>Start</summary>
+  <ul>
+    <li><a href="/start">Overview</a></li>
+    
+      
+      <li class="">
+        <a href="/start/browser">A page in the browser</a>
+      </li>
+    
+      <li class="lms-side-group">The pieces</li>
+      <li class="">
+        <a href="/start/install-mx">Choose a route to mx</a>
+      </li>
+    
+      <li class="lms-side-group">First steps</li>
+      <li class="">
+        <a href="/start/stability">Stability: Shipped, Preview, Planned</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/start/agents">Build a page with your agent</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/start/glossary">Glossary: the words this site uses</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/start/philosophy">Philosophy: native, not borrowed</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>mx</summary>
+  <ul>
+    <li><a href="/mx">Overview</a></li>
+    
+      <li class="lms-side-group">Install mx</li>
+      <li class="">
+        <a href="/mx/first-app">Your first Mercury page</a>
+      </li>
+    
+      <li class="lms-side-group">The chapters</li>
+      <li class="">
+        <a href="/mx/modules">Modules, mx.mod and mx.sum</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/mx/workspace">A workspace, mx.work</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/mx/dev">The dev loop, and hot replacement</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/mx/build">Build and ship, three kinds of build</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/mx/compile">The Hypercompiler, one module at a time</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/mx/tools">The tools, test, lsap and run</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>Hyperscript</summary>
+  <ul>
+    <li><a href="/hyperscript">Overview</a></li>
+    
+      <li class="lms-side-group">What Hyperscript is</li>
+      <li class="">
+        <a href="/hyperscript/dom">The DOM contract</a>
+      </li>
+    
+      <li class="lms-side-group">The chapters</li>
+      <li class="">
+        <a href="/hyperscript/components">Components and render</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hyperscript/hooks">Hooks, state and effects in a function</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hyperscript/context">Context, portals and memo</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hyperscript/server">Rendering on the server</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hyperscript/testing">Testing and inspecting</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hyperscript/tested-component">A tested component</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course" open>
+  <summary>UI</summary>
+  <ul>
+    <li><a href="/ui">Overview</a></li>
+    
+      <li class="lms-side-group">The chapters</li>
+      <li class="">
+        <a href="/ui/tokens-and-themes">UI0, tokens and themes</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ui/foundations">UI1, where a subtree lives</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ui/actions-and-layout">UI2, actions and layout</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ui/inputs-and-forms" aria-current="page">UI3, inputs and forms</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ui/selection">UI4, selection</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ui/feedback-and-data">UI5, feedback and data display</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ui/navigation">UI6, navigation</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>Hypergraph</summary>
+  <ul>
+    <li><a href="/hypergraph">Overview</a></li>
+    
+      <li class="lms-side-group">The chapters</li>
+      <li class="">
+        <a href="/hypergraph/units">Units: store, event and effect</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/wiring">Wiring: units into a graph</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/scopes">Scopes: fork, settle, hand over</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/observing">Observing: watch, inspect, describe</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/errors">Kinds, carriers and errors</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/hot-replacement">Hot replacement: the swap</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/server-rendering">Server rendering: a scope per request</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/testing">Testing a model: a scope per test</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/models">Models at scale: structure and identity</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/capstone">Capstone: a model, round-tripped</a>
+      </li>
+    
+      <li class="lms-side-group">Coming from Effector</li>
+      <li class="">
+        <a href="/hypergraph/coming-from-effector">Coming from Effector</a>
+      </li>
+    
+      
+      <li class="lms-side-sub">
+        <a href="/hypergraph/coming-from-effector/units-and-wiring">Units and wiring</a>
+      </li>
+    
+      
+      <li class="lms-side-sub">
+        <a href="/hypergraph/coming-from-effector/scopes-and-testing">Scopes and testing</a>
+      </li>
+    
+      
+      <li class="lms-side-sub">
+        <a href="/hypergraph/coming-from-effector/frameworks">Frameworks, after effector-react</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>Content</summary>
+  <ul>
+    <li><a href="/content">Overview</a></li>
+    
+      <li class="lms-side-group">The course map</li>
+      <li class="">
+        <a href="/content/documents">Page documents: nodes, the schema and parseDocument</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/content/rendering">Rendering a document: renderDocument</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/content/blocks">The block catalog: nine groups, one registry</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/content/references">References, capabilities and responsive values</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/content/add-a-block">Add a block: the capstone</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>Live Mercury</summary>
+  <ul>
+    <li><a href="/live-mercury">Overview</a></li>
+    
+      <li class="lms-side-group">The course</li>
+      <li class="">
+        <a href="/live-mercury/islands">Islands: the element and its mount</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/live-mercury/liveview">An island in a LiveView: socket, hooks and events</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/live-mercury/building">Building islands with mx: no Node</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/live-mercury/props-and-streams">Props and streams: patches on the wire</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/live-mercury/server-rendering">Server rendering: what is there, and what is not</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/live-mercury/testing">Testing islands: both sides of the element</a>
+      </li>
+    
+  </ul>
+</details>
+        </nav>
+      </div>
+    </details>
+  </div>
+</header>
+    <div class="lms-frame">
+      <nav class="lms-side" aria-label="Courses and pages">
+        <details class="lms-side-course">
+  <summary>Start</summary>
+  <ul>
+    <li><a href="/start">Overview</a></li>
+    
+      
+      <li class="">
+        <a href="/start/browser">A page in the browser</a>
+      </li>
+    
+      <li class="lms-side-group">The pieces</li>
+      <li class="">
+        <a href="/start/install-mx">Choose a route to mx</a>
+      </li>
+    
+      <li class="lms-side-group">First steps</li>
+      <li class="">
+        <a href="/start/stability">Stability: Shipped, Preview, Planned</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/start/agents">Build a page with your agent</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/start/glossary">Glossary: the words this site uses</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/start/philosophy">Philosophy: native, not borrowed</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>mx</summary>
+  <ul>
+    <li><a href="/mx">Overview</a></li>
+    
+      <li class="lms-side-group">Install mx</li>
+      <li class="">
+        <a href="/mx/first-app">Your first Mercury page</a>
+      </li>
+    
+      <li class="lms-side-group">The chapters</li>
+      <li class="">
+        <a href="/mx/modules">Modules, mx.mod and mx.sum</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/mx/workspace">A workspace, mx.work</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/mx/dev">The dev loop, and hot replacement</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/mx/build">Build and ship, three kinds of build</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/mx/compile">The Hypercompiler, one module at a time</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/mx/tools">The tools, test, lsap and run</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>Hyperscript</summary>
+  <ul>
+    <li><a href="/hyperscript">Overview</a></li>
+    
+      <li class="lms-side-group">What Hyperscript is</li>
+      <li class="">
+        <a href="/hyperscript/dom">The DOM contract</a>
+      </li>
+    
+      <li class="lms-side-group">The chapters</li>
+      <li class="">
+        <a href="/hyperscript/components">Components and render</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hyperscript/hooks">Hooks, state and effects in a function</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hyperscript/context">Context, portals and memo</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hyperscript/server">Rendering on the server</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hyperscript/testing">Testing and inspecting</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hyperscript/tested-component">A tested component</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course" open>
+  <summary>UI</summary>
+  <ul>
+    <li><a href="/ui">Overview</a></li>
+    
+      <li class="lms-side-group">The chapters</li>
+      <li class="">
+        <a href="/ui/tokens-and-themes">UI0, tokens and themes</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ui/foundations">UI1, where a subtree lives</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ui/actions-and-layout">UI2, actions and layout</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ui/inputs-and-forms" aria-current="page">UI3, inputs and forms</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ui/selection">UI4, selection</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ui/feedback-and-data">UI5, feedback and data display</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ui/navigation">UI6, navigation</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>Hypergraph</summary>
+  <ul>
+    <li><a href="/hypergraph">Overview</a></li>
+    
+      <li class="lms-side-group">The chapters</li>
+      <li class="">
+        <a href="/hypergraph/units">Units: store, event and effect</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/wiring">Wiring: units into a graph</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/scopes">Scopes: fork, settle, hand over</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/observing">Observing: watch, inspect, describe</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/errors">Kinds, carriers and errors</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/hot-replacement">Hot replacement: the swap</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/server-rendering">Server rendering: a scope per request</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/testing">Testing a model: a scope per test</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/models">Models at scale: structure and identity</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/capstone">Capstone: a model, round-tripped</a>
+      </li>
+    
+      <li class="lms-side-group">Coming from Effector</li>
+      <li class="">
+        <a href="/hypergraph/coming-from-effector">Coming from Effector</a>
+      </li>
+    
+      
+      <li class="lms-side-sub">
+        <a href="/hypergraph/coming-from-effector/units-and-wiring">Units and wiring</a>
+      </li>
+    
+      
+      <li class="lms-side-sub">
+        <a href="/hypergraph/coming-from-effector/scopes-and-testing">Scopes and testing</a>
+      </li>
+    
+      
+      <li class="lms-side-sub">
+        <a href="/hypergraph/coming-from-effector/frameworks">Frameworks, after effector-react</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>Content</summary>
+  <ul>
+    <li><a href="/content">Overview</a></li>
+    
+      <li class="lms-side-group">The course map</li>
+      <li class="">
+        <a href="/content/documents">Page documents: nodes, the schema and parseDocument</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/content/rendering">Rendering a document: renderDocument</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/content/blocks">The block catalog: nine groups, one registry</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/content/references">References, capabilities and responsive values</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/content/add-a-block">Add a block: the capstone</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>Live Mercury</summary>
+  <ul>
+    <li><a href="/live-mercury">Overview</a></li>
+    
+      <li class="lms-side-group">The course</li>
+      <li class="">
+        <a href="/live-mercury/islands">Islands: the element and its mount</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/live-mercury/liveview">An island in a LiveView: socket, hooks and events</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/live-mercury/building">Building islands with mx: no Node</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/live-mercury/props-and-streams">Props and streams: patches on the wire</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/live-mercury/server-rendering">Server rendering: what is there, and what is not</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/live-mercury/testing">Testing islands: both sides of the element</a>
+      </li>
+    
+  </ul>
+</details>
+      </nav>
+      <main id="main" class="lms-main">
+        <nav class="lms-crumbs" aria-label="Breadcrumb">
+  <ol>
+    
+      
+      <li><a href="/ui">UI</a></li>
+      
+    
+      
+      
+      <li>The chapters</li>
+    
+      <li aria-current="page">UI3, inputs and forms</li>
+      
+      
+    
+  </ol>
+</nav>
+        
+        <h1 class="lms-title">UI3, <em>inputs and forms</em></h1>
+        <p class="lms-lede">A Field hands its control one explicit binding, the ids, references and states it needs, and never touches the control&#39;s events. A Form lets an ErrorSummary find every Field it holds.</p>
+        <article class="lms-body"><p>A form in Mercury UI is built from two families. The forms family composes: it gives a control its label, help text and error, groups controls, and lists a form's problems. The inputs family holds the controls themselves. The two meet through one explicit binding.</p>
+<h2 id="binding">Field and its binding</h2>
+<p><code>Field</code> places a <code>Label</code>, a <code>Description</code> and a <code>FieldError</code> around one control, and gives the control a binding to spread on itself. It never clones its children and never replaces their events: nothing reaches the control unless you spread it.</p>
+<table>
+<thead>
+<tr>
+<th>Prop</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>the control's id; given explicitly, it is used unchanged; otherwise a stable one is generated</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>the control's form name, and the key an ErrorSummary issue uses</td>
+</tr>
+<tr>
+<td><code>label</code></td>
+<td>renders a <code>Label</code> for the control</td>
+</tr>
+<tr>
+<td><code>hint</code></td>
+<td>renders a <code>Description</code></td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td>renders a <code>FieldError</code> and makes the field invalid</td>
+</tr>
+<tr>
+<td><code>required</code>, <code>disabled</code>, <code>readOnly</code></td>
+<td>the control's states</td>
+</tr>
+<tr>
+<td><code>invalid</code></td>
+<td>defaults to whether <code>error</code> is present</td>
+</tr>
+<tr>
+<td><code>focusTarget</code></td>
+<td>for a composite control: the element an ErrorSummary link focuses</td>
+</tr>
+<tr>
+<td><code>children</code></td>
+<td>the control, or a function that receives the binding</td>
+</tr>
+</tbody>
+</table>
+<p>The binding has the control's <code>id</code> and <code>name</code>, the stable ids of its parts (<code>labelId</code>, <code>descriptionId</code>, <code>errorId</code>, which are <code>&lt;id&gt;-label</code>, <code>&lt;id&gt;-description</code> and <code>&lt;id&gt;-error</code>), its states, <code>focus()</code>, and <code>getControlProps()</code>.</p>
+<p><code>getControlProps(own?)</code> returns the attributes the control needs: <code>id</code>, and only when they carry a value, <code>name</code>, <code>aria-labelledby</code>, <code>aria-describedby</code>, <code>aria-invalid</code>, <code>required</code>, <code>disabled</code> and <code>readOnly</code>. Pass your own <code>aria-describedby</code> or <code>aria-labelledby</code> and they come first, then the hint and the error, each once. A part that is not rendered is not referenced, so a removed error leaves no dangling id.</p>
+<p>Any descendant can read the binding with <code>useFieldContext()</code>, which is <code>null</code> outside a Field. Several Mercury controls do this themselves: <code>SearchField</code>, <code>TokenField</code>, <code>CheckboxGroup</code>, <code>Combobox</code>, <code>CustomSelect</code> and <code>ListBox</code> take their states and references from an enclosing Field.</p>
+<h2 id="parts">Label, Description and FieldError</h2>
+<ul>
+<li><strong><code>Label</code>:</strong> the caption. <code>required</code> adds an asterisk hidden from assistive technology (the control's native <code>required</code> carries the meaning); <code>optional</code> adds "(optional)"; it also takes <code>size</code> (<code>sm</code>, <code>md</code>, <code>lg</code>), <code>disabled</code>, <code>accent</code> and a <code>hint</code> line.</li>
+<li><strong><code>Description</code>:</strong> help text, in muted ink.</li>
+<li><strong><code>FieldError</code>:</strong> the inline error, in negative ink.</li>
+</ul>
+<p>Neither <code>Description</code> nor <code>FieldError</code> is a live region. An error is not announced on every keystroke; focus and the ErrorSummary carry it. Field and Fieldset render both from their <code>hint</code> and <code>error</code>; used alone, give each an <code>id</code> and reference it yourself.</p>
+<h2 id="input">Input and Textarea</h2>
+<p><code>Input</code> is the text input. It can carry its own <code>label</code>, <code>hint</code> and <code>error</code>, and <code>leading</code> and <code>trailing</code> adornments; with an <code>error</code> it sets <code>aria-invalid</code> and shows the message. Every other input attribute passes through to the <code>&lt;input&gt;</code>.</p>
+<p><code>Textarea</code> takes <code>label</code>, <code>hint</code>, <code>error</code>, <code>resizable</code> and <code>size</code> (<code>sm</code>, <code>md</code>, <code>lg</code>).</p>
+<p>Give the label to the Field or to the control, not both. Inside a Field with a <code>label</code>, leave the Input's own <code>label</code> out and spread the binding on it; an Input that keeps its own label can still take its error from the Field.</p>
+<h2 id="groups">Fieldset, Legend and FormSection</h2>
+<ul>
+<li><strong><code>Fieldset</code>:</strong> a native <code>&lt;fieldset&gt;</code> with its <code>legend</code>, <code>hint</code> and <code>error</code>. It keeps native group semantics: role <code>group</code>, named by its legend, with <code>disabled</code> and <code>name</code> behaving as the HTML attributes do. An ErrorSummary focuses the group's first enabled control, or the element <code>focusTarget</code> returns.</li>
+<li><strong><code>Legend</code>:</strong> the native <code>&lt;legend&gt;</code>, rendered first in the fieldset so the browser names the group from it. Fieldset renders it from its <code>legend</code> prop.</li>
+<li><strong><code>FormSection</code>:</strong> a collapsible part of a form, built on <code>Collapsible</code>: it takes a <code>title</code>, <code>open</code> with <code>onOpenChange</code> or <code>defaultOpen</code>, and <code>bordered</code>, <code>accent</code> and <code>width</code>. While closed its content is inert, so hidden fields take no focus. When an ErrorSummary link or a Field's <code>focus()</code> targets a field inside it, the section opens first, with every section around it.</li>
+</ul>
+<h2 id="summary">Form and ErrorSummary</h2>
+<p><code>Form</code> is a native <code>&lt;form&gt;</code>. Every attribute and handler is forwarded unchanged, so submission, reset and the browser's constraint validation behave as the element's own; pass <code>noValidate</code> yourself to turn validation off. It installs no state library. Its one addition is a registry the Fields inside it join, under their <code>name</code> or <code>id</code>.</p>
+<p><code>ErrorSummary</code> lists a form's problems after a failed submit:</p>
+<ul>
+<li><strong><code>issues</code>:</strong> the ordered list, each <code>{ field, message, target? }</code>. <code>field</code> is the Field's <code>name</code> or <code>id</code>; use the same words as the inline error. Nothing renders while the list is empty.</li>
+<li><strong><code>title</code>:</strong> the heading, required; <code>headingLevel</code> sets its level, <code>2</code> by default.</li>
+<li><strong><code>focusRequest</code>:</strong> a counter of failed submits. Each new positive value moves focus to the summary once; a validation update that leaves it unchanged never moves focus.</li>
+</ul>
+<p>Each issue is a link. Activating it reveals the field's FormSection and focuses its control, found through the Form's registry; outside a Form, it focuses the element whose id is <code>target</code>, else <code>field</code>.</p>
+<h2 id="example">A form end to end</h2>
+<pre><code class="language-tsx">import { useState } from "@fiberfx/hyperscript/hooks";
+import { parseDate } from "@fiberfx/core";
+import { Button, DateField, ErrorSummary, Field, Form, Input } from "@fiberfx/ui";
+import type { ErrorSummaryIssue } from "@fiberfx/ui";
+
+export function TaskForm() {
+  const [title, setTitle] = useState("");
+  const [issues, setIssues] = useState&lt;ErrorSummaryIssue[]&gt;([]);
+  const [failed, setFailed] = useState(0);
+  const titleError = issues.find((issue) =&gt; issue.field === "title")?.message;
+
+  return (
+    &lt;Form
+      noValidate
+      onSubmit={(event) =&gt; {
+        event.preventDefault();
+        const found = title.trim() === "" ? [{ field: "title", message: "Enter a title" }] : [];
+        setIssues(found);
+        if (found.length &gt; 0) setFailed((count) =&gt; count + 1);
+      }}
+    &gt;
+      &lt;ErrorSummary title="Fix this before saving" issues={issues} focusRequest={failed} /&gt;
+      &lt;Field name="title" label="Title" hint="Shown in lists" error={titleError} required&gt;
+        {(field) =&gt; (
+          &lt;Input {...field.getControlProps()} value={title} onInput={(event) =&gt; setTitle(event.currentTarget.value)} /&gt;
+        )}
+      &lt;/Field&gt;
+      &lt;DateField name="due" label="Due date" defaultValue={parseDate("2026-11-30")} /&gt;
+      &lt;Button type="submit"&gt;Save&lt;/Button&gt;
+    &lt;/Form&gt;
+  );
+}
+</code></pre>
+<p>The application owns validation: it decides the issues, and passes the same message to the Field's <code>error</code> and to the summary. Mercury owns the references, the focus and the reveal.</p>
+<h2 id="date">Dates</h2>
+<p><code>DateField</code> is a segmented date entry: month, day and year are each their own spinbutton segment, ordered and separated for the <code>locale</code> (<code>"en"</code> by default). Its value is a <code>DateValue</code> from <code>@fiberfx/core</code>; build one with <code>parseDate("2026-11-30")</code> or <code>new CalendarDate(2026, 11, 30)</code>.</p>
+<ul>
+<li><strong><code>value</code> / <code>defaultValue</code> / <code>onChange</code>:</strong> <code>onChange</code> receives the date on each committed edit, and <code>undefined</code> whenever the draft is not a valid date.</li>
+<li><strong><code>onValidityChange</code>:</strong> says why: <code>empty</code>, <code>incomplete</code>, <code>impossible</code> (31 February, kept as typed and never normalised), <code>unavailable</code>, <code>before-min</code>, <code>after-max</code> or <code>valid</code>.</li>
+<li><strong><code>minValue</code>, <code>maxValue</code>, <code>isDateUnavailable</code>:</strong> the bounds and the refused dates.</li>
+<li><strong><code>name</code>:</strong> one hidden input submits the committed value as an ISO date, <code>2026-11-30</code>; the segments are never submitted.</li>
+<li><strong><code>readOnly</code>:</strong> the segments stay focusable and navigable but refuse edits.</li>
+</ul>
+<p>The segment anatomy, <code>DateInput</code> (the <code>group</code>) and <code>DateSegment</code> (one <code>spinbutton</code>), is exported and shared by <code>TimeField</code>, <code>DateRangeField</code>, <code>DatePicker</code>, <code>DateRangePicker</code> and <code>DateTimeField</code>.</p>
+<h2 id="color">Colors</h2>
+<p><code>ColorField</code> is a text field for one color value. It keeps the typed draft apart from the committed value: Enter or blur parses the draft; an unsupported form is refused with a message and <code>aria-invalid</code>, and the draft stays editable; Escape restores the committed text. It accepts <code>#hex</code>, <code>rgb()</code>, <code>hsl()</code>, <code>hsb()</code> and <code>color(display-p3 …)</code>, plus <code>inherit</code> and <code>unset</code> with <code>editorStates</code>, and <code>{token-id}</code> references with <code>tokens</code>.</p>
+<p><code>onChange(value, details)</code> reports why the value changed: <code>commit</code>, <code>token</code>, <code>detach</code> (a token replaced by a literal), <code>reset</code> or <code>text</code>. Its companion <code>ColorChannelField</code> is a number field for one <code>channel</code> of a color, the typed equivalent of a drag.</p>
+<h2 id="family">The rest of the family</h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>What it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Search</code></td>
+<td>a search input with a built-in glyph and clear</td>
+</tr>
+<tr>
+<td><code>SearchField</code></td>
+<td>a search input whose draft, submit and clear are separate effects</td>
+</tr>
+<tr>
+<td><code>PasswordField</code></td>
+<td>a password input with a reveal toggle</td>
+</tr>
+<tr>
+<td><code>MoneyInput</code></td>
+<td>a currency-amount field</td>
+</tr>
+<tr>
+<td><code>AuthCode</code></td>
+<td>split one-time-code entry</td>
+</tr>
+<tr>
+<td><code>TokenField</code></td>
+<td>text and tokens, with stable identity and explicit commits</td>
+</tr>
+<tr>
+<td><code>TimeField</code></td>
+<td>a segmented time, with no date</td>
+</tr>
+<tr>
+<td><code>DatePicker</code></td>
+<td>a date field with a calendar popup</td>
+</tr>
+<tr>
+<td><code>DateRangeField</code> / <code>DateRangePicker</code></td>
+<td>two typed endpoints of one range, and the same with a range calendar</td>
+</tr>
+<tr>
+<td><code>DateTimeField</code></td>
+<td>a publication time with its zone</td>
+</tr>
+<tr>
+<td><code>TimeZonePicker</code></td>
+<td>a named time zone</td>
+</tr>
+<tr>
+<td><code>Calendar</code> / <code>RangeCalendar</code></td>
+<td>a month grid; a contiguous range of days</td>
+</tr>
+<tr>
+<td><code>ColorPicker</code></td>
+<td>owns one color field's transaction</td>
+</tr>
+<tr>
+<td><code>ColorArea</code>, <code>ColorSlider</code>, <code>ColorWheel</code></td>
+<td>two channels on a surface, one on a track, the hue on a ring</td>
+</tr>
+<tr>
+<td><code>ColorSwatch</code> / <code>ColorSwatchPicker</code></td>
+<td>a named preview of one color; one choice among swatches</td>
+</tr>
+<tr>
+<td><code>ColorThumb</code></td>
+<td>the shared thumb of the color surfaces</td>
+</tr>
+<tr>
+<td><code>TokenPicker</code></td>
+<td>a design token, chosen by identity</td>
+</tr>
+</tbody>
+</table></article>
+        <nav class="lms-pager" aria-label="Previous and next">
+  <a class="lms-pager-prev" href="/ui/actions-and-layout" rel="prev"><span>Previous</span>UI2, actions and layout</a>
+  <a class="lms-pager-next" href="/ui/selection" rel="next"><span>Next</span>UI4, selection</a>
+</nav>
+      </main>
+      <aside class="lms-toc" aria-label="On this page">
+        <p class="lms-toc-title">On this page</p>
+        <ul>
+          <li><a href="#binding">Field and its binding</a></li><li><a href="#parts">Label, Description and FieldError</a></li><li><a href="#input">Input and Textarea</a></li><li><a href="#groups">Fieldset, Legend and FormSection</a></li><li><a href="#summary">Form and ErrorSummary</a></li><li><a href="#example">A form end to end</a></li><li><a href="#date">Dates</a></li><li><a href="#color">Colors</a></li><li><a href="#family">The rest of the family</a></li>
+        </ul>
+      </aside>
+    </div>
+    <footer class="lms-footer">
+  <p><a href="/agent/SKILL.md">SKILL.md</a><span> · <a href="/llms.txt">llms.txt</a></span> · <a href="/sitemap.xml">Sitemap</a> · <a href="/examples/first-page.html">Browser example</a></p>
+  <p>For agents: <a href="/ui/inputs-and-forms/llms.txt">/ui/inputs-and-forms/llms.txt</a> is this page as plain text, hand-written. No Node, no React.</p>
+  
+</footer>
+  </body>
+</html>

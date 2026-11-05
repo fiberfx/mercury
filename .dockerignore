@@ -1,0 +1,7 @@
+**
+!Dockerfile
+!agents/
+!agents/bootstrap.py
+!release-inputs/
+!release-inputs/release.json
+!release-inputs/*.tar.gz

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mercury Playground"
+  short_description: "Build live explorers with genuine Mercury components"
+  default_prompt: "Use $mercury-playground to build an interactive explorer with live controls, a preview, and a copyable prompt."

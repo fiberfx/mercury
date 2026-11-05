@@ -1,60 +1,80 @@
 # Mercury
 
-The published `@fiberfx/*` modules: Mercury's renderer, design system, state layer, compiler and test host. This directory is an [`mx`](mx) workspace: one directory per module, one module per path, `github.com/fiberfx/mercury/<name>`.
+Mercury builds browser interfaces with Hyperscript, Mercury UI and the native `mx` toolchain. Phoenix and LiveView are optional integrations. The public `@fiberfx` browser packages are at 4.0.0.
 
-Fifteen modules, no third-party runtime dependency in any published package, and no React.
+This repository is a **consumer distribution hub**, not a checkout of all Mercury package sources. It provides the bootstrap tools and release instructions for documentation, agent skills, examples and native tools. There are no package source directories here to build with pnpm.
 
-## Modules
+## Choose a starting point
 
-| Directory | Package | What it is |
-|---|---|---|
-| [`hyperscript`](hyperscript) | `@fiberfx/hyperscript` | The virtual DOM: hyperscript, JSX runtime, hooks, server and client entries |
-| [`render-to-string`](render-to-string) | `@fiberfx/render-to-string` | The server renderer for `@fiberfx/hyperscript` |
-| [`core`](core) | `@fiberfx/core` | The UI-free foundation: headless hooks, `cx`, dates and shared types |
-| [`ui`](ui) | `@fiberfx/ui` | The design system: tokens and components, grouped by purpose |
-| [`effector`](effector) | `@fiberfx/effector` | Mercury's Effector: stores, plus theme, toast and form adapters |
-| [`schema`](schema) | `@fiberfx/schema` | Mercury documents: a portable, versioned, JSON-safe page format |
-| [`content`](content) | `@fiberfx/content` | Published pages: a renderer registry and block catalog |
-| [`cms`](cms) | `@fiberfx/cms` | CMS compositions: the collection workspace |
-| [`analytics`](analytics) | `@fiberfx/analytics` | The analytics browser client and dashboard islands |
-| [`phoenix`](phoenix) | `@fiberfx/phoenix` | The Phoenix client, with Mercury islands |
-| [`phoenix_live_view`](phoenix_live_view) | `@fiberfx/phoenix_live_view` | The LiveView client, with Mercury islands |
-| [`live-mercury`](live-mercury) | `@fiberfx/live-mercury` | Live Mercury's browser client: LiveView's patch codecs |
-| [`testing`](testing) | `@fiberfx/testing` | The test kit: render, queries, matchers and a DOM host |
-| [`devtools`](devtools) | `@fiberfx/devtools` | Native Mercury DevTools, development only: the `./connect` collector over `@fiberfx/effector/inspect` and the `./panel` dock |
-| [`vite-plugin-mhs`](vite-plugin-mhs) | `@fiberfx/vite-plugin-mhs` | The Vite plugin: automatic JSX and the Hypercompiler |
-| [`hypercompiler`](hypercompiler) | `@fiberfx/hypercompiler` | The compiler: a Rust crate built to WebAssembly, its Cargo package at the module's root |
+- **Keep an existing Mercury app:** use its working tools and dependency pins.
+- **Try a page without installing a CLI:** follow the [browser guide](https://mercury.jonnify.com/start/browser). It uses plain JavaScript, versioned packages and a stylesheet; the CDN route needs network access.
+- **Work from a local documentation bundle:** use the Python bootstrap below. Add native tools on supported Linux, or select `--docs-only` elsewhere.
+- **Give an agent the task:** start with [the agent guide](agents/README.md) and, after extraction, `mercury-sandbox/agents/SKILL.md`.
 
-## The directory
+The JavaScript browser packages and the native CLI have separate versions. The candidate distribution release is `v0.1.0-agent-preview.1`; it is **not published yet**. Public-network installation and release-asset publication remain pending. Do not infer availability from a planned filename, tag or command.
 
-```text
-mercury/
-├─ <module>/         one per row above, each with package.json, mx.mod and mx.sum
-├─ mx.work           the workspace: names the sixteen modules
-├─ mx.work.sum       the workspace's checksums
-├─ conformance/      the host conformance page and probe
-├─ docs/             migration and publishing guides
-├─ release/          platform targets and release evidence
-├─ scripts/          the gates and release tools
-├─ CLAUDE.md         the guide for agents and contributors
-├─ NOTICE.txt        third-party notices for code modified from upstream sources
-├─ tsconfig.base.json
-└─ tsdown.lib.ts     the shared library build
+## Bootstrap a reviewed release
+
+Requirements: Python 3.11 or later and network access to the release assets. Native tools require Linux x86_64 with glibc **2.39 or later** and `libgcc_s.so.1`. The current binaries were built and tested on glibc 2.41; their ELF requirements establish the 2.39 floor, not a completed test on every compatible Linux distribution. No Node, npm, Rust or BEAM installation is needed for this consumer route.
+
+Obtain the versioned GitHub `release.json` URL and its SHA-256 through a reviewed release channel. Set `MERCURY_RELEASE_URL` and `MERCURY_RELEASE_SHA256` to those actual values. A checksum downloaded beside an untrusted manifest does not independently establish trust.
+
+From this repository, with a destination path that does not already exist:
+
+```sh
+set -eu
+MERCURY_RELEASE_URL=https://github.com/fiberfx/mercury/releases/download/v0.1.0-agent-preview.1/release.json
+MERCURY_RELEASE_SHA256=1dbcce7ed1443ec6ff2ae922b4b1b2ba0f3f0562c00af86a20af45dcddd67b50
+python3 agents/bootstrap.py \
+  --manifest "$MERCURY_RELEASE_URL" \
+  --sha256 "$MERCURY_RELEASE_SHA256" \
+  --dest mercury-sandbox
+export PATH="$PWD/mercury-sandbox/native/bin:$PATH"
+mx --version
+python3 mercury-sandbox/agents/serve.py --root mercury-sandbox/site --port 8000
 ```
 
-## Work on it
+The bootstrap checks the caller-pinned manifest hash **before parsing the manifest**, then verifies asset hashes before extraction. A mismatch is a failure, not a reason to disable verification. The `PATH` change above affects only the current shell.
 
-The move to `mx` isn't finished. Modules build and test through pnpm from `../mercury/`, its root until `mx install` replaces it, and applications live in `../node/` for now. The end layout is `fiberfx/` for packages and `mercury/` for the showcase and applications, with no `node/`.
+On non-Linux systems, or when you only need documentation, add `--docs-only` to the bootstrap command and skip the `PATH` and `mx --version` lines. The bundle includes English and Russian Markdown, a rendered documentation site covering 120 lesson routes, agent instructions and playground skill templates. Start with the local site's home page using the address printed by the server. [Bundle contents and use](agents/README.md) explain what is local and what still needs network access.
 
-```bash
-cd ../mercury
-pnpm install --frozen-lockfile
-pnpm build
-pnpm test
+## Optional npm distribution
+
+The planned npm root package `@fiberfx/mx` supplies a Node launcher and optional platform packages. The launcher uses `require.resolve` to find the installed native binary and executes it. **Node remains required whenever the npm-installed mx command is invoked.** This path has no `postinstall` and does not download binaries from GitHub Releases; npm obtains the platform package. Keep optional dependencies enabled.
+
+Only Linux x64 binaries have verification evidence, requiring glibc 2.39+. The planned platform package is `@fiberfx/mx-linux-x64`; other platform packages are future work, not built or available. npm publication is pending. The Python bootstrap, direct native archive and container routes above remain Node-free.
+
+## Container route
+
+The candidate image has been built and tested. Its distribution artifact is a GitHub release archive; GHCR is an optional future route, not a prerequisite. Publication of the preview is still pending. Once the candidate assets are published, run from this repository with a new output filename:
+
+```sh
+set -eu
+python3 agents/download_image.py \
+  --manifest https://github.com/fiberfx/mercury/releases/download/v0.1.0-agent-preview.1/release.json \
+  --sha256 1dbcce7ed1443ec6ff2ae922b4b1b2ba0f3f0562c00af86a20af45dcddd67b50 \
+  --output mercury-agent-linux-x64.docker.tar.gz
+docker load --input mercury-agent-linux-x64.docker.tar.gz
+docker run --rm --name mercury-agent \
+  --platform linux/amd64 \
+  -p 127.0.0.1:8000:8000 \
+  mercury-agent:v0.1.0-agent-preview.1
 ```
 
-Agents and contributors: start with [CLAUDE.md](CLAUDE.md). The records are in [`specs/mercury/`](../specs/mercury/README.md#toc).
+Open `http://127.0.0.1:8000`. The downloader checks the reviewed manifest pin before parsing and verifies the image archive before writing it. It does not execute Docker; loading and starting the image are the explicit next commands. The archive SHA-256 is `aa08bb332a90ff1ea13780fe1c5a772b6f0fb8c36c43dcff458e35d81b9e6a93`. The tag used after loading names the image from those verified bytes; the tag alone is not the trust anchor.
 
-## Releases
+The container runs as UID/GID 10001 and has a writable `/workspace`. To retain work on the host, add a bind mount for a dedicated directory writable by UID 10001; a bind mount replaces the image directory's permissions. See [image use and offline example](docker/README.md) for the mount and copy/build commands.
 
-The first release under this scope is 4.0.0, a major version because every import name changes (the Operator's decision, [mx-modules M9](../specs/mercury/design/mx-modules.md#decisions)). It isn't published yet: 3.x stays on npm as `@mercury-fx/*`. Until then the manifests carry the workspace version, 3.0.0; `mx push npm 4.0.0` sets every member to 4.0.0 when it releases. See [migrating to 3.0](docs/migrating-to-3.0.md) for the previous major.
+## What is verified
+
+Source-side checks recorded for this candidate passed 88 LMS tests and 235 native tests, with two native tests ignored. A cold consumer check covered Node-free installation, build, offline reuse and tamper rejection. The image also passed checks on win120 as non-root UID 10001: network-disabled native verification/build, absence of Node/npm/Rust/BEAM, and five HTTP routes. These results support the candidate; they do not establish that GitHub assets have been published or that a fresh public-network install succeeds.
+
+The bundle includes a native-built counter and a portable task list made from published Mercury packages. Internal repository maps and the Design Explorer are excluded pending a separate public-content selection. The reusable playground skill includes six templates.
+
+## Contributing
+
+Read [AGENTS.md](AGENTS.md) for distribution changes and [release/README.md](release/README.md) for the trust and publication boundary. Editing this repository does not alter already-published npm package metadata.
+
+## License and notices
+
+See [LICENSE](LICENSE) and [NOTICE.txt](NOTICE.txt). Native release assets carry their own third-party notices and source provenance; keep those files with redistributed tools.

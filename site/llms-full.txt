@@ -1,0 +1,3425 @@
+# Mercury LMS: every companion, in course order
+
+> 60 companions. Each one is also served at its own address, named in the line above it.
+
+<!-- /llms.txt -->
+
+# Mercury LMS
+
+> Mercury combines mx (the native Rust toolchain), Hyperscript (its own DOM runtime), Hypergraph (state) and Mercury UI. Phoenix and LiveView integration is available through Live Mercury. The archive/image workflow invokes native mx without Node.js or npm CLI. The planned npm wrapper requires Node for each mx invocation. Mercury uses Hyperscript, not React.
+
+## Read this when
+
+You are about to write, build or explain a Mercury app, and need to know which module does what and where its course is.
+
+## Choose a route
+
+Keep an existing app or working mx. Without a CLI, start with [browser HTML](/start/browser/llms.txt). For native TSX, check [npm and archive readiness](/start/install-mx/llms.txt). [The Mercury skill](/agent/SKILL.md) selects by environment and task; the counter is not a substitute for checking the user's requested interactions.
+
+## The modules
+
+- mx — the native toolchain: `mx build --bundle|--host|--lib`, `mx dev`, `mx test`, `mx check`. Course: /mx.
+- `@fiberfx/hyperscript` — the virtual DOM, JSX runtime and hooks. Course: /hyperscript.
+- `@fiberfx/ui` — the design system's components and tokens. Course: /ui.
+- `@fiberfx/hypergraph` — the state kernel. Course: /hypergraph (its companion: /hypergraph/llms.txt).
+- `@fiberfx/content` — page documents and the block catalog. Course: /content.
+- `live_mercury` — Mercury islands in Phoenix and LiveView. Course: /live-mercury.
+
+## Rules for agents
+
+- Use mx for a native app, or plain JavaScript for the browser-only route. npm may bootstrap the published native mx package; it is not the native app build tool.
+- Never emit React, Next.js, Vue, Solid, or Effector code or imports.
+- Every page here answers `<page>/llms.txt`.
+- Every English companion, in course order, in one file: /llms-full.txt
+
+## Status
+
+The Phoenix `mercury_lms` website serves the bilingual homepage at / and /ru. The native app example retained under `sites/mercury` is a separate application. Check /start/stability for module readiness and /start/install-mx for the current installation route. Registry publication alone does not prove a working native install: follow the steps and check the result at /mx/first-app. A page marked Planned has no runnable example.
+
+## Native first page
+
+- [Mercury page-building skill](/SKILL.md).
+- [Install mx](/start/install-mx/llms.txt): public archives and SHA-256 verification.
+- [First page](/mx/first-app/llms.txt): styled Card + Button counter, dev and build.
+
+Start in a new directory on Linux x86_64. Keep the starter mx.mod and mx.sum. Import @fiberfx/ui/styles.css. The browser runs JavaScript; BEAM is optional.
+
+## Navigation
+
+- [Read this page in the browser](/)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [/content](/content/llms.txt)
+- [/hypergraph](/hypergraph/llms.txt)
+- [/hyperscript](/hyperscript/llms.txt)
+- [/live-mercury](/live-mercury/llms.txt)
+- [/mx](/mx/llms.txt)
+- [/start](/start/llms.txt)
+- [/ui](/ui/llms.txt)
+- [Русский индекс](/ru/llms.txt)
+
+<!-- /start/llms.txt -->
+
+# Start here — Mercury LMS
+
+> Mercury: components on Mercury Hyperscript (`@fiberfx/hyperscript`), styled by Mercury UI (`@fiberfx/ui`), state in Hypergraph (`@fiberfx/hypergraph`), built by native `mx`. JavaScript runs in the browser. Phoenix/LiveView is optional. The archive/image route needs no Node/npm, Rust or BEAM installation. The planned npm launcher needs Node at each mx invocation. No React is used. 4.0.0 is on npm (since 2026-11-05).
+
+## Read this when
+
+You are new to Mercury, or you need to decide which module or course answers a task before writing code.
+
+## The modules
+
+- `mx`: the native toolchain. `mx dev [--root <dir>] [--port <n>] [--importmap]` serves an app on 127.0.0.1. `mx build --bundle` (an app's page), `--lib <entry> --out <file>` (one module file), `--host` (a host's line). An app is a directory with `index.html` beside `mx.mod`. Public Linux x86_64 archive and pinned starter: /start/install-mx. Course: /mx.
+- `@fiberfx/hyperscript`: virtual DOM. `render`, `h`, `Fragment` from the root; hooks from `/hooks`; `createRoot` from `/client`; `renderToString` from `/server`; JSX with no pragma: the Hypercompiler fixes the runtime and refuses any `@jsx` comment. Course: /hyperscript.
+- `@fiberfx/ui`: design system components, token-driven. Course: /ui.
+- `@fiberfx/hypergraph`: state kernel. Course: /hypergraph.
+- `@fiberfx/content`: published pages, block catalog. Course: /content.
+- `live_mercury` (Mix, 2.8.0) and `@fiberfx/live-mercury`: islands in LiveView. Course: /live-mercury.
+
+## Minimal example
+
+```tsx
+import { render } from "@fiberfx/hyperscript";
+import { useState } from "@fiberfx/hyperscript/hooks";
+
+function Counter() {
+  const [count, setCount] = useState(0);
+  return <button class="counter" onClick={() => setCount(count + 1)}>{count}</button>;
+}
+
+render(<Counter />, document.getElementById("app")!);
+```
+
+## Rules
+
+- Write DOM names: `class`, `for`, `onInput` for each keystroke, `onChange` for the DOM's `change`.
+- Build native apps with mx; npm may bootstrap mx when its package is published. The browser-only route needs no build. Do not add Vite configs or imports from `react`, `react-dom`, `next`, `vue`, `solid-js` or `preact` to these Mercury examples.
+- `mx dev` hot-reloads: a saved module is updated in place, or the page reloads (/mx/dev). Hypergraph's state-keeping swap is not delivered yet (/hypergraph/hot-replacement); do not promise it.
+
+## Next
+
+- Why: /start/philosophy (companion /start/philosophy/llms.txt)
+- Tiers and versions: /start/stability
+- How agents read this site: /start/agents
+- Install native mx and the pinned starter: /start/install-mx
+- Glossary: /start/glossary
+- Build a styled Card + Button page: /mx/first-app
+- Agent workflow: /SKILL.md
+- The site map: /llms.txt
+- This companion: /start/llms.txt
+
+## Navigation
+
+- [Read this page in the browser](/start)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+
+### Chapter companions
+
+- [/start/agents](/start/agents/llms.txt)
+- [/start/glossary](/start/glossary/llms.txt)
+- [/start/install-mx](/start/install-mx/llms.txt)
+- [/start/philosophy](/start/philosophy/llms.txt)
+- [/start/stability](/start/stability/llms.txt)
+
+## Choose a route
+
+Keep an existing app or working mx. Without a CLI, start with [browser HTML](/start/browser/llms.txt). For native TSX, check [npm and archive readiness](/start/install-mx/llms.txt). [The Mercury skill](/agent/SKILL.md) selects by environment and task; the counter is not a substitute for checking the user's requested interactions.
+
+<!-- /start/browser/llms.txt -->
+
+# A page in the browser — Mercury LMS
+
+> One HTML file with Hyperscript h/render, hooks and Mercury UI Card/Button. Requires import-map browser support and network access to UNPKG. No mx, Node, Rust, BEAM or build step.
+
+## Workflow
+
+1. Open or save the [complete HTML](/examples/first-page.html). Exact imports and limits: [lesson](/start/browser).
+2. Keep the import map for @fiberfx/hyperscript, /hooks, /jsx-runtime, @fiberfx/core and @fiberfx/ui on UNPKG 4.0.0, and the UI stylesheet link. Do not replace pins with floating versions.
+3. Write plain JavaScript and h(Component, props, children); browsers do not parse TSX. Adapt the page to the user's task.
+4. Open the result in a browser and check styling and requested interactions, including a relevant invalid input. For the example counter: 0 → 1 → 2 and a saved heading edit. Inspect network failures and console errors.
+5. If no browser is available, report interaction as unverified. This route produces no dist/ and needs the CDN network connection.
+
+## Navigation
+
+- [Read this page in the browser](/start/browser)
+- [Agent index](/llms.txt)
+- [Sitemap](/sitemap.xml)
+- [All English companions](/llms-full.txt)
+- [Course companion](/start/llms.txt)
+- [Install mx](/start/install-mx/llms.txt)
+- [Mercury skill](/agent/SKILL.md)
+
+<!-- /start/install-mx/llms.txt -->
+
+# Install mx on Linux — Mercury LMS
+
+> Candidate native archive: Linux x86_64 with glibc 2.39 or later, mx and a pinned starter. No Rust, Node, npm CLI, BEAM or private repository required.
+
+## Choose a route
+
+Keep working mx or the existing app's toolchain. [The browser route](/start/browser/llms.txt) needs no CLI. The @fiberfx/mx@0.1.0 npm package and archives are pending publication and consumer verification; check [metadata](/downloads.json), and do not treat a URL as proof of availability.
+
+## npm bootstrap after publication
+
+The proposed `@fiberfx/mx` root package is a Node launcher with optional platform packages. It resolves the installed native binary with `require.resolve` and executes it. Node must remain available for every npm-installed mx invocation. There is no postinstall or GitHub Release binary download in this npm route; npm obtains `@fiberfx/mx-linux-x64`. Keep optional dependencies enabled. Only Linux x64 has binary verification evidence; it requires glibc 2.39+. Other platform packages are unbuilt future work, not available. npm publication and wrapper consumer verification remain pending. The separate archive/image routes run native mx without Node. In a new directory:
+
+```sh
+set -eu
+mkdir mercury-native-tools
+cd mercury-native-tools
+npm install --prefix "$PWD/.mx-tools" --global --ignore-scripts @fiberfx/mx@0.1.0
+export PATH="$PWD/.mx-tools/bin:$PATH"
+mx --version
+```
+
+## With working mx
+
+After npm bootstrap, or with existing mx, download only the starter and manifest once published. Skip the full installation below: it would put a second copy of mx on PATH. For a new app:
+
+```sh
+set -eu
+mkdir mercury-native-app
+cd mercury-native-app
+curl -fLO https://mercury.jonnify.com/downloads/mercury-first-page.tar.gz
+curl -fLO https://mercury.jonnify.com/downloads/sha256.sum
+sha256sum --check --ignore-missing sha256.sum || exit 1
+tar -xzf mercury-first-page.tar.gz
+cd mercury-first-page
+mx install
+mx verify
+```
+
+The check must report `mercury-first-page.tar.gz: OK`. `--ignore-missing` skips the native archive entry that was not downloaded. Keep mx.mod/mx.sum and continue at Next. Details: [installation lesson](/start/install-mx).
+
+## Full archive installation
+
+Use a new directory; stop on any error. Both hashes must report OK before extraction.
+
+```sh
+set -eu
+mkdir mercury-scratch
+cd mercury-scratch
+curl -fLO https://mercury.jonnify.com/downloads/mx-linux-x86_64.tar.gz
+curl -fLO https://mercury.jonnify.com/downloads/mercury-first-page.tar.gz
+curl -fLO https://mercury.jonnify.com/downloads/sha256.sum
+sha256sum --check sha256.sum
+tar -xzf mx-linux-x86_64.tar.gz
+tar -xzf mercury-first-page.tar.gz
+export PATH="$PWD/bin:$PATH"
+mx --version
+cd mercury-first-page
+mx install
+mx verify
+```
+
+## Next
+
+Run `mx dev`, open its loopback URL, check Card/Button styling and click twice. After Ctrl-C, run `mx build`; output is `dist/`. Full lesson: [First page](/mx/first-app).
+
+## Limits
+
+`mx.sum` pins dependency bytes; it is not an authenticated checksum-database record. The starter needs no `MXNOSUMDB`. New-dependency exceptions are explained at /start/install-mx. macOS and Windows require separate verification. [Release metadata](/downloads.json).
+
+## Navigation
+
+- [Read this page in the browser](/start/install-mx)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/start/llms.txt)
+
+<!-- /start/stability/llms.txt -->
+
+# Stability: Shipped, Preview, Planned — Mercury LMS
+
+> Tiers: Shipped = released on a registry; Preview = early implementation with stated limits; a downloadable build does not imply stable APIs or all-platform support; Planned = recorded, not built, no runnable example. The fifteen public `@fiberfx` 4.0.0 modules are Shipped: on npm since 2026-11-05, `latest` 4.0.0. 3.x stays on npm as `@mercury-fx/*`.
+
+## Read this when
+
+You are about to tell a user to install a Mercury package, pin a version, or rely on an API, and need to know whether it exists, at what version, and whether it is released.
+
+## Modules
+
+- Shipped, 4.0.0 on npm: `@fiberfx/hyperscript`, `render-to-string`, `core`, `ui`, `hypergraph`, `schema`, `content`, `cms`, `analytics`, `phoenix`, `phoenix_live_view`, `live-mercury`, `testing`, `devtools` (development only), `vite-plugin-mhs`.
+- Preview, private, not packages: `@fiberfx/hypercompiler` 3.0.0, `@fiberfx/hyperscript-lsap` 0.1.0.
+- Preview: `mx` 0.1.0 (candidate npm and archive require Linux x64/glibc 2.39+; publication and consumer verification pending: /start/install-mx; metadata: /downloads.json).
+- Preview: `live_mercury` 2.8.0 (Mix; not on Hex).
+- This site: `mercury_lms` 0.1.0. Phoenix-rendered home at `/` and `/ru`; course pages by path. Public host: `mercury.jonnify.com`; preview: `mercury-next.jonnify.com`.
+
+Courses are already available: Start, mx, Hyperscript, Mercury UI, Hypergraph, Content and Live Mercury.
+
+## Planned
+
+- `@fiberfx/hypergraph/hyperscript` and `@fiberfx/hypergraph/hmr`: not exported.
+- Hypergraph's state-keeping swap delivered by `mx dev` (waits on `/hmr`). (Done: `mx dev` hot-reloads modules, /mx/dev; the modules build and test with mx; pnpm remains only for apps and tools under `node/`.)
+- `<page>.md`, `/agents`, search. (`/llms-full.txt` is served.)
+
+## Rules
+
+- The `@fiberfx` 4.0.0 packages are on npm, but a native app installs its dependencies with `mx install`. The separate npm bootstrap obtains the mx executable when published; see [installation readiness](/start/install-mx/llms.txt).
+- Never cite `mx push`: mx has no such command at this commit.
+- Never present a Planned name (above) as importable.
+- State a version only from this page or the module's `package.json`.
+
+## Next
+
+- Start: /start
+- How agents read this site: /start/agents
+- The site map: /llms.txt
+
+## Navigation
+
+- [Read this page in the browser](/start/stability)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/start/llms.txt)
+
+<!-- /start/agents/llms.txt -->
+
+# Build a page with your agent — Mercury LMS
+
+> [The Mercury skill](/agent/SKILL.md) preserves an existing app and selects working mx, browser HTML or an available native bootstrap.
+
+## Select and verify
+
+- Without a CLI: [browser page](/start/browser/llms.txt), plain JavaScript h/render, pinned UNPKG imports and a UI stylesheet link. Needs network access; browsers do not execute TSX.
+- For native TSX: [installation readiness](/start/install-mx/llms.txt), npm to obtain mx or the checksum-verified archive. Then [native first page](/mx/first-app/llms.txt), mx install/verify/dev/build. Keep mx.mod and mx.sum.
+- Observe styling and the requested interactions in a browser. The 0 → 1 → 2 counter check applies only to that example. For native work, check the dist/ page over HTTP too. Report any checks you could not run.
+
+Use Hyperscript and Mercury UI. Styles: import @fiberfx/ui/styles.css in native apps; link the pinned stylesheet in browser HTML. JavaScript runs in the browser; Phoenix/LiveView is optional. /SKILL.md is an alias for the same skill. Deployment requires user authorization.
+
+## Navigation
+
+- [Read this page in the browser](/start/agents)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/start/llms.txt)
+
+<!-- /start/glossary/llms.txt -->
+
+# Glossary: the words this site uses — Mercury LMS
+
+> Seven terms as Mercury uses them: sid, scope, island, companion, tier, mx.work, member. Each one gives its definition, its source and the page that teaches it.
+
+## Read this when
+
+A Mercury page or user uses one of these words and you need its exact meaning before writing code or prose.
+
+## Terms
+
+- **sid**: a Hypergraph unit's stable identity, with a shape beside it. The compiler is meant to give it; today its sid pass covers only the legacy facade, so a Hypergraph unit has a sid only when written by hand, else a run-time `api:<n>`, and the kernel reads a store's shape from its initial value. Frames key values by sid. Hand-written via the store option `sid`. Under `mx dev`, the module path in the app's `mx.mod` is the sid package. → /hypergraph/units
+- **scope**: `interface Scope { readonly id: number; readonly gen: number }`, an isolated state table. `gen` is the committed graph generation. API: `fork`, `allSettled`, `scopeBind`, `snapshot`, `diff`, `apply`, `dispose`. It survives a hot swap by carrying values whose sid and shape match. → /hypergraph/scopes
+- **island**: a Hyperscript component mounted over one element of a server-painted page, and only where behaviour is needed. In LiveView: `phx-hook="MercuryHook"`, `data-name="X"` renders `components.X` (`getHooks(components)`, `createMercuryHook(resolve)` from `@fiberfx/live-mercury`). One render root per island. Bundled by `mx build --lib`. → /ui/foundations; course /live-mercury
+- **companion**: `<name>.llms.md`, hand-written, served at `<route>/llms.txt` as text/plain. A lesson without one is refused at load; never generated. → /start/agents
+- **tier**: Shipped (on a registry: the fifteen public `@fiberfx` 4.0.0 modules, npm, since 2026-11-05), Preview (built and tested, unreleased: `mx`, `live_mercury`, the private modules), Planned (not built, no runnable example). → /start/stability
+- **mx.work**: the workspace file, a port of `go.work`, with `use ( … )` naming members. Found by `-workfile`, then `MXWORK` (`off` disables it), then the nearest one above. Mercury's: `fiberfx/mx.work`, 18 modules. → /mx/workspace
+- **member**: in `mx.work`, a directory whose `package.json` has a `name` (else "error reading <file>: missing name"). Under `mx dev`, a directory the app's `mx.mod` replaces, served at `/@mx/<package name>/`. → /mx/workspace, /mx/first-app
+
+## Never emit
+
+- "island" for a client-rendered page with no server paint.
+- "stable" or "released" for a Preview module.
+- A generated companion.
+
+## Next
+
+- Start: /start
+- Coming from another state library: /hypergraph/coming-from-effector
+- This companion: /start/glossary/llms.txt
+
+## Navigation
+
+- [Read this page in the browser](/start/glossary)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/start/llms.txt)
+
+<!-- /start/philosophy/llms.txt -->
+
+# Philosophy: native, not borrowed — Mercury LMS
+
+> Mercury uses Hyperscript in the browser and mx for native builds. Plain JavaScript browser pages need no build step. Phoenix/LiveView is optional; the documentation website uses server-rendered HTML. The archive/image routes run native mx without Node. The planned npm wrapper needs Node at every invocation to resolve and launch its optional platform binary; no postinstall or GitHub binary download is used.
+
+## Read this when
+
+You need the scope of Mercury runtime, build and optional server choices.
+
+## The rules these choices give you
+
+- Toolchain: `mx`. It installs from static mirrors with sha512 checks (`mx install`, `mx verify`), serves (`mx dev`) and builds (`mx build`). Exit codes: 0 success, 1 refusal, 2 usage error.
+- Components: `@fiberfx/hyperscript`, DOM semantics. `class`, `for`, `onInput` per keystroke, `onChange` on the DOM `change` event, SVG names such as `stroke-width`, `onFocusIn`/`onFocusOut` for bubbling focus. No compat entry exists.
+- Published modules: no third-party runtime dependency or peer; no React package, import, type or peer (a check gates every landing).
+- Documentation website and Phoenix integration: server-rendered HTML first (HEEx), with islands where needed. This is not a requirement for a standalone client-rendered Mercury page; see [browser route](/start/browser/llms.txt).
+- Facts: the reference comes from source; mx's course quotes `mx --help`. Unfinished is reported as unfinished.
+
+## Today, not yet
+
+- The `@fiberfx/*` modules build and test with mx; pnpm remains only for apps and tools under `node/`. `mx run` scripts can call Node.
+- `mix mercury.lms.scrub` checks this site: retired-package imports in lessons and assets, and Node invocations in the app.
+- The examples check (`mix mercury.lms.examples`) and the generated reference are planned.
+
+## Never emit
+
+Do not replace mx app builds with Vite or introduce React-compatible runtime imports into Mercury examples. npm may obtain the native mx executable when its package is published; check [installation readiness](/start/install-mx/llms.txt). Write `class`, not `className`, and never use `onChange` for keystrokes.
+
+## Next
+
+- Tiers and versions: /start/stability
+- Start: /start
+- The site map: /llms.txt
+
+## Navigation
+
+- [Read this page in the browser](/start/philosophy)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/start/llms.txt)
+
+<!-- /mx/llms.txt -->
+
+# mx, the native toolchain — Mercury LMS
+
+> mx 0.1.0: Mercury's toolchain, one Rust binary. Modules in `mx.mod`/`mx.sum`, workspaces in `mx.work` (Go's rules), `mx dev` with hot reload, `mx build --bundle` (Rolldown linked in), `mx test`, `mx compile`, `mx lsap`. No Node, no npm.
+
+## Read this when
+
+You are about to build, serve, test or lay out a Mercury app or module and need mx's command surface. This page is the course's landing; the chapters follow.
+
+## The command surface (as mx prints it)
+
+- `mx` → `usage: mx exodus|pack|install|verify|importmap|resolve|scan|build|check|run|compile|work|dev|test|lsap …`
+- `mx mod` → `usage: mx mod <init|tidy|verify|graph|why|download>` (not in the line above)
+- `mx work` → `usage: mx work edit|use|init|sync|vendor …`
+- `usage: mx dev [--root <dir>] [--port <n>] [--importmap]`
+- `mx build --help` (exit 0): `usage: mx build [--host | --bundle | --lib] …`. Without a kind, `mx.json` makes a host build and `index.html` beside `mx.mod` an app bundle. `--help` is help only as the first argument.
+- `usage: mx test [--root <dir>] [--timeout <seconds>] [--filter <words>]`
+- `usage: mx compile <file> [--options <json>] [--out <file>]`
+- `usage: mx lsap [--mcp] | mx lsap --version`
+- `mx --version` → `mx 0.1.0`
+
+## Exit codes
+
+0 success · 1 refusal (message names why) · 2 usage error · `mx test` only: 3 could not measure (no browser). Diagnostics on stderr.
+
+## Install
+
+Follow /start/install-mx/llms.txt: native Linux x86_64 archive + pinned starter, SHA-256 check before extraction, mx install, mx verify. No source checkout or Rust needed. Build the styled counter at /mx/first-app; agent workflow: /SKILL.md.
+
+## Rules for agents
+
+- Build and serve native apps with mx. The planned npm distribution uses a Node launcher and optional native platform package. Node remains necessary for each npm-installed mx invocation; the archive/image route calls the native binary directly.
+- Quote flags as mx prints them; don't add flags mx doesn't list.
+- The retained native example check (the live website is Phoenix `mercury_lms`): `env PATH=<mx's dir>:/usr/bin:/bin mx build --bundle --root sites/mercury --out <dist>` — no Node on PATH.
+
+## Chapters
+
+- MX0 first app: /mx/first-app
+- MX1 modules and workspace: /mx/modules, /mx/workspace
+- MX2 dev loop and HMR: /mx/dev
+- MX3 build and ship: /mx/build
+- MX4 the Hypercompiler: /mx/compile
+- MX5 tools: /mx/tools
+
+## Next
+
+- The site: /llms.txt
+- This companion: /mx/llms.txt
+
+## Navigation
+
+- [Read this page in the browser](/mx)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+
+### Chapter companions
+
+- [/mx/build](/mx/build/llms.txt)
+- [/mx/compile](/mx/compile/llms.txt)
+- [/mx/dev](/mx/dev/llms.txt)
+- [/mx/first-app](/mx/first-app/llms.txt)
+- [/mx/modules](/mx/modules/llms.txt)
+- [/mx/tools](/mx/tools/llms.txt)
+- [/mx/workspace](/mx/workspace/llms.txt)
+
+<!-- /mx/first-app/llms.txt -->
+
+# Your first Mercury page — Mercury LMS
+
+> MX0: a styled Card + Button counter on Hyperscript, built with native mx. Native Linux route; no React, Rust, BEAM or private repository in the app build. Archive/image invocation is Node-free; the planned npm launcher needs Node every time it runs mx.
+
+## Start
+
+Follow [Install mx](/start/install-mx/llms.txt): keep working mx or choose a ready bootstrap, download the starter and verify its checksum before extracting, then `mx install` and `mx verify`. Retain the supplied `package.json`, `mx.mod` and `mx.sum`: Hyperscript/core/ui are pinned at 4.0.0.
+
+## app/main.tsx
+
+```tsx
+import { render } from "@fiberfx/hyperscript";
+import { useState } from "@fiberfx/hyperscript/hooks";
+import { Card, Button } from "@fiberfx/ui";
+import "@fiberfx/ui/styles.css";
+
+function Counter() {
+  const [count, setCount] = useState(0);
+  return (
+    <Card title="My first Mercury page">
+      <p aria-live="polite">Count: {count}</p>
+      <Button onClick={() => setCount(count + 1)}>Increment</Button>
+    </Card>
+  );
+}
+
+render(<Counter />, document.getElementById("app")!);
+```
+
+## Verify
+
+HTML needs `#app`, `<!-- mercury:importmap -->` and `<script type="module" src="./app/main.tsx"></script>`. Complete HTML: [First page](/mx/first-app).
+
+`mx dev` prints a loopback URL. Check styling, Count: 0 → 1 → 2 and a saved title edit. Ctrl-C; `mx build` writes `dist/index.html` and assets. Serve dist over HTTP and repeat. If no browser is available, report interaction as unverified.
+
+Do not copy a test fixture or add local replace paths, React or Vite. Keep the CSS import for styling. A checksum failure stops installation. Phoenix/LiveView are optional. [SKILL.md](/SKILL.md) supplies the agent workflow.
+
+## Navigation
+
+- [Read this page in the browser](/mx/first-app)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/mx/llms.txt)
+
+<!-- /mx/modules/llms.txt -->
+
+# Modules, mx.mod and mx.sum — Mercury LMS
+
+> MX1, part one. A Mercury module is a directory with `mx.mod` (Go's go.mod rules) and `mx.sum` (Go's go.sum, `/package.json` for `/go.mod`). Minimum version selection; no lockfile. `mx mod <init|tidy|verify|graph|why|download>` keeps the files.
+
+## Read this when
+
+You add, remove or upgrade a dependency of a Mercury module or app, point a module at a local directory, or debug a `tidy`/`verify` refusal.
+
+## mx.mod verbs
+
+`module`, `mx`, `toolchain`, `require`, `exclude`, `replace`, `retract`. `// indirect` = selected, not asked for directly. `replace <path> => <dir>` = a member served from that directory (no `mx.sum` line).
+
+## Module paths
+
+- Public @fiberfx packages: `registry.npmjs.org/fiberfx/<name>` at `v4.0.0` in the first-page starter. Its module is `example.com/mercury-first-page`.
+- Source-workspace examples may use `github.com/fiberfx/mercury/<name>` with local replacements. Do not copy those paths into a public consumer app.
+- npm: `registry.npmjs.org/<name without @>`, version with `v`: `registry.npmjs.org/swc/helpers v0.5.23 // indirect`.
+
+## mx.sum lines
+
+`<path> <version> h1:<hash>` and `<path> <version>/package.json h1:<hash>`.
+
+## Commands (usage as mx prints it)
+
+- `usage: mx mod init [module-path]` — from package.json; path = argument or the package name; all four dependency sections at their lower bounds; refuses `mx.mod already exists`; deletes `mx.lock.json`, `mx.pins.json`.
+- `usage: mx mod tidy [-e] [--check]` — writes `mx.mod`, `mx.sum`, package.json versions; `-e` past fetch errors; `--check` → `tidy --check: <files> would change`.
+- `usage: mx mod verify` — offline; `all modules verified`.
+- `usage: mx mod graph` — `<module> <dependency>@<version>` per edge.
+- `usage: mx mod why <module>` — `# <module>` + path, or `(main module does not need module <module>)`.
+- `usage: mx mod download` — fill the store.
+- With `mx.mod` here: `mx install` / `mx verify` take no flags.
+
+## Refusals not to work around
+
+- `one version per module path`
+- `SECURITY ERROR: mx.sum has <hash>, and the proxy served <hash>` (`-e` never skips it)
+
+## Environment
+
+`MXPROXY` (default `https://mx.jonnify.com,direct`; GOPROXY syntax) · `MX_STORE` (default `./.mx/store`) · `MXSUMDB` · `MXNOSUMDB` (defaults to `MXPRIVATE`).
+
+## Never emit
+
+Do not replace an mx module's dependency management with npm/pnpm lockfiles or add legacy mx.lock.json/mx.pins.json. Installing the native mx executable through its published npm package is a separate bootstrap operation; it does not replace mx.mod or mx.sum.
+
+## Next
+
+- /mx/workspace
+- This companion: /mx/modules/llms.txt
+
+## Navigation
+
+- [Read this page in the browser](/mx/modules)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/mx/llms.txt)
+
+<!-- /mx/workspace/llms.txt -->
+
+# A workspace, mx.work — Mercury LMS
+
+> MX1, part two. `mx.work` (Go's go.work, `go` spelled `mx`) groups modules developed together; each member resolves the others from their directories. Mercury's is `fiberfx/mx.work`, eighteen members. `mx work edit|use|init|sync|vendor`.
+
+## Read this when
+
+You work across several Mercury modules at once, add a module to the workspace, inspect what the workspace selects, or vendor its dependencies.
+
+## The file
+
+Verbs: `mx`, `toolchain`, `use`, `replace`. A member = a directory whose `package.json` has a `name`. Beside it: `mx.work.sum` (only lines no member's `mx.sum` has), optionally `vendor/`.
+
+## Finding it
+
+`-workfile <path>` → `MXWORK` (`off` = none; else an absolute path; `auto` = search) → nearest `mx.work` at or above the working directory. None: `mx: no mx.work file found`. In a workspace whose members all have `mx.mod`, `mx install`/`mx verify` take the whole workspace.
+
+## Commands
+
+- `usage: mx work edit|use|init|sync|vendor …`
+- `mx work init [dir]...` — refuses `<path> already exists` (here or above).
+- `mx work use [-r] [dir]...` — adds dirs with package.json, drops listed ones without; `-r` skips `vendor`, `node_modules`, `.mx`. Regenerate Mercury's: `mx work use ./*/` (in `fiberfx/`).
+- `mx work edit` — read: `-print`, `-json` (`Mx`, `Use[].DiskPath`, `Selected`; not both). Write: `-use`, `-dropuse`, `-replace old[@v]=new[@w]`, `-dropreplace old[@v]`, `-mx`, `-toolchain` (`none` drops), `-fmt`, `-workfile`. An edit with `-print`/`-json` is a dry run.
+- `mx work sync` — MVS over members' `mx.mod`; raises their `require`s; all-or-nothing.
+- `usage: mx work vendor [-o outdir]` — default `vendor/` beside `mx.work`; refuses `refusing to replace <dir>: it holds the workspace`.
+- `--mod vendor` on `mx build`/`check`/`run`/`resolve`; any other value: `--mod <value> is not vendor`.
+
+## Flags
+
+Go's single dash (`-json`); `--json` and `-name=value` also accepted. Unknown: `mx: flag provided but not defined: -<name>` (exit 2). No flags to edit: `mx: no flags specified (see 'mx work edit')`.
+
+## Never emit
+
+`pnpm-workspace.yaml`, `workspaces` in a root package.json, or `link:`/`workspace:` dependencies for a Mercury module.
+
+## Next
+
+- MX2 dev loop and HMR: /mx/dev
+- This companion: /mx/workspace/llms.txt
+
+## Navigation
+
+- [Read this page in the browser](/mx/workspace)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/mx/llms.txt)
+
+<!-- /mx/dev/llms.txt -->
+
+# The dev loop and hot replacement — Mercury LMS
+
+> MX2. `mx dev` serves an app on 127.0.0.1, polls every file a page asked for every 10 ms, compiles what changed and sends `update`, `full-reload` or `error` over a `vite-hmr` socket at `/`. No Node, no Vite.
+
+## Read this when
+
+You run `mx dev`, wonder why an edit reloaded the page instead of swapping in place, or see a 403/400/500 from the dev server.
+
+## Usage
+
+`usage: mx dev [--root <dir>] [--port <n>] [--importmap]` → prints `listening http://127.0.0.1:<port>/`.
+
+## What it serves
+
+- `/`: index.html + import map (at `<!-- mercury:importmap -->`) + `<meta name="mx-dev-token">` + the client script.
+- `/@mx/client.js`: the hot client (`import.meta.hot`: `data`, `accept`, `dispose`, `invalidate`).
+- `/@mx/<package name>/<path>`: members (from source: compiled and watched; built: never watched).
+- App files: `js mjs jsx ts mts tsx` compiled on request; others as they are.
+
+## An edit
+
+- Same bytes (SHA-256) → nothing. Non-module → `full-reload`. Module never ran → `full-reload`.
+- Refused compile → `error` (`<path>: <refusal>`), page keeps the running module, the module URL answers 500 until fixed.
+- Else walk importers to accepting modules → one `update`; imports get `?t=<stamp>`. No accepting module → `full-reload`.
+- Accepting = the compile's `hmrRoot`, never a text match. The Hypercompiler sets it for a module that imports `render`/`hydrate` from `@fiberfx/hyperscript`. A non-rendering model module reloads.
+- `invalidate` → walk from importers; a walk back to its start → `full-reload`.
+
+## Guards
+
+- Non-loopback Host → 403 `this host name is not allowed: mx dev answers loopback names only`.
+- Non-loopback Origin on the socket → 403.
+- Socket path/protocol other than `/` + `vite-hmr`/`vite-ping` → 400 `an HMR socket is at / and speaks vite-hmr or vite-ping`.
+- A page's `vite-hmr` socket without `?token=` → 400.
+
+## Workspace refusal
+
+`<name> is both <app>'s replace (<dir>) and the mx.work's member (<dir>): remove the replace, or the member from mx.work, or build with MXWORK=off`. A replace onto the member's own directory passes.
+
+## Limits (shipped today)
+
+App edit on this site: applied in place, then one reload (being traced). Member source edit: full reload. Hypergraph's model swap is not delivered by `mx dev` yet.
+
+## Never emit
+
+`vite`, `vite.config.*`, `npm run dev`, or a hand-written `import.meta.hot.accept` meant to make a non-rendering module hot (mx ignores the text).
+
+## Next
+
+- MX3 build and ship: /mx/build
+- This companion: /mx/dev/llms.txt
+
+## Navigation
+
+- [Read this page in the browser](/mx/dev)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/mx/llms.txt)
+
+<!-- /mx/build/llms.txt -->
+
+# Build and ship, three kinds of build — Mercury LMS
+
+> MX3. `mx build` makes an app's page (`--bundle` → a directory), one ES module file (`--lib` → a file), or a host's import map (`mx.json` → `importmap.json` + modules). `mx check` verifies a host's output; `mx run` builds then execs. Rolldown runs inside mx; no Node.
+
+## Read this when
+
+You bundle an app or an island, build a host's static modules, verify them before a deploy, or hit a `--lib` member refusal.
+
+## Usage (as mx prints it)
+
+- `usage: mx build [--bundle] [--root <dir>] [--out <dir>]` → `bundled <entry> -> <out>`
+- `usage: mx build --lib <entry> --out <file> [--root <dir>] [--external <package>]... [--define <name>=<expression>]... [--minify] [--require-export <name>]...` → `bundled <entry> -> <out> (<bytes> bytes)`
+- Host: `--out` (or mx.json `out`), entries as arguments (or mx.json `entries`), `--base`, `--mirror`; → `build: <n> modules to <out>`
+
+## Bundle env
+
+`import.meta.env.MODE` = `"production"`, `PROD` = `true`, `DEV` = `false`; `.env`'s `MX_*` keys only.
+
+## --lib rules
+
+One file (no splitting; dynamic imports inlined; `--out` a directory is refused). Exact entry exports (`--require-export`). `--external` stays bare. No sids. Stylesheet imports are empty. Members = the root's mx.mod replaces + the mx.work's members.
+
+## --lib refusals
+
+- `<spec>, imported by <importer>, is provided by no member the root's mx.mod replaces and no --external names it`
+- under `MXWORK=off`, plus: `: MXWORK=off leaves out the mx.work whose member <dir> provides <name>. Add \`require <module> v0.0.0\` and \`replace <module> => <relative>\` to <root>/mx.mod, or build without MXWORK=off`
+- `<name> is both <app>'s replace (<dir>) and the mx.work's member (<dir>): remove the replace, or the member from mx.work, or build with MXWORK=off`
+- `<entry> does not export <names> (it exports <names>)`
+
+## Host
+
+mx.json keys: `packages`, `mirror`, `base`, `out`, `entries` (others: `mx.json refused: unknown key <key>`). Steps: install (writes the store) → render map (sha384 each) → copy → `<out>/importmap.json`.
+
+## mx check / mx run
+
+- check: `check refused: … is missing | is not this lock's map | was altered`; pass: `check: <n> modules in <out> match`.
+- `mx run <command>`: build, then exec (e.g. `mx run mix phx.server`); a package.json script name runs as a task instead.
+- `--mod vendor` only; else `mx <cmd>: --mod <v> is not vendor`.
+
+## Never emit
+
+`vite build`, `tsdown`, `esbuild`, `rollup -c`, or `npm run build` for a Mercury app or island.
+
+## Next
+
+- MX4 the Hypercompiler: /mx/compile
+- This companion: /mx/build/llms.txt
+
+## Navigation
+
+- [Read this page in the browser](/mx/build)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/mx/llms.txt)
+
+<!-- /mx/compile/llms.txt -->
+
+# The Hypercompiler, one module at a time — Mercury LMS
+
+> MX4. The Hypercompiler is linked into mx: TS/JSX in, an ES module on `@fiberfx/hyperscript/jsx-runtime` out. `mx compile` runs it on one file; mx dev and mx build run it on every module. Refusals are one `CompileError` JSON on stderr.
+
+## Read this when
+
+You need to see what the browser gets for a module, read a compile refusal, or know which options mx passes to the compiler.
+
+## Usage (as mx prints it)
+
+`usage: mx compile <file> [--options <json>] [--out <file>]`
+
+- Success: the code on stdout (or `--out`, written only on success), exit 0.
+- Compile refusal: `CompileError` JSON on stderr, nothing on stdout, exit 1.
+- mx's own refusal (file unreadable): `mx: <file>: <error>`, exit 1, no JSON.
+- Usage: `a file is required`, `one file, not <x> as well`, `--out needs a value`, `--out given twice`, `unknown flag <flag>` (exit 2).
+
+## CompileError
+
+`{filename, details: [{message, labels: [{start, end, line, column}]}], phase, kind, diagnostics}`. Offsets are UTF-8 bytes, `line` 1-based, `column` 0-based UTF-16. `kind`: `syntax` (parse, semantic analysis, lowering) · `input` (input, policy) · `fuse` · `internal`.
+
+## Policy
+
+- JSX runtime fixed to `@fiberfx/hyperscript`; any `@jsx` pragma comment → `policy` refusal.
+- `.js/.jsx/.ts/.tsx` are ES modules; `.cjs/.cts` keep their mode; `.d.ts` → `declaration files are not executable inputs`.
+- 256 nesting levels, 1,024 chain links; past either → `input`, before parsing.
+- No type checking, no optimizer, no import resolution.
+
+## Options
+
+`{"sid": {"package", "module"}, "roots": {"id"}}`; unknown keys → `input` (`expected \`sid\` or \`roots\``).
+
+- `sid`: key = first 16 hex of SHA-256 of `mhs-sid/1|<package>|<module>|<kind>|<line>:<column>`. It lowers the legacy state package's calls only; not `@fiberfx/hypergraph` yet.
+- `roots`: dev only. A module importing `render`/`hydrate` from `@fiberfx/hyperscript` gets `trackRoots` from `@fiberfx/hyperscript/hmr` and `hmrRoot: true`; other modules are untouched.
+
+## What mx passes
+
+- mx dev: `sid` + `roots {id: <URL>}`.
+- mx build --bundle: `sid` only.
+- mx build --lib: nothing.
+
+## Never emit
+
+`/** @jsx h */` or `/** @jsxImportSource … */` pragmas, a `tsc`/Babel/esbuild step before mx, or a `.d.ts` as an entry.
+
+## Next
+
+- MX5 tools: /mx/tools
+- This companion: /mx/compile/llms.txt
+
+## Navigation
+
+- [Read this page in the browser](/mx/compile)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/mx/llms.txt)
+
+<!-- /mx/tools/llms.txt -->
+
+# The tools, test, lsap and run — Mercury LMS
+
+> MX5. `mx test` runs a module's tests in a headless Chromium mx starts itself, with mx's own runtime answering `vitest` imports. `mx lsap` starts `hyperscript-lsap` from beside mx. `mx run` runs a package.json script as a cached task, or builds a host and becomes a command.
+
+## Read this when
+
+You write or run tests for a Mercury module, set up the language server, or cache a script.
+
+## mx test
+
+- `usage: mx test [--root <dir>] [--timeout <seconds>] [--filter <words>]`
+- Files: `*.test.*` / `*.spec.*` with `js mjs jsx ts mts tsx`; never in `node_modules`, `dist`, `target`, `coverage`.
+- Browser: `MX_BROWSER`, else the newest Playwright Chromium, then headless shell (`PLAYWRIGHT_BROWSERS_PATH`, `~/Library/Caches/ms-playwright`, `~/.cache/ms-playwright`).
+- `--timeout` = whole run (default 120 s). Per test 5 s, per hook 10 s. A page silent 30 s past those is a stall.
+- `--filter` = substring of `<file> > <name>`.
+- Exit: 0 all passed · 1 failed / none ran / broke · 2 usage · 3 no browser (never a pass).
+- Output: `ok    <file> > <name>`, `skip  …`, `FAIL  <file> > <name>: <message>`, `mx test: P passed, F failed, of T`.
+
+## The vitest runtime (mx's own)
+
+`describe`, `it`, `test`, `beforeAll`, `afterAll`, `beforeEach`, `afterEach`, `expect`, `vi` (`fn`, `spyOn`, `stubGlobal`, fake timers, `setSystemTime`), `expectTypeOf`, `assertType` (no-ops at run time), `visit`. No `vi.mock`: it throws.
+
+`visit(url, { width, height, scale, mobile, scheme, ready })` → `{ id, evaluate(fn, ...args), close() }`; `ready` is a CSS selector; `scheme` sets `prefers-color-scheme`.
+
+## mx lsap
+
+- `usage: mx lsap [--mcp] | mx lsap --version`
+- A release ships `hyperscript-lsap-<target>` beside `mx-<target>`; install it beside mx as `hyperscript-lsap`. Not on Windows: a Windows release ships mx alone, and `mx lsap` refuses with "The language server isn't built for Windows in this release".
+- Starts `hyperscript-lsap` from mx's own directory only; sets `HYPERSCRIPT_LSAP_MX`; exits with the server's code. `--version` → `mx 0.1.0` / `hyperscript-lsap 0.1.0`.
+- Missing server: `Error: mx lsap found no language server beside mx.` (exit 1).
+
+## mx run
+
+- Task (package.json has the script): `mx run [--no-cache] [--verify] [-r | --filter <member>]... [-j <n>] <name> [-- args]`. Hit: `hit <key>, restored N files`. Miss: `miss (<why>)`. Cache: `MXCACHE` (default `~/.cache/mx/run`). Env in the key: `NODE_ENV` + `MXRUN_ENV`. Only exit 0 stored. `mx test` scripts are never cached.
+- Host (anything else): build, then exec the command (`mx run mix phx.server`).
+- Refusals: `a script name is required`, `-r and --filter need an mx.work at or above <dir>`, `-j 0 is not a count`, `a command is required` (exit 2).
+
+## Never emit
+
+`npx vitest`, `vitest run`, `jest`, `vi.mock(...)`, `playwright test` for a Mercury module, or a different language server in place of `mx lsap`.
+
+## Next
+
+- Back to the course: /mx
+- This companion: /mx/tools/llms.txt
+
+## Navigation
+
+- [Read this page in the browser](/mx/tools)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/mx/llms.txt)
+
+<!-- /hyperscript/llms.txt -->
+
+# Hyperscript, the virtual DOM — Mercury LMS
+
+> `@fiberfx/hyperscript` 4.0.0: Mercury's own virtual DOM runtime. Function and class components, written in JSX (import source `@fiberfx/hyperscript`) or with `h(type, props, ...children)`, rendered with native DOM semantics. Hooks, a client root, a server renderer and test utilities ship as subpaths of one runtime.
+
+## Read this when
+
+You write or change a component for a Mercury app or for Mercury UI, or you need to know which subpath exports a name. This page is the course's landing; the chapters are /hyperscript/components, /hyperscript/hooks, /hyperscript/dom, /hyperscript/context, /hyperscript/server, /hyperscript/testing and /hyperscript/tested-component.
+
+## The contract (tier: Shipped — @fiberfx/hyperscript 4.0.0 on npm since 2026-11-05)
+
+- `@fiberfx/hyperscript`: `render(vnode, parent)`, `hydrate(vnode, parent)`, `h` = `createElement(type, props, ...children)`, `Fragment`, `createRef()`, `cloneElement`, `isValidElement`, `Component`, `createContext(default)`, `createPortal(children, container)`, `toChildArray`, `memo(component, comparer?)`. Types: `VNode`, `ComponentChild`, `ComponentChildren`, `FunctionComponent`, `ComponentType`, `RenderableProps`, `Ref`, `RefObject`, `Context`, `JSX`.
+- `@fiberfx/hyperscript/hooks`: `useState`, `useReducer`, `useRef`, `useEffect`, `useLayoutEffect`, `useImperativeHandle`, `useMemo`, `useCallback`, `useContext`, `useDebugValue`, `useErrorBoundary`, `useId`, `useSyncExternalStore`.
+- `@fiberfx/hyperscript/client`: `createRoot(container)` → `{ render(children), unmount() }`; `hydrateRoot(container, children)`.
+- `@fiberfx/hyperscript/server`: `renderToString(vnode, context?)` (default export too), `render` (same function), `renderToStaticMarkup` (same function), `renderToStringAsync(vnode, context?)` → `string | Promise<string>`.
+- `@fiberfx/hyperscript/jsx-runtime`, `/jsx-dev-runtime`: `jsx`, `jsxs`, `jsxDEV`, `Fragment`, for the compiler only.
+- `@fiberfx/hyperscript/test-utils`: `act`, `setupRerender`, `teardown`, `onCommit`, `onDiff`. `/inspect`: `inspect`, `inspectFailures`. `/debug`: import for development warnings. `/hmr`: `trackRoots`.
+- `options` from the root is internal; do not use it.
+
+## Minimal example
+
+```tsx
+import { render } from "@fiberfx/hyperscript";
+import { useState } from "@fiberfx/hyperscript/hooks";
+
+function Counter() {
+  const [count, setCount] = useState(0);
+  return <button class="counter" onClick={() => setCount(count + 1)}>{count}</button>;
+}
+
+const app = document.getElementById("app");
+if (app) render(<Counter />, app);
+```
+
+## Never emit
+
+- Imports from `react`, `react-dom`, `preact` or `@preact/*`, or any `/compat` subpath: `@fiberfx/hyperscript/compat` does not exist, and Mercury's components import from `@fiberfx/hyperscript` and its subpaths only.
+- Hooks imported from the root entry: they live in `@fiberfx/hyperscript/hooks`.
+- `options` from the root entry.
+
+## Next
+
+- The site: /llms.txt
+- Chapters: /hyperscript/components/llms.txt, /hyperscript/hooks/llms.txt, /hyperscript/dom/llms.txt, /hyperscript/context/llms.txt, /hyperscript/server/llms.txt, /hyperscript/testing/llms.txt, /hyperscript/tested-component/llms.txt
+- This companion: /hyperscript/llms.txt (the page as Markdown, `/hyperscript.md`, is planned for W3)
+
+## Navigation
+
+- [Read this page in the browser](/hyperscript)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+
+### Chapter companions
+
+- [/hyperscript/components](/hyperscript/components/llms.txt)
+- [/hyperscript/context](/hyperscript/context/llms.txt)
+- [/hyperscript/dom](/hyperscript/dom/llms.txt)
+- [/hyperscript/hooks](/hyperscript/hooks/llms.txt)
+- [/hyperscript/server](/hyperscript/server/llms.txt)
+- [/hyperscript/tested-component](/hyperscript/tested-component/llms.txt)
+- [/hyperscript/testing](/hyperscript/testing/llms.txt)
+
+<!-- /hyperscript/dom/llms.txt -->
+
+# The DOM contract — Mercury LMS
+
+> HS2 of Mercury Hyperscript. Hyperscript writes the DOM's own attribute names and fires the DOM's own events. Rules 1–5 are probed in headless Chromium (`fiberfx/hyperscript/test/browser/dom-contract.test.jsx`, mercury.63); rules 6–7 are Mercury's runtime departures (`README.md` H0e, H0f).
+
+## Read this when
+
+You write attributes, event handlers, SVG, inline styles or a form field in a Mercury component, or you port markup written for another library.
+
+## The contract
+
+1. `class` and `for` on HTML and SVG (`className`/`htmlFor` work as DOM properties; write `class`/`for`).
+2. Text input/textarea: `onInput` per keystroke; `onChange` on the DOM `change` event (on commit, at latest blur). Select/checkbox: `onChange` per selection/toggle. `onChange` is never mapped to input.
+3. SVG names as written: `stroke-width`, `fill-rule`, `clip-path`; `href` without `xlink`. `strokeWidth` is not translated.
+4. Bubbling focus: `onFocusIn` / `onFocusOut`. A parent's `onFocus` doesn't fire for a descendant.
+5. Custom elements: object prop → property, string → attribute; events via `on<name>` (`onmy-event` → `my-event`, `onionChange` → `ionChange`); a capital after `on` is lowercased.
+6. Numeric styles: a number on a length gains `px` (`width: 10` → `10px`), client and `./server` alike; unitless properties (`opacity`, `zIndex`, `flex`, `lineHeight`, grid lines…) and `--custom` properties as given.
+7. Controlled inputs: with a `value` or `checked` prop, after the handler and its queued renders, an unwritten value is written back to the prop. Accepted edits untouched; refused text edits restore the caret; refused radio clicks restore the group; nothing during IME composition; nothing for uncontrolled elements (`defaultValue`, `defaultChecked`, or no prop).
+
+## Minimal example
+
+```tsx
+import { useState } from "@fiberfx/hyperscript/hooks";
+
+export function NameField() {
+  const [name, setName] = useState("");
+  return (
+    <div class="field">
+      <label for="name">Name</label>
+      <input id="name" value={name} onInput={(e) => setName(e.currentTarget.value)} style={{ maxWidth: 320 }} />
+    </div>
+  );
+}
+```
+
+## Never emit
+
+- `className`, `htmlFor` in new code; `strokeWidth`, `fillRule`, `clipPath`, `xlinkHref` on SVG.
+- `onChange` to follow each keystroke of a text field.
+- `onFocus`/`onBlur` on a container to track focus inside it.
+
+## Next
+
+- Components and render: /hyperscript/components/llms.txt
+- Hooks: /hyperscript/hooks/llms.txt
+- This companion: /hyperscript/dom/llms.txt (the page as Markdown, `/hyperscript/dom.md`, is planned for W3)
+
+## Navigation
+
+- [Read this page in the browser](/hyperscript/dom)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/hyperscript/llms.txt)
+
+<!-- /hyperscript/components/llms.txt -->
+
+# Components and render — Mercury LMS
+
+> HS0 of Mercury Hyperscript (`@fiberfx/hyperscript` 4.0.0). Elements are VNodes built by JSX (import source `@fiberfx/hyperscript`) or `h(type, props, ...children)`; a function component returns `ComponentChildren`; `render(vnode, parent)` mounts and re-renders by diffing.
+
+## Read this when
+
+You write a component, render a list, forward a ref, or mount a tree into the page.
+
+## The contract
+
+- `h(type, props | null, ...children): VNode` — `h` is `createElement`. `type` is a tag name or a component.
+- `ComponentChild` = `VNode | object | string | number | bigint | boolean | null | undefined`; `ComponentChildren` = one or an array. `null`, `undefined` and booleans render nothing.
+- JSX: `jsxImportSource: "@fiberfx/hyperscript"` (set in `fiberfx/tsconfig.base.json`, for TypeScript and editors). No per-file pragma: the Hypercompiler fixes the runtime and refuses any `@jsx` comment (/mx/compile). Never import `jsx`/`jsxs`/`jsxDEV` by hand.
+- `FunctionComponent<P>`: `(props: RenderableProps<P>, context?) => ComponentChildren`. Type `children` as `ComponentChildren`.
+- `Fragment` (JSX `<>…</>`) groups children with no element.
+- `key` is removed from props; give list items a stable key (an id when items can move).
+- `createRef<T>()` → `{ current: T | null }`; a ref may be a callback, which may return a cleanup. A function component receives `ref` as a plain prop and forwards it by passing it on; only tag-name elements consume `ref`.
+- `class X extends Component<P, S>`: `render(props?, state?, context?)`, `this.state`, `this.setState(update, callback?)`, `this.forceUpdate(callback?)`, optional lifecycle (`componentDidMount`, `componentDidUpdate`, `componentWillUnmount`, `shouldComponentUpdate`, `getSnapshotBeforeUpdate`, `componentDidCatch`). Mercury UI uses none: prefer functions with hooks.
+- `render(vnode, parent)`: mounts; a second call on the same parent diffs; `render(null, parent)` clears. `hydrate(vnode, parent)` diffs against server HTML already in `parent`.
+- `@fiberfx/hyperscript/client`: `createRoot(container)` → `{ render(children), unmount() }`; `hydrateRoot(container, children)` → root.
+
+## Minimal example
+
+```tsx
+import type { ComponentChildren } from "@fiberfx/hyperscript";
+import { render } from "@fiberfx/hyperscript";
+
+function Badge({ children }: { children: ComponentChildren }) {
+  return <span class="mx-badge">{children}</span>;
+}
+
+const app = document.getElementById("app");
+if (app) render(<ul>{["a", "b"].map((id) => <li key={id}><Badge>{id}</Badge></li>)}</ul>, app);
+```
+
+## Never emit
+
+- `className` or `htmlFor` in new code: write `class` and `for`.
+- `forwardRef`: it is not exported; pass `ref` through props.
+- A mount call from another library: mount with `render`, `hydrate` or `@fiberfx/hyperscript/client`.
+
+## Next
+
+- Hooks: /hyperscript/hooks/llms.txt
+- The DOM contract: /hyperscript/dom/llms.txt
+- This companion: /hyperscript/components/llms.txt (the page as Markdown, `/hyperscript/components.md`, is planned for W3)
+
+## Navigation
+
+- [Read this page in the browser](/hyperscript/components)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/hyperscript/llms.txt)
+
+<!-- /hyperscript/hooks/llms.txt -->
+
+# Hooks — Mercury LMS
+
+> HS1 of Mercury Hyperscript. The 13 hooks of `@fiberfx/hyperscript/hooks`, with signatures from `src/hooks/index.d.ts`. Hook state is found by call position, so call hooks unconditionally, in the same order, at a component's top level.
+
+## Read this when
+
+You add state, a ref, an effect, a memoized value, a context read or an external store to a function component, or you write your own hook.
+
+## The contract
+
+Import every hook from `@fiberfx/hyperscript/hooks` (never from the root entry).
+
+- `useState<S>(initial: S | (() => S)): [S, (next: S | ((prev: S) => S)) => void]` — a function initial runs once; an `Object.is`-equal next value does not re-render.
+- `useReducer(reducer, initialState)` / `useReducer(reducer, initialArg, init)`: `[S, Dispatch<A>]`.
+- `useRef<T>(initial): { current }` — stable for the component's life; writing it does not re-render.
+- `useImperativeHandle(ref, create, inputs?)` — sets a parent's ref to `create()`.
+- `useEffect(effect, inputs?)` — after paint; `effect` may return a cleanup. No `inputs`: every render; `[]`: once; else when any input is not `Object.is`-equal or the length changed. The previous cleanup runs before a re-run; all cleanups run on unmount.
+- `useLayoutEffect(effect, inputs?)` — same arguments, after DOM mutation and before paint; only for layout reads.
+- `useMemo<T>(factory, inputs: Inputs | undefined): T` and `useCallback<T>(callback, inputs): T` — `inputs` is required by the types.
+- `useContext<T>(context: Context<T>): T` — nearest `context.Provider`'s value, else the default from `createContext(default)`. A provider re-renders its readers whenever its `value` is a different object: memoize it.
+- `useSyncExternalStore<T>(subscribe: (onChange) => unsubscribe, getSnapshot: () => T, getServerSnapshot?: () => T): T` — tear-free; `getServerSnapshot` for string renders and hydration.
+- `useId(): string` — stable per component, for `aria-*` and `for` pairs.
+- `useErrorBoundary(callback?): [error, reset]` — makes its component catch descendants' errors.
+- `useDebugValue(value, formatter?)` — a label for debugging tools; no effect otherwise.
+
+## Minimal example
+
+```tsx
+import { useEffect, useMemo, useState } from "@fiberfx/hyperscript/hooks";
+
+export function Filtered({ items }: { items: string[] }) {
+  const [query, setQuery] = useState("");
+  const shown = useMemo(() => items.filter((item) => item.includes(query)), [items, query]);
+  useEffect(() => {
+    document.title = `${shown.length} results`;
+  }, [shown.length]);
+  return (
+    <div>
+      <input value={query} onInput={(e) => setQuery(e.currentTarget.value)} />
+      <ul>{shown.map((item) => <li key={item}>{item}</li>)}</ul>
+    </div>
+  );
+}
+```
+
+## Never emit
+
+- A hook inside a condition, a loop, a callback or after an early `return`.
+- Hooks imported from anywhere but `@fiberfx/hyperscript/hooks`: the root entry has none.
+- Names this package does not export: `useTransition`, `useDeferredValue`, `useInsertionEffect`, `useActionState`, `useOptimistic`, `use`.
+- `onChange` for per-keystroke text: use `onInput` (see /hyperscript/dom/llms.txt).
+
+## Next
+
+- Components and render: /hyperscript/components/llms.txt
+- The DOM contract: /hyperscript/dom/llms.txt
+- This companion: /hyperscript/hooks/llms.txt (the page as Markdown, `/hyperscript/hooks.md`, is planned for W3)
+
+## Navigation
+
+- [Read this page in the browser](/hyperscript/hooks)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/hyperscript/llms.txt)
+
+<!-- /hyperscript/context/llms.txt -->
+
+# Context, portals and memo — Mercury LMS
+
+> HS3 of Mercury Hyperscript (`@fiberfx/hyperscript` 4.0.0). `createContext`, `createPortal`, `memo`, `cloneElement`, `toChildArray` and `isValidElement` come from the root entry; `useContext` comes from `./hooks`.
+
+## Read this when
+
+You pass a value down a tree, render an overlay outside its ancestors' DOM, skip renders with `memo`, or read or rewrite a component's `children`.
+
+## The contract
+
+- `createContext<T>(defaultValue: T): Context<T>`. `Context.Provider` (the context itself) takes `{ value, children }`. `Context.Consumer` takes `{ children: (value: T) => ComponentChildren }`. With no provider above, readers get `defaultValue`.
+- A provider re-renders every reader when `value` is `!=` its previous value, through `shouldComponentUpdate` false and `memo`. Memoize object values with `useMemo`.
+- Classes: `static contextType = Ctx`, read as `this.context`.
+- `createPortal(children, container: ContainerNode): VNode`. Context follows the component tree; native DOM events bubble through the container's DOM. Mercury UI: `<Portal container?>` (from `@fiberfx/ui`) takes its host from `EnvironmentProvider`, and with no host renders nothing.
+- `memo(component, comparer?)`: skips a render when the props are shallowly equal (`!==` per key). `comparer(prev, next)` returns `true` when they are EQUAL. A changed `ref` always renders. `displayName` is `Memo(Name)`.
+- `cloneElement(vnode, props?, ...children): VNode`: props merge over the element's; `key`/`ref` in props replace its own; children passed replace its children.
+- `toChildArray(children): Array<VNode | string | number>`: flattens and drops `null`, `undefined` and booleans. `isValidElement(x): x is VNode`.
+
+## Minimal example
+
+```tsx
+import { createContext, createPortal, memo } from "@fiberfx/hyperscript";
+import { useContext } from "@fiberfx/hyperscript/hooks";
+
+const Tone = createContext<"neutral" | "danger">("neutral");
+
+const Toast = memo(function Toast({ text }: { text: string }) {
+  const tone = useContext(Tone);
+  return createPortal(<div role="status" class={`toast toast--${tone}`}>{text}</div>, document.body);
+});
+
+export function Page() {
+  return <Tone.Provider value="danger"><Toast text="Saved" /></Tone.Provider>;
+}
+```
+
+## Never emit
+
+- `memo` with a comparer that returns `true` to mean "changed": `true` means equal.
+- A provider `value={{ … }}` object literal for a value that is read often: wrap it in `useMemo`.
+- A `Children` helper object (`Children.map`, `Children.toArray`): it isn't exported; use `toChildArray`.
+- `forwardRef`: a function component receives `ref` as a prop.
+
+## Next
+
+- Hooks: /hyperscript/hooks/llms.txt
+- Rendering on the server: /hyperscript/server/llms.txt
+- This companion: /hyperscript/context/llms.txt (the page as Markdown, `/hyperscript/context.md`, is planned for W3)
+
+## Navigation
+
+- [Read this page in the browser](/hyperscript/context)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/hyperscript/llms.txt)
+
+<!-- /hyperscript/server/llms.txt -->
+
+# Rendering on the server — Mercury LMS
+
+> HS4 of Mercury Hyperscript. `@fiberfx/hyperscript/server` renders components to an HTML string with no effects run; `hydrate` / `hydrateRoot` adopt that HTML in the browser. `@fiberfx/render-to-string` 4.0.0 re-exports the same module.
+
+## Read this when
+
+You render a page or an island to HTML on a server or in a test, or you attach components to server-rendered markup in the browser.
+
+## The contract
+
+- `renderToString(vnode, context?): string`. The default export, `render` and `renderToStaticMarkup` are the same function. `context` is the root's initial legacy context object (for `getChildContext`); `createContext` code omits it.
+- While rendering to a string, `useEffect` and `useLayoutEffect` callbacks never run, and event handlers are not serialized. `useState` gives its initial value; `useContext` reads providers in the tree.
+- `useId`: ids are in tree order (`P0-0`, `P0-1`, …), reset per `renderToString` root, and match after hydration.
+- A component that throws a promise makes `renderToString` throw `Error('Use "renderToStringAsync" for suspenseful rendering.')`.
+- `renderToStringAsync(vnode, context?)`: always `await` it. It re-renders a suspended component after its promise settles, wraps that output in `<!--$s-->…<!--/$s-->`, and follows at most 25 nested levels. Preview: no test covers it.
+- Browser: `hydrate(vnode, parent)` from `@fiberfx/hyperscript`, or `hydrateRoot(container, children)` from `@fiberfx/hyperscript/client`, which returns `{ render, unmount }`. Hydrate the same tree with the same props; the server's nodes are kept.
+- `useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)`: `getServerSnapshot` is read on the server and during hydration; after hydration it re-renders with `getSnapshot`. It subscribes in an effect.
+
+## Minimal example
+
+```tsx
+// server
+import { renderToString } from "@fiberfx/hyperscript/server";
+const html = renderToString(<Counter />); // "<button>0</button>"
+
+// browser
+import { hydrateRoot } from "@fiberfx/hyperscript/client";
+const app = document.getElementById("app");
+if (app) hydrateRoot(app, <Counter />);
+```
+
+## Never emit
+
+- `window`, `document` or `navigator` read during render in a component that renders on the server: read them in `useEffect`, or through `useSyncExternalStore` with a `getServerSnapshot`.
+- `renderToStringAsync` without `await`.
+- `./jsx`, `./stream` or `./stream-node` subpaths of `@fiberfx/render-to-string`: they are not exported.
+
+## Next
+
+- Context, portals and memo: /hyperscript/context/llms.txt
+- Testing and inspecting: /hyperscript/testing/llms.txt
+- This companion: /hyperscript/server/llms.txt (the page as Markdown, `/hyperscript/server.md`, is planned for W3)
+
+## Navigation
+
+- [Read this page in the browser](/hyperscript/server)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/hyperscript/llms.txt)
+
+<!-- /hyperscript/testing/llms.txt -->
+
+# Testing and inspecting — Mercury LMS
+
+> HS5 of Mercury Hyperscript. `@fiberfx/hyperscript/test-utils` flushes batched renders and after-paint effects for tests; `./inspect` gives detached records of what the renderer does; `./debug` turns on development checks when imported.
+
+## Read this when
+
+You write a test for a Mercury component, build a tool that watches renders, or need a clear error for a hook, key or `render` mistake.
+
+## The contract
+
+- `act(callback: () => void | Promise<void>): Promise<void>`: runs the callback, then flushes renders and effects until settled. A sync callback is flushed before `act` returns, so no `await` is needed; for an async one, `await act(async () => …)`. Nested calls flush once, at the outermost.
+- `setupRerender(): () => void`: queued renders wait until you call the returned function. `teardown()` drains the rest and restores the queue; call it after each such test.
+- `onCommit(listener: (root) => void): () => void`: called after each commit, once per root, with the DOM updated.
+- `onDiff(listener: () => void): () => void`: test-only, called inside the renderer after each diffed node; a throw stops the render and propagates out of `render`.
+- `inspect({ root?, phases?, fn }): Subscription`: `phases` ⊆ `root | render | diffed | commit | unmount | error` (an unknown one throws `TypeError`); `root` is a container passed to `render`/`hydrate`. The record is `{ kind, id, parentId, rootId, type, name, error? }`: detached, `structuredClone`-safe, ids stable across re-renders. It returns `dispose()` (also `.unsubscribe()`). `inspectFailures(): number` counts contained subscriber throws. Importing installs nothing.
+- `import "@fiberfx/hyperscript/debug"` (side effect, development only): it throws on an undefined `render` parent, an undefined component, or a hook outside render, and `console.error`s duplicate keys and improper table/paragraph nesting. It exports `getDisplayName`, `getCurrentVNode`, `getOwnerStack`, `captureOwnerStack`, `setupComponentStack` and `resetPropWarnings`.
+- Mercury UI's harness, `fiberfx/ui/test/testing.ts`, wraps `render`, `rerender`, `unmount`, `cleanup` and `fireEvent` in `act`; its queries come from `@fiberfx/testing`.
+
+## Minimal example
+
+```tsx
+import { expect, it } from "vitest";
+import { render } from "@fiberfx/hyperscript";
+import { useEffect, useState } from "@fiberfx/hyperscript/hooks";
+import { act } from "@fiberfx/hyperscript/test-utils";
+
+function Greeting() {
+  const [name, setName] = useState("…");
+  useEffect(() => setName("Mercury"), []);
+  return <p>Hello, {name}</p>;
+}
+
+it("flushes the effect's update", () => {
+  const container = document.createElement("div");
+  act(() => render(<Greeting />, container));
+  expect(container.textContent).toBe("Hello, Mercury");
+});
+```
+
+## Never emit
+
+- Assertions on the DOM right after a state update outside `act` or `setupRerender`: the render is still queued.
+- `options` from the root entry to hook into the renderer: use `./inspect`, or `onCommit`/`onDiff` in tests.
+- `onDiff` in application code: it is test-only.
+- A testing library for another framework: use `act` from `./test-utils` (Mercury UI's harness builds on it).
+
+## Next
+
+- Rendering on the server: /hyperscript/server/llms.txt
+- Components and render: /hyperscript/components/llms.txt
+- This companion: /hyperscript/testing/llms.txt (the page as Markdown, `/hyperscript/testing.md`, is planned for W3)
+
+## Navigation
+
+- [Read this page in the browser](/hyperscript/testing)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/hyperscript/llms.txt)
+
+<!-- /hyperscript/tested-component/llms.txt -->
+
+# A tested component — Mercury LMS
+
+> HS6, the Mercury Hyperscript capstone. `KindFilter` (`node/apps/echd-os/src/kan/common.tsx`), the kind chips of the KAN squads and messages views, given a written contract and a test: `createRoot` inside `act`, a native click, DOM assertions, `./inspect` commit records, and a server-versus-client markup check. Results are marked: read from an existing test, or not run.
+
+## Read this when
+
+You test a Mercury component end to end, or you change `KindFilter` or another KAN view piece in `common.tsx`.
+
+## The contract (KindFilter)
+
+- Props: `kinds: readonly SquadKindCount[] | null | undefined` (`{ kind: string; count: number | null }`), `picked: readonly string[]`, `onToggle(kind)`, `onClear()`. It is controlled: no state of its own.
+- No kinds → renders `null`.
+- `div.kan-kinds[role=group][aria-label="Filter by kind"]` → one `button.kan-kind[data-kind=<kind>][aria-pressed=<picked.includes(kind)>]` per kind, keyed by the kind, holding a `Chip` (size `sm`, variant `kindTone(kind)`, `selected` while picked) with the kind and its count (`null` → `0`).
+- A click calls `onToggle(kind)`. The ghost `Button` "All kinds" renders only while `picked` is non-empty and calls `onClear()`.
+- Used by `SquadsExplorer` (`squads.tsx:91`) and the messages view (`messages.tsx:430`), each with `picked` from its island store.
+
+## The test recipe
+
+- Own `picked` in a harness with `useState`, and mount with `createRoot(el)` and `act(() => root.render(...))`. Unmount with `act(() => root.unmount())`.
+- Drive with `act(() => button.click())`: a native click, settled when `act` returns.
+- Verified through `SquadsExplorer` (`squads.test.tsx:112-135`): one `.kan-kind` per kind, the text "ask 1", `aria-pressed` "true" after a click, and an "All kinds" button by its text.
+- Not run: the group label, `fyi 0`, `is-selected` on the chip, clearing, `null` for no kinds, the commit count per click, no button unmount, and `renderToString(<KindFilter …/>) === el.innerHTML`.
+- `inspect({ root: el, phases: ["commit", "unmount"], fn })` → frozen, plain records; `stop()` disposes.
+- Live Mercury islands don't hydrate: a `data-ssr` render is replaced on the first paint (`fiberfx/live-mercury/src/hooks.ts:68-71`). Compare the markup, not a hydration.
+
+## Minimal example
+
+```tsx
+import { createRoot } from "@fiberfx/hyperscript/client";
+import { act } from "@fiberfx/hyperscript/test-utils";
+import { KindFilter } from "./common";
+
+const el = document.createElement("div");
+const root = createRoot(el);
+let toggled = "";
+act(() => root.render(<KindFilter kinds={[{ kind: "ask", count: 1 }]} picked={[]} onToggle={(k) => (toggled = k)} onClear={() => {}} />));
+act(() => el.querySelector<HTMLButtonElement>(".kan-kind[data-kind='ask']")?.click());
+// toggled === "ask" (from the source; not run)
+act(() => root.unmount());
+```
+
+## Never emit
+
+- Pressed state held inside `KindFilter`: `picked` is the owner's.
+- DOM assertions outside `act` after a click.
+- A claimed result for a check no test has run: mark it "not run".
+
+## Next
+
+- Testing and inspecting: /hyperscript/testing/llms.txt
+- Rendering on the server: /hyperscript/server/llms.txt
+- This companion: /hyperscript/tested-component/llms.txt
+
+## Navigation
+
+- [Read this page in the browser](/hyperscript/tested-component)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/hyperscript/llms.txt)
+
+<!-- /ui/llms.txt -->
+
+# Mercury UI, the design system — Mercury LMS
+
+> `@fiberfx/ui` 4.0.0: Mercury's design system. 139 components in ten families, written on `@fiberfx/hyperscript`, styled through enum props and one token sheet. Each component has a hand-written contract, `<Name>.prompt.md`, beside its source. No React.
+
+## Read this when
+
+You build a screen in a Mercury app and need to know which component exists, where it comes from, and how it is styled. This is the course's landing; the chapters follow.
+
+## The contract (tier: Shipped — @fiberfx/ui 4.0.0 on npm since 2026-11-05)
+
+- Components: `import { Button, Card } from "@fiberfx/ui"`. For published 4.0.0, load CSS explicitly: `import "@fiberfx/ui/styles.css"` in native apps, or link the pinned stylesheet in [browser HTML](/start/browser/llms.txt). A component import alone does not establish that styling is loaded.
+- CSS alone: `@fiberfx/ui/styles.css` (everything) or `@fiberfx/ui/tokens.css` (tokens only).
+- Peers: `@fiberfx/hyperscript` 4.0.0 and `@fiberfx/core` 4.0.0. JSX compiles against `@fiberfx/hyperscript`.
+- Families: actions (3), foundations (19), inputs (32), forms (8), selection (15), feedback (8), data-display (17), navigation (11), overlay (11), layout (15).
+- Style a component through its enum props (`variant`, `size`, `tone`); style your own layout with `rgb(var(--token))`.
+- The `.mx-*` classes (`mx-btn`, `mx-card`, ...) are private: never write them. A component merges your own classes from its `class` prop.
+- Also re-exported from `@fiberfx/core`: `cx`, `createFormatter`, `createTimeFormatter`, `useFocusManager`, `useLocale`, `useLocaleFormatters`, `useMessageFormatter`, `createLocaleFormatters`, `createMessageFormatter`, `localeDirection`.
+
+## Minimal example
+
+```tsx
+import { Button, Card } from "@fiberfx/ui";
+
+export function SaveCard() {
+  return (
+    <Card variant="raised" title="Draft">
+      <Button variant="primary">Save</Button>
+    </Card>
+  );
+}
+```
+
+`Button`: `variant` primary | secondary | outline | ghost | destructive | inverse; `size` sm | md | lg; `loading`, `fullWidth`, `leading`, `trailing`, `type`. `Card`: `variant` flat | raised | floating; `padding`, `title`, `actions`.
+
+## Never emit
+
+An authored `.mx-*` class, a literal colour where a token exists, `npm i`, and any import from `react`, `react-dom` or `effector`.
+
+## Next
+
+- UI0, tokens and themes: /ui/tokens-and-themes/llms.txt
+- UI1, foundations: /ui/foundations/llms.txt
+- UI2, actions and layout: /ui/actions-and-layout/llms.txt
+- UI3 inputs and forms: /ui/inputs-and-forms
+- UI4 selection: /ui/selection
+- UI5 feedback and data display: /ui/feedback-and-data
+- UI6 navigation: /ui/navigation
+- UI7 (overlays, and the capstone): planned, no page yet
+- This companion: /ui/llms.txt (the page as Markdown, `/ui.md`, is planned for W3)
+
+## Navigation
+
+- [Read this page in the browser](/ui)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+
+### Chapter companions
+
+- [/ui/actions-and-layout](/ui/actions-and-layout/llms.txt)
+- [/ui/feedback-and-data](/ui/feedback-and-data/llms.txt)
+- [/ui/foundations](/ui/foundations/llms.txt)
+- [/ui/inputs-and-forms](/ui/inputs-and-forms/llms.txt)
+- [/ui/navigation](/ui/navigation/llms.txt)
+- [/ui/selection](/ui/selection/llms.txt)
+- [/ui/tokens-and-themes](/ui/tokens-and-themes/llms.txt)
+
+<!-- /ui/tokens-and-themes/llms.txt -->
+
+# UI0, tokens and themes — Mercury LMS
+
+> Mercury UI's one token sheet, `fiberfx/ui/src/styles/tokens.css` (also `@fiberfx/ui/tokens.css`), holds every colour, type, radius, spacing and shadow value. The theme is the class `.light-theme` or `.dark-theme` on `<html>`; light is the default on `:root`.
+
+## Read this when
+
+You style your own layout in a Mercury app, pick a colour for a state, or switch or set the theme.
+
+## The contract (tier: Shipped — @fiberfx/ui 4.0.0 on npm since 2026-11-05)
+
+- Colour tokens are RGB triplets: always `rgb(var(--token))`. Scrims carry alpha already (`--bg-hover: 28 32 36 / 0.06`), still `rgb(var(--bg-hover))`.
+- Everything else is a complete value: `var(--space-16)`, `var(--radius-8)`, `var(--shadow-200)`, `var(--font-primary)`, `var(--text-body-300-size)`.
+- Read semantic tokens, not scales: `--bg-*`, `--fg-*`, `--border-*`, `--ring-focus`, `--ring-negative`. Naming: `<role>-<intent>-<variant>-<state>`.
+- Surfaces: `--bg-primary` page, `--bg-secondary` raised, `--bg-tertiary` sunken, `--bg-elevated` popover/modal. Text: `--fg-primary`, `--fg-secondary`, `--fg-tertiary`. Hairline: `--border-primary`. Text on a solid: `--fg-on-<intent>`.
+- Scales: `--slate-1..12`, `--iris-1..12` (brand), `--indigo-1..12` (active, info, link); `--green-`, `--red-`, `--orange-`, `--plum-` at 3, 9, 11.
+- Spacing `--space-2..128`; radii `--radius-2..32`, `--radius-full`; type `--text-body-100..500`, `--text-heading-100..500` (`-size`, `-lh`); weights `--fw-regular|medium|semi-bold|bold|black`; shadows `--shadow-100..600`.
+- Focus ring: `box-shadow: 0 0 0 3px rgb(var(--ring-focus))`.
+- Theme: toggle `dark-theme` / `light-theme` on `document.documentElement`, before first paint. A `.dark-theme` wrapper deeper in the page also works: it re-declares the semantic tokens.
+
+## Minimal example
+
+```css
+.panel {
+  background: rgb(var(--bg-secondary));
+  border: 1px solid rgb(var(--border-primary));
+  border-radius: var(--radius-8);
+  padding: var(--space-16);
+}
+```
+
+```ts
+document.documentElement.classList.toggle("dark-theme", dark);
+document.documentElement.classList.toggle("light-theme", !dark);
+```
+
+## Never emit
+
+A literal colour, size, space or radius where a token exists; `var(--bg-brand)` without `rgb()`; `rgb(var(--shadow-200))`; `<html data-theme>` as a substitute for Mercury UI theme classes (the documentation shell has a separate data-theme contract); an authored `.mx-*` class.
+
+## Limits
+
+In the light theme, `--fg-on-brand` text on `--green-9`, `--orange-9` and `--red-9`, and a glyph on `--orange-9`, are known to fail WCAG AA (`fiberfx/ui/scripts/check-contrast.mjs` LIGHT_DEFECTS). The documentation shell already uses an HttpOnly `theme` cookie, a POST/303 form and server-rendered `data-theme`; with no cookie, CSS follows the system preference. Its switch needs no script. Mercury UI applications use the theme classes described above.
+
+## Next
+
+- The course: /ui/llms.txt
+- UI1, foundations: /ui/foundations/llms.txt
+- This companion: /ui/tokens-and-themes/llms.txt (the page as Markdown, `/ui/tokens-and-themes.md`, is planned for W3)
+
+## Navigation
+
+- [Read this page in the browser](/ui/tokens-and-themes)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/ui/llms.txt)
+
+<!-- /ui/foundations/llms.txt -->
+
+# UI1, where a subtree lives — Mercury LMS
+
+> Mercury UI's environment: one inherited context (from `@fiberfx/core`) that every component reads for its portal host, owner document and window, direction, locale, reduced motion, focus fallback and id prefix. `EnvironmentProvider`, `DirectionProvider` and `LocaleProvider` set it and render no DOM; `Portal` reads the host.
+
+## Read this when
+
+Mercury renders inside an iframe, an embedded editor or an island on someone else's page; a section runs right to left; you localize labels, numbers, dates or plurals.
+
+## The contract (tier: Shipped — @fiberfx/ui 4.0.0 on npm since 2026-11-05)
+
+- `EnvironmentProvider` props: `portalContainer`, `ownerDocument`, `ownerWindow` (each nullable), `direction` (`"ltr" | "rtl"`), `locale` (BCP 47), `reducedMotion` (`"user" | "always" | "never"`, default `"user"`), `focusFallback`, `idPrefix`, `children`.
+- Merge rule: an omitted prop inherits from the enclosing provider; `null` means unavailable and is never defaulted. No provider: global `document`, its `body`, `ltr`.
+- A disposed or `null` host: overlays render nothing; focus moves to `focusFallback`. On a server every resource is `null`, so portals render nothing.
+- Several islands on one page: give each root its own `idPrefix`.
+- `Portal({ children, container? })`: `container` wins, else the environment's `portalContainer`; no host renders `null`. Context follows the component tree; DOM events bubble through the host.
+- `DirectionProvider({ dir })`, `dir` required; `useDirection()` → `"ltr" | "rtl"`.
+- `LocaleProvider({ locale, direction?, catalogs?, fallbackLocales? })`: `locale` required; `direction: "auto"` derives from the script; omitted `catalogs` and `fallbackLocales` inherit.
+- `useLocale()` → `{ locale, direction, explicit }`.
+- `useLocaleFormatters({ timeZone, numberOptions, dateOptions, listOptions, collationOptions })` → `formatNumber`, `formatDate`, `formatList`, `plural`, `pluralCategory`, `compare`, `contains`, `startsWith`, `endsWith`.
+- `useMessageFormatter()` → `format(key, values)`, `resolve(key, values)` (with `source`: `catalog | fallback | bundled | missing`), `missing()`. Chain: locale, its parents, each fallback and its parents, then Mercury's bundled English for `mercury.close`, `mercury.clear`, `mercury.loading`, `mercury.moreActions`, `mercury.selectedCount`. An unknown key renders as the key.
+- Also exported: `createLocaleFormatters`, `createMessageFormatter`, `localeDirection`, type `MessageCatalogs`.
+
+## Minimal example
+
+```tsx
+import { LocaleProvider, useLocaleFormatters, useMessageFormatter } from "@fiberfx/ui";
+import type { MessageCatalogs } from "@fiberfx/ui";
+
+const catalogs: MessageCatalogs<"cart.items"> = {
+  en: { "cart.items": (v, f) => f.plural(Number(v.count), { one: "# item", other: "# items" }) },
+};
+
+function CartLine({ count, total }: { count: number; total: number }) {
+  const f = useLocaleFormatters({ numberOptions: { style: "currency", currency: "EUR" } });
+  const t = useMessageFormatter();
+  return <p>{t.format("cart.items", { count })}, {f.formatNumber(total)}</p>;
+}
+
+export const Cart = () => (
+  <LocaleProvider locale="en-GB" catalogs={catalogs}>
+    <CartLine count={3} total={42.5} />
+  </LocaleProvider>
+);
+```
+
+## Never emit
+
+A second locale store or direction context; a provider expected to set `lang` or `dir` (the application sets both on its own root element); `UiEnvironmentContext.Provider` by hand (render `EnvironmentProvider`, which merges); `ReactNode`, `createPortal` from `react-dom`, or any `react` or `effector` import.
+
+## Next
+
+- The course: /ui/llms.txt
+- UI0, tokens and themes: /ui/tokens-and-themes/llms.txt
+- This companion: /ui/foundations/llms.txt (the page as Markdown, `/ui/foundations.md`, is planned for W3)
+
+## Navigation
+
+- [Read this page in the browser](/ui/foundations)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/ui/llms.txt)
+
+<!-- /ui/actions-and-layout/llms.txt -->
+
+# UI2, actions and layout — Mercury LMS
+
+> Mercury UI's actions, `Button`, `IconButton` and `Link`, and the layout composition tier, `Box`, `Stack`, `Flex`, `Grid`, `Container`, `Spacer`, `GridItem`, `Center`, `Sidebar`, `Cluster`, `Section`, whose spacing and radius props name token-scale steps.
+
+## Read this when
+
+You place a press, an icon-only control or an inline link, or lay out a screen without writing CSS for spacing.
+
+## The contract (tier: Shipped — @fiberfx/ui 4.0.0 on npm since 2026-11-05)
+
+- `Button`: `variant` primary (default) | secondary | outline | ghost | destructive | inverse; `size` sm | md (default) | lg; `loading` (disables, `aria-busy`, spinner replaces the leading icon); `fullWidth`; `leading`; `trailing`; `type` defaults to `"button"`.
+- `IconButton`: `icon` and `label` required (`label` → `aria-label` and `title`); `variant` primary | secondary (default) | outline | ghost | destructive; `size` sm | md | lg; `shape` circle (default) | square.
+- `Icon` glyphs (38): arrow, arrow-up-right, arrow-down-left, check, close, plus, minus, search, star, bell, cog, user, users, home, list, mail, wallet, credit-card, shield, globe, help-circle, chevron-right, chevron-down, alert, info, download, upload, trash, refresh, copy, pause, play, repeat, trending-up, bank, bolt, flow, batch. `IconName` accepts any string: an unknown name draws nothing.
+- `Link`: `<a>` when `href` is set and not `disabled`, else `<button>`; `size` sm | md; `muted`; `leading`; `trailing`; `onClick`; `target`; `rel`.
+- Scales (exported types): `SpaceScale` "2".."128" → `var(--space-*)`; `RadiusScale` "2".."32" | "full"; `Align` start | center | end | stretch | baseline; `Justify` start | center | end | between | around | evenly.
+- `Box`: `p`/`px`/`py`/`pt`/`pr`/`pb`/`pl`, `bg` primary | secondary | tertiary | brand | brand-subtle | elevated, `radius`, `border`, `shadow` "100".."600".
+- `Stack`: `gap`, `align`, `justify`. `Flex`: `direction`, `gap`, `align`, `justify`, `wrap`. `Grid`: `cols`, `rows` (a number = equal tracks, a string = template), `gap`, `flow`, `align`, `justify`.
+- Every tier component takes `as` and passes other attributes through.
+
+## Minimal example
+
+```tsx
+import { Box, Button, Flex, IconButton } from "@fiberfx/ui";
+
+export const Bar = () => (
+  <Box p="16" bg="secondary" radius="8" border>
+    <Flex gap="8" align="center" justify="between">
+      <IconButton icon="trash" label="Discard" variant="ghost" />
+      <Button variant="primary">Save</Button>
+    </Flex>
+  </Box>
+);
+```
+
+## Never emit
+
+Scale props as numbers or pixels (`gap={12}`, `gap="12px"`: use `gap="12"`); an `IconButton` without `label`; an icon name outside the set; `<Link disabled href>` expecting an anchor; inline `style` spacing where a scale prop exists; any `react` or `effector` import.
+
+## Next
+
+- The course: /ui/llms.txt
+- UI1, foundations: /ui/foundations/llms.txt
+- This companion: /ui/actions-and-layout/llms.txt (the page as Markdown, `/ui/actions-and-layout.md`, is planned for W3)
+
+## Navigation
+
+- [Read this page in the browser](/ui/actions-and-layout)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/ui/llms.txt)
+
+<!-- /ui/inputs-and-forms/llms.txt -->
+
+# UI3, inputs and forms — Mercury LMS
+
+> Mercury UI's form composition (`Form`, `Field`, `Label`, `Description`, `FieldError`, `Fieldset`, `Legend`, `FormSection`, `ErrorSummary`) and its inputs (`Input`, `Textarea`, `DateField`, `ColorField` and the rest). A Field hands its control one explicit binding; a Form lets an ErrorSummary find its Fields.
+
+## Read this when
+
+You build a form: label, help text and error around a control, a group of controls, a summary of problems after a failed submit, or a date or color entry.
+
+## The contract (tier: Shipped — @fiberfx/ui 4.0.0 on npm since 2026-11-05)
+
+- `Field` props: `id`, `name`, `label`, `hint`, `error`, `required`, `invalid` (default: `error` present), `disabled`, `readOnly`, `focusTarget`, `class`, `style`, `children` (elements, or `(field) => ...`).
+- The binding (`FieldContextValue`): `id`, `name`, `labelId`, `descriptionId`, `errorId` (`<id>-label|-description|-error`), `invalid`, `required`, `disabled`, `readOnly`, `focus()`, `getControlProps(own?)`.
+- `getControlProps({ "aria-describedby"?, "aria-labelledby"? })` → `id` plus, only when set, `name`, `aria-labelledby`, `aria-describedby` (yours first, then hint, then error), `aria-invalid: true`, `required`, `disabled`, `readOnly`. No event handlers. Spread it on the control.
+- `useFieldContext()` → the binding, or `null`. Read by `SearchField`, `TokenField`, `CheckboxGroup`, `Combobox`, `CustomSelect`, `ListBox`.
+- One label: on the Field or on the control, never both.
+- `Description`, `FieldError`: not live regions; give an `id` when used alone.
+- `Input`: `label`, `hint`, `error`, `leading`, `trailing`, plus input attributes. `Textarea`: `label`, `hint`, `error`, `resizable`, `size`.
+- `Fieldset`: `legend`, `hint`, `error`, `invalid`, `focusTarget`; a native fieldset. `FormSection`: `title`, `open`/`onOpenChange` or `defaultOpen`; closed content is inert; opened before a focus lands inside.
+- `Form`: a native form, everything forwarded; `noValidate` is yours to pass; Fields register under `name` and `id`.
+- `ErrorSummary`: `title` (required), `issues: { field, message, target? }[]`, `focusRequest` (failed-submit counter; each new positive value focuses once), `headingLevel` (2). Empty issues render nothing.
+- `DateField`: `value`, `defaultValue`, `onChange(date | undefined)`, `onValidityChange` (`empty | incomplete | impossible | unavailable | before-min | after-max | valid`), `minValue`, `maxValue`, `isDateUnavailable`, `name` (submits an ISO date), `readOnly`, `locale` ("en"), `label`. Values: `parseDate("2026-11-30")` or `new CalendarDate(y, m, d)` from `@fiberfx/core`.
+- `ColorField`: parses on Enter or blur; accepts `#hex`, `rgb()`, `hsl()`, `hsb()`, `color(display-p3 …)`; `editorStates` (`inherit`, `unset`); `tokens` (`{token-id}`); `onChange(value, { reason: commit | token | detach | reset | text })`.
+
+## Minimal example
+
+```tsx
+import { useState } from "@fiberfx/hyperscript/hooks";
+import { Field, Input } from "@fiberfx/ui";
+
+export function TitleField({ error }: { error?: string }) {
+  const [title, setTitle] = useState("");
+  return (
+    <Field name="title" label="Title" hint="Shown in lists" error={error} required>
+      {(field) => <Input {...field.getControlProps()} value={title} onInput={(event) => setTitle(event.currentTarget.value)} />}
+    </Field>
+  );
+}
+```
+
+## Never emit
+
+A `label` on both the Field and its Input; cloning children to inject ids; an `aria-live` on a FieldError; a `focusRequest` bumped on every keystroke; a `Date` object as a DateField value; a form-state library inside `Form`; any `react` or `effector` import.
+
+## Next
+
+- The course: /ui/llms.txt
+- UI4, selection: /ui/selection/llms.txt
+- This companion: /ui/inputs-and-forms/llms.txt (the page as Markdown, `/ui/inputs-and-forms.md`, is planned for W3)
+
+## Navigation
+
+- [Read this page in the browser](/ui/inputs-and-forms)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/ui/llms.txt)
+
+<!-- /ui/selection/llms.txt -->
+
+# UI4, selection — Mercury LMS
+
+> Mercury UI's selection controls: `Checkbox`, `Switch`, `Radio` (native inputs, with Root/Control/Indicator parts), `CheckboxGroup`, `RadioGroup`, the `ListBox` collection with its item and section parts, and `Combobox`, a text input over a suggestion ListBox in virtual focus.
+
+## Read this when
+
+You let a reader choose: a flag, one of a few, several of a few, one or several of many, or one typed and suggested.
+
+## The contract (tier: Shipped — @fiberfx/ui 4.0.0 on npm since 2026-11-05)
+
+- Shared state rule: controlled (`checked`, `value`, `selectedKeys`) is authoritative; a default seeds uncontrolled state and is what a form reset restores.
+- `Checkbox`: `checked`, `defaultChecked` (`"mixed"` allowed), `onChange(checked)`, `indeterminate`, `label`, `name`, `value`, `disabled`, `required`, `readOnly`, `invalid`, `id`, `form`. Mixed submits as unchecked.
+- `Switch`: same state props; a native checkbox with `role="switch"`.
+- `Radio`: `value` (required), `checked`, `onChange(value)`, `label`, `name`, `disabled`, `required`, `invalid`, `id`, `form`.
+- Parts: `CheckboxRoot` › `CheckboxControl` + `CheckboxIndicator`; `SwitchRoot` › `SwitchControl` + `SwitchIndicator`; `RadioGroupRoot` › `RadioGroupItem` › `RadioGroupControl` + `RadioGroupIndicator`. Indicators are decorative; parts carry `data-state` (`checked | unchecked`).
+- `RadioGroup`: `items: { value, label?, disabled? }[]`, `value`/`defaultValue`, `onChange(value)`, `orientation`, `accent`, `name`, `required`, `disabled`, `readOnly`, `invalid`, `form`, `aria-label`/`aria-labelledby`.
+- `CheckboxGroup`: same `items`, `value`/`defaultValue: string[]`, `onChange(keys)`; inside a Field, named by its label.
+- `ListBox`: `selectionMode` (`single` default | `multiple` | `none`), `selectionBehavior` (`toggle` | `replace`), `selectedKeys` (`null` = controlled empty), `defaultSelectedKeys`, `onSelectionChange(keys)`, `disabledKeys`, `disallowEmptySelection`, `focusMode` (`dom` | `virtual`), `focusedKey`, `onFocusedKeyChange`, `shouldFocusWrap`, `autoFocus`, `escapeKeyBehavior`, `disallowTypeAhead`, `name` (hidden input per selected key), `renderEmptyState`. Keys are `CollectionKey` (`string | number`).
+- ListBox parts: `ListBoxItem` (`id` required, `textValue`, `disabled`, children or `(state) => ...`), `ListBoxItemText`, `ListBoxItemDescription`, `ListBoxSelectionIndicator`, `ListBoxSection`, `ListBoxLabel`, `ListBoxSeparator`. `getListBoxOptionId(listBoxId, key)`.
+- `Combobox` › `ComboboxInput` + `ComboboxContent` › `ListBoxItem`s. `selectedKey`/`defaultSelectedKey`, `onSelectionChange` (on commit only: Enter or a press), `inputValue`/`defaultInputValue`/`onInputChange`, `open`/`onOpenChange(open, details)`, `menuTrigger` (`input` | `focus` | `manual`), `actionKeys` + `onAction`, `clearInputOnCommit`, `allowsEmptyCollection`, `getKeyLabel`, `name`.
+- Combobox never commits on Tab or blur (restores the committed text) and does not filter: render the suggestions you want.
+- In a Field, ListBox, CheckboxGroup and Combobox take the Field's states and references; the Combobox input takes the Field's id and label.
+
+## Minimal example
+
+```tsx
+import { useState } from "@fiberfx/hyperscript/hooks";
+import { Combobox, ComboboxContent, ComboboxInput, Field, ListBoxItem, useLocaleFormatters } from "@fiberfx/ui";
+import type { CollectionKey } from "@fiberfx/ui";
+
+const authors = [{ id: "ada", label: "Ada Lovelace" }, { id: "grace", label: "Grace Hopper" }];
+
+export function AuthorPicker() {
+  const [author, setAuthor] = useState<CollectionKey | null>(null);
+  const [text, setText] = useState("");
+  const { contains } = useLocaleFormatters();
+  return (
+    <Field name="author" label="Author">
+      <Combobox selectedKey={author} onSelectionChange={setAuthor} onInputChange={setText}>
+        <ComboboxInput />
+        <ComboboxContent>
+          {authors.filter((a) => contains(a.label, text)).map((a) => <ListBoxItem key={a.id} id={a.id}>{a.label}</ListBoxItem>)}
+        </ComboboxContent>
+      </Combobox>
+    </Field>
+  );
+}
+```
+
+## Never emit
+
+A `ListBoxItem` without `id`; a selection committed from `onInputChange` or `onFocusedKeyChange`; an `aria-label` on `ComboboxInput` inside a labelled Field; focus moved into the Combobox popup; an indicator part rendered before its control; a `RangeSlider` (it is `Slider` with a two-number value); any `react` or `effector` import.
+
+## Next
+
+- The course: /ui/llms.txt
+- UI3, inputs and forms: /ui/inputs-and-forms/llms.txt
+- This companion: /ui/selection/llms.txt (the page as Markdown, `/ui/selection.md`, is planned for W3)
+
+## Navigation
+
+- [Read this page in the browser](/ui/selection)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/ui/llms.txt)
+
+<!-- /ui/feedback-and-data/llms.txt -->
+
+# UI5, feedback and data display — Mercury LMS
+
+> Mercury UI's feedback (`Alert`, `Toast` and its parts, `Progress`) and data display (`Card`, `Table`, `DataGrid`), with the rest of both families. All presentational: the application owns timers, sorting, selection state and removal.
+
+## Read this when
+
+You tell a reader something happened, show progress, or show records in a card, a table or an editable grid.
+
+## The contract (tier: Shipped — @fiberfx/ui 4.0.0 on npm since 2026-11-05)
+
+- `Alert`: `tone` `info` (default) | `success` | `warning` | `danger`; `title` (an h4), children, `actions`, `dismissible` + `onDismiss`. `danger` is `role="alert"`, the rest `role="status"`. It never removes itself.
+- `Toast`: `tone`, `priority` (`urgent` | `normal`; default urgent for danger), `onDismiss(reason: "close" | "swipe")`, `closeLabel` ("Dismiss"), `swipeDirection` (`left | right | up | down`), `swipeThreshold` (50). Always renders a close control. Owns no timer.
+- Toast parts: `ToastViewport` (`label`, default "Notifications"; you position it), `ToastTitle`, `ToastDescription`, `ToastAction` (`altText` required: the other way to do it).
+- `Progress`: `value`, `min` (0), `max` (100), clamped; `indeterminate` states no value; `label` or `aria-labelledby`; `valueText`; `variant` `brand | positive | negative | caution | info`; `size` `sm | md | lg`. Pass the final value: completion is never inferred.
+- `Card`: `variant` `flat | raised | floating`, `padding` (20), `title`, `actions`.
+- `Table`: `columns: Column<Row>[]` (`key`, `label`, `align`, `render`, `sortable`, `resizable`, `required`, widths), `data`, `getRowKey` (index otherwise), `caption`, `striped`, `emptyState` ("No results"), `loading`; `sort` + `onSortChange` (the table never reorders data); `selectionMode` `none | single | multiple`, `selectedKeys`, `onSelectionChange` (controls disabled without it), `isRowDisabled`, `getRowLabel`; `keyboardNavigation`; `columnOrder`, `hiddenColumns`, `columnWidths`, `onColumnWidthsChange`; `expansion` (`detail` or `treegrid`), `expandedKeys`, `onExpandedChange`.
+- `DataGrid`: `columns` (`key`, `label`, `editable`, `getValue`, `render`, `align`), `rows` (the window), `getRowKey` (required), `startIndex`/`getRowIndex`, `total` (`null` = unknown), `onCellCommit({ rowKey, column, value })`, `caption`. Arrows, Home/End (Ctrl: first/last row); Enter or F2 edits; Enter commits; Escape cancels. No built-in virtualizer.
+
+## Minimal example
+
+```tsx
+import { useState } from "@fiberfx/hyperscript/hooks";
+import { Table } from "@fiberfx/ui";
+import type { Column, TableSort } from "@fiberfx/ui";
+
+type File = { id: string; name: string; size: number };
+const columns: Column<File>[] = [{ key: "name", label: "File", sortable: true }, { key: "size", label: "Size", align: "right" }];
+
+export function Files({ files }: { files: File[] }) {
+  const [sort, setSort] = useState<TableSort | null>(null);
+  const rows = sort ? [...files].sort((a, b) => (a.name < b.name ? -1 : 1) * (sort.direction === "ascending" ? 1 : -1)) : files;
+  return <Table columns={columns} data={rows} getRowKey={(f) => f.id} caption="Files" sort={sort} onSortChange={setSort} />;
+}
+```
+
+## Never emit
+
+A Toast with a built-in timeout prop (there is none); a Toast whose only dismissal is a swipe; `ToastAction` without `altText`; `danger` for emphasis; a Table expected to sort or filter `data` itself; a DataGrid without `getRowKey`; `total` guessed instead of `null`; an import from any UI framework other than `@fiberfx/hyperscript`.
+
+## Next
+
+- The course: /ui/llms.txt
+- UI6, navigation: /ui/navigation/llms.txt
+- This companion: /ui/feedback-and-data/llms.txt
+
+## Navigation
+
+- [Read this page in the browser](/ui/feedback-and-data)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/ui/llms.txt)
+
+<!-- /ui/navigation/llms.txt -->
+
+# UI6, navigation — Mercury LMS
+
+> Mercury UI's navigation: `Tabs` (facade and `TabsRoot`/`TabsList`/`TabsTrigger`/`TabsPanel`), `Breadcrumbs`, `Tree`, `NavigationTree`, `Menubar` (facade and compound parts) and `Toolbar` with its parts. Tabs, Toolbar, Menubar and Tree use one primary Tab stop and arrows inside, mirrored in RTL. Breadcrumbs and NavigationTree keep native link and button navigation; Mercury does not perform application routing.
+
+## Read this when
+
+You build tabs, a breadcrumb trail, an entity tree, a sidebar of route links, a desktop-style menu strip or an editor toolbar.
+
+## The contract (tier: Shipped — @fiberfx/ui 4.0.0 on npm since 2026-11-05)
+
+- `Tabs`: `tabs: { label, value, disabled?, content?, panelId? }[]`, `value`, `onChange(value)`, `activationMode` (`automatic` default | `manual`), `orientation`, `dir`, `loop` (true), `keepMounted` (false), `variant` (`underline` | `pills`).
+- Tabs parts: `TabsRoot` (`value`/`defaultValue`/`onValueChange`, same modes) › `TabsList` (`variant`) › `TabsTrigger` (`value`), plus `TabsPanel` (`value`, `keepMounted`).
+- `Breadcrumbs` (`label` "Breadcrumbs", `maxItems` ≥ 3, `separator`, `renderLink`, `truncate`, `overflowLabel`, `overflowPanelLabel`) › `Breadcrumb` (`href`, `current` (default: last), `disabled`, `disabledReason`, `id`). Exactly one `aria-current="page"`.
+- `Tree`: `nodes: TreeNodeData[]` (`id`, `label`, `kind` `leaf | branch | lazy`, `children`, `disabled`), `expandedIds` (controlled) + `onExpandedChange`, `loadChildren`, `selectionMode` (`none` default), `selectedIds`, `onSelectionChange`, `selectionFollowsFocus`, `activeId`/`onActiveChange`, `onActivate` (Enter), `renderLabel`, `renderActions`, `dir`. `TreeItemAction` (`label`) for per-node actions.
+- `NavigationTree`: `label` (required), `nodes: { id, label, href?, target?, rel?, download?, children? }[]`, `currentId`, `expandedIds`/`defaultExpandedIds` (default: the current route's ancestors), `onExpandedChange`, `onNavigate(href, event)` (host routes and calls `preventDefault`), `renderLabel`, `dir`.
+- `Menubar`: `menus: { label, icon?, items: { type?, label, id?, group?, value?, checked?, shortcut?, icon?, onSelect?, disabled? }[] }[]`, `accent`, `dir`. Compound: `MenubarRoot` › `MenubarMenuRoot` › `MenubarTrigger` + `MenubarContent` with `MenubarItem`, `MenubarCheckboxItem`, `MenubarRadioGroup`, `MenubarRadioItem`, `MenubarItemIndicator`, `MenubarGroup`, `MenubarLabel`, `MenubarSeparator`, `MenubarSub`, `MenubarSubTrigger`, `MenubarSubContent`.
+- `Toolbar`: `orientation`, `dir`, `loop` (true), `size` (`sm | md`), `variant` (`surface | plain`), `focusableWhenDisabled`. Parts: `ToolbarButton`, `ToolbarLink`, `ToolbarGroup`, `ToolbarSeparator`, `ToolbarToggleGroup` (`type: "single"` with `value: string`, or `"multiple"` with `value: string[]`) › `ToolbarToggleItem` (`value`).
+
+## Minimal example
+
+```tsx
+import { Breadcrumb, Breadcrumbs } from "@fiberfx/ui";
+
+export const Trail = () => (
+  <Breadcrumbs>
+    <Breadcrumb href="/">Mercury</Breadcrumb>
+    <Breadcrumb href="/ui">UI</Breadcrumb>
+    <Breadcrumb href="/ui/navigation">Navigation</Breadcrumb>
+  </Breadcrumbs>
+);
+```
+
+## Never emit
+
+A Tree used for route links (use NavigationTree); a NavigationTree node expected to select; a router call from Breadcrumbs (it never navigates); two current breadcrumbs; `maxItems` below 3; a Tab stop on every toolbar button; Tree expansion assumed to select; an import from any UI framework other than `@fiberfx/hyperscript`.
+
+## Next
+
+- The course: /ui/llms.txt
+- UI5, feedback and data display: /ui/feedback-and-data/llms.txt
+- This companion: /ui/navigation/llms.txt
+
+## Navigation
+
+- [Read this page in the browser](/ui/navigation)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/ui/llms.txt)
+
+<!-- /hypergraph/llms.txt -->
+
+# Hypergraph, the state kernel — Mercury LMS
+
+> `@fiberfx/hypergraph` 4.0.0: Mercury's state kernel. A scheduler and graph executor for a model's units (store, event, effect) and their wiring, with fork scopes, effects and one observation surface. No dependencies, no React.
+
+## Read this when
+
+You write or change state in a Mercury app: a store, an event, an effect, their wiring, or a scope for a test or a server render. This page is the course's landing; the API by name follows in the reference.
+
+## The contract (tier: Shipped — @fiberfx/hypergraph 4.0.0 on npm since 2026-11-05)
+
+- Units: `store(init, config?)`, `event()`, `effect(handler)`.
+- Wiring: `sample({clock, source, filter, fn, target})`, `combine`, `split`, `attach`, `merge`, `restore`, and `on`, `reset`, `map`, `filter`, `filterMap`, `prepend`.
+- Scopes: `fork`, `allSettled`, `scopeBind`, `snapshot`, `apply`, `diff`, `dispose`.
+- `watch(unit, fn, {scope})`, `kindOf(x)`, `setCarrier`, `HypergraphError`.
+- Subpaths: `@fiberfx/hypergraph`, `@fiberfx/hypergraph/node` (`nodeCarrier`), `@fiberfx/hypergraph/inspect` (`inspect`, `describe`). `/hyperscript` and `/hmr` are planned and not exported.
+
+## Minimal example
+
+```ts
+import { event, store } from "@fiberfx/hypergraph";
+
+const increment = event<number>();
+export const $count = store(0, { name: "$count" }).on(increment, (count, by) => count + by);
+```
+
+## Never emit
+
+`createStore`, `createEvent`, `createEffect`, `createDomain`, `guard`, `forward`, `createApi`, `withFactory`, `is`, and any import from `effector` or `effector-react`. They are not Mercury's names.
+
+## Errors
+
+A refusal is a `HypergraphError` with a `code`: `pure-call`, `derived-call`, `derived-target`, `disposed-scope`, `reset-reason`.
+
+## Next
+
+- Chapters, in order: /hypergraph/units/llms.txt, /hypergraph/wiring/llms.txt, /hypergraph/scopes/llms.txt, /hypergraph/observing/llms.txt, /hypergraph/errors/llms.txt, /hypergraph/hot-replacement/llms.txt, /hypergraph/server-rendering/llms.txt, /hypergraph/testing/llms.txt, /hypergraph/models/llms.txt, /hypergraph/capstone/llms.txt
+- Coming from Effector, in order: /hypergraph/coming-from-effector/llms.txt, /hypergraph/coming-from-effector/units-and-wiring/llms.txt, /hypergraph/coming-from-effector/scopes-and-testing/llms.txt, /hypergraph/coming-from-effector/frameworks/llms.txt
+- The site: /llms.txt
+- This companion: /hypergraph/llms.txt (the page as Markdown, `/hypergraph.md`, is planned for W3)
+
+## Navigation
+
+- [Read this page in the browser](/hypergraph)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+
+### Chapter companions
+
+- [/hypergraph/capstone](/hypergraph/capstone/llms.txt)
+- [/hypergraph/coming-from-effector](/hypergraph/coming-from-effector/llms.txt)
+- [/hypergraph/coming-from-effector/frameworks](/hypergraph/coming-from-effector/frameworks/llms.txt)
+- [/hypergraph/coming-from-effector/scopes-and-testing](/hypergraph/coming-from-effector/scopes-and-testing/llms.txt)
+- [/hypergraph/coming-from-effector/units-and-wiring](/hypergraph/coming-from-effector/units-and-wiring/llms.txt)
+- [/hypergraph/errors](/hypergraph/errors/llms.txt)
+- [/hypergraph/hot-replacement](/hypergraph/hot-replacement/llms.txt)
+- [/hypergraph/models](/hypergraph/models/llms.txt)
+- [/hypergraph/observing](/hypergraph/observing/llms.txt)
+- [/hypergraph/scopes](/hypergraph/scopes/llms.txt)
+- [/hypergraph/server-rendering](/hypergraph/server-rendering/llms.txt)
+- [/hypergraph/testing](/hypergraph/testing/llms.txt)
+- [/hypergraph/units](/hypergraph/units/llms.txt)
+- [/hypergraph/wiring](/hypergraph/wiring/llms.txt)
+
+<!-- /hypergraph/units/llms.txt -->
+
+# Units: store, event and effect — Mercury LMS
+
+> The three kinds of unit in a Hypergraph model, from `@fiberfx/hypergraph` 4.0.0: `store(init, config?)`, `event<T>(config?)`, `effect(handler)`. A store holds a value, an event carries a payload, an effect runs a handler and settles.
+
+## Read this when
+
+You declare state, a signal or a side effect in a Mercury model, or you need a unit's methods and members.
+
+## The contract (tier: Shipped — @fiberfx/hypergraph 4.0.0 on npm since 2026-11-05)
+
+- `store<T>(init: T, config?)` → `StoreWritable<T>`. Config: `name`, `sid` (authored identity), `skipVoid`, `updateFilter(next, prev)`, `serialize: 'ignore' | {write, read}`, `schema: {id, version}` (shape becomes `<id>@<version>`).
+- `StoreWritable`: `.on(clock | clock[], (state, payload) => next)`, `.reset(...clocks)`; both return the store.
+- Every `Store`: `.getState()` (caller's scope, else outside any), `.map(fn, {skipVoid?})` (derived), `.updates` (event), `.watch(fn)` (called with the state now, then each update).
+- A reducer returning `undefined` is skipped unless `skipVoid: false` (vector `store.on-void-skips`).
+- `event<T = void>({name?})` → callable. `.map`, `.filter(fn | {fn})`, `.filterMap` (drop on `undefined`) make derived events; `.prepend(fn)` makes a callable event; `.watch(fn)`.
+- `effect<P, D, F = Error>(handler)` → `(params) => Promise<D>`. Members: `done {params, result}`, `doneData`, `fail {params, error}`, `failData`, `finally {status, params, result | error}`, `pending: Store<boolean>`, `inFlight: Store<number>`. With no handler a call fails until `fork({handlers})` supplies one.
+- Declared effects (`{request}`, `{channel, payload?}`, `{timer}`) need `fork({performers})`; performers arrive with H4.
+- A derived unit can be neither called nor targeted.
+
+## Minimal example
+
+```ts
+import { effect, event, store } from "@fiberfx/hypergraph";
+
+const increment = event<number>();
+export const $count = store(0, { name: "$count" }).on(increment, (n, by) => n + by);
+
+export const loadUser = effect(async (id: number) => ({ id, name: "Ada" }));
+export const $name = store("").on(loadUser.doneData, (_, user) => user.name);
+```
+
+## Never emit
+
+`createStore`, `createEvent`, `createEffect`, `store.setState`, `store.off`, `effect.use`, and any import from `effector` or `effector-react`.
+
+## Next
+
+- Wiring units together: /hypergraph/wiring (/hypergraph/wiring/llms.txt)
+- This companion: /hypergraph/units/llms.txt (the page as Markdown, `/hypergraph/units.md`, is planned for W3)
+
+## Navigation
+
+- [Read this page in the browser](/hypergraph/units)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/hypergraph/llms.txt)
+
+<!-- /hypergraph/wiring/llms.txt -->
+
+# Wiring: units into a graph — Mercury LMS
+
+> How `@fiberfx/hypergraph` connects units: `sample` (the one composition primitive), `combine` (stores through a barrier), `split`, `attach`, `merge`, `restore`, and `on`, `reset`, `map`, `filter`, `filterMap`, `prepend` as functions. One launch runs to quiescence, glitch-free.
+
+## Read this when
+
+You connect units: derive a value, route a payload, gate an update on a store, or call an effect with params built from state.
+
+## The contract (tier: Shipped — @fiberfx/hypergraph 4.0.0 on npm since 2026-11-05)
+
+- `sample({clock?, source?, filter?, fn?, target?, batch?})`. `filter`: `Store<boolean>` or `(source, clock) => boolean`; `fn: (source, clock) => out`. With `target` it returns the target; without, a new derived unit. A non-unit field in `source` is a constant.
+- A derived unit as `target` throws `HypergraphError` `derived-target`.
+- `combine([..] | {..}, fn?, {skipVoid?}?)` or `combine(a, b, …, fn?)` → derived `Store`. One launch updates it once (vector `kernel.diamond-one-update-per-launch`).
+- `split({source, clock?, match, cases})` → `void`; `match` is `Store<string>`, `(v) => caseName`, or `{case: predicate | Store<boolean>}`. `split(source, {case: predicate})` → `{case: Event, …, __: Event}` (`__` = no match).
+- `attach({effect, source?, mapParams?: (params, source) => q})` → new `Effect`; `effect` may be `(source, params) => result`.
+- `merge(units[])` → `Event`. `restore(unit, init)` → `StoreWritable` of the last payload; single-unit form only.
+- `on(store, clock, fn)`, `reset(store, ...clocks)`, `map(unit, fn)`, `filter(event, fn)`, `filterMap(event, fn)`, `prepend(event, fn)` equal the unit methods.
+- Units of two generations cannot be wired together.
+
+## Minimal example
+
+```ts
+import { event, sample, store } from "@fiberfx/hypergraph";
+
+const submit = event();
+const $text = store("");
+export const $sent = store<string[]>([]);
+
+sample({
+  clock: submit,
+  source: { text: $text, sent: $sent },
+  filter: ({ text }) => text.length > 0,
+  fn: ({ text, sent }) => [...sent, text],
+  target: $sent,
+});
+```
+
+## Never emit
+
+`guard`, `forward`, `createApi`, `restore({...})` or `restore([...])`, `withFactory`, and any import from `effector`. Use `sample` and `.on` instead.
+
+## Next
+
+- Scopes: /hypergraph/scopes (/hypergraph/scopes/llms.txt)
+- This companion: /hypergraph/wiring/llms.txt (the page as Markdown, `/hypergraph/wiring.md`, is planned for W3)
+
+## Navigation
+
+- [Read this page in the browser](/hypergraph/wiring)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/hypergraph/llms.txt)
+
+<!-- /hypergraph/scopes/llms.txt -->
+
+# Scopes: fork, settle, hand over — Mercury LMS
+
+> A scope is one isolated copy of a model's state in `@fiberfx/hypergraph`. `fork` makes one, `allSettled` steps it, `scopeBind` binds a function to it, `snapshot`/`diff`/`apply` move its frames by sid with each value's shape, `dispose` ends it.
+
+## Read this when
+
+You write a test, render on a server, hand state from server to client, or run code from a timer or callback inside a scope.
+
+## The contract (tier: Shipped — @fiberfx/hypergraph 4.0.0 on npm since 2026-11-05)
+
+- `Scope` = `{id, gen}`; the handle survives a hot swap and rebinds to the committed generation.
+- `fork({values?, handlers?, performers?})`. `values`: `[[store, v], …]`, `{sid: v}`, or a `Snapshot`. `handlers`: `[[effect, fn | effect], …]`, scope-local.
+- `allSettled(unit, {scope, params?})` → resolves when nothing is in flight; for an effect `{status: 'done' | 'fail', value}`. `allSettled(scope)` waits for in-flight work.
+- `scopeBind(fn, {scope?, safe?})`: binds to `scope` or the caller's; no scope and no `safe` throws. Read a value: `scopeBind(() => $s.getState(), {scope})()`.
+- `snapshot(scope, {ignore?})` → `{format: 'mhg-scope/1', gen, values: {sid: {shape, schema?, value}}}`: writable stores with a sid that the scope changed or was given; `serialize: 'ignore'` stays out.
+- `diff(scope, since)` → `{format, gen, from, changed, removed}`.
+- `apply(scope, snapshot | diff)` → `Miss[]` `{unit: sid, reason: {kind: 'removed'} | {kind: 'shape', from, to}}`; an entry is taken only on the same sid and shape. Misses also go to `inspect` as `reset`.
+- Shape until the compiler emits one: `runtime:<structure>` (e.g. `runtime:number`); with `schema` it is `<id>@<version>`.
+- `dispose(scope)`: stops work and scoped watches, settles waiting `allSettled`; later `allSettled` or an effect call there rejects `HypergraphError` `disposed-scope`.
+- A store needs a `sid` to travel in a frame.
+
+## Minimal example
+
+```ts
+import { allSettled, event, fork, scopeBind, snapshot, store } from "@fiberfx/hypergraph";
+
+const increment = event();
+const $count = store(0, { sid: "count" }).on(increment, (n) => n + 1);
+
+export async function run() {
+  const scope = fork({ values: [[$count, 3]] });
+  await allSettled(increment, { scope });
+  return { now: scopeBind(() => $count.getState(), { scope })(), frame: snapshot(scope) };
+}
+```
+
+## Never emit
+
+`serialize`, `hydrate`, `fork(domain)`, `createDomain`, and any import from `effector`. Use `snapshot` and `apply`.
+
+## Next
+
+- Watching and inspecting: /hypergraph/observing (/hypergraph/observing/llms.txt)
+- This companion: /hypergraph/scopes/llms.txt (the page as Markdown, `/hypergraph/scopes.md`, is planned for W3)
+
+## Navigation
+
+- [Read this page in the browser](/hypergraph/scopes)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/hypergraph/llms.txt)
+
+<!-- /hypergraph/observing/llms.txt -->
+
+# Observing: watch, inspect, describe — Mercury LMS
+
+> How code and tools see a `@fiberfx/hypergraph` model. `watch(unit, fn, {scope})` for a unit's updates, owned by its generation; `inspect` and `describe` from `@fiberfx/hypergraph/inspect`, the one observation surface.
+
+## Read this when
+
+You react to updates outside the graph, write a test that asserts what happened, or build a log, overlay or DevTools view of a model.
+
+## The contract (tier: Shipped — @fiberfx/hypergraph 4.0.0 on npm since 2026-11-05)
+
+- `watch(unit, fn, {scope?})` → `Subscription` (callable; `.unsubscribe()` is the same). Updates only: a store's current state is NOT delivered at once. With `scope`, only that scope's updates; without, the work outside any scope. Ends when its scope's work stops or its generation is retired, whichever first.
+- `$store.watch(fn)` differs: called with the state now, then each update.
+- `inspect({scope?, kinds?, fn})` from `@fiberfx/hypergraph/inspect` → `Subscription`. Scoped: that scope only; unscoped: no scoped work. Last unsubscribe stops recording.
+- `Observation`: `{type, unit, scope, gen, value, cause}`, where `unit` is a sid or run-time identity; additional fields: `fresh?` (declare), `owner?`, `reason?` (reset), `at?` (perform, settle).
+- `Kind`: `update`, `skip` (filter, equal or undefined update, updateFilter refusal), `fail` (user function threw), `declare` (value: `Declaration {unit, kind, sid?, name?, derived?, owner?, gen}`; unscoped inspectors only), `perform`, `settle`, `reset`.
+- A `fresh` declare is a new store: information, not a reset.
+- `describe(reason)` → `removed` | `shape changed from <from> to <to>` | `renamed (a hint, not applied: it may now be <to>)` | `positional` | `new`.
+- Types from `/inspect`: `Observation`, `Declaration`, `Kind`, `ResetReason`.
+
+## Minimal example
+
+```ts
+import { allSettled, event, fork, store, watch } from "@fiberfx/hypergraph";
+import { inspect } from "@fiberfx/hypergraph/inspect";
+
+const increment = event();
+const $count = store(0, { sid: "count" }).on(increment, (n) => n + 1);
+
+export async function run() {
+  const scope = fork();
+  const stop = watch($count, (n) => console.log("count", n), { scope });
+  const sub = inspect({ scope, kinds: ["update", "skip"], fn: (o) => console.log(o.type, o.unit) });
+  await allSettled(increment, { scope });
+  stop();
+  sub.unsubscribe();
+}
+```
+
+## Never emit
+
+`createWatch`, `inspectGraph`, `inspectObserverFailures`, the `Message` type, and any import from `effector` or `effector/inspect`.
+
+## Next
+
+- Kinds and errors: /hypergraph/errors (/hypergraph/errors/llms.txt)
+- This companion: /hypergraph/observing/llms.txt (the page as Markdown, `/hypergraph/observing.md`, is planned for W3)
+
+## Navigation
+
+- [Read this page in the browser](/hypergraph/observing)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/hypergraph/llms.txt)
+
+<!-- /hypergraph/errors/llms.txt -->
+
+# Kinds, carriers and errors — Mercury LMS
+
+> `kindOf(x)` tells a unit's kind or a scope from anything else; `setCarrier(nodeCarrier())` keeps a scope across an `await` on a JavaScript server; every refusal of `@fiberfx/hypergraph` is a `HypergraphError` with a portable `code`.
+
+## Read this when
+
+You branch on what a value is, run Hypergraph on a server with concurrent requests, or handle, test or explain a Hypergraph error.
+
+## The contract (tier: Shipped — @fiberfx/hypergraph 4.0.0 on npm since 2026-11-05)
+
+- `kindOf(x)` → `'store' | 'event' | 'effect' | 'scope' | null`; `null` for anything not made by this module.
+- `setCarrier(carrier | null)`. Default none: an effect called in a scope restores that scope to its caller on settle, so an unrelated call during the await can join it. A carrier (`{current(), run(scope, fn)}`) carries the scope down the chain.
+- `nodeCarrier()` from `@fiberfx/hypergraph/node` (AsyncLocalStorage). Call `setCarrier(nodeCarrier())` once at server start. Never import `/node` in browser code.
+- `HypergraphError extends Error`: `name` `"HypergraphError"`, `code: ErrorCode`. Match on `code`, never on the message.
+- Codes: `derived-call` (derived unit called; thrown), `derived-target` (derived unit as `sample` target or `split` case; thrown at wiring), `pure-call` (unit called inside a reducer, `map`, filter; reported, not thrown), `disposed-scope` (work in a disposed scope; `allSettled` or the effect call rejects), `reset-reason` (bad reset reason at the hot-replacement port; not reachable from app code).
+- A throw inside any function the graph runs goes to `console.error`, stops that branch, and is observed as `fail`; it never escapes the launch.
+- Plain `Error` (no code): units of two generations wired together; a non-unit where a unit is expected; `scopeBind` with no scope and no `safe`; `allSettled` on a derived unit; a declared effect with no performer.
+
+## Minimal example
+
+```ts
+import { HypergraphError, allSettled, dispose, event, fork } from "@fiberfx/hypergraph";
+
+const ping = event();
+
+export async function afterDispose() {
+  const scope = fork();
+  dispose(scope);
+  try {
+    await allSettled(ping, { scope });
+  } catch (error) {
+    if (error instanceof HypergraphError && error.code === "disposed-scope") return "fork a new scope";
+    throw error;
+  }
+}
+```
+
+## Never emit
+
+`is`, `is.store`, `is.scope`, a check of an error's message text, a unit call inside `.on`/`.map`/`filter` (use `sample`), and any import from `effector`.
+
+## Next
+
+- The course: /hypergraph (/hypergraph/llms.txt)
+- This companion: /hypergraph/errors/llms.txt (the page as Markdown, `/hypergraph/errors.md`, is planned for W3)
+
+## Navigation
+
+- [Read this page in the browser](/hypergraph/errors)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/hypergraph/llms.txt)
+
+<!-- /hypergraph/hot-replacement/llms.txt -->
+
+# Hot replacement: the swap — Mercury LMS
+
+> How `@fiberfx/hypergraph` carries a model's state across a code edit: a body-only edit swaps function slots in place; any other edit loads a new generation and keeps each store whose sid and shape match, naming a reason for every one it drops. Built inside the package; `@fiberfx/hypergraph/hmr` and `mx dev`'s delivery are planned.
+
+## Read this when
+
+You explain why a value survived or reset after an edit, design a model's stores so they survive edits, or read an `hmr:` log line or a `reset` observation.
+
+## The contract (tier: Planned — built and vector-tested, not exported, not delivered by mx dev; today an edit reloads the page)
+
+- Slots mode: every changed module equals the loaded one except function bodies → bodies swapped in place; scope, values, watchers, in-flight effects unchanged.
+- Swap mode, otherwise: new generation; restore only kept sids; commit; report; dispose the old generation. Watches made by the old generation's code end with it. `Scope` handles move to the committed generation.
+- Takes part: writable stores with a sid (regions included). Not: events, effects, derived stores, sid-less stores, `serialize: 'ignore'` on either side.
+- keep: same sid and shape. A changed `init` within one shape keeps the value.
+- new: sid only in the new generation; information, not a reset.
+- reset reasons (`ResetReason`): `{kind: 'shape', from, to}`, `{kind: 'removed'}`, `{kind: 'renamed', to}` (hint on the OLD sid, never applied; needs a name shared by exactly one removed and one new store), `{kind: 'positional'}` (positional keys never keep in a changed module).
+- Shape today: `runtime:<structure of init>`, object keys sorted, e.g. `runtime:object{age:number,name:string}`. Adding a field resets.
+- Lists are sorted in UTF-16 code-unit order of sid.
+- Each reset/new → an `inspect` `reset`/`declare fresh` observation and a log line `hmr: <sid>: <describe(reason)>`.
+- Refusals: `DiffError` `duplicate-sid` | `no-shape`; the update throws, the loaded generation stays live, the caller reloads. An update during an update is refused.
+
+## Minimal example
+
+```ts
+import { store } from "@fiberfx/hypergraph";
+
+// before: store(0, { sid: "count" })  → shape runtime:number
+// after:  store({}, { sid: "count" }) → shape runtime:object{}
+// result: reset count, "shape changed from runtime:number to runtime:object{}"
+export const $count = store({}, { sid: "count" });
+export const $user = store(null, { sid: "user" }); // kept
+```
+
+## Never emit
+
+An import from `@fiberfx/hypergraph/hmr` (not exported yet), `createRootScope`, `hmrScope`, an "init changed" reason, a rename that moves a value to the new sid, and any import from `effector`.
+
+## Next
+
+- Server rendering: /hypergraph/server-rendering (/hypergraph/server-rendering/llms.txt)
+- This companion: /hypergraph/hot-replacement/llms.txt
+
+## Navigation
+
+- [Read this page in the browser](/hypergraph/hot-replacement)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/hypergraph/llms.txt)
+
+<!-- /hypergraph/server-rendering/llms.txt -->
+
+# Server rendering: a scope per request — Mercury LMS
+
+> Render a `@fiberfx/hypergraph` model on a server: `fork()` per request, `await allSettled(...)`, `snapshot(scope)` → JSON frame keyed by sid, `dispose(scope)`; on the client `apply(fork(), frame)` or `fork({values: frame})`. On a JavaScript server, `setCarrier(nodeCarrier())` once at startup keeps each request's scope across `await`.
+
+## Read this when
+
+You render a Mercury page on a server, hand state to the browser, or debug a value that leaked between concurrent requests.
+
+## The contract (tier: Shipped — @fiberfx/hypergraph 4.0.0 on npm since 2026-11-05)
+
+- Server: `const scope = fork({handlers?})`; `await allSettled(event, {scope, params})` waits for every effect the launch started; `const frame = snapshot(scope)`; `dispose(scope)`; send `JSON.stringify(frame)`.
+- Client: `apply(fork(), frame as Snapshot)` → `Miss[]` (`removed` | `shape {from, to}`); or `fork({values: frame})`, which reports misses as `reset` observations only.
+- Frame: `{format: 'mhg-scope/1', gen, values: {sid: {shape, schema?, value}}}`. Keys are sids, so it applies across builds.
+- Travels: writable stores with a sid that the scope changed or was given. Not: sid-less stores, derived stores (client recomputes), `serialize: 'ignore'` stores, stores still at their init.
+- Non-JSON values: `serialize: {write(v), read(raw)}`; `apply` runs `read`.
+- Carrier: default none (an effect restores its caller's scope on settle; a stray call during an await can join a suspended scope). `setCarrier(nodeCarrier())` from `@fiberfx/hypergraph/node` carries the scope down each async chain. Package test: leak probe reads global 0 / scope 1 by default, global 1 / scope 0 under the carrier.
+- Callbacks from outside the chain: `scopeBind(fn, {scope})`.
+- Never import `@fiberfx/hypergraph/node` in browser code.
+
+## Minimal example
+
+```ts
+import { allSettled, dispose, fork, snapshot, type Snapshot, apply } from "@fiberfx/hypergraph";
+import { pageOpened } from "./model";
+
+export async function render(id: number) {
+  const scope = fork();
+  await allSettled(pageOpened, { scope, params: id });
+  const text = JSON.stringify(snapshot(scope));
+  dispose(scope);
+  return text;
+}
+
+export const resume = (text: string) => apply(fork(), JSON.parse(text) as Snapshot);
+```
+
+## Never emit
+
+`serialize(scope)`, `hydrate(...)`, `fork(domain)`, one scope shared across requests, `snapshot` before `allSettled` resolves, and any import from `effector`.
+
+## Next
+
+- Testing a model: /hypergraph/testing (/hypergraph/testing/llms.txt)
+- This companion: /hypergraph/server-rendering/llms.txt
+
+## Navigation
+
+- [Read this page in the browser](/hypergraph/server-rendering)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/hypergraph/llms.txt)
+
+<!-- /hypergraph/testing/llms.txt -->
+
+# Testing a model: a scope per test — Mercury LMS
+
+> Test a `@fiberfx/hypergraph` model with one `fork()` per test: replace effect handlers per scope, drive with `allSettled`, read with `scopeBind(() => $s.getState(), {scope})()` or `snapshot(scope)`, assert observations with `inspect`. Tests run under `mx test` (headless browser; `vitest` maps to mx's runtime). The conformance vectors in `specs/mercury/vectors/hypergraph/` are the kernel's behaviour as data.
+
+## Read this when
+
+You write or fix a test for a Mercury model, need to fake an effect, or want to know exactly what the kernel does in a case (find its vector).
+
+## The contract (tier: Shipped — @fiberfx/hypergraph 4.0.0 on npm since 2026-11-05)
+
+- One `fork()` per test. A new scope reads every store's init, even after unscoped calls; a scoped launch never touches the global state.
+- `fork({values: [[store, v]], handlers: [[effect, fn | effect]]})`: scope-local values and handlers; no module mocking.
+- `await allSettled(event, {scope, params})`; for an effect it resolves `{status: 'done', value}` or `{status: 'fail', value: error}` (never rejects for a handler failure).
+- Read: `scopeBind(() => $s.getState(), {scope})()`; `snapshot(scope).values[sid]` → `{shape, value}`; empty `{}` before any change.
+- `inspect({scope, kinds, fn})` before driving, unsubscribe after. Every update reported once, in launch order. Assert no `fail`: a throwing reducer never throws out of the launch, it only logs and observes `fail`.
+- `watch($s, fn, {scope})` reports updates only (no initial call).
+- `mx test`: files `*.test.*` / `*.spec.*` (js, mjs, jsx, ts, mts, tsx); `import {describe, test, expect} from "vitest"`; exit 0 pass, 1 fail or none ran, 3 no browser. Do not use `@fiberfx/hypergraph/node` in these tests.
+- Vectors: `{format: 'hgv/1', family, vectors}`; id `<family>.<name>`; keys `units`, `wiring`, `steps`, `expect` (`trace` = total order within a launch, `state`, `scopes`, `spies`, `errors` by `{code}`, `inspected`); functions in hgx/1 (`{arg: n}`, `{op, args}`, `{lit}`); `{"$undef": true}`, `{"$error": msg}`. `protocol.json` = Hypergraph's own rules (`observed {by, rule, why}`); `hmr.json` = the swap's diff.
+
+## Minimal example
+
+```ts
+import { expect, test } from "vitest";
+import { allSettled, effect, fork } from "@fiberfx/hypergraph";
+
+const loadUser = effect(async (id: number) => ({ name: `remote ${id}` }));
+
+test("loads a user", async () => {
+  const scope = fork({ handlers: [[loadUser, async (id: number) => ({ name: `user ${id}` })]] });
+  expect(await allSettled(loadUser, { scope, params: 7 })).toEqual({ status: "done", value: { name: "user 7" } });
+});
+```
+
+## Never emit
+
+Tests that call units outside a scope and read global state, module mocks for effects (use `handlers`), `effect.use`, `serialize`, `npm test`/`node --test`/Vite runners for app tests (use `mx test`), and any import from `effector`.
+
+## Next
+
+- Next chapter: /hypergraph/models (/hypergraph/models/llms.txt)
+- The course: /hypergraph (/hypergraph/llms.txt)
+- This companion: /hypergraph/testing/llms.txt
+
+## Navigation
+
+- [Read this page in the browser](/hypergraph/testing)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/hypergraph/llms.txt)
+
+<!-- /hypergraph/models/llms.txt -->
+
+# Models at scale: structure and identity — Mercury LMS
+
+> How to lay out an app-sized `@fiberfx/hypergraph` model: one module per feature, callable events in and derived stores out, a unique feature-prefixed `sid` on every store that travels, every outside call in an effect, wiring across features in one graph. No app in the repository imports `@fiberfx/hypergraph` yet; the worked consumers (echd-os, edu-island-kan, analytics) follow their migration slices.
+
+## Read this when
+
+You split a model into feature modules, choose sids, decide which stores travel in a frame, or expose a feature's state to other features.
+
+## The contract (tier: Shipped — @fiberfx/hypergraph 4.0.0 on npm since 2026-11-05)
+
+- Units belong to the generation of the code that made it; all modules of an app load into one generation; units of two generations cannot be wired together.
+- Types draw the surface: `EventCallable<T>` callable, derived `Event<T>` not; `StoreWritable<T>` has `.on`/`.reset`, `Store<T>` not. Exporting a writable store as `Store<T>` is a compile-time fence only.
+- Run time: calling a derived unit → `HypergraphError` `derived-call`; derived `target` → `derived-target`.
+- Sids: unique per generation. Module loading through the port refuses a sid claimed twice (in one module or across modules), naming both; the swap's diff refuses `duplicate-sid`. Plain `store()` calls are not checked; a frame looks a repeated sid up as its first store; the second's fate is unstated — never rely on it. Prefix by feature (`cart/items`).
+- Effects: outside calls only in effects; `fork({handlers})` replaces them per scope; `attach({effect, source, mapParams})` builds params from state; a handler marks the effect JS-only, a declared spec is data (preview).
+- Travels: writable + `sid` + not `serialize: 'ignore'`; non-JSON values need `serialize: {write, read}`; derived stores never travel. The same stores are the ones a hot swap keeps or resets.
+
+## Minimal example
+
+```ts
+import { event, store, type Store } from "@fiberfx/hypergraph";
+
+export const itemAdded = event<{ id: string; price: number }>();
+const $items = store<{ id: string; price: number }[]>([], { sid: "cart/items" })
+  .on(itemAdded, (items, item) => [...items, item]);
+
+export const items: Store<{ id: string; price: number }[]> = $items;
+export const total = $items.map((list) => list.reduce((sum, item) => sum + item.price, 0));
+```
+
+## Never emit
+
+A sid shared by two stores, a store meant to travel without a `sid`, a fetch or timer inside `.on`/`.map`/`sample`'s `fn`, `withFactory`, `createDomain`, and any import from `effector` or `@fiberfx/hypergraph/hmr`.
+
+## Next
+
+- The capstone: /hypergraph/capstone (/hypergraph/capstone/llms.txt)
+- This companion: /hypergraph/models/llms.txt
+
+## Navigation
+
+- [Read this page in the browser](/hypergraph/models)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/hypergraph/llms.txt)
+
+<!-- /hypergraph/capstone/llms.txt -->
+
+# Capstone: a model, round-tripped — Mercury LMS
+
+> One `@fiberfx/hypergraph` model built from the exports, run in a `fork()`, its frame taken with `snapshot`, applied into a fresh scope with `fork({values: frame})`, proven equal with `diff(replica, frame)`, then kept in step with `apply(replica, diff(scope, frame))`. Expected values are read from the package's own test, `fiberfx/hypergraph/test/api-types.test.ts`.
+
+## Read this when
+
+You need a complete, correct pattern for a model plus its test with a snapshot round-trip, e.g. server-to-client handoff or a replica kept current by diffs.
+
+## The contract (tier: Shipped — @fiberfx/hypergraph 4.0.0 on npm since 2026-11-05)
+
+- Only writable stores with a `sid` enter a frame; derived stores recompute on the replica.
+- `await allSettled(event, {scope, params})` settles effects started by `sample` too.
+- `snapshot(scope)` → `{format: 'mhg-scope/1', gen, values: {sid: {shape, value}}}`.
+- `fork({values: frame})` = new scope + apply the frame.
+- Equality: `diff(replica, frame)` → `changed: {}` (no entry new or different) and `removed: []` (no frame entry missing). `changed` is asserted by the package's test; `removed` is read from the kernel, not run.
+- Step: `apply(replica, diff(scope, since))`.
+- A call outside any scope (`add(5)`) changes only the global state, never a scope.
+
+## Minimal example
+
+```ts
+import { expect, test } from "vitest";
+import { allSettled, apply, diff, event, fork, scopeBind, snapshot, store } from "@fiberfx/hypergraph";
+
+const add = event<number>();
+const $count = store(0, { sid: "count" }).on(add, (n, by) => n + by);
+const read = (scope: ReturnType<typeof fork>) => scopeBind(() => $count.getState(), { scope })();
+
+test("round-trips its frame", async () => {
+  const scope = fork();
+  await allSettled(add, { scope, params: 3 });
+  const frame = snapshot(scope);              // values.count = { shape: "runtime:number", value: 3 }
+  const replica = fork({ values: frame });
+  expect(read(replica)).toBe(3);
+  expect(diff(replica, frame).changed).toEqual({});
+  await allSettled(add, { scope, params: 1 });
+  apply(replica, diff(scope, frame));
+  expect(read(replica)).toBe(4);
+});
+```
+
+## Never emit
+
+`serialize`, `hydrate`, a store without a `sid` expected to travel, a comparison of `getState()` outside the scope as proof of the replica, and any import from `effector` or `@fiberfx/hypergraph/hmr`.
+
+## Next
+
+- The course: /hypergraph (/hypergraph/llms.txt)
+- This companion: /hypergraph/capstone/llms.txt
+
+## Navigation
+
+- [Read this page in the browser](/hypergraph/capstone)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/hypergraph/llms.txt)
+
+<!-- /hypergraph/coming-from-effector/llms.txt -->
+
+# Coming from Effector — Mercury LMS
+
+> Where each Effector concept lives in Hypergraph (`@fiberfx/hypergraph` 4.0.0), Mercury's state kernel. Rule: a name changes only when its contract or its IR kind changed. Unit constructors are renamed, composition is kept, the scope speaks frames, and domains, `guard`, `forward`, `createApi`, `is` and `withFactory` are retired.
+
+## Read this when
+
+You are translating Effector code or Effector knowledge into a Mercury model, or a user asks "what is X from Effector in Mercury?". This is the only page on the site that uses Effector's names; never emit them as code.
+
+## The map (Effector → Hypergraph)
+
+| Effector | Hypergraph |
+|---|---|
+| `createStore(init, cfg)` | `store(init, cfg)`; cfg adds `schema` |
+| `createEvent()` | `event({name?})` |
+| `createEffect(fn)` | `effect(fn)` or `effect(spec)` |
+| `sample` `combine` `split` `attach` `merge` `restore` | same names |
+| `.on` `.reset` `.map` `.getState` `.updates` `.watch` (store) | same |
+| `.map` `.filter` `.filterMap` `.prepend` `.watch` (event) | same |
+| `.done` `.doneData` `.fail` `.failData` `.finally` `.pending` `.inFlight` | same |
+| `fork({values, handlers})` | `fork({values, handlers, performers})`; `values` may be a snapshot |
+| `allSettled` | same (unit + `{scope, params}`, or a scope alone) |
+| `scopeBind(unit, cfg)` | `scopeBind(fn, cfg)` |
+| `serialize(scope)` | `snapshot(scope)` → `{format: "mhg-scope/1", gen, values: {[sid]: {shape, value}}}` |
+| `hydrate(scope, {values})` | `apply(scope, frame)` → misses |
+| — | `diff(scope, since)`, `dispose(scope)` |
+| `createWatch({unit, fn, scope})` | `watch(unit, fn, {scope})` |
+| `is.store(x)` etc. | `kindOf(x) === "store"` |
+| `guard` | `sample({clock, source, filter, target})` |
+| `forward({from, to})` | `sample({clock: from, target: to})` |
+| `createApi` | one `event` + `.on` per key |
+| `inspect`, `inspectGraph` | `inspect({scope?, kinds?, fn})` from `@fiberfx/hypergraph/inspect` |
+| `useUnit`, `Provider` | not exported yet (planned at `/hyperscript`) |
+
+## No equivalent
+
+`createDomain` and domain hooks, `fork(domain)`, `hydrate(domain)`, `withFactory`, `withRegion`, `createNode`, `launch`, `step`, `clearNode`, `fromObservable`, `setStoreName`, `store.setState`, `store.off`, `store.reinit`, `effect.use`, `useStoreMap`, `useList`, `useGate`, `createGate`, `createComponent`, `connect`. Rewrite the code; do not invent a shim.
+
+## Minimal example
+
+```ts
+import { event, sample, store } from "@fiberfx/hypergraph";
+
+const increment = event<number>();
+const saved = event<number>();
+export const $count = store(0, { name: "$count" }).on(increment, (n, by) => n + by);
+sample({ clock: increment, source: $count, target: saved });
+```
+
+## Never emit
+
+Any import from `effector`, `effector-react` or `@fiberfx/effector`; `createStore`, `createEvent`, `createEffect`, `createDomain`, `guard`, `forward`, `createApi`, `withFactory`, `is`, `serialize`, `hydrate`, `createWatch`.
+
+## Next
+
+- /hypergraph/coming-from-effector/units-and-wiring/llms.txt
+- /hypergraph/coming-from-effector/scopes-and-testing/llms.txt
+- /hypergraph/coming-from-effector/frameworks/llms.txt
+- /hypergraph/llms.txt
+
+## Navigation
+
+- [Read this page in the browser](/hypergraph/coming-from-effector)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/hypergraph/llms.txt)
+
+<!-- /hypergraph/coming-from-effector/units-and-wiring/llms.txt -->
+
+# Units and wiring (coming from Effector) — Mercury LMS
+
+> Effector's units and composition in Hypergraph (`@fiberfx/hypergraph`): `store`/`event`/`effect` replace the `create*` constructors; `sample`, `combine`, `split`, `attach`, `merge`, `restore` and the unit methods retain their names, but restore supports only the single-unit form; `guard`, `forward` and `createApi` are rewritten with `sample` and `.on`.
+
+## Read this when
+
+You are porting an Effector model's units or wiring, or writing one from Effector habits.
+
+## Units
+
+| Effector | Hypergraph |
+|---|---|
+| `createStore(init, {name, sid, serialize, updateFilter, skipVoid})` | `store(init, {…same, schema?})` |
+| `$s.on` `.reset` `.map` `.getState` `.updates` `.watch` | same |
+| `$s.setState` `.off` `.reinit` | not in the API: use an event + `.on` / `.reset` |
+| `createEvent<T>()` | `event<T>({name?})` |
+| `ev.filter({fn})` | `ev.filter(fn)` or `ev.filter({fn})` |
+| `createEffect(handler)` | `effect<P, D>(handler)` |
+| `fx.use(handler)` | not in the API: `fork({handlers: [[fx, handler]]})` |
+| — | `effect({request} \| {channel} \| {timer})`: declared; needs `fork({performers})` until H4 |
+
+Notes: `$s.watch(fn)` fires now and on updates; `watch($s, fn)` fires on updates only. `getState()` reads the caller's scope. `sid` is the compiler's job by design, but today its sid pass covers only the legacy facade: write `sid` on a store that must travel or survive an edit (an unnamed unit gets a run-time `api:<n>`).
+
+## Wiring
+
+`sample({clock, source, filter, fn, target, batch})` — returns `target`, or a new unit without one.
+`combine(shape, fn?)` or `combine($a, $b, fn?)` — non-store fields are constants.
+`split({source, clock?, match, cases})`, or `split(source, match)` → `{[case]: Event, __: Event}`.
+`attach({effect, source?, mapParams?})` — `effect` may be `(source, params) => …`.
+`merge([units])`, `restore(unit, init)`. Also as functions: `on`, `reset`, `map`, `filter`, `filterMap`, `prepend`.
+
+## Rewrites
+
+| Effector | Hypergraph |
+|---|---|
+| `guard({clock, filter, target})` | `sample({clock, filter, target})` |
+| `forward({from, to})` | `sample({clock: from, target: to})` |
+| `createApi($s, {a: fnA, b: fnB})` | `const a = event(); $s.on(a, fnA)` per key |
+
+## Minimal example
+
+```ts
+import { effect, event, sample, store } from "@fiberfx/hypergraph";
+
+const fetchUserFx = effect<number, string>(async (id) => `user ${id}`);
+const opened = event<number>();
+const $enabled = store(true);
+export const $user = store<string | null>(null).on(fetchUserFx.doneData, (_, u) => u);
+sample({ clock: opened, filter: $enabled, target: fetchUserFx });
+```
+
+## Errors
+
+`HypergraphError.code`: `pure-call` (a pure fn called a unit), `derived-call`, `derived-target`, `disposed-scope`, `reset-reason`.
+
+## Never emit
+
+`createStore`, `createEvent`, `createEffect`, `guard`, `forward`, `createApi`, `.setState`, `.use`, `.off`, `.reinit`, or any import from `effector`.
+
+## Navigation
+
+- [Read this page in the browser](/hypergraph/coming-from-effector/units-and-wiring)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/hypergraph/llms.txt)
+
+<!-- /hypergraph/coming-from-effector/scopes-and-testing/llms.txt -->
+
+# Scopes and testing (coming from Effector) — Mercury LMS
+
+> Effector's scope model in Hypergraph (`@fiberfx/hypergraph`): `fork`, `allSettled`, `scopeBind` keep their names; `serialize` → `snapshot` (a frame), `hydrate` → `apply` (returns misses); `diff` and `dispose` are new; no domains; no `scope.getState`.
+
+## Read this when
+
+You are porting Effector tests, SSR serialization or scope handling, or reading a store's value in a scope.
+
+## The map
+
+| Effector | Hypergraph |
+|---|---|
+| `fork({values, handlers})` | `fork({values, handlers, performers})` |
+| `fork(domain, cfg)` | none: `fork(cfg)` |
+| `values: [[$s, v]]` or `{[sid]: v}` | same, or a `snapshot` frame |
+| `handlers: [[fx, fn]]` | same (`fn` or another effect) |
+| `allSettled(unit, {scope, params})`, `allSettled(scope)` | same |
+| `scope.getState($s)` | `scopeBind(() => $s.getState(), {scope})()` |
+| `scopeBind(unit, {scope, safe})` | `scopeBind(fn, {scope, safe})` |
+| `serialize(scope, {ignore})` | `snapshot(scope, {ignore})` |
+| `serialize(...)[sid]` | `snapshot(...).values[sid].value` |
+| `serialize(..., {onlyChanges})` | no option |
+| `hydrate(scope, {values})` → void | `apply(scope, frame)` → `[{unit, reason: {kind: "removed"} \| {kind: "shape", from, to}}]` |
+| — | `diff(scope, since)` → `{format, gen, from, changed, removed}` |
+| — | `dispose(scope)`; later calls → `HypergraphError` `disposed-scope` |
+| `createWatch({unit, fn, scope})` | `watch(unit, fn, {scope})` |
+
+Frame: `{format: "mhg-scope/1", gen, values: {[sid]: {shape, schema?, value}}}`. Only stores with a sid appear; today a sid is written by hand (the compiler's sid pass covers only the legacy facade).
+
+## Minimal example (a test)
+
+```ts
+import { allSettled, effect, fork, scopeBind, store } from "@fiberfx/hypergraph";
+
+const fetchUserFx = effect<number, string>(async (id) => `real ${id}`);
+const $user = store<string | null>(null).on(fetchUserFx.doneData, (_, u) => u);
+
+const scope = fork({ handlers: [[fetchUserFx, async (id: number) => `stub ${id}`]] });
+await allSettled(fetchUserFx, { scope, params: 7 });
+scopeBind(() => $user.getState(), { scope })(); // "stub 7"
+```
+
+## The scope across an await
+
+Default (browser): as Effector, a settled effect restores its caller's scope, so an unrelated call during the await can join it; capture with `scopeBind`. Node: `setCarrier(nodeCarrier())`, with `nodeCarrier` from `@fiberfx/hypergraph/node`.
+
+## Never emit
+
+`serialize`, `hydrate`, `fork(domain)`, `scope.getState`, `createWatch`, `fx.use`, or any import from `effector`.
+
+## Navigation
+
+- [Read this page in the browser](/hypergraph/coming-from-effector/scopes-and-testing)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/hypergraph/llms.txt)
+
+<!-- /hypergraph/coming-from-effector/frameworks/llms.txt -->
+
+# Frameworks, after effector-react — Mercury LMS
+
+> Mercury's only view layer is Mercury Hyperscript (`@fiberfx/hyperscript`, hooks at `@fiberfx/hyperscript/hooks`). The Hypergraph bindings `useUnit` and `Provider` are planned at `@fiberfx/hypergraph/hyperscript` and NOT exported yet. Until then, read a store with `useSyncExternalStore` + `watch` + `getState`, unscoped.
+
+## Read this when
+
+You are porting a component that used effector-react, effector-vue or effector-solid, or you need a store's value in a Hyperscript component.
+
+## The map
+
+| effector-react | Mercury |
+|---|---|
+| `useUnit`, `Provider` | planned at `@fiberfx/hypergraph/hyperscript`; not importable today |
+| `useStore` | none (deprecated for `useUnit`) |
+| `useEvent` | none |
+| `useStoreMap` | none: derive with `.map` / `combine`, then read |
+| `useList` | none: map the array in JSX |
+| `useGate`, `createGate`, `connect`, `createComponent` | none |
+| effector-vue, effector-solid | none |
+
+Hyperscript hooks: `useState`, `useReducer`, `useRef`, `useEffect`, `useLayoutEffect`, `useCallback`, `useMemo`, `useContext`, `useImperativeHandle`, `useDebugValue`, `useErrorBoundary`, `useId`, `useSyncExternalStore`.
+
+## Minimal example (today, outside any scope)
+
+```tsx
+import { useSyncExternalStore } from "@fiberfx/hyperscript/hooks";
+import { event, store, watch, type Store } from "@fiberfx/hypergraph";
+
+const increment = event<number>();
+const $count = store(0).on(increment, (n, by) => n + by);
+
+const useStoreValue = <T,>(unit: Store<T>): T =>
+  useSyncExternalStore((onChange) => watch(unit, onChange), () => unit.getState());
+
+export function Counter() {
+  const count = useStoreValue($count);
+  return <button onClick={() => increment(1)}>Clicked {count} times</button>;
+}
+```
+
+Limit: no scope reaches the component this way; scoped rendering (SSR, per-island scopes) waits for `Provider`.
+
+## Never emit
+
+Imports from `react`, `effector-react`, `effector-vue`, `effector-solid` or `@fiberfx/hypergraph/hyperscript` (not exported yet); `useStore`, `useStoreMap`, `useList`, `useGate`.
+
+## Navigation
+
+- [Read this page in the browser](/hypergraph/coming-from-effector/frameworks)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/hypergraph/llms.txt)
+
+<!-- /content/llms.txt -->
+
+# Content, Mercury's page documents — Mercury LMS
+
+> `@fiberfx/schema` 4.0.0 holds the page document format and `parseDocument`; `@fiberfx/content` 4.0.0 holds the block catalog and `renderDocument`. A page is JSON data: parse it against a schema registry, render it through a renderer registry, mount the element.
+
+## Read this when
+
+You show, check or produce a Mercury page document, or you need to know which package owns which step. This page is the course's landing.
+
+## The contract
+
+- `@fiberfx/schema`: `parseDocument(input, registry)` → `{ ok: true, document }` or a refusal `{ ok: false, code, path, reason, subject, node? }`. Also `createSchemaRegistry`, `DEFAULT_LIMITS`, `FORMAT_VERSION`, `applyCommand`, `validateCommand`, `migrateDocument`, `inspectDocument`, `resolveReferences`, `resolveResponsive`.
+- `@fiberfx/content`: `renderDocument(document, options)` → `{ element, report }`; `contentRegistry()` (every catalog block), `contentSchema()` (the schema registry content documents validate against), `CATALOG`, `catalogEntries()`, `exampleDocument(entry)`, `createRendererRegistry`, `schemaFor`, `BREAKPOINTS`.
+- Peer dependencies of `@fiberfx/content`: `@fiberfx/hyperscript`, `@fiberfx/schema`, `@fiberfx/ui`, each 4.0.0.
+- Order: `parseDocument` first, then `renderDocument` on `parsed.document`, then `render(element, container)` from `@fiberfx/hyperscript`.
+
+## Minimal example
+
+```ts
+import { render } from "@fiberfx/hyperscript";
+import { parseDocument } from "@fiberfx/schema";
+import { contentSchema, renderDocument } from "@fiberfx/content";
+
+const main = document.querySelector<HTMLElement>("[data-page]");
+const response = await fetch("/page.json", { headers: { accept: "application/json" } });
+const parsed = parseDocument(await response.text(), contentSchema());
+if (main && parsed.ok) {
+  const { element } = renderDocument(parsed.document, { mode: "publication", revision: 0 });
+  render(element, main);
+}
+```
+
+## Never emit
+
+A function, an element or a DOM handle inside a document's props: a document is JSON data only. A `renderDocument` call on input that `parseDocument` has not accepted.
+
+## Next
+
+- Page documents: /content/documents (/content/documents/llms.txt)
+- Rendering a document: /content/rendering (/content/rendering/llms.txt)
+- The block catalog: /content/blocks (/content/blocks/llms.txt)
+- References, capabilities and responsive values: /content/references (/content/references/llms.txt)
+- Add a block: /content/add-a-block (/content/add-a-block/llms.txt)
+- The site: /llms.txt
+- This companion: /content/llms.txt
+
+## Navigation
+
+- [Read this page in the browser](/content)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+
+### Chapter companions
+
+- [/content/add-a-block](/content/add-a-block/llms.txt)
+- [/content/blocks](/content/blocks/llms.txt)
+- [/content/documents](/content/documents/llms.txt)
+- [/content/references](/content/references/llms.txt)
+- [/content/rendering](/content/rendering/llms.txt)
+
+<!-- /content/documents/llms.txt -->
+
+# Page documents: nodes, the schema and parseDocument — Mercury LMS
+
+> A Mercury page document (`@fiberfx/schema` 4.0.0) is JSON: `format`, `id`, `kind`, ordered `roots` and a flat `nodes` record. `parseDocument(input, registry)` answers `{ ok: true, document }` or exactly one refusal, and never throws.
+
+## Read this when
+
+You write, generate or store a page document, build a schema registry, or handle a refused document.
+
+## The contract
+
+- Document: `{ format: 1, id: string, kind: "page" | "fragment" | "template", roots: NodeId[], nodes: { [id]: DocumentNode } }`. Unknown fields are kept; they must be JSON.
+- Node: `{ id, type, version, props, slots }`. `id` equals its key in `nodes`. `version` is an integer from 1. `props` is JSON only. `slots` maps a slot name to an ordered list of child ids.
+- Reference in a prop: `{ "$ref": "asset" | "route" | "entity" | "fragment", "id": string }`; resolved outside the document.
+- `createSchemaRegistry({ blocks, limits?, breakpoints?, tokens? })`. Throws `TypeError` on a duplicate type, a version below 1, a migration gap, or defaults failing their schema.
+- `BlockDefinition`: `{ type, version, props, defaults?, slots?, migrations? }`. Prop kinds: `string`, `number`, `boolean`, `reference`, `token`, `list`, `record`, `json`; each may be `optional` or `responsive`. Slot: `{ allow?, min?, max? }`.
+- `DEFAULT_LIMITS`: `maxDepth` 32, `maxBytes` 1048576 (compact JSON), `maxNodes` 10000, `maxPropDepth` 16.
+- Catalog documents: `parseDocument(input, contentSchema())` with `contentSchema` from `@fiberfx/content`; breakpoints `sm`, `md`, `lg`, `xl`.
+- `parseDocument(input: unknown, registry)` → `{ ok: true, document }` (the input itself, nothing coerced or defaulted) or `{ ok: false, code, path, reason, subject: "document", node? }`.
+- Check order, first failure wins: shape (`malformed`, `newer-format`, `too-many-nodes`, `not-json-safe`, `too-deep`) → size (`too-large`) → structure (`unknown-child`, `multiple-parents`, `cycle`, `too-deep`, `orphan`) → each known node (`unknown-slot`, `slot-cardinality`, `slot-not-allowed`, `unknown-prop`, `missing-prop`, `invalid-prop`) → a fragment referencing itself (`cycle`).
+- Unknown block type or newer version: kept and not checked against a definition. Older version: `outdated-block`; migrate first.
+
+## Minimal example
+
+```ts
+import { parseDocument } from "@fiberfx/schema";
+import { contentSchema } from "@fiberfx/content";
+
+const parsed = parseDocument(
+  {
+    format: 1,
+    id: "hello",
+    kind: "page",
+    roots: ["page"],
+    nodes: {
+      page: { id: "page", type: "page", version: 1, props: { title: "Hello" }, slots: { content: ["intro"] } },
+      intro: { id: "intro", type: "paragraph", version: 1, props: { text: "A first page." }, slots: {} },
+    },
+  },
+  contentSchema(),
+);
+if (!parsed.ok) console.log(parsed.code, parsed.path, parsed.reason);
+```
+
+## Never emit
+
+A nested node tree inside `props` or `slots`: children are ids in slots. A function, an element or a DOM handle in props. A `try`/`catch` around `parseDocument` in place of checking `parsed.ok`.
+
+## Next
+
+- Rendering a document: /content/rendering (/content/rendering/llms.txt)
+- The course: /content (/content/llms.txt)
+- This companion: /content/documents/llms.txt
+
+## Navigation
+
+- [Read this page in the browser](/content/documents)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/content/llms.txt)
+
+<!-- /content/rendering/llms.txt -->
+
+# Rendering a document: renderDocument — Mercury LMS
+
+> `renderDocument(document, options)` from `@fiberfx/content` 4.0.0 turns a parsed page document into `{ element, report }`: one `@fiberfx/hyperscript` VNode and the list of unsupported blocks. No fetch, no storage, no provider; preview and publication give the same markup.
+
+## Read this when
+
+You show a page document, choose its render options, pass what the host resolved, or decide whether a page with unknown blocks may publish.
+
+## The contract
+
+- `renderDocument(document: MercuryDocument, options: RenderOptions): { element: VNode, report: { unsupported: NodeId[], publishable: boolean } }`. Pass `parsed.document` from `parseDocument`; it does not validate.
+- Required: `mode: "preview" | "publication"` (no block sees it; markup never depends on it), `revision: number` (written as `data-revision`).
+- Optional: `theme: "light" | "dark"` (default `light`), `lang`, `dir: "ltr" | "rtl"`, `registry` (default `contentRegistry()`), `resolved: { ["<kind>:<id>"]: { src?, href?, title?, items?, error? } }`, `capabilities: ("embed" | "form")[]` (default none), `allowUnsupported` (default `true`).
+- Root: `<div class="mx-content light-theme|dark-theme" data-document=<id> data-revision=<revision> lang dir>`.
+- Blocks get `{ node, props, context }`: `props` with responsive values at their base; `node.props` keeps overrides; `context` is `{ theme, capabilities, resolve, slot }`.
+- Unregistered type: `<div class="mx-content-unsupported" data-unsupported=<type> role="note">` with "This content can't be shown here." and its slots rendered inside; its id joins `report.unsupported` in document order.
+- `report.publishable` is `false` only when something is unsupported and `allowUnsupported: false`.
+- Mount with `render(element, container)` from `@fiberfx/hyperscript`.
+
+## Minimal example
+
+```ts
+import { render } from "@fiberfx/hyperscript";
+import { parseDocument } from "@fiberfx/schema";
+import { contentSchema, renderDocument } from "@fiberfx/content";
+
+const main = document.querySelector<HTMLElement>("[data-page]");
+const response = await fetch("/page.json", { headers: { accept: "application/json" } });
+const parsed = parseDocument(await response.text(), contentSchema());
+if (main && parsed.ok) {
+  const { element, report } = renderDocument(parsed.document, { mode: "publication", revision: 0, lang: "en", theme: "light" });
+  render(element, main);
+  if (report.unsupported.length > 0) main.dataset.unsupported = String(report.unsupported.length);
+}
+```
+
+## Never emit
+
+A `fetch` inside a block for its data: pass the host's answers in `resolved`. A branch on `mode` inside a block: blocks can't see it. A `throw` for an unsupported block: it is reported, not an error.
+
+## Next
+
+- The block catalog: /content/blocks (/content/blocks/llms.txt)
+- Page documents: /content/documents (/content/documents/llms.txt)
+- This companion: /content/rendering/llms.txt
+
+## Navigation
+
+- [Read this page in the browser](/content/rendering)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/content/llms.txt)
+
+<!-- /content/blocks/llms.txt -->
+
+# The block catalog: nine groups, one registry — Mercury LMS
+
+> `@fiberfx/content` 4.0.0's catalog: 51 blocks in nine groups plus the internal `column`, all in `contentRegistry()`. Each entry declares a block `type`, a schema, its host capabilities (`embed`, `form` or none), a renderer and an example.
+
+## Read this when
+
+You write a node of a given block type, need a block's props and slots, or need to know what a block renders and what it asks of the host.
+
+## The contract
+
+- `CATALOG`: `{ group, names }[]`, nine groups, 51 names. `catalogEntries()`: every `BlockEntry` (adds `Column`, group `Internal`). `exampleDocument(entry)`: a one-block page document from the entry's example.
+- `BlockEntry`: `{ name, group, type, definition, capabilities, render, example }`.
+- Types by group (`?` optional prop):
+  - Structure: `page` {title; slot content}, `section` {background? default|muted|primary, responsive; content}, `container` {size? sm–xl; content}, `columns` {count 2–4, reverse? responsive; columns: only `column`, 2–4}, `grid` {cols 1–6; items}, `stack` {gap? sm–xl; content}, `divider` {label?}, `spacer` {size sm–xl}, internal `column` {content}.
+  - Text: `heading` {text, level 1–6, size? 1–9}, `paragraph` {text}, `rich-text` {content: [{text, marks? strong|em|code, href?}] ≤500}, `list` {items ≤200, ordered?}, `quote` {text, cite?}, `code` {code, language?}.
+  - Media: `image` {asset ref, alt}, `figure` {asset, alt, caption}, `gallery` {images ≤48 [{asset, alt}]}, `video` {title, asset, captions? asset, transcript?}, `audio` {title, asset, transcript?}, `embed` {url, title} (capability `embed`).
+  - Navigation: `site-header` {brand; navigation: only `navigation`, ≤1}, `navigation` {label, links ≤40 [{label, href}]}, `breadcrumbs` {items ≤12 [{label, href?}]}, `footer` {text?; content}, `anchor-links` {label, links ≤40 [{label, target}]}.
+  - Composition: `button` {label, href, variant? primary|secondary|ghost}, `button-group` {buttons: only `button`, 1–4}, `hero` {title, subtitle?; actions: button|button-group ≤1}, `cta-section` {title, text?; actions}, `card` {title, text?, href?}, `card-grid` {columns? 1–4; cards: only `card`}, `feature-list` {items ≤24 [{title, text}]}, `logo-list` {label, logos ≤24 [{name, asset?}]}, `testimonials` {items ≤24 [{quote, author, role?}]}.
+  - Interactive content: `accordion` {items ≤30 [{title, text}]}, `tabs` {label?, items ≤12 [{label, text}]}, `disclosure` {summary, text}, `carousel` {label?, autoAdvance?, slides ≤20 [{text}]}.
+  - Form content: `form` {label, action route ref; fields} (capability `form`), `field-group` {legend; fields}, `field` {kind text|email|tel|number|url|textarea|checkbox|select, name, label, required?, options? ≤50}, `form-submit` {label, success?, error?, state? idle|success|error} (capability `form`).
+  - Data-backed content: `collection-feed`, `article-list`, `related-content` {title, collection entity ref}; `author-card` {name, bio?, href?}.
+  - Editorial page: `article-header` {title, subtitle?, author?, published?}, `article-body` {content}, `table-of-contents` {label?, items ≤50 [{label, target}]}, `metadata` {items ≤20 [{label, value}]}, `related-articles` {title, collection entity ref}.
+- Behaviour: images and media never fetch; an unresolved image shows its alt as `role="img"`. `embed` frames only absolute https with the `embed` capability, `sandbox="allow-scripts"`; else a link. Every panel and slide is in static markup; Tabs and Carousel upgrade once mounted. A form posts natively only with `form` granted and a resolved route; else it is disabled and says so. Data-backed blocks render `data-state` `error`, `unavailable`, `empty` or `ready` from the host's snapshot. Author hrefs pass `safeHref`: relative, `#`, `?`, http, https, mailto, tel; anything else renders with no href.
+
+## Minimal example
+
+```ts
+import { catalogEntries, contentSchema, exampleDocument, renderDocument } from "@fiberfx/content";
+import { parseDocument } from "@fiberfx/schema";
+
+for (const entry of catalogEntries().filter((entry) => entry.group !== "Internal")) {
+  const parsed = parseDocument(exampleDocument(entry), contentSchema());
+  if (!parsed.ok) throw new Error(`${entry.name}: ${parsed.code} at ${parsed.path}`);
+  const { report } = renderDocument(parsed.document, { mode: "preview", revision: 1 });
+  console.log(entry.group, entry.name, entry.type, report.unsupported.length);
+}
+```
+
+## Never emit
+
+A catalog name as a node's `type` (`"RichText display"`): documents use the type (`"rich-text"`). Raw HTML in a rich-text run. A `level` chosen for its visual size: set `size` instead. A child whose type a slot's `allow` excludes (`slot-not-allowed`).
+
+## Next
+
+- Rendering a document: /content/rendering (/content/rendering/llms.txt)
+- The course: /content (/content/llms.txt)
+- This companion: /content/blocks/llms.txt
+
+## Navigation
+
+- [Read this page in the browser](/content/blocks)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/content/llms.txt)
+
+<!-- /content/references/llms.txt -->
+
+# References, capabilities and responsive values — Mercury LMS
+
+> What `renderDocument` (`@fiberfx/content` 4.0.0) leaves to the host: a `resolved` record keyed `<kind>:<id>` for every reference, the `embed` and `form` capabilities, and responsive props read at their base. Blocks never fetch, and every missing answer has a visible fallback.
+
+## Read this when
+
+You host Mercury pages and must supply images, routes or collections, grant or withhold embeds and forms, or read a responsive prop at a breakpoint.
+
+## The contract
+
+- Reference in a prop: `{ $ref: "asset" | "route" | "entity" | "fragment", id }`. Key: `referenceKey(reference)` → `"<$ref>:<id>"` (`@fiberfx/schema`).
+- `renderDocument(document, { resolved })`: `resolved: { [key]: { src?, href?, title?, items?: { title, href?, summary? }[], error? } }`. Nothing in the package fetches.
+- Readers: `image`/`figure`/`gallery`/`logo-list`/`audio` read `src`; `video` reads `src` for its asset and `captions`; `form` reads `href` (with `form` granted); `collection-feed`/`article-list`/`related-content`/`related-articles` read `items` and `error`. No catalog block reads `title`.
+- Data-backed states: key missing → `unavailable`; `items: []` → `empty`; `error` → `error` (alert); items → `ready`.
+- `@fiberfx/schema`: `collectReferences(document)` → `{ node, path, reference }[]`; `resolveReferences(document, resolve)` → `Map<key, { status: "resolved" | "unknown" | "unauthorized", reference, details? }>`, once per key; `unauthorized` keeps only the identity; any other answer throws `TypeError`. Converting a `Resolution` to `resolved` is the host's job.
+- `capabilities: ("embed" | "form")[]`, none by default. `renderDocument` does not enforce an entry's declared capabilities; each block reads `context.capabilities`.
+- `embed`: an `<iframe sandbox="allow-scripts">` only with `embed` granted and an absolute https URL; else a link. `form`: posts only with `form` granted and a safe resolved `href`; else disabled, with "This form can't be sent from here." `form-submit`: disabled without `form`.
+- Author `href`s kept: `/`, `./`, `../`, `#`, `?`, `http:`, `https:`, `mailto:`, `tel:`. Dropped (label kept, no href): other schemes, `//`, `/\`, `\\`, any control character. `safeHref` and `httpsUrl` are not exported.
+- Responsive value: `{ $responsive: { base?, overrides: { [breakpoint]: value | { $removed: true } } } }`, only on props with `responsive: true` (catalog: `section.background`, `columns.reverse`). `BREAKPOINTS` = `["sm", "md", "lg", "xl"]`. An override at another name, or a wrapper on a non-responsive prop: `invalid-prop`.
+- Blocks get the base in `props`; `node.props` keeps overrides. `section` renders the base only. `columns` writes `data-reverse` / `data-reverse-<bp>`, and no stylesheet in the repository reads them.
+- `resolveResponsive(value, breakpoint, BREAKPOINTS)` → `{ state: "explicit" | "inherited" | "removed" | "absent", from?, value? }`.
+
+## Minimal example
+
+```ts
+import { renderDocument, type ResolvedReference } from "@fiberfx/content";
+import { collectReferences, referenceKey, type MercuryDocument } from "@fiberfx/schema";
+
+function show(document: MercuryDocument, sources: { readonly [id: string]: string }) {
+  const resolved: { [key: string]: ResolvedReference } = {};
+  for (const { reference } of collectReferences(document)) {
+    const src = reference.$ref === "asset" ? sources[reference.id] : undefined;
+    if (src !== undefined) resolved[referenceKey(reference)] = { src };
+  }
+  return renderDocument(document, { mode: "publication", revision: 0, resolved, capabilities: ["embed"] });
+}
+```
+
+## Never emit
+
+A `fetch` inside a block to resolve a reference. A resolved key without its kind (`"hero"` for `"asset:hero"`). An `import { safeHref } from "@fiberfx/content"`: it is not exported. A responsive wrapper on a prop whose schema isn't `responsive`.
+
+## Next
+
+- Add a block: /content/add-a-block (/content/add-a-block/llms.txt)
+- Rendering a document: /content/rendering (/content/rendering/llms.txt)
+- This companion: /content/references/llms.txt
+
+## Navigation
+
+- [Read this page in the browser](/content/references)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/content/llms.txt)
+
+<!-- /content/add-a-block/llms.txt -->
+
+# Add a block: the capstone — Mercury LMS
+
+> Add your own block to Mercury page documents (`@fiberfx/content` 4.0.0): write a `BlockEntry`, put it in a registry with `createRendererRegistry([...catalogEntries(), entry])`, derive its schema with `schemaFor(registry)`, then parse and render `exampleDocument(entry)` with both.
+
+## Read this when
+
+You need a block the catalog doesn't have, or you are checking a block entry before a page uses it.
+
+## The contract
+
+- `BlockEntry`: `{ name, group, type, definition, capabilities, render, example }`. `group` is a catalog group or `"Internal"` (closed union). `definition.type` must equal `type`. `capabilities`: `[]`, `["embed"]` or `["form"]`.
+- `render({ node, props, context })`: `props` at their base; `context` is `{ theme, capabilities, resolve, slot }`, never the mode. `.tsx` with `jsxImportSource: "@fiberfx/hyperscript"`.
+- `example`: `{ props, slots?: { [slot]: { type, props, slots? }[] } }`.
+- `createRendererRegistry(entries)` throws `Error` for a type registered twice (`block type "x" is registered twice`) or a type mismatch (`"Name" declares type "a" but its definition is "b"`).
+- `schemaFor(registry)` → the schema registry (every definition, `BREAKPOINTS`). It throws `TypeError` for a version below 1, a migration gap, failing defaults, an unknown prop kind, or any `token` prop (no token sets are declared).
+- Parse your documents with `schemaFor(registry)`. Under `contentSchema()` your type is unknown, so it is kept and unchecked. Render with `{ registry }`, or your node is unsupported.
+- The example check: parse `exampleDocument(entry)`, render it, and expect non-empty markup with `report.unsupported` empty. `exampleDocument` takes versions from `contentRegistry()`, else 1, so keep a new block at version 1.
+- `safeHref` and `httpsUrl` are not exported; check author links yourself. Declared capabilities aren't enforced; read `context.capabilities`.
+
+## Minimal example
+
+```tsx
+import { parseDocument } from "@fiberfx/schema";
+import { catalogEntries, createRendererRegistry, exampleDocument, renderDocument, schemaFor, type BlockEntry } from "@fiberfx/content";
+
+const callout: BlockEntry = {
+  name: "Callout",
+  group: "Composition",
+  type: "callout",
+  definition: { type: "callout", version: 1, props: { title: { kind: "string", maxLength: 120 } }, slots: { content: {} } },
+  capabilities: [],
+  render: ({ node, props, context }) => (
+    <aside class="callout" role="note">
+      <p>{typeof props.title === "string" ? props.title : ""}</p>
+      {context.slot(node, "content")}
+    </aside>
+  ),
+  example: { props: { title: "Before you start" }, slots: { content: [{ type: "paragraph", props: { text: "Inside." } }] } },
+};
+
+const registry = createRendererRegistry([...catalogEntries(), callout]);
+const parsed = parseDocument(exampleDocument(callout), schemaFor(registry));
+if (!parsed.ok) throw new Error(`${parsed.code} at ${parsed.path}`);
+const { report } = renderDocument(parsed.document, { mode: "preview", revision: 1, registry });
+if (report.unsupported.length > 0) throw new Error("callout is unsupported");
+```
+
+## Never emit
+
+A `group` outside the catalog's nine or `"Internal"`. A `definition.type` that differs from `type`. A `token` prop with `schemaFor`. A parse against `contentSchema()` for a document using your block. A `renderDocument` call without `registry` for one.
+
+## Next
+
+- References, capabilities and responsive values: /content/references (/content/references/llms.txt)
+- The block catalog: /content/blocks (/content/blocks/llms.txt)
+- This companion: /content/add-a-block/llms.txt
+
+## Navigation
+
+- [Read this page in the browser](/content/add-a-block)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/content/llms.txt)
+
+<!-- /live-mercury/llms.txt -->
+
+# Live Mercury, islands on the BEAM — Mercury LMS
+
+> Mercury hyperscript components ("islands") inside Phoenix and LiveView. Server: `LiveMercury.mercury/1` (echo/apps/live_mercury). Browser: `@fiberfx/live-mercury` 4.0.0, peer `@fiberfx/hyperscript`. EDU's islands are built by `mx build --lib` with no Node.
+
+## Read this when
+
+You put a Mercury component on a page Phoenix renders, wire it to a LiveView, or build its bundle. This is the course's landing; LM0–LM5 follow, and LM6 is planned.
+
+## The contract
+
+- An island is one element with `phx-update="ignore"` and a `phx-hook`; a client hook mounts a hyperscript component into it.
+- Server, LiveView host: `<LiveMercury.mercury name="X" ...props />` renders `phx-hook="MercuryHook"`, `data-name="X"`, `data-props`, `data-props-diff`, `data-streams-diff`, `data-slots`, `data-ssr`, `data-use-diff`.
+- Browser: `getHooks({ X })` returns `{ MercuryHook }` for `new LiveSocket(path, Socket, { hooks })`. The server's `name` must equal the map's key.
+- EDU host: `<.island id bundle props>` (`EchoEduWeb.Island`) renders `phx-hook="CourseIsland"`, `data-bundle`, and a `<script type="application/json">` props child. The bundle exports `default` and `hook = courseIsland(Component)` from `@echd/edu-boot/island`.
+- `@fiberfx/live-mercury` exports: `getHooks`, `createMercuryHook`, `useLiveMercury`, `LiveMercuryProvider`, `LiveMercuryContext`, `Link`, `decodeCompactJson`, `decodeCompactPatch`, `applyPatch`, `applyOperation`, `getValueByPointer`.
+
+## Minimal example
+
+```ts
+import { Socket } from "@fiberfx/phoenix";
+import { LiveSocket } from "@fiberfx/phoenix_live_view";
+import { getHooks } from "@fiberfx/live-mercury";
+import { KanBoard } from "./board";
+
+const liveSocket = new LiveSocket("/live", Socket, { hooks: getHooks({ KanBoard }) as never });
+liveSocket.connect();
+```
+
+## Never emit
+
+An import from `react` or `react-dom`. Islands render with `@fiberfx/hyperscript`.
+
+## Limits
+
+- EDU's islands are built by mx in the image (no `node` in that stage). The KAN views' `kan.mjs` is committed and built outside the image.
+
+## Next
+
+- LM0: /live-mercury/islands (/live-mercury/islands/llms.txt)
+- LM1: /live-mercury/liveview (/live-mercury/liveview/llms.txt)
+- LM2: /live-mercury/building (/live-mercury/building/llms.txt)
+- LM3: /live-mercury/props-and-streams (/live-mercury/props-and-streams/llms.txt)
+- LM4: /live-mercury/server-rendering (/live-mercury/server-rendering/llms.txt)
+- LM5: /live-mercury/testing (/live-mercury/testing/llms.txt)
+- LM6, the capstone (an island in a LiveView built with no Node): planned; waits on epic 24's H3–H5 and on `kan.mjs` leaving Vite
+- The site: /llms.txt
+- This companion: /live-mercury/llms.txt
+
+## Navigation
+
+- [Read this page in the browser](/live-mercury)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+
+### Chapter companions
+
+- [/live-mercury/building](/live-mercury/building/llms.txt)
+- [/live-mercury/islands](/live-mercury/islands/llms.txt)
+- [/live-mercury/liveview](/live-mercury/liveview/llms.txt)
+- [/live-mercury/props-and-streams](/live-mercury/props-and-streams/llms.txt)
+- [/live-mercury/server-rendering](/live-mercury/server-rendering/llms.txt)
+- [/live-mercury/testing](/live-mercury/testing/llms.txt)
+
+<!-- /live-mercury/islands/llms.txt -->
+
+# Islands: the element and its mount — Mercury LMS
+
+> LM0. An island is one server-rendered element with `phx-update="ignore"` and a `phx-hook`, into which a Mercury hyperscript component mounts. Two hosts: `LiveMercury.mercury/1` (hook `MercuryHook`, component by name) and `EchoEduWeb.Island.island/1` (hook `CourseIsland`, component by bundle URL).
+
+## Read this when
+
+You render an island from HEEx, register its component on the client, or debug an island that does not mount.
+
+## The contract
+
+- `<.mercury name="X" ...>` (`import LiveMercury`). Reserved assigns: `name` (required), `id` (default `"X-<n>"`, per-process counter), `class`, `ssr` (default `config :live_mercury, :ssr`, `false`), `diff` (default `:enable_props_diff`, `true`), `socket` (only decides the first render is dead). Every other assign is a prop; a `%Phoenix.LiveView.LiveStream{}` assign is a stream; the default `:inner_block` slot becomes `children`. Props encode via the `LiveMercury.Encoder` protocol.
+- Element attributes: `data-name`, `data-props` (compact JSON), `data-props-diff`, `data-use-diff`, `data-streams-diff`, `data-slots` (base64 default slot), `data-ssr`, `phx-update="ignore"`, `phx-hook="MercuryHook"`.
+- Client: `getHooks(components)` → `{ MercuryHook }`; `createMercuryHook(resolve)` takes `el => Component | Promise<Component>`. The component gets `{...props, ...streams, pushEvent, pushEventTo, handleEvent, removeHandleEvent, upload, uploadTo}` and the slot as a child, inside `LiveMercuryProvider`. With `data-ssr`, the first paint clears the server markup (no hydration).
+- EDU: `<.island id bundle props>`; `id` and `bundle` required, `props` a map (default `%{}`), slot = the server render, kept until mount and restored at `destroyed`. Props go in a `<script type="application/json">` first child, `<` written as `\u003c`. URL: `EchoEduWeb.Island.bundle_url(name)` → `/_edu/assets/edu-island-<name>.js`.
+- An EDU bundle exports `default` (its component) and `hook = courseIsland(Component)` from `@echd/edu-boot/island`. Its component also gets `islandId`, the element's id; EDU's props win over Live Mercury's keys.
+
+## Minimal example
+
+```ts
+import { courseIsland } from "@echd/edu-boot/island";
+import { DemoIsland } from "./DemoIsland";
+
+export default DemoIsland;
+export const hook = courseIsland(DemoIsland);
+```
+
+## Errors
+
+- `MercuryHook` throws when the element has no `data-name`, or when `getHooks`'s map has no component of that name.
+- `CourseIsland` writes `data-island-error`: `no-bundle`, `import`, `no-hook`, `props` (JSON child does not parse), `render` (the bundle's `mounted` threw). Success sets `data-island-mounted="true"`.
+- Build time: `EchoEduWeb.Island.check_hosts/3` (run by `mix edu.gen`) refuses a `CourseIsland` host outside the body, without a unique id, without `phx-update="ignore"`, with a `data-bundle` that is not a path or http(s) URL, or without a parsing JSON first child.
+
+## Never emit
+
+`phx-hook="ReactHook"`, or an import from `react`. A `<.mercury>` without `name`.
+
+## Next
+
+- LM1, the island in a LiveView: /live-mercury/liveview (/live-mercury/liveview/llms.txt)
+- This companion: /live-mercury/islands/llms.txt
+
+## Navigation
+
+- [Read this page in the browser](/live-mercury/islands)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/live-mercury/llms.txt)
+
+<!-- /live-mercury/liveview/llms.txt -->
+
+# An island in a LiveView: socket, hooks and events — Mercury LMS
+
+> LM1. One LiveSocket per page; `MercuryHook`'s `mounted`/`updated`/`reconnected`/`destroyed`; props that follow the LiveView's assigns as patches; events up with `pushEvent` and down with `push_event` + `handleEvent`.
+
+## Read this when
+
+You connect an island to its LiveView: open the socket, send an event from the island, answer it on the server, or push a server event to one island.
+
+## The contract
+
+- Socket paths: echd_os `socket "/live"`; echo_edu `socket "/_edu/live"`, read by EDU's boot from `<meta name="edu-live-socket">` (else `"/live"`).
+- One LiveSocket per page: `new LiveSocket(path, Socket, { params: { _csrf_token }, hooks })`. The import map points `@fiberfx/phoenix` and `@fiberfx/phoenix_live_view` at one served copy each.
+- `updated()`: `data-use-diff="true"` → `applyPatch(props, data-props-diff)`, else full `data-props`; streams patched from `data-streams-diff`. `reconnected()`: full `data-props`, streams rebuilt from `{}`. `destroyed()`: `render(null)` and every `handleEvent` ref made through the hook removed.
+- Each update publishes a new top-level props object; untouched nested values keep identity.
+- Server side, `diff` on (default): only assigns LiveView marks changed are sent; a key with no old value → `replace /<key>`, else `Jsonpatch.diff` under `/<key>`.
+- Hook functions (props, or `useLiveMercury()`; `null` outside an island): `pushEvent(event, payload?, onReply?)`, `pushEventTo(phxTarget, event, payload?, onReply?)`, `handleEvent(event, cb)` → ref, `removeHandleEvent(ref)`, `upload(name, files)`, `uploadTo(target, name, files)`.
+- EDU server events: one name, `"edu:island"` (`SERVER_EVENT`), envelope `%{id, event, payload}`; filter with `isAddressedTo(payload, islandId)` from `@echd/edu-boot/island`.
+- `Link`: `patch` → `data-phx-link="patch"`; `navigate` → `"redirect"` (same `live_session`); `replace` → `data-phx-link-state="replace"`; `href` alone → plain link.
+
+## Minimal example
+
+```tsx
+import { useEffect } from "@fiberfx/hyperscript/hooks";
+import { useLiveMercury } from "@fiberfx/live-mercury";
+import { isAddressedTo, SERVER_EVENT } from "@echd/edu-boot/island";
+
+export function Ping(props: { islandId?: string }) {
+  const live = useLiveMercury();
+  const handleEvent = live?.handleEvent;
+  const removeHandleEvent = live?.removeHandleEvent;
+  const islandId = props.islandId ?? "";
+  useEffect(() => {
+    if (!handleEvent || !removeHandleEvent) return;
+    const ref = handleEvent(SERVER_EVENT, (payload) => {
+      if (isAddressedTo(payload, islandId)) console.log(payload.event, payload.payload);
+    });
+    return () => removeHandleEvent(ref);
+  }, [handleEvent, removeHandleEvent, islandId]);
+  return <button type="button" onClick={() => live?.pushEvent("demo:clicked", { count: 1 })}>Ping</button>;
+}
+```
+
+```elixir
+def handle_event("demo:clicked", %{"count" => count}, socket) do
+  {:noreply, push_event(socket, "edu:island", %{id: "island-demo", event: "ack", payload: %{count: count}})}
+end
+```
+
+## Never emit
+
+A second `new LiveSocket(...)` on a page that already has one; `phx-update` other than `"ignore"` on an island; an import from `react`.
+
+## Next
+
+- LM2, building islands with mx: /live-mercury/building (/live-mercury/building/llms.txt)
+- Back: /live-mercury/islands/llms.txt
+- This companion: /live-mercury/liveview/llms.txt
+
+## Navigation
+
+- [Read this page in the browser](/live-mercury/liveview)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/live-mercury/llms.txt)
+
+<!-- /live-mercury/building/llms.txt -->
+
+# Building islands with mx: no Node — Mercury LMS
+
+> LM2. `mx build --lib` bundles one entry into one ES module (Rolldown, Hypercompiler, no sid). EDU's five island assets are five such builds; the echd-os image runs them in a stage with no `node` on PATH.
+
+## Read this when
+
+You build an island bundle, add an island to EDU, or change how the image builds islands.
+
+## The contract
+
+- `mx build --lib <entry> --out <file> [--root <dir>] [--external <package>]... [--define <name>=<expression>]... [--minify] [--require-export <name>]...`. `--lib` and `--out` are required; `--root` defaults to `.`; any other flag is refused; `--lib` cannot combine with `--bundle` or `--host`.
+- Imports resolve from members' source, as under `mx dev`. An `--external` package (and its subpaths) stays a bare import for the page's import map. A CSS import becomes an empty module; nothing is written for it.
+- One output file: more than one chunk is an error. `--require-export` missing → exit 1, `"<entry> does not export <names> (it exports …)"`, nothing written.
+- An island's `mx.mod` lists every module its import graph reaches (`require`) and each one's directory (`replace`).
+- EDU's builds (`node/apps/edu-boot/bin/build-assets.sh <dest>`, `MX` = mx binary): `phoenix.js`; `phoenix_live_view.js` (`--external @fiberfx/phoenix`, `--define LV_VSN=…`); `edu-boot.js` (phoenix pair + `phoenix` external); `edu-island-demo.js` (`--require-export default --require-export hook`); `edu-island-kan.js` (also `--require-export KanFigure`). All `--minify`. Islands have no externals.
+- `scripts/edu/build-islands.sh` writes them to `echo/apps/echo_edu/priv/static/edu` (ignored, never committed), adds `mercury.css` and fonts, and fails if any of six files is missing or empty. Served at `/_edu/assets`.
+- Image (`echo/Dockerfile`, stage `edu-islands`, `rust:1.97.0-bookworm`): `cargo build --release --locked --bin mx`, then `! command -v node && MX=… bash scripts/edu/build-islands.sh`; the Elixir stage copies `priv/static/edu` in before `mix release echd_os`.
+
+## Minimal example
+
+```sh
+mx build --lib node/apps/edu-island-demo/src/index.tsx --root node/apps/edu-island-demo \
+  --out priv/static/edu/edu-island-demo.js --minify --require-export default --require-export hook
+```
+
+## Limits
+
+- echd_os's `kan.mjs` (the KAN views' islands) is committed and built by `node/apps/echd-os/bin/kan-build.sh` with pnpm, tsc, Vitest and Vite; the image builds no JavaScript for it.
+- Development: `EDU_ISLAND_DEV` (`name=url,…`) can point `bundle_url(name)` at a Vite dev server's `.ts`/`.tsx` entry; the boot installs Vite's HMR client first.
+- The runtime image is `node:<version>-bookworm-slim`; its `node` is for a forthcoming worker, not a build step.
+
+## Next
+
+- LM3, props and streams: /live-mercury/props-and-streams (/live-mercury/props-and-streams/llms.txt)
+- Back to the course: /live-mercury/llms.txt
+- This companion: /live-mercury/building/llms.txt
+
+## Navigation
+
+- [Read this page in the browser](/live-mercury/building)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/live-mercury/llms.txt)
+
+<!-- /live-mercury/props-and-streams/llms.txt -->
+
+# Props and streams: patches on the wire — Mercury LMS
+
+> LM3. After the first render, `LiveMercury.mercury/1` sends changed props as a JSON Patch in `data-props-diff` and LiveView streams as patches in `data-streams-diff`, both in a compact wire format. `@fiberfx/live-mercury` decodes them with `decodeCompactPatch` and applies them with `applyPatch`, which adds `upsert`, `limit` and `$$<id>` paths to RFC 6902.
+
+## Read this when
+
+You debug an island that shows stale props, render a LiveView stream in an island, or decode or apply Live Mercury's patches yourself.
+
+## The contract
+
+- `data-props`: full props, compact JSON; sent on the first render, a dead render, or with `diff={false}`. `data-props-diff`: sent on later renders with `diff` on (default `config :live_mercury, :enable_props_diff`, `true`, compile time). A connected re-render with `diff` on does not resend `data-props`.
+- Client `updated()`: `data-use-diff="true"` → `applyPatch(props, decodeCompactPatch(data-props-diff))`; else full `data-props`. Streams: always `applyPatch(streams, decodeCompactPatch(data-streams-diff))`.
+- Props diff: changed key with no old value → `replace /<key>`; with an old value → `Jsonpatch.diff` under `/<key>` (structs via `LiveMercury.Encoder`, list items matched by `id`). Every diff starts with a root `test` nonce, serialized `n<digits>`, skipped by the decoder.
+- Streams (`%Phoenix.LiveView.LiveStream{}` assigns, never props): reset → `replace /<name> []`; delete → `remove /<name>/$$<dom_id>`; insert → `upsert /<name>/-` (at -1) or `/<name>/<at>`; update only → `replace /<name>/$$<dom_id>`; limit → `limit /<name> <n>`. Items carry `__dom_id`. First and dead renders reset every stream first.
+- Wire: `<op><path_len>:<path><value>`; ops `a` add, `d` remove (no value), `r` replace, `u` upsert, `l` limit; values `z`, `b0`/`b1`, `n<len>:<num>`, `s<len>:<str>`, `J<len>:<compact json>`. Lengths are JavaScript string lengths (UTF-16 units).
+- Compact JSON: `"` → `^`, `^` → `~^`, `~` → `~~`. `decodeCompactJson` reverses it.
+- `applyPatch(doc, ops)`: copy on write below the root (each touched container cloned once per batch); the root is mutated and returned. `applyOperation(doc, op)`: one op in place. `getValueByPointer(doc, pointer)`.
+- `$$<id>`: the item whose `__dom_id` loosely equals `id`; missing → warning, op skipped. `upsert`: replace by `__dom_id`, else insert. `limit n`: keep first `n` (n ≥ 0) or last `|n|` (n < 0). `test`: no-op.
+
+## Minimal example
+
+```ts
+import { applyPatch, decodeCompactPatch } from "@fiberfx/live-mercury";
+
+const props = { count: 5, items: ["a", "b", "c"] };
+const next = applyPatch(props, decodeCompactPatch("n123r6:/countn1:6d8:/items/0"));
+// next === props; next.count === 6; next.items is a new array ["b", "c"]
+```
+
+## Errors
+
+`decodeCompactPatch` throws `Unknown LiveMercury patch operation code`, `Unknown LiveMercury patch value tag`, or `Invalid LiveMercury patch length prefix`. A props struct without `LiveMercury.Encoder` raises `Protocol.UndefinedError`.
+
+## Never emit
+
+A `move` or `copy` operation: neither has an op code in the wire format. Byte lengths in a hand-written payload.
+
+## Next
+
+- LM4, server rendering: /live-mercury/server-rendering (/live-mercury/server-rendering/llms.txt)
+- Back: /live-mercury/liveview/llms.txt
+- This companion: /live-mercury/props-and-streams/llms.txt
+
+## Navigation
+
+- [Read this page in the browser](/live-mercury/props-and-streams)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/live-mercury/llms.txt)
+
+<!-- /live-mercury/server-rendering/llms.txt -->
+
+# Server rendering: what is there, and what is not — Mercury LMS
+
+> LM4. `<.mercury ssr={true}>` asks the configured `LiveMercury.SSR` module for an island's HTML on the first, dead render. No module is configured anywhere in the umbrella, SSR is off by default, a `<.mercury>` element starts empty, and the client replaces server markup instead of hydrating it.
+
+## Read this when
+
+You are asked to server-render an island, see an empty island element before JavaScript runs, or see `data-ssr` on an element.
+
+## The contract
+
+- `ssr` assign; default `config :live_mercury, :ssr` (compile time), `false`. Applies only when `__changed__` is `nil` and the socket is not connected (the dead first render).
+- On: `LiveMercury.SSR.render(name, encoded_props, slots)`. Raises `LiveMercury.SSR.NotConfigured` → treated as off. Otherwise the element gets `data-ssr` and the response's `:html` as content.
+- `LiveMercury.SSR` behaviour: `@callback render(component_name, props, slots) :: render_response | no_return`. Configure with `config :live_mercury, ssr_module: Mod`. Telemetry span `[:live_mercury, :ssr]`, metadata `%{component, props, slots}`. A binary response splits at `<!-- preload -->` into `preloadLinks` (unused by the template) and `html`.
+- With no `:ssr_module`, `render/3` returns `%{preloadLinks: "", html: ""}`: `ssr={true}` gives `data-ssr` around empty HTML (tested).
+- With SSR off, a `<.mercury>` element starts empty; props are in `data-props`, the default slot base64 in `data-slots`, rendered by the client.
+- Client: with `data-ssr`, the first paint clears the element, then renders. No hydration. Without `data-ssr`, existing children are kept.
+- `LiveMercury.SSR.ViteJS` (POST `{:vite_host}/ssr_render`) and `LiveMercury.SSR.NodeJS` (a `server.js` via the `NodeJS` package) exist, are not configured here, and need a JavaScript runtime.
+- EDU's `<.island>` inner block is a hand-written no-JS fallback, set aside while the island lives and restored after. It is not SSR.
+
+## Minimal example
+
+```elixir
+def ssr_on_component(assigns) do
+  ~H"""
+  <.mercury name="MyComponent" ssr={true} />
+  """
+end
+
+# with no :ssr_module configured: data-ssr is set, the element's HTML is empty
+assert LiveMercury.Test.get_mercury(render_component(&ssr_on_component/1)).ssr == true
+```
+
+## Never emit
+
+`config :live_mercury, ssr: true` without a renderer that returns real HTML; a claim that an island is hydrated; `hydrate` or `hydrateRoot` calls in an island bundle expecting Live Mercury to use them.
+
+## Next
+
+- LM5, testing islands: /live-mercury/testing (/live-mercury/testing/llms.txt)
+- Back: /live-mercury/props-and-streams/llms.txt
+- This companion: /live-mercury/server-rendering/llms.txt
+
+## Navigation
+
+- [Read this page in the browser](/live-mercury/server-rendering)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/live-mercury/llms.txt)
+
+<!-- /live-mercury/testing/llms.txt -->
+
+# Testing islands: both sides of the element — Mercury LMS
+
+> LM5. Server: `LiveMercury.Test.get_mercury/2` decodes a `<.mercury>` element; `Phoenix.LiveViewTest`'s `render_hook/3` and `assert_push_event/3` test an island's events. Client: `MercuryHook` driven on a stand-in hook under Vitest. EDU: ConnCase page tests, `courseIsland` and boot tests, built-bundle checks, a headless-Chrome page check, and `check_hosts/3` at generation time.
+
+## Read this when
+
+You write a test for an island, its LiveView, or an EDU course page that hosts one.
+
+## The contract
+
+- `LiveMercury.Test.get_mercury(view | html, opts \\ [])`; a `Phoenix.LiveViewTest.View` is rendered first. Needs `{:floki, ">= 0.30.0", only: :test}`. Finds `[phx-hook='MercuryHook']` elements only.
+- Returns `%{component, id, props, props_diff, streams_diff, slots, ssr, use_diff, class}`. `props_diff`/`streams_diff`: lists `[op, path]` (remove) or `[op, path, value]`; nonce dropped. `slots`: base64-decoded, e.g. `%{"default" => "…"}`. `ssr`: `data-ssr` present.
+- Options `name:` / `id:`; no match raises `No Mercury component found with name="…". Available components: Name#id, …`; another option → `ArgumentError`; no island → `No Mercury components found in the rendered HTML`.
+- With `diff` on, `:props` after a connected update is still the first snapshot; assert on `:props_diff`, or `config :live_mercury, enable_props_diff: false` in test config (compile time).
+- Simulate a re-render: call `LiveMercury.mercury(assigns)` with `__changed__: %{}` and `assign/3`; a connected socket for stream diffs: `%Phoenix.LiveView.Socket{transport_pid: self()}`.
+- Events: `render_hook(view, "event", params)` plays the island's `pushEvent`; `assert_push_event(view, "event", payload)` sees what its `handleEvent` would get.
+- Hook tests (`fiberfx/live-mercury/src/hooks.test.ts`): `createLiveViewHook(attrs)` (in `src/test/`, not exported) gives a real element and spies; `getHooks({ TestComponent })`; call `definition[step].call(hook)`; change attributes with `el.setAttribute` between `mounted` and `updated`.
+- `EchoEduWeb.Island.check_hosts(source, masked, {body_at, body_len})` → `:ok` or `{:error, reason}`: `:no_id`, `{:outside_body, id}`, `{:duplicate_id, id}`, `{:not_ignored, id}`, `{:no_bundle, id}`, `{:bundle, id}`, `{:props, id}`. `EchoEdu.Gen.split/1` wraps it as `{:error, {:island_host, reason}}`.
+- Browser: `node scripts/edu/island-check.mjs <page-url> [screenshot.png]` (default the demo page) checks mount, one `/_edu/live` socket, a click round trip, the no-JS render, no errors.
+
+## Minimal example
+
+```elixir
+test "renders component with correct props" do
+  html = render_component(&simple_component/1)
+  island = LiveMercury.Test.get_mercury(html)
+
+  assert island.component == "MyComponent"
+  assert island.props == %{"firstName" => "john", "lastName" => "doe"}
+end
+```
+
+## Never emit
+
+`island.handlers` (documented in `LiveMercury.Test`'s moduledoc but not in the returned map); `get_mercury/2` on an EDU `CourseIsland` page; an assertion on `:props` after an update with diffs on.
+
+## Limits
+
+The hook tests, `island-check.mjs`, `f1-gate.mjs` and the built-bundle rows need Node. Whether the hook tests pass under `mx test` is not recorded. No browser check found for a `<.mercury>` island.
+
+## Next
+
+- Back to the course: /live-mercury/llms.txt
+- This companion: /live-mercury/testing/llms.txt
+
+## Navigation
+
+- [Read this page in the browser](/live-mercury/testing)
+- [Agent index](/llms.txt)
+- [All English companions](/llms-full.txt)
+- [Sitemap](/sitemap.xml)
+- [Course companion](/live-mercury/llms.txt)

@@ -1,0 +1,11 @@
+{
+  "name": "mercury-first-page",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@fiberfx/core": "4.0.0",
+    "@fiberfx/hyperscript": "4.0.0",
+    "@fiberfx/ui": "4.0.0"
+  }
+}

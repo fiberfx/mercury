@@ -1,0 +1,37 @@
+{
+  "site_revision": "332dba954079bd7a1d47f2f101db63a5df77e8f1",
+  "playground_skill_revision": "d0d8f23eec4fec561f0cbf1931e8fb4889ad4ca9",
+  "site_kind": "Endpoint-rendered preview; 88 tests, 248 responses",
+  "native_proof_revision": "1707a7884118ed6d3ab834057a178301e980662e",
+  "public_network_native_test": "pending",
+  "image_runtime_test": "passed: win-120, UID10001, network none, native verify/build and five HTTP routes",
+  "publication": "pending",
+  "excluded_artifacts": "Repository code-map and Design Explorer: public content allowlist pending",
+  "playground_skill_files": {
+    "SKILL.md": "b4524b764ea4a90599849070c84e7aea3d9929a708d7e09cbb88d7bf2d6d8102",
+    "references/mercury-contracts.md": "71509f1c6044b5b227d0a0c7b13c2e218f2ffde296ce2d8c95c1f7f3ae2ca17a",
+    "agents/openai.yaml": "997a4972fc4159031aaa1430f6428627faec7446ce14d3b33183ec2a69101632",
+    "templates/data-explorer.md": "6ce400d0b7ca4a76a287e0f3df9f6b56e46fa95ef31224b2ea84ce78826c6261",
+    "templates/diff-review.md": "61723195d682ca45ba8ec5478789a19b9f38dfee9518a397d5be4d5517e54cda",
+    "templates/concept-map.md": "c7f344a1c6ca8702d492381d71b50657b8ae1fac8577ce4ed33a1c72dadbc04f",
+    "templates/document-critique.md": "7b23db043b4a2fac45209ec871a14972f8833abdf132856ce3a62f4173f8f324",
+    "templates/design-playground.md": "d7ccbb778c5ca8dc373af1b4497a24d34760bc3c2a4ce0c297dc29b400d7f138",
+    "templates/code-map.md": "7f1e5902833588d338824bfec12901ef4a0c39d284f63c2b3b8b834124f98854"
+  },
+  "playground_skill_snapshot": "Operator-selected temp.local/skills/mercury-playground; file hashes record changes since d0d8f23",
+  "native_consumer": "passed: verified public bytes, Node-free install/verify/build/offline rebuild/tamper refusal",
+  "bootstrap_tests": {
+    "passed": 12,
+    "job": "JOB0RpxOOuDmAz"
+  },
+  "image_download_tests": {
+    "passed": 7,
+    "job": "JOB0RpyMjljRTd"
+  },
+  "npm_contract": "root @fiberfx/mx Node launcher, optional @fiberfx/mx-linux-x64 native package, no postinstall or GitHub downloads",
+  "npm_validation": {
+    "job": "JOB0Rpyxc6rMSf",
+    "result": "passed real optional-package selection and wrapper/native parity; publication blocked by registry E401"
+  },
+  "design_builder_revision": "3d54ea8"
+}

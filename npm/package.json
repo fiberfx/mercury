@@ -1,0 +1,11 @@
+{
+  "name": "@fiberfx/mx",
+  "version": "0.1.0",
+  "description": "Mercury CLI launcher. Node runs this wrapper; npm selects the optional native platform package.",
+  "license": "MIT",
+  "bin": { "mx": "cli.cjs" },
+  "engines": { "node": ">=18" },
+  "optionalDependencies": { "@fiberfx/mx-linux-x64": "0.1.0" },
+  "files": ["cli.cjs", "COMMIT", "THIRD_PARTY_NOTICES.txt", "RUST-STANDARD-LIBRARY.html"],
+  "publishConfig": { "access": "public" }
+}

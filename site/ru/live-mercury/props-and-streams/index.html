@@ -1,0 +1,948 @@
+<!doctype html><html lang="ru" class="lms">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Свойства и потоки: патчи по сети · Mercury</title>
+  <meta name="description" content="LM3. Как свойства и потоки острова передаются после первого рендеринга: data-props-diff и data-streams-diff, компактный формат патчей, который записывает LiveMercury.Patch и читает decodeCompactPatch, операции upsert и limit, пути $$&lt;id&gt; и копирование при записи в applyPatch.">
+  
+  <link rel="canonical" href="https://mercury.jonnify.com/ru/live-mercury/props-and-streams">
+  <link rel="describedby" type="text/plain" href="/ru/live-mercury/props-and-streams/llms.txt">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Mercury">
+  <meta property="og:title" content="Свойства и потоки: патчи по сети · Mercury">
+  <meta property="og:description" content="LM3. Как свойства и потоки острова передаются после первого рендеринга: data-props-diff и data-streams-diff, компактный формат патчей, который записывает LiveMercury.Patch и читает decodeCompactPatch, операции upsert и limit, пути $$&lt;id&gt; и копирование при записи в applyPatch.">
+  <meta property="og:url" content="https://mercury.jonnify.com/ru/live-mercury/props-and-streams">
+  <meta property="og:image" content="https://mercury.jonnify.com/_lms/assets/mercury-hero.png">
+  <meta property="og:image:alt" content="Mercury">
+  <script type="application/ld+json">[{"@context":"https://schema.org","@type":"TechArticle","description":"LM3. Как свойства и потоки острова передаются после первого рендеринга: data-props-diff и data-streams-diff, компактный формат патчей, который записывает LiveMercury.Patch и читает decodeCompactPatch, операции upsert и limit, пути $$\u003cid\u003e и копирование при записи в applyPatch.","inLanguage":"ru","name":"Свойства и потоки: патчи по сети","url":"https://mercury.jonnify.com/ru/live-mercury/props-and-streams"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://mercury.jonnify.com/","name":"Mercury","position":1},{"@type":"ListItem","item":"https://mercury.jonnify.com/ru/live-mercury/props-and-streams","name":"Свойства и потоки: патчи по сети","position":2}]}]</script>
+  <meta name="color-scheme" content="light dark">
+  
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#111113" media="(prefers-color-scheme: dark)">
+  <style>html{background-color:rgb(255 255 255)}@media (prefers-color-scheme: dark){html{background-color:rgb(17 17 19)}}</style>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/live-mercury/props-and-streams"><link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/live-mercury/props-and-streams"><link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/live-mercury/props-and-streams">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="/_lms/assets/lms.css">
+  <link rel="stylesheet" href="/_lms/assets/shell.css">
+  
+</head>
+  <body class="lms">
+    <a class="lms-skip" href="#main">Перейти к содержанию</a>
+<header class="lms-header">
+  <a class="lms-brand" href="/ru" aria-label="Mercury, главная">
+    <svg viewBox="5 9 30 22" width="30" height="22" aria-hidden="true" focusable="false"><g fill="none" stroke-width="3" stroke-linecap="round"><path d="M7 29V15.5c0-2.5 2-4.5 4.5-4.5S16 13 16 15.5V29M16 16.5c0-3 2-5.5 4.5-5.5" stroke="currentColor"></path><path d="M23 16l10 13M33 16L23 29" stroke="rgb(var(--lms-accent))"></path></g></svg>
+    <span>Mercury</span>
+  </a>
+  <nav class="lms-nav" aria-label="Сайт">
+    <a href="/ru#principles">Принципы</a><a href="/ru#foundations">Основы</a><a href="/ru#components">Компоненты</a><a href="/ru#usage">Использование</a>
+  </nav>
+  <div class="lms-actions">
+    <details class="lms-lang">
+  <summary aria-label="Язык">Русский</summary>
+  <ul>
+    <li>
+      <a href="/live-mercury/props-and-streams" hreflang="en" lang="en">English</a>
+      
+    </li><li>
+      <a href="/ru/live-mercury/props-and-streams" hreflang="ru" lang="ru" aria-current="true">Русский</a>
+      
+    </li>
+  </ul>
+</details>
+    <a class="lms-github" href="/ru/start/install-mx" aria-label="Установить Mercury" title="Установить Mercury">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    </a>
+    <form class="lms-theme" method="post" action="/_lms/theme">
+      <input type="hidden" name="back" value="/ru/live-mercury/props-and-streams">
+      <button class="lms-theme-to-dark" type="submit" name="set" value="dark" aria-label="Тёмная тема" title="Тёмная тема">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"></path></svg>
+      </button>
+      <button class="lms-theme-to-light" type="submit" name="set" value="light" aria-label="Светлая тема" title="Светлая тема">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></g></svg>
+      </button>
+    </form>
+    <a class="lms-open-docs" href="/ru/start">Документация</a>
+    <details class="lms-drawer">
+      <summary>
+        <span class="lms-menu-label">Меню</span>
+        <svg class="lms-menu-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
+      </summary>
+      <div class="lms-drawer-panel">
+        <nav class="lms-menu-links" aria-label="Сайт">
+          <a class="lms-menu-docs" href="/ru/start">Документация</a>
+          <a href="/ru#principles">Принципы</a><a href="/ru#foundations">Основы</a><a href="/ru#components">Компоненты</a><a href="/ru#usage">Использование</a>
+          <a href="/ru/start/install-mx">Установить Mercury</a>
+        </nav>
+        <div class="lms-menu-language">
+          <details class="lms-lang">
+  <summary aria-label="Язык">Русский</summary>
+  <ul>
+    <li>
+      <a href="/live-mercury/props-and-streams" hreflang="en" lang="en">English</a>
+      
+    </li><li>
+      <a href="/ru/live-mercury/props-and-streams" hreflang="ru" lang="ru" aria-current="true">Русский</a>
+      
+    </li>
+  </ul>
+</details>
+        </div>
+        <nav aria-label="Курсы и страницы">
+          <p class="lms-menu-heading">Курсы</p>
+          <details class="lms-side-course">
+  <summary>Начало</summary>
+  <ul>
+    <li><a href="/ru/start">Обзор</a></li>
+    
+      
+      <li class="">
+        <a href="/ru/start/browser">Страница в браузере</a>
+      </li>
+    
+      <li class="lms-side-group">Из чего он состоит</li>
+      <li class="">
+        <a href="/ru/start/install-mx">Выберите способ установки mx</a>
+      </li>
+    
+      <li class="lms-side-group">Первые шаги</li>
+      <li class="">
+        <a href="/ru/start/stability">Стабильность: опубликовано, предварительная версия, запланировано</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/start/agents">Создайте страницу с агентом</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/start/glossary">Глоссарий: термины этого сайта</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/start/philosophy">Философия: свои технологии, а не заимствованные</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>mx</summary>
+  <ul>
+    <li><a href="/ru/mx">Обзор</a></li>
+    
+      <li class="lms-side-group">Установка mx</li>
+      <li class="">
+        <a href="/ru/mx/first-app">Первая страница Mercury</a>
+      </li>
+    
+      <li class="lms-side-group">Главы</li>
+      <li class="">
+        <a href="/ru/mx/modules">Модули: mx.mod и mx.sum</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/mx/workspace">Рабочая область: mx.work</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/mx/dev">Цикл разработки и горячая замена</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/mx/build">Сборка и поставка: три вида сборки</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/mx/compile">Hypercompiler: по одному модулю</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/mx/tools">Инструменты: test, lsap и run</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>Hyperscript</summary>
+  <ul>
+    <li><a href="/ru/hyperscript">Обзор</a></li>
+    
+      <li class="lms-side-group">Что такое Hyperscript</li>
+      <li class="">
+        <a href="/ru/hyperscript/dom">Контракт DOM</a>
+      </li>
+    
+      <li class="lms-side-group">Главы</li>
+      <li class="">
+        <a href="/ru/hyperscript/components">Компоненты и render</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hyperscript/hooks">Хуки: состояние и эффекты в функции</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hyperscript/context">Контекст, порталы и memo</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hyperscript/server">Рендеринг на сервере</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hyperscript/testing">Тестирование и наблюдение</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hyperscript/tested-component">Компонент с тестами</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>UI</summary>
+  <ul>
+    <li><a href="/ru/ui">Обзор</a></li>
+    
+      <li class="lms-side-group">Главы</li>
+      <li class="">
+        <a href="/ru/ui/tokens-and-themes">UI0: токены и темы</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/ui/foundations">UI1: окружение поддерева</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/ui/actions-and-layout">UI2: действия и раскладка</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/ui/inputs-and-forms">UI3, поля ввода и формы</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/ui/selection">UI4, выбор значений</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/ui/feedback-and-data">UI5, обратная связь и отображение данных</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/ui/navigation">UI6, навигация</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>Hypergraph</summary>
+  <ul>
+    <li><a href="/ru/hypergraph">Обзор</a></li>
+    
+      <li class="lms-side-group">Главы</li>
+      <li class="">
+        <a href="/ru/hypergraph/units">Единицы: store, event и effect</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hypergraph/wiring">Связи: из единиц в граф</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hypergraph/scopes">Области состояния: создать, завершить работу, передать</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hypergraph/observing">Наблюдение: watch, inspect, describe</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hypergraph/errors">Виды, перенос контекста и ошибки</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hypergraph/hot-replacement">Горячая замена: смена графа</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hypergraph/server-rendering">Серверный рендеринг: своя область для каждого запроса</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hypergraph/testing">Тестирование модели: своя область для каждого теста</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hypergraph/models">Большие модели: структура и идентичность</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hypergraph/capstone">Итоговый пример: передача и восстановление модели</a>
+      </li>
+    
+      <li class="lms-side-group">Переход с Effector</li>
+      <li class="">
+        <a href="/ru/hypergraph/coming-from-effector">Переход с Effector</a>
+      </li>
+    
+      
+      <li class="lms-side-sub">
+        <a href="/ru/hypergraph/coming-from-effector/units-and-wiring">Единицы и связи</a>
+      </li>
+    
+      
+      <li class="lms-side-sub">
+        <a href="/ru/hypergraph/coming-from-effector/scopes-and-testing">Области и тестирование</a>
+      </li>
+    
+      
+      <li class="lms-side-sub">
+        <a href="/ru/hypergraph/coming-from-effector/frameworks">Фреймворки после effector-react</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>Контент</summary>
+  <ul>
+    <li><a href="/ru/content">Обзор</a></li>
+    
+      <li class="lms-side-group">Карта курса</li>
+      <li class="">
+        <a href="/ru/content/documents">Документы страниц: узлы, схема и parseDocument</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/content/rendering">Рендеринг документа: renderDocument</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/content/blocks">Каталог блоков: девять групп, один реестр</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/content/references">Ссылки, возможности окружения и адаптивные значения</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/content/add-a-block">Добавление блока: итоговое задание</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course" open>
+  <summary>Live Mercury</summary>
+  <ul>
+    <li><a href="/ru/live-mercury">Обзор</a></li>
+    
+      <li class="lms-side-group">Курс</li>
+      <li class="">
+        <a href="/ru/live-mercury/islands">Острова: элемент и его монтирование</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/live-mercury/liveview">Остров в LiveView: сокет, хуки и события</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/live-mercury/building">Сборка островов с mx: без Node</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/live-mercury/props-and-streams" aria-current="page">Свойства и потоки: патчи по сети</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/live-mercury/server-rendering">Серверный рендеринг: что есть и чего пока нет</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/live-mercury/testing">Тестирование островов: по обе стороны элемента</a>
+      </li>
+    
+  </ul>
+</details>
+        </nav>
+      </div>
+    </details>
+  </div>
+</header>
+    <div class="lms-frame">
+      <nav class="lms-side" aria-label="Курсы и страницы">
+        <details class="lms-side-course">
+  <summary>Начало</summary>
+  <ul>
+    <li><a href="/ru/start">Обзор</a></li>
+    
+      
+      <li class="">
+        <a href="/ru/start/browser">Страница в браузере</a>
+      </li>
+    
+      <li class="lms-side-group">Из чего он состоит</li>
+      <li class="">
+        <a href="/ru/start/install-mx">Выберите способ установки mx</a>
+      </li>
+    
+      <li class="lms-side-group">Первые шаги</li>
+      <li class="">
+        <a href="/ru/start/stability">Стабильность: опубликовано, предварительная версия, запланировано</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/start/agents">Создайте страницу с агентом</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/start/glossary">Глоссарий: термины этого сайта</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/start/philosophy">Философия: свои технологии, а не заимствованные</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>mx</summary>
+  <ul>
+    <li><a href="/ru/mx">Обзор</a></li>
+    
+      <li class="lms-side-group">Установка mx</li>
+      <li class="">
+        <a href="/ru/mx/first-app">Первая страница Mercury</a>
+      </li>
+    
+      <li class="lms-side-group">Главы</li>
+      <li class="">
+        <a href="/ru/mx/modules">Модули: mx.mod и mx.sum</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/mx/workspace">Рабочая область: mx.work</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/mx/dev">Цикл разработки и горячая замена</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/mx/build">Сборка и поставка: три вида сборки</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/mx/compile">Hypercompiler: по одному модулю</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/mx/tools">Инструменты: test, lsap и run</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>Hyperscript</summary>
+  <ul>
+    <li><a href="/ru/hyperscript">Обзор</a></li>
+    
+      <li class="lms-side-group">Что такое Hyperscript</li>
+      <li class="">
+        <a href="/ru/hyperscript/dom">Контракт DOM</a>
+      </li>
+    
+      <li class="lms-side-group">Главы</li>
+      <li class="">
+        <a href="/ru/hyperscript/components">Компоненты и render</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hyperscript/hooks">Хуки: состояние и эффекты в функции</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hyperscript/context">Контекст, порталы и memo</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hyperscript/server">Рендеринг на сервере</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hyperscript/testing">Тестирование и наблюдение</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hyperscript/tested-component">Компонент с тестами</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>UI</summary>
+  <ul>
+    <li><a href="/ru/ui">Обзор</a></li>
+    
+      <li class="lms-side-group">Главы</li>
+      <li class="">
+        <a href="/ru/ui/tokens-and-themes">UI0: токены и темы</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/ui/foundations">UI1: окружение поддерева</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/ui/actions-and-layout">UI2: действия и раскладка</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/ui/inputs-and-forms">UI3, поля ввода и формы</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/ui/selection">UI4, выбор значений</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/ui/feedback-and-data">UI5, обратная связь и отображение данных</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/ui/navigation">UI6, навигация</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>Hypergraph</summary>
+  <ul>
+    <li><a href="/ru/hypergraph">Обзор</a></li>
+    
+      <li class="lms-side-group">Главы</li>
+      <li class="">
+        <a href="/ru/hypergraph/units">Единицы: store, event и effect</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hypergraph/wiring">Связи: из единиц в граф</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hypergraph/scopes">Области состояния: создать, завершить работу, передать</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hypergraph/observing">Наблюдение: watch, inspect, describe</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hypergraph/errors">Виды, перенос контекста и ошибки</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hypergraph/hot-replacement">Горячая замена: смена графа</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hypergraph/server-rendering">Серверный рендеринг: своя область для каждого запроса</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hypergraph/testing">Тестирование модели: своя область для каждого теста</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hypergraph/models">Большие модели: структура и идентичность</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hypergraph/capstone">Итоговый пример: передача и восстановление модели</a>
+      </li>
+    
+      <li class="lms-side-group">Переход с Effector</li>
+      <li class="">
+        <a href="/ru/hypergraph/coming-from-effector">Переход с Effector</a>
+      </li>
+    
+      
+      <li class="lms-side-sub">
+        <a href="/ru/hypergraph/coming-from-effector/units-and-wiring">Единицы и связи</a>
+      </li>
+    
+      
+      <li class="lms-side-sub">
+        <a href="/ru/hypergraph/coming-from-effector/scopes-and-testing">Области и тестирование</a>
+      </li>
+    
+      
+      <li class="lms-side-sub">
+        <a href="/ru/hypergraph/coming-from-effector/frameworks">Фреймворки после effector-react</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>Контент</summary>
+  <ul>
+    <li><a href="/ru/content">Обзор</a></li>
+    
+      <li class="lms-side-group">Карта курса</li>
+      <li class="">
+        <a href="/ru/content/documents">Документы страниц: узлы, схема и parseDocument</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/content/rendering">Рендеринг документа: renderDocument</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/content/blocks">Каталог блоков: девять групп, один реестр</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/content/references">Ссылки, возможности окружения и адаптивные значения</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/content/add-a-block">Добавление блока: итоговое задание</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course" open>
+  <summary>Live Mercury</summary>
+  <ul>
+    <li><a href="/ru/live-mercury">Обзор</a></li>
+    
+      <li class="lms-side-group">Курс</li>
+      <li class="">
+        <a href="/ru/live-mercury/islands">Острова: элемент и его монтирование</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/live-mercury/liveview">Остров в LiveView: сокет, хуки и события</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/live-mercury/building">Сборка островов с mx: без Node</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/live-mercury/props-and-streams" aria-current="page">Свойства и потоки: патчи по сети</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/live-mercury/server-rendering">Серверный рендеринг: что есть и чего пока нет</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/live-mercury/testing">Тестирование островов: по обе стороны элемента</a>
+      </li>
+    
+  </ul>
+</details>
+      </nav>
+      <main id="main" class="lms-main">
+        <nav class="lms-crumbs" aria-label="Навигационная цепочка">
+  <ol>
+    
+      
+      <li><a href="/ru/live-mercury">Live Mercury</a></li>
+      
+    
+      
+      
+      <li>Курс</li>
+    
+      <li aria-current="page">Свойства и потоки: патчи по сети</li>
+      
+      
+    
+  </ol>
+</nav>
+        
+        <h1 class="lms-title">Свойства и потоки: <em>патчи по сети</em></h1>
+        <p class="lms-lede">При первом рендеринге передаются все свойства. Затем сервер отправляет только изменения в компактном формате JSON Patch, а потоки LiveView приходят как операции вставки или обновления, удаления и ограничения размера, адресуемые по DOM id каждого элемента.</p>
+        <article class="lms-body"><p>В <a href="/ru/live-mercury/liveview" rel="noopener noreferrer">LM1</a> мы увидели, что свойства острова следуют за assigns его LiveView. Этот урок разбирает передачу данных: что сервер записывает в элемент при каждом рендеринге, как клиент это читает и какие два расширения JSON Patch нужны потокам LiveView.</p>
+<h2 id="attributes">Три атрибута</h2>
+<p><code>LiveMercury.mercury/1</code> записывает данные острова в три атрибута, а четвёртый указывает клиенту, какой из них читать:</p>
+<table>
+<thead>
+<tr>
+<th>Атрибут</th>
+<th>Содержимое</th>
+<th>Когда записывается</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data-props</code></td>
+<td>все свойства в компактном JSON</td>
+<td>при первом и неподключённом рендеринге, а также при любом рендеринге с выключенным <code>diff</code></td>
+</tr>
+<tr>
+<td><code>data-props-diff</code></td>
+<td>изменения свойств в виде компактного патча</td>
+<td>при каждом последующем рендеринге с включённым <code>diff</code></td>
+</tr>
+<tr>
+<td><code>data-streams-diff</code></td>
+<td>изменения потоков в виде компактного патча</td>
+<td>при каждом рендеринге, в котором назначен поток</td>
+</tr>
+<tr>
+<td><code>data-use-diff</code></td>
+<td><code>"true"</code> или <code>"false"</code> — настройка <code>diff</code></td>
+<td>в HTML каждого рендеринга; не входит в assigns, которые <code>mercury/1</code> помечает изменёнными</td>
+</tr>
+</tbody>
+</table>
+<p>«Когда записывается» означает, когда LiveView отправляет атрибут. <code>mercury/1</code> помечает собственные вычисляемые assigns изменёнными, а LiveView отправляет только помеченные атрибуты. Поэтому повторный рендеринг при активном подключении и включённом <code>diff</code> отправляет <code>data-props-diff</code>, а <code>data-props</code> сохраняет снимок первого рендеринга. Тест проверяет именно такое поведение отслеживания изменений LiveView — как с assign <code>socket</code>, так и без него.</p>
+<p>На клиенте <code>updated()</code> применяет <code>data-props-diff</code>, если <code>data-use-diff</code> равен <code>"true"</code>, а в остальных случаях заново читает весь <code>data-props</code>. <code>data-streams-diff</code> применяется каждый раз.</p>
+<h2 id="props">Изменения свойств</h2>
+<p>При включённом <code>diff</code> — это значение по умолчанию (<code>config :live_mercury, :enable_props_diff</code>, читается при компиляции) — <code>mercury/1</code> берёт только assigns, которые LiveView пометил изменёнными. Для каждого из них:</p>
+<ul>
+<li><strong>старого значения нет</strong> (карта изменений LiveView содержит <code>true</code>): одна операция <code>replace</code> по пути <code>/&lt;key&gt;</code> с новым значением;</li>
+<li><strong>старое значение есть</strong>: <code>Jsonpatch.diff(old, new)</code> под путём <code>/&lt;key&gt;</code>, поэтому передаются только изменившиеся листья. Структуры сначала проходят через <code>LiveMercury.Encoder</code>, а элементы списков сопоставляются по полю <code>id</code>.</li>
+</ul>
+<p>Тесты показывают форму изменений. Свойство-карта, в котором изменились два поля:</p>
+<pre><code class="language-elixir">assigns = %{user: %{name: "John", age: 30}, __changed__: %{}}
+assigns = assign(assigns, :user, %{name: "Alice", age: 25})
+# props_diff: replace /user/age 25, replace /user/name "Alice"
+</code></pre>
+<p>И список, в котором изменилось имя одного элемента, сопоставленного по <code>id</code>:</p>
+<pre><code class="language-elixir">assigns = %{items: [%{id: 1, name: "Alice"}, %{id: 2, name: "Bob"}], __changed__: %{}}
+assigns = assign(assigns, :items, [%{id: 1, name: "Alice"}, %{id: 2, name: "New Bob"}])
+# props_diff: replace /items/1/name "New Bob"
+</code></pre>
+<p>Каждая разница начинается с операции <code>test</code> в корне, содержащей случайное число. <code>LiveMercury.Patch</code> записывает её как nonce — <code>n&lt;digits&gt;</code>. Он нужен лишь для изменения текста атрибута, чтобы LiveView отправил его. Декодер клиента его пропускает.</p>
+<p>Передайте острову <code>diff={false}</code>, чтобы при каждом рендеринге отправлять все свойства. Первый рендеринг всегда отправляет все свойства, а его разница пуста.</p>
+<h2 id="streams">Потоки</h2>
+<p>Assign со значением <code>Phoenix.LiveView.LiveStream</code> — это поток, а не обычное свойство. Его изменения попадают в <code>data-streams-diff</code>; на клиенте каждый поток становится массивом под собственным ключом в свойствах компонента.</p>
+<p><code>mercury/1</code> превращает ожидающие изменения потока в операции по следующим правилам:</p>
+<table>
+<thead>
+<tr>
+<th>Изменение потока</th>
+<th>Операция</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>сброс</td>
+<td><code>replace /&lt;name&gt;</code> со значением <code>[]</code></td>
+</tr>
+<tr>
+<td>удаление</td>
+<td><code>remove /&lt;name&gt;/$$&lt;dom_id&gt;</code></td>
+</tr>
+<tr>
+<td>вставка в конец (<code>at: -1</code>)</td>
+<td><code>upsert /&lt;name&gt;/-</code></td>
+</tr>
+<tr>
+<td>вставка по индексу</td>
+<td><code>upsert /&lt;name&gt;/&lt;at&gt;</code></td>
+</tr>
+<tr>
+<td>только обновление</td>
+<td><code>replace /&lt;name&gt;/$$&lt;dom_id&gt;</code></td>
+</tr>
+<tr>
+<td>вставка с ограничением размера</td>
+<td><code>limit /&lt;name&gt;</code> со значением ограничения</td>
+</tr>
+</tbody>
+</table>
+<p>Каждый элемент кодируется через <code>LiveMercury.Encoder</code> и получает поле <code>__dom_id</code> — идентификатор, назначенный LiveView. Первый и неподключённый рендеринг сначала заменяют каждый поток на <code>[]</code>, затем применяют вставки, чтобы клиент начинал с пустого состояния. Последующие рендеринги вместо этого начинаются с nonce.</p>
+<p>Первый рендеринг потока из двух пользователей:</p>
+<pre><code class="language-elixir">stream = LiveStream.new(:users, make_ref(), users, [])
+# streams_diff:
+#   replace /users []
+#   upsert /users/- %{"__dom_id" =&gt; "users-1", "id" =&gt; 1, "name" =&gt; "Alice", "age" =&gt; 30}
+#   upsert /users/- %{"__dom_id" =&gt; "users-2", "id" =&gt; 2, "name" =&gt; "Bob", "age" =&gt; 25}
+</code></pre>
+<p>Последующее удаление Bob — это <code>remove /users/$$users-2</code>.</p>
+<h2 id="wire">Формат передачи</h2>
+<p><code>LiveMercury.Patch.serialize/1</code> записывает операции в одну строку, а <code>decodeCompactPatch</code> на клиенте читает её обратно. Каждая операция состоит из однобуквенного кода, пути с префиксом длины и значения с тегом типа (кроме <code>remove</code>, у которой значения нет):</p>
+<pre><code class="language-text">&lt;op&gt;&lt;path_len&gt;:&lt;path&gt;&lt;value&gt;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Код</th>
+<th>Операция</th>
+<th></th>
+<th>Тег значения</th>
+<th>Значение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>a</code></td>
+<td>add</td>
+<td></td>
+<td><code>z</code></td>
+<td>null</td>
+</tr>
+<tr>
+<td><code>d</code></td>
+<td>remove</td>
+<td></td>
+<td><code>b0</code>, <code>b1</code></td>
+<td>false, true</td>
+</tr>
+<tr>
+<td><code>r</code></td>
+<td>replace</td>
+<td></td>
+<td><code>n&lt;len&gt;:&lt;number&gt;</code></td>
+<td>число</td>
+</tr>
+<tr>
+<td><code>u</code></td>
+<td>upsert</td>
+<td></td>
+<td><code>s&lt;len&gt;:&lt;string&gt;</code></td>
+<td>строка</td>
+</tr>
+<tr>
+<td><code>l</code></td>
+<td>limit</td>
+<td></td>
+<td><code>J&lt;len&gt;:&lt;json&gt;</code></td>
+<td>компактный JSON</td>
+</tr>
+<tr>
+<td><code>n&lt;digits&gt;</code></td>
+<td>nonce, пропускается</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Длина измеряется как длина строки JavaScript — в кодовых единицах UTF-16, а не в байтах. Поэтому путь или значение может содержать любой символ без экранирования: длина <code>zażółć</code> равна 6, а <code>🚀</code> — 2.</p>
+<p><strong>Компактный JSON</strong> — это JSON, в котором каждый <code>"</code> записан как <code>^</code>, чтобы поместить его в HTML-атрибут без экранирования сущностями. Буквальный <code>^</code> превращается в <code>~^</code>, а буквальный <code>~</code> — в <code>~~</code>. <code>data-props</code> использует то же кодирование, а <code>decodeCompactJson</code> выполняет обратное преобразование.</p>
+<p>Пример из клиентских тестов:</p>
+<pre><code class="language-ts">import { decodeCompactPatch } from "@fiberfx/live-mercury";
+
+decodeCompactPatch("n123r6:/countn1:6a8:/items/3s1:dd8:/items/0");
+// [
+//   { op: "replace", path: "/count", value: 6 },
+//   { op: "add", path: "/items/3", value: "d" },
+//   { op: "remove", path: "/items/0" },
+// ]
+</code></pre>
+<p><code>decodeCompactPatch(null)</code> и <code>decodeCompactPatch("")</code> возвращают <code>[]</code>. Неизвестный код операции, неизвестный тег значения или некорректный префикс длины вызывает исключение.</p>
+<h2 id="apply">Применение патча</h2>
+<p><code>applyPatch(document, patch)</code> применяет массив операций, а <code>applyOperation(document, operation)</code> — одну операцию. Это JSON Patch (RFC 6902) с расширениями Live Mercury:</p>
+<pre><code class="language-ts">import { applyPatch, decodeCompactPatch } from "@fiberfx/live-mercury";
+
+const next = applyPatch(props, decodeCompactPatch(payload));
+</code></pre>
+<p><code>applyPatch</code> использует копирование при записи ниже корня. Когда пакет операций впервые затрагивает контейнер на пути операции, функция клонирует его. Поэтому вложенное значение, сохранённое предыдущим рендерингом, не меняется у него за спиной, а контейнер на незатронутом пути сохраняет идентичность. Сам корень изменяется на месте и возвращается: тест проверяет, что <code>applyPatch(original, …)</code> — это <code>original</code>. Поэтому хук при каждой отрисовке разворачивает свойства, потоки и функции в новый объект: компонент получает новый объект верхнего уровня при каждом обновлении.</p>
+<p>Операции <code>test</code> принимаются, но ничего не делают: значения не сравниваются. <code>getValueByPointer(document, pointer)</code> читает одно значение по JSON Pointer, где <code>-</code> означает последний элемент массива, а <code>$$&lt;id&gt;</code> — элемент по его <code>__dom_id</code>.</p>
+<h2 id="extensions">upsert, limit и пути $$</h2>
+<p>Эти три расширения нужны для потоков.</p>
+<ul>
+<li><strong>Сегменты пути <code>$$&lt;id&gt;</code></strong> адресуют элемент массива по его <code>__dom_id</code>, а не по индексу. Сравнение нестрогое, поэтому числовой <code>__dom_id</code> совпадает со своей строковой формой. Если элемента с таким id нет, операция пропускается с предупреждением в консоли.</li>
+<li><strong><code>upsert</code></strong> со значением, содержащим <code>__dom_id</code>, заменяет элемент массива с тем же <code>__dom_id</code>, если он есть, а иначе вставляет значение по индексу из пути (<code>-</code> — конец массива). Значение без <code>__dom_id</code> вставляется.</li>
+<li><strong><code>limit</code></strong> при <code>n &gt;= 0</code> оставляет первые <code>n</code> элементов, а при <code>n &lt; 0</code> — последние <code>|n|</code>. Путь операции указывает на массив.</li>
+</ul>
+<pre><code class="language-ts">import { applyOperation } from "@fiberfx/live-mercury";
+
+const doc = { rows: [{ __dom_id: "a", v: 1 }, { __dom_id: "b", v: 2 }] };
+applyOperation(doc, { op: "upsert", path: "/rows/-", value: { __dom_id: "a", v: 99 } });
+// doc.rows: [{ __dom_id: "a", v: 99 }, { __dom_id: "b", v: 2 }]
+applyOperation(doc, { op: "remove", path: "/rows/$$a" });
+// doc.rows: [{ __dom_id: "b", v: 2 }]
+</code></pre>
+<p>После переподключения хук заново строит каждый поток из патча повторного монтирования, который начинается со сброса, вместо слияния с сохранёнными потоками. Этот обратный вызов разобран в <a href="/ru/live-mercury/liveview" rel="noopener noreferrer">LM1</a>.</p></article>
+        <nav class="lms-pager" aria-label="Назад и далее">
+  <a class="lms-pager-prev" href="/ru/live-mercury/building" rel="prev"><span>Назад</span>Сборка островов с mx: без Node</a>
+  <a class="lms-pager-next" href="/ru/live-mercury/server-rendering" rel="next"><span>Далее</span>Серверный рендеринг: что есть и чего пока нет</a>
+</nav>
+      </main>
+      <aside class="lms-toc" aria-label="На этой странице">
+        <p class="lms-toc-title">На этой странице</p>
+        <ul>
+          <li><a href="#attributes">Три атрибута</a></li><li><a href="#props">Изменения свойств</a></li><li><a href="#streams">Потоки</a></li><li><a href="#wire">Формат передачи</a></li><li><a href="#apply">Применение патча</a></li><li><a href="#extensions">upsert, limit и пути $$</a></li>
+        </ul>
+      </aside>
+    </div>
+    <footer class="lms-footer">
+  <p><a href="/agent/SKILL.md">SKILL.md</a><span> · <a href="/llms.txt">llms.txt</a></span> · <a href="/sitemap.xml">Sitemap</a> · <a href="/examples/first-page.html">Пример в браузере</a></p>
+  <p>Для агентов: <a href="/ru/live-mercury/props-and-streams/llms.txt">/ru/live-mercury/props-and-streams/llms.txt</a> — текстовая версия этой страницы, написанная вручную. Без Node и React.</p>
+  
+</footer>
+  </body>
+</html>

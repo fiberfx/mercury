@@ -22,3 +22,8 @@ node_modules/
 
 .DS_Store
 Thumbs.db
+# Agent distribution outputs
+release-inputs/
+__pycache__/
+*.pyc
+mercury-sandbox/
