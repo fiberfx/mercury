@@ -8,7 +8,7 @@ A mobile header should preserve the brand, the primary action where it fits, and
 
 Use `minmax(0, 1fr)` for flexible grid tracks and `min-width: 0` for shrinking flex/grid children. Keep long code and diagrams scrollable inside their own region. Do not hide page overflow to conceal clipped actions or broken layout. Descriptions generally need the available width: placing a fixed-width reset button beside a mobile paragraph can turn it into a narrow, many-line column. Put the action beside the heading or below the description.
 
-Use a disclosure for secondary inspector content on narrow screens. Preserve the primary task, selection, and access to feedback when regions stack. Check a realistic narrow viewport, longer labels, and text enlargement; desktop alignment does not establish mobile usability.
+Use a disclosure for secondary inspector content on narrow screens. Preserve the primary task, selection, and access to feedback when regions stack. Check a realistic narrow viewport, longer labels, and text enlargement; desktop alignment does not establish mobile usability. In an explorer, measure where the first usable preview control appears, not only where its canvas border begins. A tall empty canvas or several wrapped toolbars can still bury the task after collapsing navigation. Keep secondary context accessible through disclosures that show the current selection.
 
 ## Typography and tokens
 
@@ -27,6 +27,14 @@ Give controls visible focus and enough target area for their context; roughly `2
 When filtering a catalog or list, decide whether the filter also changes selection. If the workspace retains a selected item outside the results, explain that state and provide filter recovery for both matching and empty results. Verify that clearing filters restores useful focus without discarding unrelated drafts or settings.
 
 For clipboard actions, copy the exact displayed text, await success, and clear stale success when the content changes. When clipboard access fails, offer selectable text with an honest manual-copy message. For saving, resetting, or deleting, make the state transition match the promised scope: a filter or view preset should not erase saved work. Offer undo when it provides a useful recovery path.
+
+## Review workspaces
+
+When asked to dogfood a review desk, record observed issues and concrete proposals in that desk, select the justified work, then record implementation and visual evidence against those same notes. If a note is anchored to a component example but concerns the surrounding application, identify that host surface and its actual source in the proposal. The example is reproduction context, not evidence that its library component needs changing.
+
+Saving or refining a note can change its decision and remove it from a filtered queue. Keep the saved result reachable: preserve the filter when it still includes the note; otherwise reveal it and explain the view change. Move focus to the resulting note after rendering. Test both a new pending note saved under an approved-only filter and an anchored draft saved after navigating to another example. Do not re-anchor the draft to make a visibility check pass.
+
+Give repeated preview → controls → review journeys a direct return path. Open the destination when collapsed and move keyboard focus with the visual position after the destination mounts. Check the route again when its view is already selected; a state-change-only effect may do nothing on the second visit. Navigation should preserve drafts and settings. Keep approval, implementation records, and observed visual results distinct.
 
 ## Graphs and large previews
 

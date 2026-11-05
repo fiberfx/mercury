@@ -36,7 +36,7 @@ Give each stateful interaction an owner. Separate editable drafts from committed
 
 ## Refine the interface
 
-Read [layout and interaction polish](references/layout-and-interaction.md) for responsive composition, typography, focus, motion, or graphs. Preserve the host's visual language while making hierarchy and action placement deliberate.
+Read [layout and interaction polish](references/layout-and-interaction.md) for responsive composition, typography, focus, motion, or graphs. Preserve the host's visual language while making hierarchy and action placement deliberate. When using an existing review desk to improve its own host, follow the review-workspace guidance in that reference; exercise its decisions and evidence rather than keeping an unrelated review list.
 
 Use the installed theme and tokens, including its fonts and color channels. Define application typography in `rem` with intentional line-height and spacing relationships; inspect the combined result with library styles. On mobile, keep the primary header compact and move secondary navigation into an accessible disclosure. Check content wrapping before reducing text size or truncating useful labels.
 
