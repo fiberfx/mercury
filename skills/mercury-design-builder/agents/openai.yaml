@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mercury Design Builder"
+  short_description: "Build and polish real Mercury interfaces"
+  default_prompt: "Use $mercury-design-builder to build and verify this interface with real Mercury components and tokens."
