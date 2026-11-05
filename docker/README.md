@@ -1,10 +1,10 @@
 # Mercury native image
 
-The candidate image contains native mx and Hyperscript LSAP, Python-served documentation, agent skills, the counter and task-list playgrounds, examples and notices. It was built and tested on win120 as non-root UID/GID 10001, with no Node/npm/Rust/BEAM. Network-disabled mx verification/build and five HTTP routes passed. GitHub preview publication is still pending.
+The candidate image contains native mx and Hyperscript LSAP, Python-served documentation, agent skills, the counter and task-list playgrounds, examples and notices. It was built and tested on win120 as non-root UID/GID 10001, with no Node/npm/Rust/BEAM. Network-disabled mx verification/build and five HTTP routes passed. The GitHub preview is published; its public archive was hash-verified, loaded and checked on win120.
 
 ## Download and load the candidate
 
-The release uses a Docker archive on GitHub; GHCR is optional future distribution. From the repository, after publication and with a new output filename:
+The release uses a Docker archive on GitHub; GHCR is optional future distribution. From the repository, with a new output filename:
 
 ```sh
 set -eu
@@ -54,4 +54,4 @@ docker build --platform linux/amd64 \
 
 The installer receives the manifest, expected hash and local cache, verifies the release, and extracts the bundle under `/opt/mercury` and native tools under `/opt/mercury/native`. Its build step has no network access: absent or invalid inputs must fail. The final stage copies only the installed tree, so the cached archives and build-time bootstrap are not retained separately. No native compilation occurs.
 
-The base is the official Python `3.14-slim-trixie` Linux amd64 manifest `sha256:ac25e5afbfdb4a94ff99cc24b0345719210133144481480bcba6085efa36a341`, queried directly from Docker Hub. Its tag index at inspection was `sha256:af8a5aa14780025dbfbcfbc81bd8a91ebd87711dd5b0f48ed71090949dd7cb1d`. The Dockerfile pins the platform manifest and checks glibc, libgcc, absence of excluded runtimes, and `mx --version` during the build. The candidate image was built and tested on win120; publication and a fresh public-network installation remain pending.
+The base is the official Python `3.14-slim-trixie` Linux amd64 manifest `sha256:ac25e5afbfdb4a94ff99cc24b0345719210133144481480bcba6085efa36a341`, queried directly from Docker Hub. Its tag index at inspection was `sha256:af8a5aa14780025dbfbcfbc81bd8a91ebd87711dd5b0f48ed71090949dd7cb1d`. The Dockerfile pins the platform manifest and checks glibc, libgcc, absence of excluded runtimes, and `mx --version` during the build. The image was built and tested on win120. Fresh public-network bootstrap and image download/load checks passed; see the release record for the evidence and exact manifest pin.

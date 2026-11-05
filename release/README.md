@@ -2,7 +2,7 @@
 
 This directory describes the consumer distribution: documentation and agent resources, native Linux tools and the tested container-image candidate. The public repository is a distribution hub, not a complete source workspace.
 
-The candidate tag is `v0.1.0-agent-preview.1`. GitHub release publication is pending; GHCR is an optional future distribution route. The browser packages at 4.0.0 and the native CLI at 0.1.0 have separate version identities; the distribution tag does not rename either.
+The candidate tag is `v0.1.0-agent-preview.1`. The GitHub preview is published; GHCR is an optional future distribution route. The browser packages at 4.0.0 and the native CLI at 0.1.0 have separate version identities; the distribution tag does not rename either.
 
 ## Manifest and trust
 
@@ -26,7 +26,7 @@ Versioned URL: `https://github.com/fiberfx/mercury/releases/download/v0.1.0-agen
 
 Reviewed manifest SHA-256: `1dbcce7ed1443ec6ff2ae922b4b1b2ba0f3f0562c00af86a20af45dcddd67b50`
 
-This pin identifies the produced candidate manifest. It does not assert that the URL is already published. Both `agents/bootstrap.py` and `agents/download_image.py` require the caller to supply this pin before trusting asset metadata.
+This pin identifies the published preview manifest. Both `agents/bootstrap.py` and `agents/download_image.py` require the caller to supply this pin before trusting asset metadata.
 
 ## Contents and boundaries
 
@@ -39,9 +39,9 @@ This pin identifies the produced candidate manifest. It does not assert that the
 
 ## Evidence before publication
 
-The current source-side evidence is 88 passing LMS tests and 235 passing native tests, with two native tests ignored. Cold consumer checks covered Node-free installation and build, offline reuse and tamper rejection. The image passed win120 checks as non-root UID 10001, with no Node/npm/Rust/BEAM, a network-disabled mx verification/build, and five HTTP routes. These are candidate checks, not public-release observations.
+The current source-side evidence is 88 passing LMS tests and 235 passing native tests, with two native tests ignored. Cold consumer checks covered Node-free installation and build, offline reuse and tamper rejection. The image passed win120 checks as non-root UID 10001, with no Node/npm/Rust/BEAM, a network-disabled mx verification/build, and five HTTP routes. These assembly checks are complemented by the public consumer results below.
 
-Before calling the distribution available, verify the actual published manifest and asset bytes through the public consumer path. Record their real digests and source revision, run the documented fresh bootstrap, and inspect the requested page in a browser. For the image, verify the public archive through `agents/download_image.py`, load the verified bytes and check startup. A future GHCR route should use a reviewed OCI digest, but GHCR is not required for the archive route. Public-network installation and release publication are still pending.
+Before calling the distribution available, verify the actual published manifest and asset bytes through the public consumer path. Record their real digests and source revision, run the documented fresh bootstrap, and inspect the requested page in a browser. For the image, verify the public archive through `agents/download_image.py`, load the verified bytes and check startup. A future GHCR route should use a reviewed OCI digest, but GHCR is not required for the archive route. Public-network verification passed on 2026-11-05: a fresh non-root Linux container rejected a wrong manifest pin, installed from the public GitHub assets, and ran native verification/build with `MXPROXY=off`. The public Docker archive was independently downloaded and hash-verified, loaded on win120, and checked for the recorded image identity, five HTTP routes and network-disabled native build. The frozen manifest records assembly-time status; this release record carries the later observations.
 
 A source README correction does not change an existing npm package's README. Treat that update as a separate publication step and report its actual state.
 

@@ -11,7 +11,7 @@ This repository is a **consumer distribution hub**, not a checkout of all Mercur
 - **Work from a local documentation bundle:** use the Python bootstrap below. Add native tools on supported Linux, or select `--docs-only` elsewhere.
 - **Give an agent the task:** start with [the agent guide](agents/README.md) and, after extraction, `mercury-sandbox/agents/SKILL.md`.
 
-The JavaScript browser packages and the native CLI have separate versions. The candidate distribution release is `v0.1.0-agent-preview.1`; it is **not published yet**. Public-network installation and release-asset publication remain pending. Do not infer availability from a planned filename, tag or command.
+The JavaScript browser packages and the native CLI have separate versions. The published preview is [v0.1.0-agent-preview.1](https://github.com/fiberfx/mercury/releases/tag/v0.1.0-agent-preview.1). A fresh public-network bootstrap passed manifest rejection, native verification and page build on Linux. npm publication remains pending.
 
 ## Bootstrap a reviewed release
 
@@ -46,7 +46,7 @@ Only Linux x64 binaries have verification evidence, requiring glibc 2.39+. The p
 
 ## Container route
 
-The candidate image has been built and tested. Its distribution artifact is a GitHub release archive; GHCR is an optional future route, not a prerequisite. Publication of the preview is still pending. Once the candidate assets are published, run from this repository with a new output filename:
+The image is available as a GitHub release archive; GHCR is an optional future route, not a prerequisite. Run from this repository with a new output filename:
 
 ```sh
 set -eu
@@ -67,9 +67,11 @@ The container runs as UID/GID 10001 and has a writable `/workspace`. To retain w
 
 ## What is verified
 
-Source-side checks recorded for this candidate passed 88 LMS tests and 235 native tests, with two native tests ignored. A cold consumer check covered Node-free installation, build, offline reuse and tamper rejection. The image also passed checks on win120 as non-root UID 10001: network-disabled native verification/build, absence of Node/npm/Rust/BEAM, and five HTTP routes. These results support the candidate; they do not establish that GitHub assets have been published or that a fresh public-network install succeeds.
+Source-side checks recorded for this candidate passed 88 LMS tests and 235 native tests, with two native tests ignored. A cold consumer check covered Node-free installation, build, offline reuse and tamper rejection. The image also passed checks on win120 as non-root UID 10001: network-disabled native verification/build, absence of Node/npm/Rust/BEAM, and five HTTP routes. The versioned GitHub assets are published. A fresh non-root Linux consumer downloaded the manifest and archives, rejected a wrong manifest pin, and ran native verification/build with `MXPROXY=off`. The public image archive passed SHA-256 verification, was loaded on win120, and passed the same offline runtime checks.
 
-The bundle includes a native-built counter and a portable task list made from published Mercury packages. Internal repository maps and the Design Explorer are excluded pending a separate public-content selection. The reusable playground skill includes six templates.
+The bundle includes a native-built counter and a portable task list made from published Mercury packages. Internal repository maps and the Design Explorer are excluded pending a separate public-content selection. The reusable playground skill includes six templates; the Design Builder skill covers interface composition and interaction verification.
+
+The bundled site is a source snapshot. Its empty `/downloads.json` describes the separate website-hosted archive route. Use the Python bootstrap above for this published GitHub preview; production-site deployment and npm publication remain pending.
 
 ## Contributing
 
