@@ -7,7 +7,7 @@ This repository is a **consumer distribution hub**, not a checkout of all Mercur
 ## Choose a starting point
 
 - **Keep an existing Mercury app:** use its working tools and dependency pins.
-- **Try a page without installing a CLI:** follow the [browser guide](https://mercury.jonnify.com/start/browser). It uses plain JavaScript, versioned packages and a stylesheet; the CDN route needs network access.
+- **Try a page without installing a CLI:** open [site/examples/first-page.html](site/examples/first-page.html) from this checkout and follow the [browser guide](docs/start/browser.md). It uses plain JavaScript, versioned packages and a stylesheet; the CDN route needs network access. The bundled site serves the same example at `/examples/first-page.html`.
 - **Work from a local documentation bundle:** use the Python bootstrap below. Add native tools on supported Linux, or select `--docs-only` elsewhere.
 - **Give an agent the task:** start with [the agent guide](agents/README.md) and, after extraction, `mercury-sandbox/agents/SKILL.md`.
 

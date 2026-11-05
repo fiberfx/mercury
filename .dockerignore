@@ -4,4 +4,5 @@
 !agents/bootstrap.py
 !release-inputs/
 !release-inputs/release.json
-!release-inputs/*.tar.gz
+!release-inputs/mx-linux-x86_64.tar.gz
+!release-inputs/mercury-agent-bundle.tar.gz
