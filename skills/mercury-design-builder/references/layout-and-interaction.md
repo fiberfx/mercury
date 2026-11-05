@@ -24,6 +24,8 @@ Make typing, filtering, and repeated keyboard work immediate. Add motion only wh
 
 Give controls visible focus and enough target area for their context; roughly `2.75rem` can be a useful touch target without inflating every dense desktop control. Label icon-only actions. Status must remain understandable without color or animation.
 
+When filtering a catalog or list, decide whether the filter also changes selection. If the workspace retains a selected item outside the results, explain that state and provide filter recovery for both matching and empty results. Verify that clearing filters restores useful focus without discarding unrelated drafts or settings.
+
 For clipboard actions, copy the exact displayed text, await success, and clear stale success when the content changes. When clipboard access fails, offer selectable text with an honest manual-copy message. For saving, resetting, or deleting, make the state transition match the promised scope: a filter or view preset should not erase saved work. Offer undo when it provides a useful recovery path.
 
 ## Graphs and large previews

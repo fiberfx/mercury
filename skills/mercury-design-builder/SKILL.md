@@ -1,11 +1,13 @@
 ---
 name: mercury-design-builder
-description: Build, refine, and verify interfaces with real Mercury UI components, Hyperscript, and CSS tokens. Use for Mercury pages, application screens, forms, navigation, responsive layouts, and interaction polish. Preserve the host application and its toolchain; use mercury-playground when the requested product is a live explorer with controls and a generated prompt.
+description: Build, refine, and verify interfaces with real Mercury UI components, Hyperscript, and CSS tokens. Use for Mercury pages, application screens, forms, navigation, responsive layouts, and polishing existing explorers. Preserve the host application, its interactions, and its toolchain.
 ---
 
 # Mercury Design Builder
 
 Make the requested interface useful, coherent, and demonstrably interactive. Compose genuine Mercury components; use application CSS for layout and supported tokens for styling. A polished screenshot, a successful build, and a working interaction establish different things.
+
+For a new playground with live controls and a generated prompt, the available `mercury-playground` skill can supply that product workflow. Polishing an existing explorer remains in this skill: preserve its working exploration model and improve the requested surface.
 
 ## Establish the boundary
 
