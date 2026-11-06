@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mercury Brand Book"
+  short_description: "Source-faithful brand books and interactive readers"
+  default_prompt: "Use $mercury-brand-book to update the supplied Mercury brand book and deliver a verified, accessible reader with the requested exports."
