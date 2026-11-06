@@ -1,6 +1,6 @@
 {
-  "revision": "3e311815a536084b7c276c5a3889433fa96b1a03",
-  "imageId": "sha256:43829f165eab388e1f5cc0afc7cfd9beb8d0d2c5c4873ac4b93aa045579a1f41",
+  "revision": "51ead01be32db5bf65479a79c77a332476e1cdb8",
+  "imageId": "sha256:617a61811c6b9fd50536add372dd261fc0840a54faa1de59c23220728cbd175b",
   "files": {
     "favicon.svg": {
       "bytes": 518,
@@ -50,5 +50,7 @@
       "bytes": 900,
       "sha256": "858b5b3ab619e2b78255ab96bb3b120ce43f422fea698fcf1363330e6f9a47ed"
     }
-  }
+  },
+  "build_context": "Exact revision extracted to a directory; Docker CLI applies committed .dockerignore rules.",
+  "dockerignore_sha256": "7ef95516360913e9c346d7168c7b8c25a3034989ef7427db3b12b672f9790a64"
 }
