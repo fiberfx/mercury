@@ -4,7 +4,7 @@ These notes describe the supplied **Interface edition 1.0, 6 November 2026**. Th
 
 ## Identity and provenance
 
-Use the supplied `mx-mark.svg`, fixed light/dark marks, plugin-style tiles and favicon where available. Preserve the mark's two paths, round caps and aspect ratio. Its inline m inherits text color and x follows `--lms-accent`; fixed-image variants deliberately retain documented blue accents. Do not homogenize these variants to purple. There is no approved universal clear-space measurement or minimum print size in this edition.
+Use the supplied `mx-mark.svg`, fixed light/dark marks, plugin-style tiles and favicon where available. Preserve the mark's two paths, round caps and aspect ratio. Its inline m inherits text color and x follows `--lms-accent`; fixed-image variants deliberately retain documented blue accents. Do not homogenize these variants to purple. Inspect the color-value shape when inlining: the supplied SVG master expects a complete CSS color, while LMS semantic tokens contain RGB channels. Adapt the application binding to `rgb(var(--lms-accent))` when needed without redrawing the paths or silently changing the distributed master. There is no approved universal clear-space measurement or minimum print size in this edition.
 
 The home link should expose one useful accessible name. Hide decorative SVG from the accessibility tree when the surrounding link already supplies that name; keep the link named when narrow layouts hide the visible wordmark.
 

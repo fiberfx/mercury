@@ -48,3 +48,5 @@ Scope evidence honestly: computed contrast does not prove reading order, a scree
 For print views, explicitly reset paper, ink, muted text and tinted surfaces; changing only page foreground/background can leave dark-mode table headers unreadable. Check the full source introduction and every chapter in the print representation.
 
 Measure the actual paragraphs, labels and code spans after applying preferences, not only their parent container. Library typography may set an explicit paragraph size or leading that defeats inheritance; make the app-owned reading boundary inherit intentionally and verify computed text values. Keep status feedback out of the reading path, and provide a reachable return action after long mobile settings.
+
+For compact headers, test actual button-label scaling as well as body text. Rem-based labels may require a container-aware icon treatment at enlarged root sizes; keep the action name accessible and test all controls in one row at the constrained width.
