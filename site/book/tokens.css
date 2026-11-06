@@ -1,0 +1,21 @@
+/* Source edition values. Colors contain RGB channels: rgb(var(--fg-primary)). */
+.mercury-book-light {
+  --bg-primary: 255 255 255;
+  --bg-secondary: 253 253 253;
+  --bg-tertiary: 245 245 245;
+  --fg-primary: 0 0 0;
+  --fg-secondary: 61 61 61;
+  --fg-tertiary: 89 93 98;
+  --lms-accent: 78 70 180;
+  --fg-brand: 78 70 180;
+}
+.mercury-book-dark {
+  --bg-primary: 17 17 19;
+  --bg-secondary: 24 25 27;
+  --bg-tertiary: 33 34 37;
+  --fg-primary: 237 238 240;
+  --fg-secondary: 176 180 186;
+  --fg-tertiary: 176 180 186;
+  --lms-accent: 116 116 220;
+  --fg-brand: 177 169 255;
+}

@@ -1,0 +1,54 @@
+{
+  "revision": "3e311815a536084b7c276c5a3889433fa96b1a03",
+  "imageId": "sha256:43829f165eab388e1f5cc0afc7cfd9beb8d0d2c5c4873ac4b93aa045579a1f41",
+  "files": {
+    "favicon.svg": {
+      "bytes": 518,
+      "sha256": "e75066c6e799928f2dff2e5781b23fdfe6bd2e1d53248f4788d67840cb243d26"
+    },
+    "index.html": {
+      "bytes": 969715,
+      "sha256": "c0e30ef08252f02028017519ddc95f8a52083b183dfeb8fd0616ad8f2dfaad4d"
+    },
+    "llms.txt": {
+      "bytes": 2045,
+      "sha256": "c44d5ea1b5e511135e3c06cd31c49cc4ecfde9b5492813ae6731696776954096"
+    },
+    "mercury-brand-book.md": {
+      "bytes": 18821,
+      "sha256": "1d96151a7efbec77f189cd72ceadf1b047c9741b3564a35cf640285c00236181"
+    },
+    "mercury-brand-book.pdf": {
+      "bytes": 63530,
+      "sha256": "eea23f4e35e19d620173254a006929f047c1f9f19e0174aa53d49e806daabcb0"
+    },
+    "mx-mark-on-dark.svg": {
+      "bytes": 280,
+      "sha256": "afea3039f1ac52eb1c7b4a2e10771d883c4165ef542aa0048df385efc8c44b90"
+    },
+    "mx-mark-on-light.svg": {
+      "bytes": 280,
+      "sha256": "972cd9e24316f8acdf188f1a3321dd96178106c47fbb8f733a6cac25aeca99c3"
+    },
+    "mx-mark.svg": {
+      "bytes": 303,
+      "sha256": "5a31847a74fbf9b7e06273ea85229ffe7b162742462f57739989146ba9de4f3c"
+    },
+    "mx-tile-dark.svg": {
+      "bytes": 428,
+      "sha256": "a286987006aa78ea9ef1785a185998933968ab268b3cb6d049ca775cab566103"
+    },
+    "mx-tile.svg": {
+      "bytes": 344,
+      "sha256": "0ef654eb5ed62740f900aee0bd6627096ef91b7b4a3f7ca58253fdd736fb76ca"
+    },
+    "tokens.css": {
+      "bytes": 576,
+      "sha256": "fb9083c24055f837719a30cabe8b1acadd9b22cccaa23a21858a64eafaaadc52"
+    },
+    "tokens.json": {
+      "bytes": 900,
+      "sha256": "858b5b3ab619e2b78255ab96bb3b120ce43f422fea698fcf1363330e6f9a47ed"
+    }
+  }
+}

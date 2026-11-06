@@ -1,0 +1,488 @@
+{
+  "title": "Mercury",
+  "subtitle": "A practical brand book for the documentation interface",
+  "edition": "Interface edition 1.0 · 6 November 2026",
+  "sourceSha256": "1d96151a7efbec77f189cd72ceadf1b047c9741b3564a35cf640285c00236181",
+  "intro": "# Mercury\n## A practical brand book for the documentation interface\n\nInterface edition 1.0 · 6 November 2026\n\n**Scope.** This book records the existing Mercury identity and the documentation layout refined on 6 November 2026. It combines source-verified tokens with browser observations from the private win-120 preview. Proposed editorial and operating guidance is labeled as such. It is not a WCAG conformance certificate or an endorsement by the cited experts.\n\n",
+  "scope": "This book records the existing Mercury identity and the documentation layout refined on 6 November 2026. It combines source-verified tokens with browser observations from the private win-120 preview. Proposed editorial and operating guidance is labeled as such. It is not a WCAG conformance certificate or an endorsement by the cited experts.",
+  "chapters": [
+    {
+      "id": "character",
+      "number": 1,
+      "title": "The character of Mercury",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Mercury documentation should make technical work feel understandable and navigable. Its identity comes from the established mx mark, DM Sans, strong ink, restrained purple, and spacious reading surfaces. The interface should put a reader's next useful action close to the information that makes it possible."
+        },
+        {
+          "type": "paragraph",
+          "text": "This book is for designers, engineers, and documentation authors extending the Mercury site. It translates the current interface into repeatable decisions. It covers identity, typography, color, navigation, accessibility, and implementation. It does not replace the component library's contracts or define a new visual identity."
+        },
+        {
+          "type": "paragraph",
+          "text": "**Proposed editorial voice:** precise, direct, and helpful. Start with what the reader can do. Name requirements before a command, show the expected result after it, and explain failures where recovery is possible. Keep identifiers faithful to the software. Distinguish an observed result from an intended behavior."
+        },
+        {
+          "type": "table",
+          "rows": [
+            [
+              "Use",
+              "Avoid"
+            ],
+            [
+              "“Install mx, then verify its version.”",
+              "A promise without an executable next step"
+            ],
+            [
+              "“This example requires a running server.”",
+              "A hidden prerequisite"
+            ],
+            [
+              "“Open the menu to choose a course.”",
+              "Spatial directions that depend on a desktop layout"
+            ],
+            [
+              "“The command exits with status 0.”",
+              "“Everything should work”"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The desired impression is quiet competence. Hierarchy should come from position, grouping, size, and weight before additional decoration. This is a Mercury application of Aurora Harley's account of proximity: distance communicates relationships, and responsive changes must preserve those relationships. [NN/g: Proximity Principle in Visual Design](https://www.nngroup.com/articles/gestalt-proximity/)"
+        }
+      ],
+      "search": "\nMercury documentation should make technical work feel understandable and navigable. Its identity comes from the established mx mark, DM Sans, strong ink, restrained purple, and spacious reading surfaces. The interface should put a reader's next useful action close to the information that makes it possible.\n\nThis book is for designers, engineers, and documentation authors extending the Mercury site. It translates the current interface into repeatable decisions. It covers identity, typography, color, navigation, accessibility, and implementation. It does not replace the component library's contracts or define a new visual identity.\n\n**Proposed editorial voice:** precise, direct, and helpful. Start with what the reader can do. Name requirements before a command, show the expected result after it, and explain failures where recovery is possible. Keep identifiers faithful to the software. Distinguish an observed result from an intended behavior.\n\n| Use | Avoid |\n|---|---|\n| “Install mx, then verify its version.” | A promise without an executable next step |\n| “This example requires a running server.” | A hidden prerequisite |\n| “Open the menu to choose a course.” | Spatial directions that depend on a desktop layout |\n| “The command exits with status 0.” | “Everything should work” |\n\nThe desired impression is quiet competence. Hierarchy should come from position, grouping, size, and weight before additional decoration. This is a Mercury application of Aurora Harley's account of proximity: distance communicates relationships, and responsive changes must preserve those relationships. [NN/g: Proximity Principle in Visual Design](https://www.nngroup.com/articles/gestalt-proximity/)\n\n"
+    },
+    {
+      "id": "mark",
+      "number": 2,
+      "title": "Use the existing mark",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The repository's `brand/SOURCE` records the mark's origin in the mx JetBrains plugin. Preserve its two paths, round caps, and proportions. Use the supplied SVG masters; do not trace the mark from a screenshot, stretch it, add strokes, or redraw the letterforms."
+        },
+        {
+          "type": "table",
+          "rows": [
+            [
+              "Asset",
+              "Intended use in this repository"
+            ],
+            [
+              "`mx-mark.svg`",
+              "Inline header mark: the m inherits text color; the x uses `--lms-accent`"
+            ],
+            [
+              "`mx-mark-on-light.svg`",
+              "Fixed-color image on light backgrounds"
+            ],
+            [
+              "`mx-mark-on-dark.svg`",
+              "Fixed-color image on dark backgrounds"
+            ],
+            [
+              "`mx-tile.svg`",
+              "Established plugin-style tile"
+            ],
+            [
+              "`mx-tile-dark.svg`",
+              "Repository's adapted dark tile"
+            ],
+            [
+              "`favicon.svg`",
+              "Theme-responsive browser icon"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The inline mark and fixed-color image assets are deliberately different. The inline accent follows the LMS theme; fixed-image variants retain the blue accents documented in `brand/SOURCE`. Do not “correct” them all to purple without a separate identity decision."
+        },
+        {
+          "type": "paragraph",
+          "text": "The current header pairs a 1.875rem × 1.375rem mark with a 1.375rem wordmark at weight 800 and -0.04em tracking. These are application dimensions, not minimum reproduction sizes for every medium. Keep the SVG aspect ratio when scaling."
+        },
+        {
+          "type": "paragraph",
+          "text": "**Recommended handling:** keep nearby content outside the mark's immediate visual area, test it at its actual rendered size, and select the supplied asset for the surface. No universal clear-space measurement or print minimum has been approved in the inspected source."
+        },
+        {
+          "type": "paragraph",
+          "text": "When the mark and visible wordmark form one home link, expose one useful accessible name. Decorative SVG content should not repeat that name. If the narrow layout hides the visible wordmark, the home link still needs an understandable accessible name. Verify the rendered accessibility tree rather than assuming the appearance proves it."
+        }
+      ],
+      "search": "\nThe repository's `brand/SOURCE` records the mark's origin in the mx JetBrains plugin. Preserve its two paths, round caps, and proportions. Use the supplied SVG masters; do not trace the mark from a screenshot, stretch it, add strokes, or redraw the letterforms.\n\n| Asset | Intended use in this repository |\n|---|---|\n| `mx-mark.svg` | Inline header mark: the m inherits text color; the x uses `--lms-accent` |\n| `mx-mark-on-light.svg` | Fixed-color image on light backgrounds |\n| `mx-mark-on-dark.svg` | Fixed-color image on dark backgrounds |\n| `mx-tile.svg` | Established plugin-style tile |\n| `mx-tile-dark.svg` | Repository's adapted dark tile |\n| `favicon.svg` | Theme-responsive browser icon |\n\nThe inline mark and fixed-color image assets are deliberately different. The inline accent follows the LMS theme; fixed-image variants retain the blue accents documented in `brand/SOURCE`. Do not “correct” them all to purple without a separate identity decision.\n\nThe current header pairs a 1.875rem × 1.375rem mark with a 1.375rem wordmark at weight 800 and -0.04em tracking. These are application dimensions, not minimum reproduction sizes for every medium. Keep the SVG aspect ratio when scaling.\n\n**Recommended handling:** keep nearby content outside the mark's immediate visual area, test it at its actual rendered size, and select the supplied asset for the surface. No universal clear-space measurement or print minimum has been approved in the inspected source.\n\nWhen the mark and visible wordmark form one home link, expose one useful accessible name. Decorative SVG content should not repeat that name. If the narrow layout hides the visible wordmark, the home link still needs an understandable accessible name. Verify the rendered accessibility tree rather than assuming the appearance proves it.\n\n"
+    },
+    {
+      "id": "color",
+      "number": 3,
+      "title": "Color has a job",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The light theme uses white and near-white surfaces, black primary text, and Mercury purple for focus and selected emphasis. The dark theme uses the existing Mercury UI dark scales, mapped to the same semantic roles. Preserve meaning across themes; do not derive dark mode by mechanically inverting colors."
+        },
+        {
+          "type": "table",
+          "rows": [
+            [
+              "Semantic role",
+              "Light",
+              "Dark"
+            ],
+            [
+              "Page, `--bg-primary`",
+              "#FFFFFF",
+              "#111113"
+            ],
+            [
+              "Secondary surface, `--bg-secondary`",
+              "#FDFDFD",
+              "#18191B"
+            ],
+            [
+              "Tinted surface, `--bg-tertiary`",
+              "#F5F5F5",
+              "#212225"
+            ],
+            [
+              "Primary text, `--fg-primary`",
+              "#000000",
+              "#EDEEF0"
+            ],
+            [
+              "Secondary text, `--fg-secondary`",
+              "#3D3D3D",
+              "#B0B4BA"
+            ],
+            [
+              "Tertiary text, `--fg-tertiary`",
+              "#595D62",
+              "#B0B4BA"
+            ],
+            [
+              "Accent solid, `--lms-accent`",
+              "#4E46B4",
+              "#7474DC"
+            ],
+            [
+              "Brand text, `--fg-brand`",
+              "#4E46B4",
+              "#B1A9FF"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Use text tokens for text and surface tokens for fills. A usable accent fill does not automatically make a usable accent foreground. Disabled text is not a substitute for secondary text. Links in reading content retain an underline, so the link is recognizable without color alone."
+        },
+        {
+          "type": "paragraph",
+          "text": "For ordinary text, use at least 4.5:1 contrast; large text has a 3:1 exception under WCAG's definition. Measure the actual foreground/background pair, including overlays and interaction states. [W3C: Contrast (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)"
+        },
+        {
+          "type": "paragraph",
+          "text": "Information needed to identify controls, states, and meaningful graphics generally needs 3:1 against adjacent colors. A decorative separator is different from a boundary needed to recognize an input. The repository's 1.5:1 decorative-line check is an internal design rule, not a WCAG threshold. [W3C: Non-text Contrast](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html)"
+        }
+      ],
+      "search": "\nThe light theme uses white and near-white surfaces, black primary text, and Mercury purple for focus and selected emphasis. The dark theme uses the existing Mercury UI dark scales, mapped to the same semantic roles. Preserve meaning across themes; do not derive dark mode by mechanically inverting colors.\n\n| Semantic role | Light | Dark |\n|---|---|---|\n| Page, `--bg-primary` | #FFFFFF | #111113 |\n| Secondary surface, `--bg-secondary` | #FDFDFD | #18191B |\n| Tinted surface, `--bg-tertiary` | #F5F5F5 | #212225 |\n| Primary text, `--fg-primary` | #000000 | #EDEEF0 |\n| Secondary text, `--fg-secondary` | #3D3D3D | #B0B4BA |\n| Tertiary text, `--fg-tertiary` | #595D62 | #B0B4BA |\n| Accent solid, `--lms-accent` | #4E46B4 | #7474DC |\n| Brand text, `--fg-brand` | #4E46B4 | #B1A9FF |\n\nUse text tokens for text and surface tokens for fills. A usable accent fill does not automatically make a usable accent foreground. Disabled text is not a substitute for secondary text. Links in reading content retain an underline, so the link is recognizable without color alone.\n\nFor ordinary text, use at least 4.5:1 contrast; large text has a 3:1 exception under WCAG's definition. Measure the actual foreground/background pair, including overlays and interaction states. [W3C: Contrast (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)\n\nInformation needed to identify controls, states, and meaningful graphics generally needs 3:1 against adjacent colors. A decorative separator is different from a boundary needed to recognize an input. The repository's 1.5:1 decorative-line check is an internal design rule, not a WCAG threshold. [W3C: Non-text Contrast](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html)\n\n"
+    },
+    {
+      "id": "typography",
+      "number": 4,
+      "title": "Typography that follows the reader",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "DM Sans is the prose and display family. Code uses the existing system monospace stack. Keep the fallbacks: a font request can fail, and the page must remain usable without the preferred face."
+        },
+        {
+          "type": "table",
+          "rows": [
+            [
+              "Role",
+              "Font size",
+              "Line height",
+              "Weight"
+            ],
+            [
+              "Main heading",
+              "2.5rem",
+              "3rem",
+              "700"
+            ],
+            [
+              "Main heading, small screens",
+              "2rem",
+              "2.5rem",
+              "700"
+            ],
+            [
+              "Section heading",
+              "1.25rem",
+              "1.75rem",
+              "700"
+            ],
+            [
+              "Lead paragraph",
+              "1.25rem",
+              "1.6 unitless",
+              "Inherited"
+            ],
+            [
+              "Body",
+              "1rem",
+              "1.75 unitless",
+              "Inherited"
+            ],
+            [
+              "Navigation",
+              "0.875rem",
+              "1.25rem",
+              "By role"
+            ],
+            [
+              "Small text",
+              "0.8125rem",
+              "1.25rem in shell contexts",
+              "By role"
+            ],
+            [
+              "Code block",
+              "0.8125rem",
+              "1.5rem",
+              "Monospace"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "At a 16px root, 1rem is 16px. It is not permanently 16px: `rem` follows the root font size. Keep text scalable and avoid fixing the root solely to preserve a screenshot. The `ch` unit uses the zero glyph's advance; a 68ch measure is not a guarantee of exactly 68 characters of proportional text. [CSS Values and Units](https://www.w3.org/TR/css-values-4/#font-relative-lengths)"
+        },
+        {
+          "type": "paragraph",
+          "text": "The current reading measure is 68ch. Matthew Butterick recommends averaging 45-90 characters per line; this supports checking line length as a reading concern, not treating one CSS width as universally correct. His general line-spacing advice is 120-145%, with unitless CSS leading preferred. Mercury's body ratio of 1.75 and lead ratio of 1.6 are more generous local choices for technical reading, verified in the rendered documentation page; they are not Butterick's recommended range. [Butterick: Line length](https://practicaltypography.com/line-length.html) · [Butterick: Line spacing](https://practicaltypography.com/line-spacing.html)"
+        },
+        {
+          "type": "paragraph",
+          "text": "Judge the loaded font, actual language, code, and wrapping together. A technically correct scale can still fail when long labels collide or fallback metrics change a line break."
+        }
+      ],
+      "search": "\nDM Sans is the prose and display family. Code uses the existing system monospace stack. Keep the fallbacks: a font request can fail, and the page must remain usable without the preferred face.\n\n| Role | Font size | Line height | Weight |\n|---|---|---|---|\n| Main heading | 2.5rem | 3rem | 700 |\n| Main heading, small screens | 2rem | 2.5rem | 700 |\n| Section heading | 1.25rem | 1.75rem | 700 |\n| Lead paragraph | 1.25rem | 1.6 unitless | Inherited |\n| Body | 1rem | 1.75 unitless | Inherited |\n| Navigation | 0.875rem | 1.25rem | By role |\n| Small text | 0.8125rem | 1.25rem in shell contexts | By role |\n| Code block | 0.8125rem | 1.5rem | Monospace |\n\nAt a 16px root, 1rem is 16px. It is not permanently 16px: `rem` follows the root font size. Keep text scalable and avoid fixing the root solely to preserve a screenshot. The `ch` unit uses the zero glyph's advance; a 68ch measure is not a guarantee of exactly 68 characters of proportional text. [CSS Values and Units](https://www.w3.org/TR/css-values-4/#font-relative-lengths)\n\nThe current reading measure is 68ch. Matthew Butterick recommends averaging 45-90 characters per line; this supports checking line length as a reading concern, not treating one CSS width as universally correct. His general line-spacing advice is 120-145%, with unitless CSS leading preferred. Mercury's body ratio of 1.75 and lead ratio of 1.6 are more generous local choices for technical reading, verified in the rendered documentation page; they are not Butterick's recommended range. [Butterick: Line length](https://practicaltypography.com/line-length.html) · [Butterick: Line spacing](https://practicaltypography.com/line-spacing.html)\n\nJudge the loaded font, actual language, code, and wrapping together. A technically correct scale can still fail when long labels collide or fallback metrics change a line break.\n\n"
+    },
+    {
+      "id": "rhythm",
+      "number": 5,
+      "title": "Spacing expresses structure",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The existing `--lms-baseline` is 0.25rem. At a 16px root, the revised body line box is 28px (seven increments), and the lead line box is 32px (eight increments). Use this as a shared spacing increment: 0.5rem, 0.75rem, 1rem, 1.5rem, 2rem, and 3rem form a useful vocabulary for adjacent items, groups, and sections."
+        },
+        {
+          "type": "paragraph",
+          "text": "Call this a spacing rhythm. It does not guarantee that every glyph baseline lands on a single grid: font metrics, borders, wrapped lines, and user settings affect the rendered result. A useful rhythm should survive enlargement rather than constrain text to fixed boxes."
+        },
+        {
+          "type": "table",
+          "rows": [
+            [
+              "Relationship",
+              "Design rule"
+            ],
+            [
+              "Heading and its content",
+              "Keep the following content closer than the preceding section"
+            ],
+            [
+              "Sidebar group and its links",
+              "Associate the label with the links it introduces"
+            ],
+            [
+              "Adjacent sidebar groups",
+              "Use a distinct separation without making each group a card"
+            ],
+            [
+              "Nested destinations",
+              "Use a stable indent and preserve readable line width"
+            ],
+            [
+              "Multiline navigation item",
+              "Let height grow; retain clear separation from neighbors"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "This grouping approach applies proximity deliberately. Harley describes how spacing can make associations clearer, and how those associations may change when a layout compresses. A phone drawer must retain the course structure, even when desktop columns disappear. [NN/g: Proximity Principle](https://www.nngroup.com/articles/gestalt-proximity/)"
+        },
+        {
+          "type": "paragraph",
+          "text": "The shell currently shares an 80rem maximum container across header, body, and footer. Desktop navigation uses a 15rem rail with a 3rem content gap; a 12.5rem local contents rail appears where the layout has room. These are inspected application values, not universal Mercury component tokens."
+        },
+        {
+          "type": "paragraph",
+          "text": "The sidebar revision aligns summaries, groups, and link text on a 0.75rem inset. Group labels have 0.75rem above and 0.25rem below. Link rows use 0.5rem vertical padding and a minimum height of 2.25rem on desktop, rising to 2.75rem for coarse pointers. Summaries are at least 2.75rem high. The current page combines bold text, a tinted surface, and a 0.125rem inset purple marker. These values were observed in the browser at a 16px root. Check a short label, a wrapped label, an expanded course, and the current page in both themes."
+        }
+      ],
+      "search": "\nThe existing `--lms-baseline` is 0.25rem. At a 16px root, the revised body line box is 28px (seven increments), and the lead line box is 32px (eight increments). Use this as a shared spacing increment: 0.5rem, 0.75rem, 1rem, 1.5rem, 2rem, and 3rem form a useful vocabulary for adjacent items, groups, and sections.\n\nCall this a spacing rhythm. It does not guarantee that every glyph baseline lands on a single grid: font metrics, borders, wrapped lines, and user settings affect the rendered result. A useful rhythm should survive enlargement rather than constrain text to fixed boxes.\n\n| Relationship | Design rule |\n|---|---|\n| Heading and its content | Keep the following content closer than the preceding section |\n| Sidebar group and its links | Associate the label with the links it introduces |\n| Adjacent sidebar groups | Use a distinct separation without making each group a card |\n| Nested destinations | Use a stable indent and preserve readable line width |\n| Multiline navigation item | Let height grow; retain clear separation from neighbors |\n\nThis grouping approach applies proximity deliberately. Harley describes how spacing can make associations clearer, and how those associations may change when a layout compresses. A phone drawer must retain the course structure, even when desktop columns disappear. [NN/g: Proximity Principle](https://www.nngroup.com/articles/gestalt-proximity/)\n\nThe shell currently shares an 80rem maximum container across header, body, and footer. Desktop navigation uses a 15rem rail with a 3rem content gap; a 12.5rem local contents rail appears where the layout has room. These are inspected application values, not universal Mercury component tokens.\n\nThe sidebar revision aligns summaries, groups, and link text on a 0.75rem inset. Group labels have 0.75rem above and 0.25rem below. Link rows use 0.5rem vertical padding and a minimum height of 2.25rem on desktop, rising to 2.75rem for coarse pointers. Summaries are at least 2.75rem high. The current page combines bold text, a tinted surface, and a 0.125rem inset purple marker. These values were observed in the browser at a 16px root. Check a short label, a wrapped label, an expanded course, and the current page in both themes.\n\n"
+    },
+    {
+      "id": "navigation",
+      "number": 6,
+      "title": "Navigation stays recognizable and operable",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Use ordinary links for destinations and disclosures for showing or hiding groups of destinations. The HTML `details` element represents a disclosure, with `summary` providing its visible caption. Preserve that native control before adding custom behavior. [WHATWG: Interactive elements](https://html.spec.whatwg.org/multipage/interactive-elements.html#the-details-element)"
+        },
+        {
+          "type": "paragraph",
+          "text": "A custom disclosure button needs an accurate expanded state and keyboard activation; APG describes Enter and Space activation and optional `aria-controls`. Native `details` already has its own state. Do not add a static `aria-expanded` value that disagrees with whether the element is open. [WAI APG: Disclosure pattern](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/)"
+        },
+        {
+          "type": "paragraph",
+          "text": "Site navigation is not automatically an ARIA menu. APG's navigation example explicitly avoids the menu role because that role creates expectations of a different interaction model. Keep navigation landmarks, lists, links, and clear names. The present mobile menu opens and closes with its native summary trigger; Escape does not dismiss it. This book does not claim modal focus trapping or custom-menu keyboard behavior. Use `aria-current=\"page\"` on the actual current destination, with a visible treatment that also uses weight or shape. [WAI APG: Disclosure navigation](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/examples/disclosure-navigation/)"
+        },
+        {
+          "type": "paragraph",
+          "text": "The focus indicator must remain visible during keyboard use. Avoid clipping it at the scrollable sidebar edge. Sticky headers and open panels also need checking: WCAG AA requires a focused component not to be entirely obscured by author-created content. Keeping the whole control visible is the stronger design aim. [W3C: Focus Visible](https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html) · [W3C: Focus Not Obscured](https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html)"
+        },
+        {
+          "type": "paragraph",
+          "text": "WCAG 2.5.8 AA generally requires 24 × 24 CSS-pixel targets or one of its stated exceptions, including adequate spacing. Mercury's 2.75rem touch controls are a comfort choice: 44px at a 16px root. Do not describe 44px as the AA minimum. [W3C: Target Size (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html)"
+        }
+      ],
+      "search": "\nUse ordinary links for destinations and disclosures for showing or hiding groups of destinations. The HTML `details` element represents a disclosure, with `summary` providing its visible caption. Preserve that native control before adding custom behavior. [WHATWG: Interactive elements](https://html.spec.whatwg.org/multipage/interactive-elements.html#the-details-element)\n\nA custom disclosure button needs an accurate expanded state and keyboard activation; APG describes Enter and Space activation and optional `aria-controls`. Native `details` already has its own state. Do not add a static `aria-expanded` value that disagrees with whether the element is open. [WAI APG: Disclosure pattern](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/)\n\nSite navigation is not automatically an ARIA menu. APG's navigation example explicitly avoids the menu role because that role creates expectations of a different interaction model. Keep navigation landmarks, lists, links, and clear names. The present mobile menu opens and closes with its native summary trigger; Escape does not dismiss it. This book does not claim modal focus trapping or custom-menu keyboard behavior. Use `aria-current=\"page\"` on the actual current destination, with a visible treatment that also uses weight or shape. [WAI APG: Disclosure navigation](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/examples/disclosure-navigation/)\n\nThe focus indicator must remain visible during keyboard use. Avoid clipping it at the scrollable sidebar edge. Sticky headers and open panels also need checking: WCAG AA requires a focused component not to be entirely obscured by author-created content. Keeping the whole control visible is the stronger design aim. [W3C: Focus Visible](https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html) · [W3C: Focus Not Obscured](https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html)\n\nWCAG 2.5.8 AA generally requires 24 × 24 CSS-pixel targets or one of its stated exceptions, including adequate spacing. Mercury's 2.75rem touch controls are a comfort choice: 44px at a 16px root. Do not describe 44px as the AA minimum. [W3C: Target Size (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html)\n\n"
+    },
+    {
+      "id": "adaptation",
+      "number": 7,
+      "title": "Adaptation is part of the design",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The header combines viewport fallbacks with container queries measured in em, so its compact controls also respond to enlarged text. On small screens, keep primary identity and controls compact, and expose secondary destinations through the navigation disclosure. Keep useful labels available. Keep ordinary table words intact. Allow long identifiers to wrap in prose; allow code examples and genuinely two-dimensional content to scroll within their own region when necessary."
+        },
+        {
+          "type": "paragraph",
+          "text": "WCAG reflow addresses ordinary vertical content at a width equivalent to 320 CSS pixels without loss of information or functionality and without requiring scrolling in two directions. It includes exceptions for content whose meaning or use requires two dimensions. Test the document, not just the viewport screenshot. [W3C: Reflow](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html)"
+        },
+        {
+          "type": "paragraph",
+          "text": "The text-spacing check is a stress condition, not a required default style. With the relevant user overrides applied together-line height 1.5 times font size, paragraph spacing 2 times, letter spacing 0.12 times, and word spacing 0.16 times-content and functionality must remain available. Language and script exceptions apply where a property is not used. [W3C: Text Spacing](https://www.w3.org/WAI/WCAG22/Understanding/text-spacing.html)"
+        },
+        {
+          "type": "paragraph",
+          "text": "Test both light and dark themes, browser text enlargement, long navigation labels, keyboard traversal, and an open drawer near the viewport edge. A computed contrast result proves a color pair; it does not prove reading order or screen-reader behavior. A screenshot proves appearance at one state; it does not prove operation."
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep motion purposeful. Emil Kowalski explains how motion origin can connect a dropdown to its trigger and how functional contexts can be better served by an immediate update. For Mercury documentation, that suggests restraint: animation should preserve orientation without delaying access. The current shell enables its cross-document transition only when the reader has not requested reduced motion. The product rule is local; the article is design advice. [Emil Kowalski: Good vs Great Animations](https://emilkowal.ski/ui/good-vs-great-animations)"
+        }
+      ],
+      "search": "\nThe header combines viewport fallbacks with container queries measured in em, so its compact controls also respond to enlarged text. On small screens, keep primary identity and controls compact, and expose secondary destinations through the navigation disclosure. Keep useful labels available. Keep ordinary table words intact. Allow long identifiers to wrap in prose; allow code examples and genuinely two-dimensional content to scroll within their own region when necessary.\n\nWCAG reflow addresses ordinary vertical content at a width equivalent to 320 CSS pixels without loss of information or functionality and without requiring scrolling in two directions. It includes exceptions for content whose meaning or use requires two dimensions. Test the document, not just the viewport screenshot. [W3C: Reflow](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html)\n\nThe text-spacing check is a stress condition, not a required default style. With the relevant user overrides applied together-line height 1.5 times font size, paragraph spacing 2 times, letter spacing 0.12 times, and word spacing 0.16 times-content and functionality must remain available. Language and script exceptions apply where a property is not used. [W3C: Text Spacing](https://www.w3.org/WAI/WCAG22/Understanding/text-spacing.html)\n\nTest both light and dark themes, browser text enlargement, long navigation labels, keyboard traversal, and an open drawer near the viewport edge. A computed contrast result proves a color pair; it does not prove reading order or screen-reader behavior. A screenshot proves appearance at one state; it does not prove operation.\n\nKeep motion purposeful. Emil Kowalski explains how motion origin can connect a dropdown to its trigger and how functional contexts can be better served by an immediate update. For Mercury documentation, that suggests restraint: animation should preserve orientation without delaying access. The current shell enables its cross-document transition only when the reader has not requested reduced motion. The product rule is local; the article is design advice. [Emil Kowalski: Good vs Great Animations](https://emilkowal.ski/ui/good-vs-great-animations)\n\n"
+    },
+    {
+      "id": "governance",
+      "number": 8,
+      "title": "Maintain one traceable system",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The source of truth for this interface is the repository. Treat this book as a readable companion, and update it when an approved implementation changes. Preserve the distinction between shared Mercury UI tokens and `--lms-` application tokens."
+        },
+        {
+          "type": "table",
+          "rows": [
+            [
+              "Decision",
+              "Authoritative local evidence"
+            ],
+            [
+              "Mark geometry and asset provenance",
+              "`sites/mercury/brand/SOURCE` and supplied SVG masters"
+            ],
+            [
+              "Font, palette, type scale, dimensions",
+              "`sites/mercury/theme/lms.css`"
+            ],
+            [
+              "Shell layout and responsive application",
+              "`sites/mercury/theme/shell.css`"
+            ],
+            [
+              "Color-pair checks",
+              "`sites/mercury/theme/tokens.check.py`"
+            ],
+            [
+              "Actual navigation names and states",
+              "Rendered markup and browser accessibility tree"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "For a change, record the reader benefit, the token or rule changed, and the evidence that supports it. Reuse the existing work item rather than creating a separate approval ritual. Test one valid case and one relevant stress case at the changed boundary. Preserve unrelated work."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before publishing a revision of this book, reconcile its tables with committed values, inspect the PDF at reading size, verify working source links, and record which browser and interaction checks actually ran. Keep unrun checks explicit. A token checker, browser inspection, and a screen-reader session establish different kinds of evidence."
+        },
+        {
+          "type": "paragraph",
+          "text": "The reference hierarchy is deliberate. The WCAG 2.2 Recommendation contains normative requirements; W3C's Understanding pages explain them. WHATWG specifies HTML behavior. APG supplies interaction guidance and illustrative patterns. NN/g, Butterick, and Kowalski provide expert design advice. None of those sources defines Mercury's identity or approves this implementation. [WCAG 2.2](https://www.w3.org/TR/WCAG22/) · [APG: Read Me First](https://www.w3.org/WAI/ARIA/apg/practices/read-me-first/)"
+        }
+      ],
+      "search": "\nThe source of truth for this interface is the repository. Treat this book as a readable companion, and update it when an approved implementation changes. Preserve the distinction between shared Mercury UI tokens and `--lms-` application tokens.\n\n| Decision | Authoritative local evidence |\n|---|---|\n| Mark geometry and asset provenance | `sites/mercury/brand/SOURCE` and supplied SVG masters |\n| Font, palette, type scale, dimensions | `sites/mercury/theme/lms.css` |\n| Shell layout and responsive application | `sites/mercury/theme/shell.css` |\n| Color-pair checks | `sites/mercury/theme/tokens.check.py` |\n| Actual navigation names and states | Rendered markup and browser accessibility tree |\n\nFor a change, record the reader benefit, the token or rule changed, and the evidence that supports it. Reuse the existing work item rather than creating a separate approval ritual. Test one valid case and one relevant stress case at the changed boundary. Preserve unrelated work.\n\nBefore publishing a revision of this book, reconcile its tables with committed values, inspect the PDF at reading size, verify working source links, and record which browser and interaction checks actually ran. Keep unrun checks explicit. A token checker, browser inspection, and a screen-reader session establish different kinds of evidence.\n\nThe reference hierarchy is deliberate. The WCAG 2.2 Recommendation contains normative requirements; W3C's Understanding pages explain them. WHATWG specifies HTML behavior. APG supplies interaction guidance and illustrative patterns. NN/g, Butterick, and Kowalski provide expert design advice. None of those sources defines Mercury's identity or approves this implementation. [WCAG 2.2](https://www.w3.org/TR/WCAG22/) · [APG: Read Me First](https://www.w3.org/WAI/ARIA/apg/practices/read-me-first/)\n\n"
+    },
+    {
+      "id": "evidence",
+      "number": 9,
+      "title": "Evidence and next review",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "**Verification, 6 November 2026.** The real Mercury application ran in an isolated win-120 container; the loopback preview loaded the edited repository styles. Start and Hypergraph Units were inspected in light and dark themes. On the desktop Start page, normal sidebar text and group labels measured 6.63:1 in light and 9.06:1 in dark. The current-page accent against its selected surface measured 6.74:1 and 4.00:1 respectively. Desktop link rows measured at least 36px; open mobile-menu links measured at least 44px."
+        },
+        {
+          "type": "paragraph",
+          "text": "Keyboard Enter closed and reopened a course while retaining focus with a visible 2px outline. The mobile menu was operated with its summary trigger. Width checks at 390px and 320px found no page overflow. A 200% root-text test exposed header overflow at 390px; the container-query refinement fixed it. The repeated 390px and desktop checks then passed, including keyboard access to a lower menu item. A separate WCAG text-spacing override check at 320px preserved wrapping and access to the menu. These are browser stress checks, not a physical-device or screen-reader certification. A deliberately collapsed group margin was rejected by the rendered-layout audit, then removed. The existing token checker passed its light/dark contrast cases and negative fixtures."
+        },
+        {
+          "type": "table",
+          "rows": [
+            [
+              "Observed pair",
+              "Light contrast",
+              "Dark contrast"
+            ],
+            [
+              "Sidebar secondary text on page",
+              "6.63:1",
+              "9.06:1"
+            ],
+            [
+              "Current marker on selected surface",
+              "6.74:1",
+              "4.00:1"
+            ],
+            [
+              "Primary body text on page",
+              "21.00:1",
+              "16.25:1"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "**Limits and next review.** Revisit the reading density with reader feedback, especially on long pages. An assistive-technology session, broader language sampling and physical touch-device testing remain useful follow-up work. Implementation revisions: `bf507e4ee` (reading rhythm and navigation) and `50c377ab9` (enlarged-text header). The PDF was rendered and inspected; all 11 pages have extractable text and no text outside the page margins. It is an untagged visual edition, with this Markdown as the editable text companion. These refinements are committed source and a local preview; this edition does not assert a production release."
+        }
+      ],
+      "search": "\n**Verification, 6 November 2026.** The real Mercury application ran in an isolated win-120 container; the loopback preview loaded the edited repository styles. Start and Hypergraph Units were inspected in light and dark themes. On the desktop Start page, normal sidebar text and group labels measured 6.63:1 in light and 9.06:1 in dark. The current-page accent against its selected surface measured 6.74:1 and 4.00:1 respectively. Desktop link rows measured at least 36px; open mobile-menu links measured at least 44px.\n\nKeyboard Enter closed and reopened a course while retaining focus with a visible 2px outline. The mobile menu was operated with its summary trigger. Width checks at 390px and 320px found no page overflow. A 200% root-text test exposed header overflow at 390px; the container-query refinement fixed it. The repeated 390px and desktop checks then passed, including keyboard access to a lower menu item. A separate WCAG text-spacing override check at 320px preserved wrapping and access to the menu. These are browser stress checks, not a physical-device or screen-reader certification. A deliberately collapsed group margin was rejected by the rendered-layout audit, then removed. The existing token checker passed its light/dark contrast cases and negative fixtures.\n\n| Observed pair | Light contrast | Dark contrast |\n|---|---|---|\n| Sidebar secondary text on page | 6.63:1 | 9.06:1 |\n| Current marker on selected surface | 6.74:1 | 4.00:1 |\n| Primary body text on page | 21.00:1 | 16.25:1 |\n\n**Limits and next review.** Revisit the reading density with reader feedback, especially on long pages. An assistive-technology session, broader language sampling and physical touch-device testing remain useful follow-up work. Implementation revisions: `bf507e4ee` (reading rhythm and navigation) and `50c377ab9` (enlarged-text header). The PDF was rendered and inspected; all 11 pages have extractable text and no text outside the page margins. It is an untagged visual edition, with this Markdown as the editable text companion. These refinements are committed source and a local preview; this edition does not assert a production release.\n"
+    }
+  ]
+}

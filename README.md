@@ -6,6 +6,8 @@ This repository is a **consumer distribution hub**, not a checkout of all Mercur
 
 ## Choose a starting point
 
+- **Read and explore the design system:** open the [Design Book](https://mercury.jonnify.com/book), its [editable formats and reader source](book/README.md), or the [brand-book skill](skills/mercury-brand-book/SKILL.md).
+
 - **Keep an existing Mercury app:** use its working tools and dependency pins.
 - **Try a page without installing a CLI:** open [site/examples/first-page.html](site/examples/first-page.html) from this checkout and follow the [browser guide](docs/start/browser.md). It uses plain JavaScript, versioned packages and a stylesheet; the CDN route needs network access. The bundled site serves the same example at `/examples/first-page.html`.
 - **Work from a local documentation bundle:** use the Python bootstrap below. Add native tools on supported Linux, or select `--docs-only` elsewhere.

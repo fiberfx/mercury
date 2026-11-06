@@ -1,0 +1,20 @@
+# Mercury Design Book
+
+> A source-faithful interface brand book and interactive reader, with typography, SVG identity, color tokens, navigation and evidence limits.
+
+## When to use
+Use this book when designing Mercury documentation, choosing semantic tokens, checking a reader interface, or preparing a brand-book handoff. Start with the editable source; preserve its distinction between existing identity, observed behavior and proposed guidance. Reader customizations are experiments, not approved identity changes.
+
+## Read and build
+- [Interactive reader](https://mercury.jonnify.com/book): nine chapters and a Design Lab; no account required.
+- [Editable source](https://mercury.jonnify.com/book/mercury-brand-book.md): full source edition and references.
+- [PDF edition](https://mercury.jonnify.com/book/mercury-brand-book.pdf): visual edition, untagged; use HTML or Markdown for structured text.
+- [Source tokens](https://mercury.jonnify.com/book/tokens.json): light/dark semantic values and typography.
+- [Token CSS](https://mercury.jonnify.com/book/tokens.css): RGB-channel custom properties; application tokens remain separate.
+- [SVG mark](https://mercury.jonnify.com/book/mx-mark.svg): original geometry; retain proportions and inspect theme-color integration.
+- [Brand-book skill](https://github.com/fiberfx/mercury/tree/master/skills/mercury-brand-book): reusable source, format and reader guidance.
+- [Design-builder skill](https://github.com/fiberfx/mercury/tree/master/skills/mercury-design-builder): genuine Mercury UI and Hyperscript implementation.
+- [Mercury documentation](https://mercury.jonnify.com/llms.txt): current module and API map.
+
+## Interaction and privacy
+Read chapter anchors #character, #mark, #color, #typography, #rhythm, #navigation, #adaptation, #governance and #evidence. The #lab view explains the research and lets readers export CSS, JSON and SVG experiments. Reading preferences stay in browser storage; the reader sends no preference or token data to a server. Original source files stay unchanged.
