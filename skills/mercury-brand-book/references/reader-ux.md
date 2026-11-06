@@ -2,7 +2,7 @@
 
 ## Reading first
 
-Keep the source text central, with ordinary chapter links and optional search. Search should reveal real matches, identify no-results state, and preserve a path back to the full book. A compact contents rail and collapsible appearance settings are useful choices, not standards. Keep settings and token experiments visually subordinate to reading; preserve focus and reading position when values update.
+Keep the source text central, with ordinary chapter links and optional search. Search should reveal real matches, identify no-results state, and preserve a path back to the full book. A compact contents rail and collapsible appearance settings are useful choices, not standards. Keep settings and token experiments visually subordinate to reading; preserve focus and reading position when values update. Keep action names meaningful when responsive layouts hide visible labels; preserve modified-click and browser-history behavior on chapter links.
 
 Provide labeled native or genuine Mercury controls for font, text size, unitless leading and ch measure. Defaults follow the supplied book. Apply reading preferences separately from source tables. Remember valid preferences locally when useful, tolerate unavailable storage or malformed saved data, and offer “Reset to Mercury.” Do not request remote fonts merely to populate a selector; use supplied DM Sans and available system alternatives with fallbacks.
 
@@ -12,7 +12,7 @@ Use rem for scalable dimensions with a user-relative root; px remains appropriat
 
 Keep editable token drafts separate from the last valid applied values. Invalid input leaves the last valid specimen intact and is explained at its control. Derive specimen, contrast feedback and CSS/JSON/SVG exports from the same valid state. Isolate color experimentation from essential controls so even identical foreground/background cannot hide reset. Preserve semantic roles and show actual tested pairs with textual pass/fail. Compare unrounded ratios against thresholds; display rounding must not turn failure into success.
 
-Use SVG for the live units diagram or meaningful specimen, with an accessible name and text explanation of its values. Decorative icons belong inside labeled buttons, not as unnamed clickable SVG roots. Preserve original brand paths in logo specimens. Standalone SVG exports need their own styling and usable dimensions; test them independently.
+Use SVG for the live units diagram or meaningful specimen, with an accessible name and text explanation of its values. Decorative icons belong inside labeled buttons, not as unnamed clickable SVG roots. Preserve original brand paths in logo specimens. Standalone SVG exports need their own styling and usable dimensions; test them independently at maximum text size and across offered fonts. Wrap or resize the SVG canvas rather than clipping a longer title.
 
 ## Explain these decisions in the reader
 
@@ -44,3 +44,5 @@ W3C Understanding pages explain requirements; APG offers interaction guidance. N
 - Exercise search with a real match and absent term, chapter direct links, original downloads, and each offered export. Inspect generated files, not only success messages.
 
 Scope evidence honestly: computed contrast does not prove reading order, a screenshot does not prove keyboard operation, and a browser stress check does not replace an assistive-technology session.
+
+For print views, explicitly reset paper, ink, muted text and tinted surfaces; changing only page foreground/background can leave dark-mode table headers unreadable. Check the full source introduction and every chapter in the print representation.
