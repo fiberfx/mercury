@@ -10,7 +10,7 @@ import shutil
 import tarfile
 
 ROOT = Path(__file__).resolve().parents[1]
-OWNERS = ('site', 'docs', 'agents', 'skills', 'playgrounds', 'examples', 'LICENSE', 'NOTICE.txt')
+OWNERS = ('site', 'docs', 'agents', 'skills', 'playgrounds', 'examples', 'book', 'LICENSE', 'NOTICE.txt')
 
 def sha(path):
     with path.open('rb') as stream:
