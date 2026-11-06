@@ -17,6 +17,7 @@ Read only the reference needed:
 
 - [Source and format fidelity](references/source-and-formats.md) for authoring, source reconciliation, packaging, or exports.
 - [Reader UX and research](references/reader-ux.md) for interactive reading, units, fonts, colors, SVG, and browser verification.
+- [Languages and navigation](references/languages-and-navigation.md) for complete translations, reader/documentation spaces, locale switching and localized exports.
 - [Mercury edition notes](references/mercury-edition.md) when using the documentation-interface book as a starting point; revalidate these dated values against the supplied edition.
 
 ## Preserve the real system

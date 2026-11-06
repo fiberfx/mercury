@@ -41,7 +41,7 @@ W3C Understanding pages explain requirements; APG offers interaction guidance. N
 - Verify computed unit values with two root sizes; changing displayed units preserves geometry. Test any diagram against actual CSS measurements.
 - Black/white yields 21:1; identical colors yield 1:1 and failure. A raw ratio below 4.5 must fail a normal-text check even if displayed as 4.50. Invalid color drafts preserve valid previews and exports; reset remains visible.
 - If persistence exists, refresh restores valid preferences, malformed data recovers, and reset removes overrides. Source Markdown/PDF remain unchanged.
-- Exercise search with a real match and absent term, chapter direct links, original downloads, and each offered export. Inspect generated files, not only success messages.
+- Exercise search with a real match and absent term, chapter direct links, original downloads, and each offered export. Test a skip-to-reading link from a later chapter: it must focus the current heading without the route handler resetting the chapter. Number table accessible names by table order within the chapter, not by paragraph position. Inspect generated files, not only success messages.
 
 Scope evidence honestly: computed contrast does not prove reading order, a screenshot does not prove keyboard operation, and a browser stress check does not replace an assistive-technology session.
 
@@ -49,6 +49,6 @@ For print views, explicitly reset paper, ink, muted text and tinted surfaces; ch
 
 Measure the actual paragraphs, labels and code spans after applying preferences, not only their parent container. Library typography may set an explicit paragraph size or leading that defeats inheritance; make the app-owned reading boundary inherit intentionally and verify computed text values. Keep status feedback out of the reading path, and provide a reachable return action after long mobile settings.
 
-For compact headers, test actual button-label scaling as well as body text. Rem-based labels may require a container-aware icon treatment at enlarged root sizes; keep the action name accessible and test all controls in one row at the constrained width.
+For compact headers, test actual button-label scaling as well as body text. Prefer one row at ordinary text sizes; at enlarged sizes allow an intentional second row or stacked controls instead of clipping, shrinking text or breaking ordinary words into letters. A compact icon treatment is useful only when its meaning remains clear and its action name stays accessible. Verify every control is reachable, including the longest translated destination label.
 
 Treat semantic control colors as matched sets: background, foreground, hover and pressed. An application override of only the fill can break a library’s dark-theme pairing. Measure actual rendered controls separately from specimen contrast; retaining the library pair is often the smallest safe fix.
