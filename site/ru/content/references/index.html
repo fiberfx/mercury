@@ -1,775 +1,875 @@
-<!doctype html><html lang="ru" class="lms">
-  <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ссылки, возможности окружения и адаптивные значения · Mercury</title>
-  <meta name="description" content="Что документ страницы поручает окружению: разрешение ссылок для параметра resolved в renderDocument, разрешения на встраивание и формы, проверка авторских URL и адаптивные значения с точками перелома и переопределениями.">
-  
-  <link rel="canonical" href="https://mercury.jonnify.com/ru/content/references">
-  <link rel="describedby" type="text/plain" href="/ru/content/references/llms.txt">
-  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="Mercury">
-  <meta property="og:title" content="Ссылки, возможности окружения и адаптивные значения · Mercury">
-  <meta property="og:description" content="Что документ страницы поручает окружению: разрешение ссылок для параметра resolved в renderDocument, разрешения на встраивание и формы, проверка авторских URL и адаптивные значения с точками перелома и переопределениями.">
-  <meta property="og:url" content="https://mercury.jonnify.com/ru/content/references">
-  <meta property="og:image" content="https://mercury.jonnify.com/_lms/assets/mercury-hero.png">
-  <meta property="og:image:alt" content="Mercury">
-  <script type="application/ld+json">[{"@context":"https://schema.org","@type":"TechArticle","description":"Что документ страницы поручает окружению: разрешение ссылок для параметра resolved в renderDocument, разрешения на встраивание и формы, проверка авторских URL и адаптивные значения с точками перелома и переопределениями.","inLanguage":"ru","name":"Ссылки, возможности окружения и адаптивные значения","url":"https://mercury.jonnify.com/ru/content/references"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://mercury.jonnify.com/","name":"Mercury","position":1},{"@type":"ListItem","item":"https://mercury.jonnify.com/ru/content/references","name":"Ссылки, возможности окружения и адаптивные значения","position":2}]}]</script>
-  <meta name="color-scheme" content="light dark">
-  
-  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#111113" media="(prefers-color-scheme: dark)">
-  <style>html{background-color:rgb(255 255 255)}@media (prefers-color-scheme: dark){html{background-color:rgb(17 17 19)}}</style>
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/content/references"><link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/content/references"><link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/content/references">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap">
-  <link rel="stylesheet" href="/_lms/assets/lms.css">
-  <link rel="stylesheet" href="/_lms/assets/shell.css">
-  
+<!doctype html>
+<html lang="ru" class="lms">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ссылки, возможности окружения и адаптивные значения · Mercury</title>
+    <meta name="description"
+          content="Что документ страницы поручает окружению: разрешение ссылок для параметра resolved в renderDocument, разрешения на встраивание и формы, проверка авторских URL и адаптивные значения с точками перелома и переопределениями.">
+
+    <link rel="canonical" href="https://mercury.jonnify.com/ru/content/references">
+    <link rel="describedby" type="text/plain" href="/ru/content/references/llms.txt">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Mercury">
+    <meta property="og:title" content="Ссылки, возможности окружения и адаптивные значения · Mercury">
+    <meta property="og:description"
+          content="Что документ страницы поручает окружению: разрешение ссылок для параметра resolved в renderDocument, разрешения на встраивание и формы, проверка авторских URL и адаптивные значения с точками перелома и переопределениями.">
+    <meta property="og:url" content="https://mercury.jonnify.com/ru/content/references">
+    <meta property="og:image" content="https://mercury.jonnify.com/_lms/assets/mercury-hero.png">
+    <meta property="og:image:alt" content="Mercury">
+    <script type="application/ld+json">[
+        {
+            "@context": "https://schema.org",
+            "@type": "TechArticle",
+            "description": "Что документ страницы поручает окружению: разрешение ссылок для параметра resolved в renderDocument, разрешения на встраивание и формы, проверка авторских URL и адаптивные значения с точками перелома и переопределениями.",
+            "inLanguage": "ru",
+            "name": "Ссылки, возможности окружения и адаптивные значения",
+            "url": "https://mercury.jonnify.com/ru/content/references"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "item": "https://mercury.jonnify.com/",
+                    "name": "Mercury",
+                    "position": 1
+                },
+                {
+                    "@type": "ListItem",
+                    "item": "https://mercury.jonnify.com/ru/content/references",
+                    "name": "Ссылки, возможности окружения и адаптивные значения",
+                    "position": 2
+                }
+            ]
+        }
+    ]</script>
+    <meta name="color-scheme" content="light dark">
+
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#111113" media="(prefers-color-scheme: dark)">
+    <style>html {
+        background-color: rgb(255 255 255)
+    }
+
+    @media (prefers-color-scheme: dark) {
+        html {
+            background-color: rgb(17 17 19)
+        }
+    }</style>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/content/references">
+    <link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/content/references">
+    <link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/content/references">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="/_lms/assets/lms.css">
+    <link rel="stylesheet" href="/_lms/assets/shell.css">
+
 </head>
-  <body class="lms">
-    <a class="lms-skip" href="#main">Перейти к содержанию</a>
+<body class="lms">
+<a class="lms-skip" href="#main">Перейти к содержанию</a>
 <header class="lms-header">
-  <a class="lms-brand" href="/ru" aria-label="Mercury, главная">
-    <svg viewBox="5 9 30 22" width="30" height="22" aria-hidden="true" focusable="false"><g fill="none" stroke-width="3" stroke-linecap="round"><path d="M7 29V15.5c0-2.5 2-4.5 4.5-4.5S16 13 16 15.5V29M16 16.5c0-3 2-5.5 4.5-5.5" stroke="currentColor"></path><path d="M23 16l10 13M33 16L23 29" stroke="rgb(var(--lms-accent))"></path></g></svg>
-    <span>Mercury</span>
-  </a>
-  <nav class="lms-nav" aria-label="Сайт">
-    <a href="/ru#principles">Принципы</a><a href="/ru#foundations">Основы</a><a href="/ru#components">Компоненты</a><a href="/ru#usage">Использование</a>
-  </nav>
-  <div class="lms-actions">
-    <details class="lms-lang">
-  <summary aria-label="Язык">Русский</summary>
-  <ul>
-    <li>
-      <a href="/content/references" hreflang="en" lang="en">English</a>
-      
-    </li><li>
-      <a href="/ru/content/references" hreflang="ru" lang="ru" aria-current="true">Русский</a>
-      
-    </li>
-  </ul>
-</details>
-    <a class="lms-github" href="/ru/start/install-mx" aria-label="Установить Mercury" title="Установить Mercury">
-      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    <a class="lms-brand" href="/ru" aria-label="Mercury, главная">
+        <svg viewBox="5 9 30 22" width="30" height="22" aria-hidden="true" focusable="false">
+            <g fill="none" stroke-width="3" stroke-linecap="round">
+                <path d="M7 29V15.5c0-2.5 2-4.5 4.5-4.5S16 13 16 15.5V29M16 16.5c0-3 2-5.5 4.5-5.5"
+                      stroke="currentColor"></path>
+                <path d="M23 16l10 13M33 16L23 29" stroke="rgb(var(--lms-accent))"></path>
+            </g>
+        </svg>
+        <span>Mercury</span>
     </a>
-    <form class="lms-theme" method="post" action="/_lms/theme">
-      <input type="hidden" name="back" value="/ru/content/references">
-      <button class="lms-theme-to-dark" type="submit" name="set" value="dark" aria-label="Тёмная тема" title="Тёмная тема">
-        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"></path></svg>
-      </button>
-      <button class="lms-theme-to-light" type="submit" name="set" value="light" aria-label="Светлая тема" title="Светлая тема">
-        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></g></svg>
-      </button>
-    </form>
-    <a class="lms-open-docs" href="/ru/start">Документация</a>
-    <details class="lms-drawer">
-      <summary>
-        <span class="lms-menu-label">Меню</span>
-        <svg class="lms-menu-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
-      </summary>
-      <div class="lms-drawer-panel">
-        <nav class="lms-menu-links" aria-label="Сайт">
-          <a class="lms-menu-docs" href="/ru/start">Документация</a>
-          <a href="/ru#principles">Принципы</a><a href="/ru#foundations">Основы</a><a href="/ru#components">Компоненты</a><a href="/ru#usage">Использование</a>
-          <a href="/ru/start/install-mx">Установить Mercury</a>
-        </nav>
-        <div class="lms-menu-language">
-          <details class="lms-lang">
-  <summary aria-label="Язык">Русский</summary>
-  <ul>
-    <li>
-      <a href="/content/references" hreflang="en" lang="en">English</a>
-      
-    </li><li>
-      <a href="/ru/content/references" hreflang="ru" lang="ru" aria-current="true">Русский</a>
-      
-    </li>
-  </ul>
-</details>
-        </div>
-        <nav aria-label="Курсы и страницы">
-          <p class="lms-menu-heading">Курсы</p>
-          <details class="lms-side-course">
-  <summary>Начало</summary>
-  <ul>
-    <li><a href="/ru/start">Обзор</a></li>
-    
-      
-      <li class="">
-        <a href="/ru/start/browser">Страница в браузере</a>
-      </li>
-    
-      <li class="lms-side-group">Из чего он состоит</li>
-      <li class="">
-        <a href="/ru/start/install-mx">Выберите способ установки mx</a>
-      </li>
-    
-      <li class="lms-side-group">Первые шаги</li>
-      <li class="">
-        <a href="/ru/start/stability">Стабильность: опубликовано, предварительная версия, запланировано</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/start/agents">Создайте страницу с агентом</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/start/glossary">Глоссарий: термины этого сайта</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/start/philosophy">Философия: свои технологии, а не заимствованные</a>
-      </li>
-    
-  </ul>
-</details><details class="lms-side-course">
-  <summary>mx</summary>
-  <ul>
-    <li><a href="/ru/mx">Обзор</a></li>
-    
-      <li class="lms-side-group">Установка mx</li>
-      <li class="">
-        <a href="/ru/mx/first-app">Первая страница Mercury</a>
-      </li>
-    
-      <li class="lms-side-group">Главы</li>
-      <li class="">
-        <a href="/ru/mx/modules">Модули: mx.mod и mx.sum</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/mx/workspace">Рабочая область: mx.work</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/mx/dev">Цикл разработки и горячая замена</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/mx/build">Сборка и поставка: три вида сборки</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/mx/compile">Hypercompiler: по одному модулю</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/mx/tools">Инструменты: test, lsap и run</a>
-      </li>
-    
-  </ul>
-</details><details class="lms-side-course">
-  <summary>Hyperscript</summary>
-  <ul>
-    <li><a href="/ru/hyperscript">Обзор</a></li>
-    
-      <li class="lms-side-group">Что такое Hyperscript</li>
-      <li class="">
-        <a href="/ru/hyperscript/dom">Контракт DOM</a>
-      </li>
-    
-      <li class="lms-side-group">Главы</li>
-      <li class="">
-        <a href="/ru/hyperscript/components">Компоненты и render</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/hyperscript/hooks">Хуки: состояние и эффекты в функции</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/hyperscript/context">Контекст, порталы и memo</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/hyperscript/server">Рендеринг на сервере</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/hyperscript/testing">Тестирование и наблюдение</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/hyperscript/tested-component">Компонент с тестами</a>
-      </li>
-    
-  </ul>
-</details><details class="lms-side-course">
-  <summary>UI</summary>
-  <ul>
-    <li><a href="/ru/ui">Обзор</a></li>
-    
-      <li class="lms-side-group">Главы</li>
-      <li class="">
-        <a href="/ru/ui/tokens-and-themes">UI0: токены и темы</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/ui/foundations">UI1: окружение поддерева</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/ui/actions-and-layout">UI2: действия и раскладка</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/ui/inputs-and-forms">UI3, поля ввода и формы</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/ui/selection">UI4, выбор значений</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/ui/feedback-and-data">UI5, обратная связь и отображение данных</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/ui/navigation">UI6, навигация</a>
-      </li>
-    
-  </ul>
-</details><details class="lms-side-course">
-  <summary>Hypergraph</summary>
-  <ul>
-    <li><a href="/ru/hypergraph">Обзор</a></li>
-    
-      <li class="lms-side-group">Главы</li>
-      <li class="">
-        <a href="/ru/hypergraph/units">Единицы: store, event и effect</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/hypergraph/wiring">Связи: из единиц в граф</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/hypergraph/scopes">Области состояния: создать, завершить работу, передать</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/hypergraph/observing">Наблюдение: watch, inspect, describe</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/hypergraph/errors">Виды, перенос контекста и ошибки</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/hypergraph/hot-replacement">Горячая замена: смена графа</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/hypergraph/server-rendering">Серверный рендеринг: своя область для каждого запроса</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/hypergraph/testing">Тестирование модели: своя область для каждого теста</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/hypergraph/models">Большие модели: структура и идентичность</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/hypergraph/capstone">Итоговый пример: передача и восстановление модели</a>
-      </li>
-    
-      <li class="lms-side-group">Переход с Effector</li>
-      <li class="">
-        <a href="/ru/hypergraph/coming-from-effector">Переход с Effector</a>
-      </li>
-    
-      
-      <li class="lms-side-sub">
-        <a href="/ru/hypergraph/coming-from-effector/units-and-wiring">Единицы и связи</a>
-      </li>
-    
-      
-      <li class="lms-side-sub">
-        <a href="/ru/hypergraph/coming-from-effector/scopes-and-testing">Области и тестирование</a>
-      </li>
-    
-      
-      <li class="lms-side-sub">
-        <a href="/ru/hypergraph/coming-from-effector/frameworks">Фреймворки после effector-react</a>
-      </li>
-    
-  </ul>
-</details><details class="lms-side-course" open>
-  <summary>Контент</summary>
-  <ul>
-    <li><a href="/ru/content">Обзор</a></li>
-    
-      <li class="lms-side-group">Карта курса</li>
-      <li class="">
-        <a href="/ru/content/documents">Документы страниц: узлы, схема и parseDocument</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/content/rendering">Рендеринг документа: renderDocument</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/content/blocks">Каталог блоков: девять групп, один реестр</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/content/references" aria-current="page">Ссылки, возможности окружения и адаптивные значения</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/content/add-a-block">Добавление блока: итоговое задание</a>
-      </li>
-    
-  </ul>
-</details><details class="lms-side-course">
-  <summary>Live Mercury</summary>
-  <ul>
-    <li><a href="/ru/live-mercury">Обзор</a></li>
-    
-      <li class="lms-side-group">Курс</li>
-      <li class="">
-        <a href="/ru/live-mercury/islands">Острова: элемент и его монтирование</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/live-mercury/liveview">Остров в LiveView: сокет, хуки и события</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/live-mercury/building">Сборка островов с mx: без Node</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/live-mercury/props-and-streams">Свойства и потоки: патчи по сети</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/live-mercury/server-rendering">Серверный рендеринг: что есть и чего пока нет</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/live-mercury/testing">Тестирование островов: по обе стороны элемента</a>
-      </li>
-    
-  </ul>
-</details>
-        </nav>
-      </div>
-    </details>
-  </div>
+    <nav class="lms-nav" aria-label="Сайт">
+        <a href="/ru#principles">Принципы</a><a href="/ru#foundations">Основы</a><a href="/ru#components">Компоненты</a><a
+            href="/ru#usage">Использование</a>
+    </nav>
+    <div class="lms-actions">
+        <details class="lms-lang">
+            <summary aria-label="Язык">Русский</summary>
+            <ul>
+                <li>
+                    <a href="/content/references" hreflang="en" lang="en">English</a>
+
+                </li>
+                <li>
+                    <a href="/ru/content/references" hreflang="ru" lang="ru" aria-current="true">Русский</a>
+
+                </li>
+            </ul>
+        </details>
+        <a class="lms-github" href="/ru/start/install-mx" aria-label="Установить Mercury" title="Установить Mercury">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+                <path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4" fill="none" stroke="currentColor" stroke-width="1.8"
+                      stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+        </a>
+        <form class="lms-theme" method="post" action="/_lms/theme">
+            <input type="hidden" name="back" value="/ru/content/references">
+            <button class="lms-theme-to-dark" type="submit" name="set" value="dark" aria-label="Тёмная тема"
+                    title="Тёмная тема">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+                    <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                          stroke-linejoin="round" d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"></path>
+                </svg>
+            </button>
+            <button class="lms-theme-to-light" type="submit" name="set" value="light" aria-label="Светлая тема"
+                    title="Светлая тема">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+                    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+                    </g>
+                </svg>
+            </button>
+        </form>
+        <a class="lms-open-docs" href="/ru/start">Документация</a>
+        <details class="lms-drawer">
+            <summary>
+                <span class="lms-menu-label">Меню</span>
+                <svg class="lms-menu-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"
+                     focusable="false">
+                    <path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="1.8"
+                          stroke-linecap="round"></path>
+                </svg>
+            </summary>
+            <div class="lms-drawer-panel">
+                <nav class="lms-menu-links" aria-label="Сайт">
+                    <a class="lms-menu-docs" href="/ru/start">Документация</a>
+                    <a href="/ru#principles">Принципы</a><a href="/ru#foundations">Основы</a><a href="/ru#components">Компоненты</a><a
+                        href="/ru#usage">Использование</a>
+                    <a href="/ru/start/install-mx">Установить Mercury</a>
+                </nav>
+                <div class="lms-menu-language">
+                    <details class="lms-lang">
+                        <summary aria-label="Язык">Русский</summary>
+                        <ul>
+                            <li>
+                                <a href="/content/references" hreflang="en" lang="en">English</a>
+
+                            </li>
+                            <li>
+                                <a href="/ru/content/references" hreflang="ru" lang="ru" aria-current="true">Русский</a>
+
+                            </li>
+                        </ul>
+                    </details>
+                </div>
+                <nav aria-label="Курсы и страницы">
+                    <p class="lms-menu-heading">Курсы</p>
+                    <details class="lms-side-course">
+                        <summary>Начало</summary>
+                        <ul>
+                            <li><a href="/ru/start">Обзор</a></li>
+
+
+                            <li class="">
+                                <a href="/ru/start/browser">Страница в браузере</a>
+                            </li>
+
+                            <li class="lms-side-group">Из чего он состоит</li>
+                            <li class="">
+                                <a href="/ru/start/install-mx">Выберите способ установки mx</a>
+                            </li>
+
+                            <li class="lms-side-group">Первые шаги</li>
+                            <li class="">
+                                <a href="/ru/start/stability">Стабильность: опубликовано, предварительная версия,
+                                    запланировано</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ru/start/agents">Создайте страницу с агентом</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ru/start/glossary">Глоссарий: термины этого сайта</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ru/start/philosophy">Философия: свои технологии, а не заимствованные</a>
+                            </li>
+
+                        </ul>
+                    </details>
+                    <details class="lms-side-course">
+                        <summary>mx</summary>
+                        <ul>
+                            <li><a href="/ru/mx">Обзор</a></li>
+
+                            <li class="lms-side-group">Установка mx</li>
+                            <li class="">
+                                <a href="/ru/mx/first-app">Первая страница Mercury</a>
+                            </li>
+
+                            <li class="lms-side-group">Главы</li>
+                            <li class="">
+                                <a href="/ru/mx/modules">Модули: mx.mod и mx.sum</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ru/mx/workspace">Рабочая область: mx.work</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ru/mx/dev">Цикл разработки и горячая замена</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ru/mx/build">Сборка и поставка: три вида сборки</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ru/mx/compile">Hypercompiler: по одному модулю</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ru/mx/tools">Инструменты: test, lsap и run</a>
+                            </li>
+
+                        </ul>
+                    </details>
+                    <details class="lms-side-course">
+                        <summary>Hyperscript</summary>
+                        <ul>
+                            <li><a href="/ru/hyperscript">Обзор</a></li>
+
+                            <li class="lms-side-group">Что такое Hyperscript</li>
+                            <li class="">
+                                <a href="/ru/hyperscript/dom">Контракт DOM</a>
+                            </li>
+
+                            <li class="lms-side-group">Главы</li>
+                            <li class="">
+                                <a href="/ru/hyperscript/components">Компоненты и render</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ru/hyperscript/hooks">Хуки: состояние и эффекты в функции</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ru/hyperscript/context">Контекст, порталы и memo</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ru/hyperscript/server">Рендеринг на сервере</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ru/hyperscript/testing">Тестирование и наблюдение</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ru/hyperscript/tested-component">Компонент с тестами</a>
+                            </li>
+
+                        </ul>
+                    </details>
+                    <details class="lms-side-course">
+                        <summary>UI</summary>
+                        <ul>
+                            <li><a href="/ru/ui">Обзор</a></li>
+
+                            <li class="lms-side-group">Главы</li>
+                            <li class="">
+                                <a href="/ru/ui/tokens-and-themes">UI0: токены и темы</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ru/ui/foundations">UI1: окружение поддерева</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ru/ui/actions-and-layout">UI2: действия и раскладка</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ru/ui/inputs-and-forms">UI3, поля ввода и формы</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ru/ui/selection">UI4, выбор значений</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ru/ui/feedback-and-data">UI5, обратная связь и отображение данных</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ru/ui/navigation">UI6, навигация</a>
+                            </li>
+
+                        </ul>
+                    </details>
+                    <details class="lms-side-course">
+                        <summary>Hypergraph</summary>
+                        <ul>
+                            <li><a href="/ru/hypergraph">Обзор</a></li>
+
+                            <li class="lms-side-group">Главы</li>
+                            <li class="">
+                                <a href="/ru/hypergraph/units">Единицы: store, event и effect</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ru/hypergraph/wiring">Связи: из единиц в граф</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ru/hypergraph/scopes">Области состояния: создать, завершить работу,
+                                    передать</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ru/hypergraph/observing">Наблюдение: watch, inspect, describe</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ru/hypergraph/errors">Виды, перенос контекста и ошибки</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ru/hypergraph/hot-replacement">Горячая замена: смена графа</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ru/hypergraph/server-rendering">Серверный рендеринг: своя область для каждого
+                                    запроса</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ru/hypergraph/testing">Тестирование модели: своя область для каждого теста</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ru/hypergraph/models">Большие модели: структура и идентичность</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ru/hypergraph/capstone">Итоговый пример: передача и восстановление модели</a>
+                            </li>
+
+                            <li class="lms-side-group">Переход с Effector</li>
+                            <li class="">
+                                <a href="/ru/hypergraph/coming-from-effector">Переход с Effector</a>
+                            </li>
+
+
+                            <li class="lms-side-sub">
+                                <a href="/ru/hypergraph/coming-from-effector/units-and-wiring">Единицы и связи</a>
+                            </li>
+
+
+                            <li class="lms-side-sub">
+                                <a href="/ru/hypergraph/coming-from-effector/scopes-and-testing">Области и
+                                    тестирование</a>
+                            </li>
+
+
+                            <li class="lms-side-sub">
+                                <a href="/ru/hypergraph/coming-from-effector/frameworks">Фреймворки после
+                                    effector-react</a>
+                            </li>
+
+                        </ul>
+                    </details>
+                    <details class="lms-side-course" open>
+                        <summary>Контент</summary>
+                        <ul>
+                            <li><a href="/ru/content">Обзор</a></li>
+
+                            <li class="lms-side-group">Карта курса</li>
+                            <li class="">
+                                <a href="/ru/content/documents">Документы страниц: узлы, схема и parseDocument</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ru/content/rendering">Рендеринг документа: renderDocument</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ru/content/blocks">Каталог блоков: девять групп, один реестр</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ru/content/references" aria-current="page">Ссылки, возможности окружения и
+                                    адаптивные значения</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ru/content/add-a-block">Добавление блока: итоговое задание</a>
+                            </li>
+
+                        </ul>
+                    </details>
+                    <details class="lms-side-course">
+                        <summary>Live Mercury</summary>
+                        <ul>
+                            <li><a href="/ru/live-mercury">Обзор</a></li>
+
+                            <li class="lms-side-group">Курс</li>
+                            <li class="">
+                                <a href="/ru/live-mercury/islands">Острова: элемент и его монтирование</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ru/live-mercury/liveview">Остров в LiveView: сокет, хуки и события</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ru/live-mercury/building">Сборка островов с mx: без Node</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ru/live-mercury/props-and-streams">Свойства и потоки: патчи по сети</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ru/live-mercury/server-rendering">Серверный рендеринг: что есть и чего пока
+                                    нет</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ru/live-mercury/testing">Тестирование островов: по обе стороны элемента</a>
+                            </li>
+
+                        </ul>
+                    </details>
+                </nav>
+            </div>
+        </details>
+    </div>
 </header>
-    <div class="lms-frame">
-      <nav class="lms-side" aria-label="Курсы и страницы">
+<div class="lms-frame">
+    <nav class="lms-side" aria-label="Курсы и страницы">
         <details class="lms-side-course">
-  <summary>Начало</summary>
-  <ul>
-    <li><a href="/ru/start">Обзор</a></li>
-    
-      
-      <li class="">
-        <a href="/ru/start/browser">Страница в браузере</a>
-      </li>
-    
-      <li class="lms-side-group">Из чего он состоит</li>
-      <li class="">
-        <a href="/ru/start/install-mx">Выберите способ установки mx</a>
-      </li>
-    
-      <li class="lms-side-group">Первые шаги</li>
-      <li class="">
-        <a href="/ru/start/stability">Стабильность: опубликовано, предварительная версия, запланировано</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/start/agents">Создайте страницу с агентом</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/start/glossary">Глоссарий: термины этого сайта</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/start/philosophy">Философия: свои технологии, а не заимствованные</a>
-      </li>
-    
-  </ul>
-</details><details class="lms-side-course">
-  <summary>mx</summary>
-  <ul>
-    <li><a href="/ru/mx">Обзор</a></li>
-    
-      <li class="lms-side-group">Установка mx</li>
-      <li class="">
-        <a href="/ru/mx/first-app">Первая страница Mercury</a>
-      </li>
-    
-      <li class="lms-side-group">Главы</li>
-      <li class="">
-        <a href="/ru/mx/modules">Модули: mx.mod и mx.sum</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/mx/workspace">Рабочая область: mx.work</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/mx/dev">Цикл разработки и горячая замена</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/mx/build">Сборка и поставка: три вида сборки</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/mx/compile">Hypercompiler: по одному модулю</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/mx/tools">Инструменты: test, lsap и run</a>
-      </li>
-    
-  </ul>
-</details><details class="lms-side-course">
-  <summary>Hyperscript</summary>
-  <ul>
-    <li><a href="/ru/hyperscript">Обзор</a></li>
-    
-      <li class="lms-side-group">Что такое Hyperscript</li>
-      <li class="">
-        <a href="/ru/hyperscript/dom">Контракт DOM</a>
-      </li>
-    
-      <li class="lms-side-group">Главы</li>
-      <li class="">
-        <a href="/ru/hyperscript/components">Компоненты и render</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/hyperscript/hooks">Хуки: состояние и эффекты в функции</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/hyperscript/context">Контекст, порталы и memo</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/hyperscript/server">Рендеринг на сервере</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/hyperscript/testing">Тестирование и наблюдение</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/hyperscript/tested-component">Компонент с тестами</a>
-      </li>
-    
-  </ul>
-</details><details class="lms-side-course">
-  <summary>UI</summary>
-  <ul>
-    <li><a href="/ru/ui">Обзор</a></li>
-    
-      <li class="lms-side-group">Главы</li>
-      <li class="">
-        <a href="/ru/ui/tokens-and-themes">UI0: токены и темы</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/ui/foundations">UI1: окружение поддерева</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/ui/actions-and-layout">UI2: действия и раскладка</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/ui/inputs-and-forms">UI3, поля ввода и формы</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/ui/selection">UI4, выбор значений</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/ui/feedback-and-data">UI5, обратная связь и отображение данных</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/ui/navigation">UI6, навигация</a>
-      </li>
-    
-  </ul>
-</details><details class="lms-side-course">
-  <summary>Hypergraph</summary>
-  <ul>
-    <li><a href="/ru/hypergraph">Обзор</a></li>
-    
-      <li class="lms-side-group">Главы</li>
-      <li class="">
-        <a href="/ru/hypergraph/units">Единицы: store, event и effect</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/hypergraph/wiring">Связи: из единиц в граф</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/hypergraph/scopes">Области состояния: создать, завершить работу, передать</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/hypergraph/observing">Наблюдение: watch, inspect, describe</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/hypergraph/errors">Виды, перенос контекста и ошибки</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/hypergraph/hot-replacement">Горячая замена: смена графа</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/hypergraph/server-rendering">Серверный рендеринг: своя область для каждого запроса</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/hypergraph/testing">Тестирование модели: своя область для каждого теста</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/hypergraph/models">Большие модели: структура и идентичность</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/hypergraph/capstone">Итоговый пример: передача и восстановление модели</a>
-      </li>
-    
-      <li class="lms-side-group">Переход с Effector</li>
-      <li class="">
-        <a href="/ru/hypergraph/coming-from-effector">Переход с Effector</a>
-      </li>
-    
-      
-      <li class="lms-side-sub">
-        <a href="/ru/hypergraph/coming-from-effector/units-and-wiring">Единицы и связи</a>
-      </li>
-    
-      
-      <li class="lms-side-sub">
-        <a href="/ru/hypergraph/coming-from-effector/scopes-and-testing">Области и тестирование</a>
-      </li>
-    
-      
-      <li class="lms-side-sub">
-        <a href="/ru/hypergraph/coming-from-effector/frameworks">Фреймворки после effector-react</a>
-      </li>
-    
-  </ul>
-</details><details class="lms-side-course" open>
-  <summary>Контент</summary>
-  <ul>
-    <li><a href="/ru/content">Обзор</a></li>
-    
-      <li class="lms-side-group">Карта курса</li>
-      <li class="">
-        <a href="/ru/content/documents">Документы страниц: узлы, схема и parseDocument</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/content/rendering">Рендеринг документа: renderDocument</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/content/blocks">Каталог блоков: девять групп, один реестр</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/content/references" aria-current="page">Ссылки, возможности окружения и адаптивные значения</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/content/add-a-block">Добавление блока: итоговое задание</a>
-      </li>
-    
-  </ul>
-</details><details class="lms-side-course">
-  <summary>Live Mercury</summary>
-  <ul>
-    <li><a href="/ru/live-mercury">Обзор</a></li>
-    
-      <li class="lms-side-group">Курс</li>
-      <li class="">
-        <a href="/ru/live-mercury/islands">Острова: элемент и его монтирование</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/live-mercury/liveview">Остров в LiveView: сокет, хуки и события</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/live-mercury/building">Сборка островов с mx: без Node</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/live-mercury/props-and-streams">Свойства и потоки: патчи по сети</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/live-mercury/server-rendering">Серверный рендеринг: что есть и чего пока нет</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ru/live-mercury/testing">Тестирование островов: по обе стороны элемента</a>
-      </li>
-    
-  </ul>
-</details>
-      </nav>
-      <main id="main" class="lms-main">
+            <summary>Начало</summary>
+            <ul>
+                <li><a href="/ru/start">Обзор</a></li>
+
+
+                <li class="">
+                    <a href="/ru/start/browser">Страница в браузере</a>
+                </li>
+
+                <li class="lms-side-group">Из чего он состоит</li>
+                <li class="">
+                    <a href="/ru/start/install-mx">Выберите способ установки mx</a>
+                </li>
+
+                <li class="lms-side-group">Первые шаги</li>
+                <li class="">
+                    <a href="/ru/start/stability">Стабильность: опубликовано, предварительная версия, запланировано</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ru/start/agents">Создайте страницу с агентом</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ru/start/glossary">Глоссарий: термины этого сайта</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ru/start/philosophy">Философия: свои технологии, а не заимствованные</a>
+                </li>
+
+            </ul>
+        </details>
+        <details class="lms-side-course">
+            <summary>mx</summary>
+            <ul>
+                <li><a href="/ru/mx">Обзор</a></li>
+
+                <li class="lms-side-group">Установка mx</li>
+                <li class="">
+                    <a href="/ru/mx/first-app">Первая страница Mercury</a>
+                </li>
+
+                <li class="lms-side-group">Главы</li>
+                <li class="">
+                    <a href="/ru/mx/modules">Модули: mx.mod и mx.sum</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ru/mx/workspace">Рабочая область: mx.work</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ru/mx/dev">Цикл разработки и горячая замена</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ru/mx/build">Сборка и поставка: три вида сборки</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ru/mx/compile">Hypercompiler: по одному модулю</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ru/mx/tools">Инструменты: test, lsap и run</a>
+                </li>
+
+            </ul>
+        </details>
+        <details class="lms-side-course">
+            <summary>Hyperscript</summary>
+            <ul>
+                <li><a href="/ru/hyperscript">Обзор</a></li>
+
+                <li class="lms-side-group">Что такое Hyperscript</li>
+                <li class="">
+                    <a href="/ru/hyperscript/dom">Контракт DOM</a>
+                </li>
+
+                <li class="lms-side-group">Главы</li>
+                <li class="">
+                    <a href="/ru/hyperscript/components">Компоненты и render</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ru/hyperscript/hooks">Хуки: состояние и эффекты в функции</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ru/hyperscript/context">Контекст, порталы и memo</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ru/hyperscript/server">Рендеринг на сервере</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ru/hyperscript/testing">Тестирование и наблюдение</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ru/hyperscript/tested-component">Компонент с тестами</a>
+                </li>
+
+            </ul>
+        </details>
+        <details class="lms-side-course">
+            <summary>UI</summary>
+            <ul>
+                <li><a href="/ru/ui">Обзор</a></li>
+
+                <li class="lms-side-group">Главы</li>
+                <li class="">
+                    <a href="/ru/ui/tokens-and-themes">UI0: токены и темы</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ru/ui/foundations">UI1: окружение поддерева</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ru/ui/actions-and-layout">UI2: действия и раскладка</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ru/ui/inputs-and-forms">UI3, поля ввода и формы</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ru/ui/selection">UI4, выбор значений</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ru/ui/feedback-and-data">UI5, обратная связь и отображение данных</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ru/ui/navigation">UI6, навигация</a>
+                </li>
+
+            </ul>
+        </details>
+        <details class="lms-side-course">
+            <summary>Hypergraph</summary>
+            <ul>
+                <li><a href="/ru/hypergraph">Обзор</a></li>
+
+                <li class="lms-side-group">Главы</li>
+                <li class="">
+                    <a href="/ru/hypergraph/units">Единицы: store, event и effect</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ru/hypergraph/wiring">Связи: из единиц в граф</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ru/hypergraph/scopes">Области состояния: создать, завершить работу, передать</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ru/hypergraph/observing">Наблюдение: watch, inspect, describe</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ru/hypergraph/errors">Виды, перенос контекста и ошибки</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ru/hypergraph/hot-replacement">Горячая замена: смена графа</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ru/hypergraph/server-rendering">Серверный рендеринг: своя область для каждого запроса</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ru/hypergraph/testing">Тестирование модели: своя область для каждого теста</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ru/hypergraph/models">Большие модели: структура и идентичность</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ru/hypergraph/capstone">Итоговый пример: передача и восстановление модели</a>
+                </li>
+
+                <li class="lms-side-group">Переход с Effector</li>
+                <li class="">
+                    <a href="/ru/hypergraph/coming-from-effector">Переход с Effector</a>
+                </li>
+
+
+                <li class="lms-side-sub">
+                    <a href="/ru/hypergraph/coming-from-effector/units-and-wiring">Единицы и связи</a>
+                </li>
+
+
+                <li class="lms-side-sub">
+                    <a href="/ru/hypergraph/coming-from-effector/scopes-and-testing">Области и тестирование</a>
+                </li>
+
+
+                <li class="lms-side-sub">
+                    <a href="/ru/hypergraph/coming-from-effector/frameworks">Фреймворки после effector-react</a>
+                </li>
+
+            </ul>
+        </details>
+        <details class="lms-side-course" open>
+            <summary>Контент</summary>
+            <ul>
+                <li><a href="/ru/content">Обзор</a></li>
+
+                <li class="lms-side-group">Карта курса</li>
+                <li class="">
+                    <a href="/ru/content/documents">Документы страниц: узлы, схема и parseDocument</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ru/content/rendering">Рендеринг документа: renderDocument</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ru/content/blocks">Каталог блоков: девять групп, один реестр</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ru/content/references" aria-current="page">Ссылки, возможности окружения и адаптивные
+                        значения</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ru/content/add-a-block">Добавление блока: итоговое задание</a>
+                </li>
+
+            </ul>
+        </details>
+        <details class="lms-side-course">
+            <summary>Live Mercury</summary>
+            <ul>
+                <li><a href="/ru/live-mercury">Обзор</a></li>
+
+                <li class="lms-side-group">Курс</li>
+                <li class="">
+                    <a href="/ru/live-mercury/islands">Острова: элемент и его монтирование</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ru/live-mercury/liveview">Остров в LiveView: сокет, хуки и события</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ru/live-mercury/building">Сборка островов с mx: без Node</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ru/live-mercury/props-and-streams">Свойства и потоки: патчи по сети</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ru/live-mercury/server-rendering">Серверный рендеринг: что есть и чего пока нет</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ru/live-mercury/testing">Тестирование островов: по обе стороны элемента</a>
+                </li>
+
+            </ul>
+        </details>
+    </nav>
+    <main id="main" class="lms-main">
         <nav class="lms-crumbs" aria-label="Навигационная цепочка">
-  <ol>
-    
-      
-      <li><a href="/ru/content">Контент</a></li>
-      
-    
-      
-      
-      <li>Карта курса</li>
-    
-      <li aria-current="page">Ссылки, возможности окружения и адаптивные значения</li>
-      
-      
-    
-  </ol>
-</nav>
-        
+            <ol>
+
+
+                <li><a href="/ru/content">Контент</a></li>
+
+
+                <li>Карта курса</li>
+
+                <li aria-current="page">Ссылки, возможности окружения и адаптивные значения</li>
+
+
+            </ol>
+        </nav>
+
         <h1 class="lms-title">Ссылки, возможности окружения и <em>адаптивные значения</em></h1>
-        <p class="lms-lede">Документ называет изображения, маршруты и коллекции, но не хранит их; блоки не запрашивают эти данные. Окружение разрешает ссылки, допускает или запрещает встраивания и формы. Блоки отображают полученные данные, а при отсутствии ответа показывают предусмотренное состояние.</p>
-        <article class="lms-body"><p>Документ страницы указывает, <em>какое</em> изображение, маршрут или коллекцию нужно использовать, но не хранит сам объект. Объект предоставляет окружение; оно же решает, можно ли встраивать сторонние страницы и отправлять формы. Этот урок описывает всё, что <code>renderDocument</code> поручает окружению.</p>
-<h2 id="references">Ссылки в документе</h2>
-<p>Свойство хранит ссылку в виде <code>{ "$ref": kind, "id": id }</code>, где тип — <code>asset</code>, <code>route</code>, <code>entity</code> либо <code>fragment</code>. Дополнительные JSON-поля сохраняются. Ключ ссылки — <code>&lt;kind&gt;:&lt;id&gt;</code>; его возвращает <code>referenceKey</code> из <code>@fiberfx/schema</code>, например <code>asset:hero</code> или <code>entity:posts</code>.</p>
-<p>Тип ссылки задан в схеме каждого блока каталога: <code>image</code> принимает <code>asset</code>, у <code>form</code> свойство <code>action</code> принимает <code>route</code>, а у блока на основе данных свойство <code>collection</code> — <code>entity</code>.</p>
-<h2 id="resolved">Что окружение передаёт в resolved</h2>
-<p>Функции <code>renderDocument</code> окружение передаёт в параметре <code>resolved</code> обычную запись, сопоставляющую ключам найденные данные:</p>
-<table>
-<thead>
-<tr>
-<th>Поле</th>
-<th>Значение</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>src</code></td>
-<td>адрес загружаемого ресурса</td>
-</tr>
-<tr>
-<td><code>href</code></td>
-<td>адрес маршрута</td>
-</tr>
-<tr>
-<td><code>title</code></td>
-<td>заголовок</td>
-</tr>
-<tr>
-<td><code>items</code></td>
-<td>разрешённая коллекция: у каждого элемента есть <code>title</code> и необязательные <code>href</code> и <code>summary</code></td>
-</tr>
-<tr>
-<td><code>error</code></td>
-<td>сообщение окружения о неудачной попытке получить данные</td>
-</tr>
-</tbody>
-</table>
-<p>Блок вызывает <code>context.resolve(prop)</code> и получает запись по ключу свойства либо <code>undefined</code>, если свойство не является ссылкой или окружение не передало этот ключ. Ничто в <code>@fiberfx/content</code> не запрашивает данные самостоятельно.</p>
-<p>Приложение сайта Mercury сопоставляет идентификатору ресурса каждого изображения его адрес:</p>
-<pre><code class="language-ts">import { renderDocument, type ResolvedReference } from "@fiberfx/content";
+        <p class="lms-lede">Документ называет изображения, маршруты и коллекции, но не хранит их; блоки не запрашивают
+            эти данные. Окружение разрешает ссылки, допускает или запрещает встраивания и формы. Блоки отображают
+            полученные данные, а при отсутствии ответа показывают предусмотренное состояние.</p>
+        <article class="lms-body"><p>Документ страницы указывает, <em>какое</em> изображение, маршрут или коллекцию
+            нужно использовать, но не хранит сам объект. Объект предоставляет окружение; оно же решает, можно ли
+            встраивать сторонние страницы и отправлять формы. Этот урок описывает всё, что <code>renderDocument</code>
+            поручает окружению.</p>
+            <h2 id="references">Ссылки в документе</h2>
+            <p>Свойство хранит ссылку в виде <code>{ "$ref": kind, "id": id }</code>, где тип — <code>asset</code>,
+                <code>route</code>, <code>entity</code> либо <code>fragment</code>. Дополнительные JSON-поля
+                сохраняются. Ключ ссылки — <code>&lt;kind&gt;:&lt;id&gt;</code>; его возвращает
+                <code>referenceKey</code> из <code>@fiberfx/schema</code>, например <code>asset:hero</code> или <code>entity:posts</code>.
+            </p>
+            <p>Тип ссылки задан в схеме каждого блока каталога: <code>image</code> принимает <code>asset</code>, у
+                <code>form</code> свойство <code>action</code> принимает <code>route</code>, а у блока на основе данных
+                свойство <code>collection</code> — <code>entity</code>.</p>
+            <h2 id="resolved">Что окружение передаёт в resolved</h2>
+            <p>Функции <code>renderDocument</code> окружение передаёт в параметре <code>resolved</code> обычную запись,
+                сопоставляющую ключам найденные данные:</p>
+            <table>
+                <thead>
+                <tr>
+                    <th>Поле</th>
+                    <th>Значение</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><code>src</code></td>
+                    <td>адрес загружаемого ресурса</td>
+                </tr>
+                <tr>
+                    <td><code>href</code></td>
+                    <td>адрес маршрута</td>
+                </tr>
+                <tr>
+                    <td><code>title</code></td>
+                    <td>заголовок</td>
+                </tr>
+                <tr>
+                    <td><code>items</code></td>
+                    <td>разрешённая коллекция: у каждого элемента есть <code>title</code> и необязательные
+                        <code>href</code> и <code>summary</code></td>
+                </tr>
+                <tr>
+                    <td><code>error</code></td>
+                    <td>сообщение окружения о неудачной попытке получить данные</td>
+                </tr>
+                </tbody>
+            </table>
+            <p>Блок вызывает <code>context.resolve(prop)</code> и получает запись по ключу свойства либо
+                <code>undefined</code>, если свойство не является ссылкой или окружение не передало этот ключ. Ничто в
+                <code>@fiberfx/content</code> не запрашивает данные самостоятельно.</p>
+            <p>Приложение сайта Mercury сопоставляет идентификатору ресурса каждого изображения его адрес:</p>
+            <pre><code class="language-ts">import { renderDocument, type ResolvedReference } from "@fiberfx/content";
 import { collectReferences, referenceKey, type MercuryDocument } from "@fiberfx/schema";
 
 function show(document: MercuryDocument, sources: { readonly [id: string]: string }) {
@@ -781,90 +881,143 @@ function show(document: MercuryDocument, sources: { readonly [id: string]: strin
   return renderDocument(document, { mode: "publication", revision: 0, resolved });
 }
 </code></pre>
-<h2 id="readers">Какие данные читают блоки</h2>
-<table>
-<thead>
-<tr>
-<th>Блоки</th>
-<th>Что читают</th>
-<th>Если данных нет</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>image</code>, <code>figure</code>, <code>gallery</code></td>
-<td><code>src</code></td>
-<td>альтернативный текст с <code>role="img"</code>; при пустом alt не выводится ничего</td>
-</tr>
-<tr>
-<td><code>video</code></td>
-<td><code>src</code> ресурса и его <code>captions</code></td>
-<td>без <code>src</code> ресурса нет проигрывателя, без <code>src</code> субтитров нет дорожки; заголовок и расшифровка остаются</td>
-</tr>
-<tr>
-<td><code>audio</code></td>
-<td><code>src</code></td>
-<td>проигрывателя нет; заголовок и расшифровка остаются</td>
-</tr>
-<tr>
-<td><code>logo-list</code></td>
-<td><code>src</code> каждого логотипа</td>
-<td>название логотипа</td>
-</tr>
-<tr>
-<td><code>form</code></td>
-<td><code>href</code> свойства <code>action</code>, при разрешённой возможности <code>form</code></td>
-<td>отключённая форма с сообщением, что её нельзя отправить</td>
-</tr>
-<tr>
-<td><code>collection-feed</code>, <code>article-list</code>, <code>related-content</code>, <code>related-articles</code></td>
-<td><code>items</code>, <code>error</code></td>
-<td>состояние <code>unavailable</code></td>
-</tr>
-</tbody>
-</table>
-<p>Блок на основе данных различает четыре ответа. Для ссылки с ключом <code>entity:example</code> тест пакета отображает <code>{}</code> как <code>unavailable</code>, <code>{ items: [] }</code> как <code>empty</code>, <code>{ error: "The feed is down." }</code> как <code>error</code> с сообщением в alert, а список элементов — как <code>ready</code>.</p>
-<p>В этой версии ни один блок каталога не читает <code>title</code> из разрешённой ссылки.</p>
-<h2 id="schema">Разрешение ссылок средствами schema</h2>
-<p>У <code>@fiberfx/schema</code> есть отдельный этап разрешения ссылок, независимый от записи для рендерера. <code>collectReferences(document)</code> перечисляет все ссылки в свойствах узлов вместе с узлом и путём. <code>resolveReferences(document, resolve)</code> вызывает ваш обработчик один раз для каждого уникального ключа и возвращает <code>Map</code>, сопоставляющий ключу <code>Resolution</code>:</p>
-<ul>
-<li><code>{ status: "resolved", reference, details? }</code>;</li>
-<li><code>{ status: "unknown", reference }</code>: такого объекта нет;</li>
-<li><code>{ status: "unauthorized", reference }</code>: читателю нельзя видеть объект. Сохраняется только идентичность ссылки, независимо от подробностей, имевшихся у обработчика.</li>
-</ul>
-<p>Любой другой ответ обработчика приводит к исключению <code>TypeError</code>. Ни один из вызовов не изменяет документ.</p>
-<p>Ни один из пакетов не преобразует <code>Resolution</code> в параметр <code>renderDocument</code> под именем <code>resolved</code>. Это задача окружения, как в примере выше.</p>
-<h2 id="capabilities">Возможности окружения</h2>
-<p>Возможность — разрешение, выдаваемое политикой содержимого окружения: <code>"embed"</code> позволяет встраивать стороннее содержимое, <code>"form"</code> — отправлять формы по разрешённому маршруту. Окружение передаёт разрешения функции <code>renderDocument</code> в параметре <code>capabilities</code>; по умолчанию не разрешено ничего.</p>
-<p>Три блока каталога объявляют требуемую возможность в поле <code>capabilities</code> записи: <code>embed</code> объявляет <code>embed</code>, а <code>form</code> и <code>form-submit</code> — <code>form</code>. <code>renderDocument</code> не проверяет это объявление. Каждый блок сам читает <code>context.capabilities</code> и выбирает поведение при отсутствии разрешения:</p>
-<ul>
-<li><strong><code>embed</code>:</strong> при разрешённом <code>embed</code> и URL со схемой <code>https</code> выводит <code>&lt;iframe&gt;</code> в песочнице. Иначе — ссылку с заголовком.</li>
-<li><strong><code>form</code>:</strong> при разрешённом <code>form</code> и маршруте, разрешённом в безопасный <code>href</code>, выводит <code>&lt;form method="post"&gt;</code> на этот адрес. Иначе показывает «This form can't be sent from here.», отключает все элементы управления через отключённый <code>&lt;fieldset&gt;</code> и предотвращает отправку, если событие всё же дошло.</li>
-<li><strong><code>form-submit</code>:</strong> без <code>form</code> кнопка отключена.</li>
-</ul>
-<p>Тесты пакета проверяют поведение отключённой формы после гидратации. Каждый элемент управления соответствует <code>:disabled</code>, отправленное событие submit предотвращается, и ничто не вызывает <code>fetch</code> и не пишет в хранилище.</p>
-<h2 id="links">Авторские ссылки и URL встраивания</h2>
-<p>Каждый авторский <code>href</code> проходит проверку перед попаданием в разметку. Сохраняются:</p>
-<ul>
-<li>относительные пути: <code>/…</code>, <code>./…</code>, <code>../…</code>;</li>
-<li>фрагменты <code>#…</code> и строки запроса <code>?…</code>;</li>
-<li>ссылки <code>http:</code>, <code>https:</code>, <code>mailto:</code> и <code>tel:</code>.</li>
-</ul>
-<p>Отбрасываются <code>data:</code>, <code>vbscript:</code>, <code>javascript:</code> и любые другие схемы; адреса без схемы с началом <code>//</code>, <code>/\</code> или <code>\\</code>; ссылки с управляющими символами. Браузер удаляет из URL табуляцию, перевод строки и возврат каретки, поэтому <code>"/\t/host"</code> превратился бы в <code>"//host"</code>. У отброшенной ссылки сохраняется подпись и удаляется только <code>href</code>.</p>
-<p>Для встраивания подходит лишь абсолютный URL <code>https</code> с именем хоста. Его <code>&lt;iframe&gt;</code> получает <code>sandbox="allow-scripts"</code> и никогда не получает <code>allow-same-origin</code>, поэтому встроенная страница не может получить origin окружения. Для пути <code>/same-origin</code>, URL <code>http:</code> или <code>data:</code> заголовок вместо этого выводится ссылкой.</p>
-<p>Эти проверки внутренние: <code>safeHref</code> и <code>httpsUrl</code> не экспортируются из <code>@fiberfx/content</code>, поэтому собственный блок должен проверять ссылки самостоятельно.</p>
-<h2 id="responsive">Адаптивные значения</h2>
-<p>Свойство со схемой <code>responsive: true</code> может вместо простого значения хранить адаптивное, например <code>{ "$responsive": { "base": false, "overrides": { "md": true } } }</code>.</p>
-<p><code>base</code> действует там, где нет переопределения. Каждое переопределение задаёт значение начиная со своей точки перелома, а <code>{ "$removed": true }</code> удаляет унаследованное значение начиная с этой точки. В каталоге два адаптивных свойства: <code>section.background</code> и <code>columns.reverse</code>.</p>
-<p><code>BREAKPOINTS</code> из <code>@fiberfx/content</code> содержит <code>["sm", "md", "lg", "xl"]</code> в порядке каскада; их объявляет <code>contentSchema()</code>. При разборе базовое значение и каждое переопределение проверяются по типу свойства. Неизвестное имя точки перелома (например, <code>tablet</code>) и адаптивная обёртка у неадаптивного свойства отклоняются с <code>invalid-prop</code> по соответствующему пути.</p>
-<h2 id="overrides">Чтение переопределений</h2>
-<p>Блок получает каждое адаптивное свойство уже сведённым к базовому значению, а переданный ему узел сохраняет переопределения. В каталоге:</p>
-<ul>
-<li><strong><code>section</code></strong> отображает только базовый фон.</li>
-<li><strong><code>columns</code></strong> записывает <code>data-reverse</code>, если базовое значение — <code>true</code>, и <code>data-reverse-&lt;breakpoint&gt;</code> для каждого переопределения со значением <code>true</code>. Порядок DOM совпадает с порядком документа. Атрибуты предназначены для таблицы стилей, но в этой версии ни одна таблица стилей репозитория их не читает, поэтому само по себе <code>reverse</code> не меняет раскладку.</li>
-</ul>
-<p>Чтобы прочитать свойство для одной ширины вне блока, используйте <code>resolveResponsive(value, breakpoint, order)</code> из <code>@fiberfx/schema</code>. Функция сообщает, откуда получено значение для этой ширины:</p>
-<pre><code class="language-ts">import { resolveResponsive } from "@fiberfx/schema";
+            <h2 id="readers">Какие данные читают блоки</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>Блоки</th>
+                    <th>Что читают</th>
+                    <th>Если данных нет</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><code>image</code>, <code>figure</code>, <code>gallery</code></td>
+                    <td><code>src</code></td>
+                    <td>альтернативный текст с <code>role="img"</code>; при пустом alt не выводится ничего</td>
+                </tr>
+                <tr>
+                    <td><code>video</code></td>
+                    <td><code>src</code> ресурса и его <code>captions</code></td>
+                    <td>без <code>src</code> ресурса нет проигрывателя, без <code>src</code> субтитров нет дорожки;
+                        заголовок и расшифровка остаются
+                    </td>
+                </tr>
+                <tr>
+                    <td><code>audio</code></td>
+                    <td><code>src</code></td>
+                    <td>проигрывателя нет; заголовок и расшифровка остаются</td>
+                </tr>
+                <tr>
+                    <td><code>logo-list</code></td>
+                    <td><code>src</code> каждого логотипа</td>
+                    <td>название логотипа</td>
+                </tr>
+                <tr>
+                    <td><code>form</code></td>
+                    <td><code>href</code> свойства <code>action</code>, при разрешённой возможности <code>form</code>
+                    </td>
+                    <td>отключённая форма с сообщением, что её нельзя отправить</td>
+                </tr>
+                <tr>
+                    <td><code>collection-feed</code>, <code>article-list</code>, <code>related-content</code>, <code>related-articles</code>
+                    </td>
+                    <td><code>items</code>, <code>error</code></td>
+                    <td>состояние <code>unavailable</code></td>
+                </tr>
+                </tbody>
+            </table>
+            <p>Блок на основе данных различает четыре ответа. Для ссылки с ключом <code>entity:example</code> тест
+                пакета отображает <code>{}</code> как <code>unavailable</code>, <code>{ items: [] }</code> как <code>empty</code>,
+                <code>{ error: "The feed is down." }</code> как <code>error</code> с сообщением в alert, а список
+                элементов — как <code>ready</code>.</p>
+            <p>В этой версии ни один блок каталога не читает <code>title</code> из разрешённой ссылки.</p>
+            <h2 id="schema">Разрешение ссылок средствами schema</h2>
+            <p>У <code>@fiberfx/schema</code> есть отдельный этап разрешения ссылок, независимый от записи для
+                рендерера. <code>collectReferences(document)</code> перечисляет все ссылки в свойствах узлов вместе с
+                узлом и путём. <code>resolveReferences(document, resolve)</code> вызывает ваш обработчик один раз для
+                каждого уникального ключа и возвращает <code>Map</code>, сопоставляющий ключу <code>Resolution</code>:
+            </p>
+            <ul>
+                <li><code>{ status: "resolved", reference, details? }</code>;</li>
+                <li><code>{ status: "unknown", reference }</code>: такого объекта нет;</li>
+                <li><code>{ status: "unauthorized", reference }</code>: читателю нельзя видеть объект. Сохраняется
+                    только идентичность ссылки, независимо от подробностей, имевшихся у обработчика.
+                </li>
+            </ul>
+            <p>Любой другой ответ обработчика приводит к исключению <code>TypeError</code>. Ни один из вызовов не
+                изменяет документ.</p>
+            <p>Ни один из пакетов не преобразует <code>Resolution</code> в параметр <code>renderDocument</code> под
+                именем <code>resolved</code>. Это задача окружения, как в примере выше.</p>
+            <h2 id="capabilities">Возможности окружения</h2>
+            <p>Возможность — разрешение, выдаваемое политикой содержимого окружения: <code>"embed"</code> позволяет
+                встраивать стороннее содержимое, <code>"form"</code> — отправлять формы по разрешённому маршруту.
+                Окружение передаёт разрешения функции <code>renderDocument</code> в параметре <code>capabilities</code>;
+                по умолчанию не разрешено ничего.</p>
+            <p>Три блока каталога объявляют требуемую возможность в поле <code>capabilities</code> записи:
+                <code>embed</code> объявляет <code>embed</code>, а <code>form</code> и <code>form-submit</code> — <code>form</code>.
+                <code>renderDocument</code> не проверяет это объявление. Каждый блок сам читает <code>context.capabilities</code>
+                и выбирает поведение при отсутствии разрешения:</p>
+            <ul>
+                <li><strong><code>embed</code>:</strong> при разрешённом <code>embed</code> и URL со схемой
+                    <code>https</code> выводит <code>&lt;iframe&gt;</code> в песочнице. Иначе — ссылку с заголовком.
+                </li>
+                <li><strong><code>form</code>:</strong> при разрешённом <code>form</code> и маршруте, разрешённом в
+                    безопасный <code>href</code>, выводит <code>&lt;form method="post"&gt;</code> на этот адрес. Иначе
+                    показывает «This form can't be sent from here.», отключает все элементы управления через отключённый
+                    <code>&lt;fieldset&gt;</code> и предотвращает отправку, если событие всё же дошло.
+                </li>
+                <li><strong><code>form-submit</code>:</strong> без <code>form</code> кнопка отключена.</li>
+            </ul>
+            <p>Тесты пакета проверяют поведение отключённой формы после гидратации. Каждый элемент управления
+                соответствует <code>:disabled</code>, отправленное событие submit предотвращается, и ничто не вызывает
+                <code>fetch</code> и не пишет в хранилище.</p>
+            <h2 id="links">Авторские ссылки и URL встраивания</h2>
+            <p>Каждый авторский <code>href</code> проходит проверку перед попаданием в разметку. Сохраняются:</p>
+            <ul>
+                <li>относительные пути: <code>/…</code>, <code>./…</code>, <code>../…</code>;</li>
+                <li>фрагменты <code>#…</code> и строки запроса <code>?…</code>;</li>
+                <li>ссылки <code>http:</code>, <code>https:</code>, <code>mailto:</code> и <code>tel:</code>.</li>
+            </ul>
+            <p>Отбрасываются <code>data:</code>, <code>vbscript:</code>, <code>javascript:</code> и любые другие схемы;
+                адреса без схемы с началом <code>//</code>, <code>/\</code> или <code>\\</code>; ссылки с управляющими
+                символами. Браузер удаляет из URL табуляцию, перевод строки и возврат каретки, поэтому
+                <code>"/\t/host"</code> превратился бы в <code>"//host"</code>. У отброшенной ссылки сохраняется подпись
+                и удаляется только <code>href</code>.</p>
+            <p>Для встраивания подходит лишь абсолютный URL <code>https</code> с именем хоста. Его
+                <code>&lt;iframe&gt;</code> получает <code>sandbox="allow-scripts"</code> и никогда не получает <code>allow-same-origin</code>,
+                поэтому встроенная страница не может получить origin окружения. Для пути <code>/same-origin</code>, URL
+                <code>http:</code> или <code>data:</code> заголовок вместо этого выводится ссылкой.</p>
+            <p>Эти проверки внутренние: <code>safeHref</code> и <code>httpsUrl</code> не экспортируются из <code>@fiberfx/content</code>,
+                поэтому собственный блок должен проверять ссылки самостоятельно.</p>
+            <h2 id="responsive">Адаптивные значения</h2>
+            <p>Свойство со схемой <code>responsive: true</code> может вместо простого значения хранить адаптивное,
+                например <code>{ "$responsive": { "base": false, "overrides": { "md": true } } }</code>.</p>
+            <p><code>base</code> действует там, где нет переопределения. Каждое переопределение задаёт значение начиная
+                со своей точки перелома, а <code>{ "$removed": true }</code> удаляет унаследованное значение начиная с
+                этой точки. В каталоге два адаптивных свойства: <code>section.background</code> и
+                <code>columns.reverse</code>.</p>
+            <p><code>BREAKPOINTS</code> из <code>@fiberfx/content</code> содержит <code>["sm", "md", "lg", "xl"]</code>
+                в порядке каскада; их объявляет <code>contentSchema()</code>. При разборе базовое значение и каждое
+                переопределение проверяются по типу свойства. Неизвестное имя точки перелома (например,
+                <code>tablet</code>) и адаптивная обёртка у неадаптивного свойства отклоняются с
+                <code>invalid-prop</code> по соответствующему пути.</p>
+            <h2 id="overrides">Чтение переопределений</h2>
+            <p>Блок получает каждое адаптивное свойство уже сведённым к базовому значению, а переданный ему узел
+                сохраняет переопределения. В каталоге:</p>
+            <ul>
+                <li><strong><code>section</code></strong> отображает только базовый фон.</li>
+                <li><strong><code>columns</code></strong> записывает <code>data-reverse</code>, если базовое значение —
+                    <code>true</code>, и <code>data-reverse-&lt;breakpoint&gt;</code> для каждого переопределения со
+                    значением <code>true</code>. Порядок DOM совпадает с порядком документа. Атрибуты предназначены для
+                    таблицы стилей, но в этой версии ни одна таблица стилей репозитория их не читает, поэтому само по
+                    себе <code>reverse</code> не меняет раскладку.
+                </li>
+            </ul>
+            <p>Чтобы прочитать свойство для одной ширины вне блока, используйте <code>resolveResponsive(value,
+                breakpoint, order)</code> из <code>@fiberfx/schema</code>. Функция сообщает, откуда получено значение
+                для этой ширины:</p>
+            <pre><code class="language-ts">import { resolveResponsive } from "@fiberfx/schema";
 import { BREAKPOINTS } from "@fiberfx/content";
 
 const reverse = { $responsive: { base: false, overrides: { md: true } } };
@@ -874,23 +1027,38 @@ for (const breakpoint of BREAKPOINTS) console.log(breakpoint, resolveResponsive(
 // lg { state: "inherited", from: "md", value: true }
 // xl { state: "inherited", from: "md", value: true }
 </code></pre>
-<p>Четыре состояния: <code>explicit</code> (задано в этой точке), <code>inherited</code> (унаследовано от меньшей точки или базы), <code>removed</code> (удалено в этой точке) и <code>absent</code> (ничего не применимо либо значение удалено на меньшей ширине). Простое значение имеет состояние <code>inherited</code> от <code>base</code> на любой ширине. Чтение не записывает результат обратно в документ.</p></article>
+            <p>Четыре состояния: <code>explicit</code> (задано в этой точке), <code>inherited</code> (унаследовано от
+                меньшей точки или базы), <code>removed</code> (удалено в этой точке) и <code>absent</code> (ничего не
+                применимо либо значение удалено на меньшей ширине). Простое значение имеет состояние
+                <code>inherited</code> от <code>base</code> на любой ширине. Чтение не записывает результат обратно в
+                документ.</p></article>
         <nav class="lms-pager" aria-label="Назад и далее">
-  <a class="lms-pager-prev" href="/ru/content/blocks" rel="prev"><span>Назад</span>Каталог блоков: девять групп, один реестр</a>
-  <a class="lms-pager-next" href="/ru/content/add-a-block" rel="next"><span>Далее</span>Добавление блока: итоговое задание</a>
-</nav>
-      </main>
-      <aside class="lms-toc" aria-label="На этой странице">
+            <a class="lms-pager-prev" href="/ru/content/blocks" rel="prev"><span>Назад</span>Каталог блоков: девять
+                групп, один реестр</a>
+            <a class="lms-pager-next" href="/ru/content/add-a-block" rel="next"><span>Далее</span>Добавление блока:
+                итоговое задание</a>
+        </nav>
+    </main>
+    <aside class="lms-toc" aria-label="На этой странице">
         <p class="lms-toc-title">На этой странице</p>
         <ul>
-          <li><a href="#references">Ссылки в документе</a></li><li><a href="#resolved">Что окружение передаёт в resolved</a></li><li><a href="#readers">Какие данные читают блоки</a></li><li><a href="#schema">Разрешение ссылок средствами schema</a></li><li><a href="#capabilities">Возможности окружения</a></li><li><a href="#links">Авторские ссылки и URL встраивания</a></li><li><a href="#responsive">Адаптивные значения</a></li><li><a href="#overrides">Чтение переопределений</a></li>
+            <li><a href="#references">Ссылки в документе</a></li>
+            <li><a href="#resolved">Что окружение передаёт в resolved</a></li>
+            <li><a href="#readers">Какие данные читают блоки</a></li>
+            <li><a href="#schema">Разрешение ссылок средствами schema</a></li>
+            <li><a href="#capabilities">Возможности окружения</a></li>
+            <li><a href="#links">Авторские ссылки и URL встраивания</a></li>
+            <li><a href="#responsive">Адаптивные значения</a></li>
+            <li><a href="#overrides">Чтение переопределений</a></li>
         </ul>
-      </aside>
-    </div>
-    <footer class="lms-footer">
-  <p><a href="/agent/SKILL.md">SKILL.md</a><span> · <a href="/llms.txt">llms.txt</a></span> · <a href="/sitemap.xml">Sitemap</a> · <a href="/examples/first-page.html">Пример в браузере</a></p>
-  <p>Для агентов: <a href="/ru/content/references/llms.txt">/ru/content/references/llms.txt</a> — текстовая версия этой страницы, написанная вручную. Без Node и React.</p>
-  
+    </aside>
+</div>
+<footer class="lms-footer">
+    <p><a href="/agent/SKILL.md">SKILL.md</a><span> · <a href="/llms.txt">llms.txt</a></span> · <a href="/sitemap.xml">Sitemap</a>
+        · <a href="/examples/first-page.html">Пример в браузере</a></p>
+    <p>Для агентов: <a href="/ru/content/references/llms.txt">/ru/content/references/llms.txt</a> — текстовая версия
+        этой страницы, написанная вручную. Без Node и React.</p>
+
 </footer>
-  </body>
+</body>
 </html>

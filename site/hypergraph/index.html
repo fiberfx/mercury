@@ -1,794 +1,994 @@
-<!doctype html><html lang="en" class="lms">
-  <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hypergraph, the state kernel · Mercury</title>
-  <meta name="description" content="Hypergraph, the package @fiberfx/hypergraph 4.0.0: Mercury&#39;s state kernel. What it is, the names it uses, its subpaths, and how a saved edit behaves under mx dev.">
-  
-  <link rel="canonical" href="https://mercury.jonnify.com/hypergraph">
-  <link rel="describedby" type="text/plain" href="/hypergraph/llms.txt">
-  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="Mercury">
-  <meta property="og:title" content="Hypergraph, the state kernel · Mercury">
-  <meta property="og:description" content="Hypergraph, the package @fiberfx/hypergraph 4.0.0: Mercury&#39;s state kernel. What it is, the names it uses, its subpaths, and how a saved edit behaves under mx dev.">
-  <meta property="og:url" content="https://mercury.jonnify.com/hypergraph">
-  <meta property="og:image" content="https://mercury.jonnify.com/_lms/assets/mercury-hero.png">
-  <meta property="og:image:alt" content="Mercury">
-  <script type="application/ld+json">[{"@context":"https://schema.org","@type":"TechArticle","description":"Hypergraph, the package @fiberfx/hypergraph 4.0.0: Mercury's state kernel. What it is, the names it uses, its subpaths, and how a saved edit behaves under mx dev.","inLanguage":"en","name":"Hypergraph, the state kernel","url":"https://mercury.jonnify.com/hypergraph"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://mercury.jonnify.com/","name":"Mercury","position":1},{"@type":"ListItem","item":"https://mercury.jonnify.com/hypergraph","name":"Hypergraph, the state kernel","position":2}]}]</script>
-  <meta name="color-scheme" content="light dark">
-  
-  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#111113" media="(prefers-color-scheme: dark)">
-  <style>html{background-color:rgb(255 255 255)}@media (prefers-color-scheme: dark){html{background-color:rgb(17 17 19)}}</style>
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph"><link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph"><link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap">
-  <link rel="stylesheet" href="/_lms/assets/lms.css">
-  <link rel="stylesheet" href="/_lms/assets/shell.css">
-  
+<!doctype html>
+<html lang="en" class="lms">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hypergraph, the state kernel · Mercury</title>
+    <meta name="description"
+          content="Hypergraph, the package @fiberfx/hypergraph 4.0.0: Mercury&#39;s state kernel. What it is, the names it uses, its subpaths, and how a saved edit behaves under mx dev.">
+
+    <link rel="canonical" href="https://mercury.jonnify.com/hypergraph">
+    <link rel="describedby" type="text/plain" href="/hypergraph/llms.txt">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Mercury">
+    <meta property="og:title" content="Hypergraph, the state kernel · Mercury">
+    <meta property="og:description"
+          content="Hypergraph, the package @fiberfx/hypergraph 4.0.0: Mercury&#39;s state kernel. What it is, the names it uses, its subpaths, and how a saved edit behaves under mx dev.">
+    <meta property="og:url" content="https://mercury.jonnify.com/hypergraph">
+    <meta property="og:image" content="https://mercury.jonnify.com/_lms/assets/mercury-hero.png">
+    <meta property="og:image:alt" content="Mercury">
+    <script type="application/ld+json">[
+        {
+            "@context": "https://schema.org",
+            "@type": "TechArticle",
+            "description": "Hypergraph, the package @fiberfx/hypergraph 4.0.0: Mercury's state kernel. What it is, the names it uses, its subpaths, and how a saved edit behaves under mx dev.",
+            "inLanguage": "en",
+            "name": "Hypergraph, the state kernel",
+            "url": "https://mercury.jonnify.com/hypergraph"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "item": "https://mercury.jonnify.com/",
+                    "name": "Mercury",
+                    "position": 1
+                },
+                {
+                    "@type": "ListItem",
+                    "item": "https://mercury.jonnify.com/hypergraph",
+                    "name": "Hypergraph, the state kernel",
+                    "position": 2
+                }
+            ]
+        }
+    ]</script>
+    <meta name="color-scheme" content="light dark">
+
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#111113" media="(prefers-color-scheme: dark)">
+    <style>html {
+        background-color: rgb(255 255 255)
+    }
+
+    @media (prefers-color-scheme: dark) {
+        html {
+            background-color: rgb(17 17 19)
+        }
+    }</style>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph">
+    <link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph">
+    <link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="/_lms/assets/lms.css">
+    <link rel="stylesheet" href="/_lms/assets/shell.css">
+
 </head>
-  <body class="lms">
-    <a class="lms-skip" href="#main">Skip to content</a>
+<body class="lms">
+<a class="lms-skip" href="#main">Skip to content</a>
 <header class="lms-header">
-  <a class="lms-brand" href="/" aria-label="Mercury, home">
-    <svg viewBox="5 9 30 22" width="30" height="22" aria-hidden="true" focusable="false"><g fill="none" stroke-width="3" stroke-linecap="round"><path d="M7 29V15.5c0-2.5 2-4.5 4.5-4.5S16 13 16 15.5V29M16 16.5c0-3 2-5.5 4.5-5.5" stroke="currentColor"></path><path d="M23 16l10 13M33 16L23 29" stroke="rgb(var(--lms-accent))"></path></g></svg>
-    <span>Mercury</span>
-  </a>
-  <nav class="lms-nav" aria-label="Site">
-    <a href="/#principles">Principles</a><a href="/#foundations">Foundations</a><a href="/#components">Components</a><a href="/#usage">Usage</a>
-  </nav>
-  <div class="lms-actions">
-    <details class="lms-lang">
-  <summary aria-label="Language">English</summary>
-  <ul>
-    <li>
-      <a href="/hypergraph" hreflang="en" lang="en" aria-current="true">English</a>
-      
-    </li><li>
-      <a href="/ru/hypergraph" hreflang="ru" lang="ru">Русский</a>
-      
-    </li>
-  </ul>
-</details>
-    <a class="lms-github" href="/start/install-mx" aria-label="Install Mercury" title="Install Mercury">
-      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    <a class="lms-brand" href="/" aria-label="Mercury, home">
+        <svg viewBox="5 9 30 22" width="30" height="22" aria-hidden="true" focusable="false">
+            <g fill="none" stroke-width="3" stroke-linecap="round">
+                <path d="M7 29V15.5c0-2.5 2-4.5 4.5-4.5S16 13 16 15.5V29M16 16.5c0-3 2-5.5 4.5-5.5"
+                      stroke="currentColor"></path>
+                <path d="M23 16l10 13M33 16L23 29" stroke="rgb(var(--lms-accent))"></path>
+            </g>
+        </svg>
+        <span>Mercury</span>
     </a>
-    <form class="lms-theme" method="post" action="/_lms/theme">
-      <input type="hidden" name="back" value="/hypergraph">
-      <button class="lms-theme-to-dark" type="submit" name="set" value="dark" aria-label="Dark theme" title="Dark theme">
-        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"></path></svg>
-      </button>
-      <button class="lms-theme-to-light" type="submit" name="set" value="light" aria-label="Light theme" title="Light theme">
-        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></g></svg>
-      </button>
-    </form>
-    <a class="lms-open-docs" href="/start">Open docs</a>
-    <details class="lms-drawer">
-      <summary>
-        <span class="lms-menu-label">Menu</span>
-        <svg class="lms-menu-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
-      </summary>
-      <div class="lms-drawer-panel">
-        <nav class="lms-menu-links" aria-label="Site">
-          <a class="lms-menu-docs" href="/start">Open docs</a>
-          <a href="/#principles">Principles</a><a href="/#foundations">Foundations</a><a href="/#components">Components</a><a href="/#usage">Usage</a>
-          <a href="/start/install-mx">Install Mercury</a>
-        </nav>
-        <div class="lms-menu-language">
-          <details class="lms-lang">
-  <summary aria-label="Language">English</summary>
-  <ul>
-    <li>
-      <a href="/hypergraph" hreflang="en" lang="en" aria-current="true">English</a>
-      
-    </li><li>
-      <a href="/ru/hypergraph" hreflang="ru" lang="ru">Русский</a>
-      
-    </li>
-  </ul>
-</details>
-        </div>
-        <nav aria-label="Courses and pages">
-          <p class="lms-menu-heading">Courses</p>
-          <details class="lms-side-course">
-  <summary>Start</summary>
-  <ul>
-    <li><a href="/start">Overview</a></li>
-    
-      
-      <li class="">
-        <a href="/start/browser">A page in the browser</a>
-      </li>
-    
-      <li class="lms-side-group">The pieces</li>
-      <li class="">
-        <a href="/start/install-mx">Choose a route to mx</a>
-      </li>
-    
-      <li class="lms-side-group">First steps</li>
-      <li class="">
-        <a href="/start/stability">Stability: Shipped, Preview, Planned</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/start/agents">Build a page with your agent</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/start/glossary">Glossary: the words this site uses</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/start/philosophy">Philosophy: native, not borrowed</a>
-      </li>
-    
-  </ul>
-</details><details class="lms-side-course">
-  <summary>mx</summary>
-  <ul>
-    <li><a href="/mx">Overview</a></li>
-    
-      <li class="lms-side-group">Install mx</li>
-      <li class="">
-        <a href="/mx/first-app">Your first Mercury page</a>
-      </li>
-    
-      <li class="lms-side-group">The chapters</li>
-      <li class="">
-        <a href="/mx/modules">Modules, mx.mod and mx.sum</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/mx/workspace">A workspace, mx.work</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/mx/dev">The dev loop, and hot replacement</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/mx/build">Build and ship, three kinds of build</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/mx/compile">The Hypercompiler, one module at a time</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/mx/tools">The tools, test, lsap and run</a>
-      </li>
-    
-  </ul>
-</details><details class="lms-side-course">
-  <summary>Hyperscript</summary>
-  <ul>
-    <li><a href="/hyperscript">Overview</a></li>
-    
-      <li class="lms-side-group">What Hyperscript is</li>
-      <li class="">
-        <a href="/hyperscript/dom">The DOM contract</a>
-      </li>
-    
-      <li class="lms-side-group">The chapters</li>
-      <li class="">
-        <a href="/hyperscript/components">Components and render</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hyperscript/hooks">Hooks, state and effects in a function</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hyperscript/context">Context, portals and memo</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hyperscript/server">Rendering on the server</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hyperscript/testing">Testing and inspecting</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hyperscript/tested-component">A tested component</a>
-      </li>
-    
-  </ul>
-</details><details class="lms-side-course">
-  <summary>UI</summary>
-  <ul>
-    <li><a href="/ui">Overview</a></li>
-    
-      <li class="lms-side-group">The chapters</li>
-      <li class="">
-        <a href="/ui/tokens-and-themes">UI0, tokens and themes</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ui/foundations">UI1, where a subtree lives</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ui/actions-and-layout">UI2, actions and layout</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ui/inputs-and-forms">UI3, inputs and forms</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ui/selection">UI4, selection</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ui/feedback-and-data">UI5, feedback and data display</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ui/navigation">UI6, navigation</a>
-      </li>
-    
-  </ul>
-</details><details class="lms-side-course" open>
-  <summary>Hypergraph</summary>
-  <ul>
-    <li><a href="/hypergraph" aria-current="page">Overview</a></li>
-    
-      <li class="lms-side-group">The chapters</li>
-      <li class="">
-        <a href="/hypergraph/units">Units: store, event and effect</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hypergraph/wiring">Wiring: units into a graph</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hypergraph/scopes">Scopes: fork, settle, hand over</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hypergraph/observing">Observing: watch, inspect, describe</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hypergraph/errors">Kinds, carriers and errors</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hypergraph/hot-replacement">Hot replacement: the swap</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hypergraph/server-rendering">Server rendering: a scope per request</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hypergraph/testing">Testing a model: a scope per test</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hypergraph/models">Models at scale: structure and identity</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hypergraph/capstone">Capstone: a model, round-tripped</a>
-      </li>
-    
-      <li class="lms-side-group">Coming from Effector</li>
-      <li class="">
-        <a href="/hypergraph/coming-from-effector">Coming from Effector</a>
-      </li>
-    
-      
-      <li class="lms-side-sub">
-        <a href="/hypergraph/coming-from-effector/units-and-wiring">Units and wiring</a>
-      </li>
-    
-      
-      <li class="lms-side-sub">
-        <a href="/hypergraph/coming-from-effector/scopes-and-testing">Scopes and testing</a>
-      </li>
-    
-      
-      <li class="lms-side-sub">
-        <a href="/hypergraph/coming-from-effector/frameworks">Frameworks, after effector-react</a>
-      </li>
-    
-  </ul>
-</details><details class="lms-side-course">
-  <summary>Content</summary>
-  <ul>
-    <li><a href="/content">Overview</a></li>
-    
-      <li class="lms-side-group">The course map</li>
-      <li class="">
-        <a href="/content/documents">Page documents: nodes, the schema and parseDocument</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/content/rendering">Rendering a document: renderDocument</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/content/blocks">The block catalog: nine groups, one registry</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/content/references">References, capabilities and responsive values</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/content/add-a-block">Add a block: the capstone</a>
-      </li>
-    
-  </ul>
-</details><details class="lms-side-course">
-  <summary>Live Mercury</summary>
-  <ul>
-    <li><a href="/live-mercury">Overview</a></li>
-    
-      <li class="lms-side-group">The course</li>
-      <li class="">
-        <a href="/live-mercury/islands">Islands: the element and its mount</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/live-mercury/liveview">An island in a LiveView: socket, hooks and events</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/live-mercury/building">Building islands with mx: no Node</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/live-mercury/props-and-streams">Props and streams: patches on the wire</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/live-mercury/server-rendering">Server rendering: what is there, and what is not</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/live-mercury/testing">Testing islands: both sides of the element</a>
-      </li>
-    
-  </ul>
-</details>
-        </nav>
-      </div>
-    </details>
-  </div>
+    <nav class="lms-nav" aria-label="Site">
+        <a href="/#principles">Principles</a><a href="/#foundations">Foundations</a><a
+            href="/#components">Components</a><a href="/#usage">Usage</a>
+    </nav>
+    <div class="lms-actions">
+        <details class="lms-lang">
+            <summary aria-label="Language">English</summary>
+            <ul>
+                <li>
+                    <a href="/hypergraph" hreflang="en" lang="en" aria-current="true">English</a>
+
+                </li>
+                <li>
+                    <a href="/ru/hypergraph" hreflang="ru" lang="ru">Русский</a>
+
+                </li>
+            </ul>
+        </details>
+        <a class="lms-github" href="/start/install-mx" aria-label="Install Mercury" title="Install Mercury">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+                <path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4" fill="none" stroke="currentColor" stroke-width="1.8"
+                      stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+        </a>
+        <form class="lms-theme" method="post" action="/_lms/theme">
+            <input type="hidden" name="back" value="/hypergraph">
+            <button class="lms-theme-to-dark" type="submit" name="set" value="dark" aria-label="Dark theme"
+                    title="Dark theme">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+                    <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                          stroke-linejoin="round" d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"></path>
+                </svg>
+            </button>
+            <button class="lms-theme-to-light" type="submit" name="set" value="light" aria-label="Light theme"
+                    title="Light theme">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+                    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+                    </g>
+                </svg>
+            </button>
+        </form>
+        <a class="lms-open-docs" href="/start">Open docs</a>
+        <details class="lms-drawer">
+            <summary>
+                <span class="lms-menu-label">Menu</span>
+                <svg class="lms-menu-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"
+                     focusable="false">
+                    <path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="1.8"
+                          stroke-linecap="round"></path>
+                </svg>
+            </summary>
+            <div class="lms-drawer-panel">
+                <nav class="lms-menu-links" aria-label="Site">
+                    <a class="lms-menu-docs" href="/start">Open docs</a>
+                    <a href="/#principles">Principles</a><a href="/#foundations">Foundations</a><a href="/#components">Components</a><a
+                        href="/#usage">Usage</a>
+                    <a href="/start/install-mx">Install Mercury</a>
+                </nav>
+                <div class="lms-menu-language">
+                    <details class="lms-lang">
+                        <summary aria-label="Language">English</summary>
+                        <ul>
+                            <li>
+                                <a href="/hypergraph" hreflang="en" lang="en" aria-current="true">English</a>
+
+                            </li>
+                            <li>
+                                <a href="/ru/hypergraph" hreflang="ru" lang="ru">Русский</a>
+
+                            </li>
+                        </ul>
+                    </details>
+                </div>
+                <nav aria-label="Courses and pages">
+                    <p class="lms-menu-heading">Courses</p>
+                    <details class="lms-side-course">
+                        <summary>Start</summary>
+                        <ul>
+                            <li><a href="/start">Overview</a></li>
+
+
+                            <li class="">
+                                <a href="/start/browser">A page in the browser</a>
+                            </li>
+
+                            <li class="lms-side-group">The pieces</li>
+                            <li class="">
+                                <a href="/start/install-mx">Choose a route to mx</a>
+                            </li>
+
+                            <li class="lms-side-group">First steps</li>
+                            <li class="">
+                                <a href="/start/stability">Stability: Shipped, Preview, Planned</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/start/agents">Build a page with your agent</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/start/glossary">Glossary: the words this site uses</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/start/philosophy">Philosophy: native, not borrowed</a>
+                            </li>
+
+                        </ul>
+                    </details>
+                    <details class="lms-side-course">
+                        <summary>mx</summary>
+                        <ul>
+                            <li><a href="/mx">Overview</a></li>
+
+                            <li class="lms-side-group">Install mx</li>
+                            <li class="">
+                                <a href="/mx/first-app">Your first Mercury page</a>
+                            </li>
+
+                            <li class="lms-side-group">The chapters</li>
+                            <li class="">
+                                <a href="/mx/modules">Modules, mx.mod and mx.sum</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/mx/workspace">A workspace, mx.work</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/mx/dev">The dev loop, and hot replacement</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/mx/build">Build and ship, three kinds of build</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/mx/compile">The Hypercompiler, one module at a time</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/mx/tools">The tools, test, lsap and run</a>
+                            </li>
+
+                        </ul>
+                    </details>
+                    <details class="lms-side-course">
+                        <summary>Hyperscript</summary>
+                        <ul>
+                            <li><a href="/hyperscript">Overview</a></li>
+
+                            <li class="lms-side-group">What Hyperscript is</li>
+                            <li class="">
+                                <a href="/hyperscript/dom">The DOM contract</a>
+                            </li>
+
+                            <li class="lms-side-group">The chapters</li>
+                            <li class="">
+                                <a href="/hyperscript/components">Components and render</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/hyperscript/hooks">Hooks, state and effects in a function</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/hyperscript/context">Context, portals and memo</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/hyperscript/server">Rendering on the server</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/hyperscript/testing">Testing and inspecting</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/hyperscript/tested-component">A tested component</a>
+                            </li>
+
+                        </ul>
+                    </details>
+                    <details class="lms-side-course">
+                        <summary>UI</summary>
+                        <ul>
+                            <li><a href="/ui">Overview</a></li>
+
+                            <li class="lms-side-group">The chapters</li>
+                            <li class="">
+                                <a href="/ui/tokens-and-themes">UI0, tokens and themes</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ui/foundations">UI1, where a subtree lives</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ui/actions-and-layout">UI2, actions and layout</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ui/inputs-and-forms">UI3, inputs and forms</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ui/selection">UI4, selection</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ui/feedback-and-data">UI5, feedback and data display</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ui/navigation">UI6, navigation</a>
+                            </li>
+
+                        </ul>
+                    </details>
+                    <details class="lms-side-course" open>
+                        <summary>Hypergraph</summary>
+                        <ul>
+                            <li><a href="/hypergraph" aria-current="page">Overview</a></li>
+
+                            <li class="lms-side-group">The chapters</li>
+                            <li class="">
+                                <a href="/hypergraph/units">Units: store, event and effect</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/hypergraph/wiring">Wiring: units into a graph</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/hypergraph/scopes">Scopes: fork, settle, hand over</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/hypergraph/observing">Observing: watch, inspect, describe</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/hypergraph/errors">Kinds, carriers and errors</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/hypergraph/hot-replacement">Hot replacement: the swap</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/hypergraph/server-rendering">Server rendering: a scope per request</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/hypergraph/testing">Testing a model: a scope per test</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/hypergraph/models">Models at scale: structure and identity</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/hypergraph/capstone">Capstone: a model, round-tripped</a>
+                            </li>
+
+                            <li class="lms-side-group">Coming from Effector</li>
+                            <li class="">
+                                <a href="/hypergraph/coming-from-effector">Coming from Effector</a>
+                            </li>
+
+
+                            <li class="lms-side-sub">
+                                <a href="/hypergraph/coming-from-effector/units-and-wiring">Units and wiring</a>
+                            </li>
+
+
+                            <li class="lms-side-sub">
+                                <a href="/hypergraph/coming-from-effector/scopes-and-testing">Scopes and testing</a>
+                            </li>
+
+
+                            <li class="lms-side-sub">
+                                <a href="/hypergraph/coming-from-effector/frameworks">Frameworks, after
+                                    effector-react</a>
+                            </li>
+
+                        </ul>
+                    </details>
+                    <details class="lms-side-course">
+                        <summary>Content</summary>
+                        <ul>
+                            <li><a href="/content">Overview</a></li>
+
+                            <li class="lms-side-group">The course map</li>
+                            <li class="">
+                                <a href="/content/documents">Page documents: nodes, the schema and parseDocument</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/content/rendering">Rendering a document: renderDocument</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/content/blocks">The block catalog: nine groups, one registry</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/content/references">References, capabilities and responsive values</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/content/add-a-block">Add a block: the capstone</a>
+                            </li>
+
+                        </ul>
+                    </details>
+                    <details class="lms-side-course">
+                        <summary>Live Mercury</summary>
+                        <ul>
+                            <li><a href="/live-mercury">Overview</a></li>
+
+                            <li class="lms-side-group">The course</li>
+                            <li class="">
+                                <a href="/live-mercury/islands">Islands: the element and its mount</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/live-mercury/liveview">An island in a LiveView: socket, hooks and events</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/live-mercury/building">Building islands with mx: no Node</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/live-mercury/props-and-streams">Props and streams: patches on the wire</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/live-mercury/server-rendering">Server rendering: what is there, and what is
+                                    not</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/live-mercury/testing">Testing islands: both sides of the element</a>
+                            </li>
+
+                        </ul>
+                    </details>
+                </nav>
+            </div>
+        </details>
+    </div>
 </header>
-    <div class="lms-frame">
-      <nav class="lms-side" aria-label="Courses and pages">
+<div class="lms-frame">
+    <nav class="lms-side" aria-label="Courses and pages">
         <details class="lms-side-course">
-  <summary>Start</summary>
-  <ul>
-    <li><a href="/start">Overview</a></li>
-    
-      
-      <li class="">
-        <a href="/start/browser">A page in the browser</a>
-      </li>
-    
-      <li class="lms-side-group">The pieces</li>
-      <li class="">
-        <a href="/start/install-mx">Choose a route to mx</a>
-      </li>
-    
-      <li class="lms-side-group">First steps</li>
-      <li class="">
-        <a href="/start/stability">Stability: Shipped, Preview, Planned</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/start/agents">Build a page with your agent</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/start/glossary">Glossary: the words this site uses</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/start/philosophy">Philosophy: native, not borrowed</a>
-      </li>
-    
-  </ul>
-</details><details class="lms-side-course">
-  <summary>mx</summary>
-  <ul>
-    <li><a href="/mx">Overview</a></li>
-    
-      <li class="lms-side-group">Install mx</li>
-      <li class="">
-        <a href="/mx/first-app">Your first Mercury page</a>
-      </li>
-    
-      <li class="lms-side-group">The chapters</li>
-      <li class="">
-        <a href="/mx/modules">Modules, mx.mod and mx.sum</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/mx/workspace">A workspace, mx.work</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/mx/dev">The dev loop, and hot replacement</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/mx/build">Build and ship, three kinds of build</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/mx/compile">The Hypercompiler, one module at a time</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/mx/tools">The tools, test, lsap and run</a>
-      </li>
-    
-  </ul>
-</details><details class="lms-side-course">
-  <summary>Hyperscript</summary>
-  <ul>
-    <li><a href="/hyperscript">Overview</a></li>
-    
-      <li class="lms-side-group">What Hyperscript is</li>
-      <li class="">
-        <a href="/hyperscript/dom">The DOM contract</a>
-      </li>
-    
-      <li class="lms-side-group">The chapters</li>
-      <li class="">
-        <a href="/hyperscript/components">Components and render</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hyperscript/hooks">Hooks, state and effects in a function</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hyperscript/context">Context, portals and memo</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hyperscript/server">Rendering on the server</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hyperscript/testing">Testing and inspecting</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hyperscript/tested-component">A tested component</a>
-      </li>
-    
-  </ul>
-</details><details class="lms-side-course">
-  <summary>UI</summary>
-  <ul>
-    <li><a href="/ui">Overview</a></li>
-    
-      <li class="lms-side-group">The chapters</li>
-      <li class="">
-        <a href="/ui/tokens-and-themes">UI0, tokens and themes</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ui/foundations">UI1, where a subtree lives</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ui/actions-and-layout">UI2, actions and layout</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ui/inputs-and-forms">UI3, inputs and forms</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ui/selection">UI4, selection</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ui/feedback-and-data">UI5, feedback and data display</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ui/navigation">UI6, navigation</a>
-      </li>
-    
-  </ul>
-</details><details class="lms-side-course" open>
-  <summary>Hypergraph</summary>
-  <ul>
-    <li><a href="/hypergraph" aria-current="page">Overview</a></li>
-    
-      <li class="lms-side-group">The chapters</li>
-      <li class="">
-        <a href="/hypergraph/units">Units: store, event and effect</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hypergraph/wiring">Wiring: units into a graph</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hypergraph/scopes">Scopes: fork, settle, hand over</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hypergraph/observing">Observing: watch, inspect, describe</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hypergraph/errors">Kinds, carriers and errors</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hypergraph/hot-replacement">Hot replacement: the swap</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hypergraph/server-rendering">Server rendering: a scope per request</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hypergraph/testing">Testing a model: a scope per test</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hypergraph/models">Models at scale: structure and identity</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hypergraph/capstone">Capstone: a model, round-tripped</a>
-      </li>
-    
-      <li class="lms-side-group">Coming from Effector</li>
-      <li class="">
-        <a href="/hypergraph/coming-from-effector">Coming from Effector</a>
-      </li>
-    
-      
-      <li class="lms-side-sub">
-        <a href="/hypergraph/coming-from-effector/units-and-wiring">Units and wiring</a>
-      </li>
-    
-      
-      <li class="lms-side-sub">
-        <a href="/hypergraph/coming-from-effector/scopes-and-testing">Scopes and testing</a>
-      </li>
-    
-      
-      <li class="lms-side-sub">
-        <a href="/hypergraph/coming-from-effector/frameworks">Frameworks, after effector-react</a>
-      </li>
-    
-  </ul>
-</details><details class="lms-side-course">
-  <summary>Content</summary>
-  <ul>
-    <li><a href="/content">Overview</a></li>
-    
-      <li class="lms-side-group">The course map</li>
-      <li class="">
-        <a href="/content/documents">Page documents: nodes, the schema and parseDocument</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/content/rendering">Rendering a document: renderDocument</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/content/blocks">The block catalog: nine groups, one registry</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/content/references">References, capabilities and responsive values</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/content/add-a-block">Add a block: the capstone</a>
-      </li>
-    
-  </ul>
-</details><details class="lms-side-course">
-  <summary>Live Mercury</summary>
-  <ul>
-    <li><a href="/live-mercury">Overview</a></li>
-    
-      <li class="lms-side-group">The course</li>
-      <li class="">
-        <a href="/live-mercury/islands">Islands: the element and its mount</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/live-mercury/liveview">An island in a LiveView: socket, hooks and events</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/live-mercury/building">Building islands with mx: no Node</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/live-mercury/props-and-streams">Props and streams: patches on the wire</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/live-mercury/server-rendering">Server rendering: what is there, and what is not</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/live-mercury/testing">Testing islands: both sides of the element</a>
-      </li>
-    
-  </ul>
-</details>
-      </nav>
-      <main id="main" class="lms-main">
+            <summary>Start</summary>
+            <ul>
+                <li><a href="/start">Overview</a></li>
+
+
+                <li class="">
+                    <a href="/start/browser">A page in the browser</a>
+                </li>
+
+                <li class="lms-side-group">The pieces</li>
+                <li class="">
+                    <a href="/start/install-mx">Choose a route to mx</a>
+                </li>
+
+                <li class="lms-side-group">First steps</li>
+                <li class="">
+                    <a href="/start/stability">Stability: Shipped, Preview, Planned</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/start/agents">Build a page with your agent</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/start/glossary">Glossary: the words this site uses</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/start/philosophy">Philosophy: native, not borrowed</a>
+                </li>
+
+            </ul>
+        </details>
+        <details class="lms-side-course">
+            <summary>mx</summary>
+            <ul>
+                <li><a href="/mx">Overview</a></li>
+
+                <li class="lms-side-group">Install mx</li>
+                <li class="">
+                    <a href="/mx/first-app">Your first Mercury page</a>
+                </li>
+
+                <li class="lms-side-group">The chapters</li>
+                <li class="">
+                    <a href="/mx/modules">Modules, mx.mod and mx.sum</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/mx/workspace">A workspace, mx.work</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/mx/dev">The dev loop, and hot replacement</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/mx/build">Build and ship, three kinds of build</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/mx/compile">The Hypercompiler, one module at a time</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/mx/tools">The tools, test, lsap and run</a>
+                </li>
+
+            </ul>
+        </details>
+        <details class="lms-side-course">
+            <summary>Hyperscript</summary>
+            <ul>
+                <li><a href="/hyperscript">Overview</a></li>
+
+                <li class="lms-side-group">What Hyperscript is</li>
+                <li class="">
+                    <a href="/hyperscript/dom">The DOM contract</a>
+                </li>
+
+                <li class="lms-side-group">The chapters</li>
+                <li class="">
+                    <a href="/hyperscript/components">Components and render</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/hyperscript/hooks">Hooks, state and effects in a function</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/hyperscript/context">Context, portals and memo</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/hyperscript/server">Rendering on the server</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/hyperscript/testing">Testing and inspecting</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/hyperscript/tested-component">A tested component</a>
+                </li>
+
+            </ul>
+        </details>
+        <details class="lms-side-course">
+            <summary>UI</summary>
+            <ul>
+                <li><a href="/ui">Overview</a></li>
+
+                <li class="lms-side-group">The chapters</li>
+                <li class="">
+                    <a href="/ui/tokens-and-themes">UI0, tokens and themes</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ui/foundations">UI1, where a subtree lives</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ui/actions-and-layout">UI2, actions and layout</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ui/inputs-and-forms">UI3, inputs and forms</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ui/selection">UI4, selection</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ui/feedback-and-data">UI5, feedback and data display</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ui/navigation">UI6, navigation</a>
+                </li>
+
+            </ul>
+        </details>
+        <details class="lms-side-course" open>
+            <summary>Hypergraph</summary>
+            <ul>
+                <li><a href="/hypergraph" aria-current="page">Overview</a></li>
+
+                <li class="lms-side-group">The chapters</li>
+                <li class="">
+                    <a href="/hypergraph/units">Units: store, event and effect</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/hypergraph/wiring">Wiring: units into a graph</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/hypergraph/scopes">Scopes: fork, settle, hand over</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/hypergraph/observing">Observing: watch, inspect, describe</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/hypergraph/errors">Kinds, carriers and errors</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/hypergraph/hot-replacement">Hot replacement: the swap</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/hypergraph/server-rendering">Server rendering: a scope per request</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/hypergraph/testing">Testing a model: a scope per test</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/hypergraph/models">Models at scale: structure and identity</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/hypergraph/capstone">Capstone: a model, round-tripped</a>
+                </li>
+
+                <li class="lms-side-group">Coming from Effector</li>
+                <li class="">
+                    <a href="/hypergraph/coming-from-effector">Coming from Effector</a>
+                </li>
+
+
+                <li class="lms-side-sub">
+                    <a href="/hypergraph/coming-from-effector/units-and-wiring">Units and wiring</a>
+                </li>
+
+
+                <li class="lms-side-sub">
+                    <a href="/hypergraph/coming-from-effector/scopes-and-testing">Scopes and testing</a>
+                </li>
+
+
+                <li class="lms-side-sub">
+                    <a href="/hypergraph/coming-from-effector/frameworks">Frameworks, after effector-react</a>
+                </li>
+
+            </ul>
+        </details>
+        <details class="lms-side-course">
+            <summary>Content</summary>
+            <ul>
+                <li><a href="/content">Overview</a></li>
+
+                <li class="lms-side-group">The course map</li>
+                <li class="">
+                    <a href="/content/documents">Page documents: nodes, the schema and parseDocument</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/content/rendering">Rendering a document: renderDocument</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/content/blocks">The block catalog: nine groups, one registry</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/content/references">References, capabilities and responsive values</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/content/add-a-block">Add a block: the capstone</a>
+                </li>
+
+            </ul>
+        </details>
+        <details class="lms-side-course">
+            <summary>Live Mercury</summary>
+            <ul>
+                <li><a href="/live-mercury">Overview</a></li>
+
+                <li class="lms-side-group">The course</li>
+                <li class="">
+                    <a href="/live-mercury/islands">Islands: the element and its mount</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/live-mercury/liveview">An island in a LiveView: socket, hooks and events</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/live-mercury/building">Building islands with mx: no Node</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/live-mercury/props-and-streams">Props and streams: patches on the wire</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/live-mercury/server-rendering">Server rendering: what is there, and what is not</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/live-mercury/testing">Testing islands: both sides of the element</a>
+                </li>
+
+            </ul>
+        </details>
+    </nav>
+    <main id="main" class="lms-main">
         <nav class="lms-crumbs" aria-label="Breadcrumb">
-  <ol>
-    
-      <li aria-current="page">Hypergraph</li>
-      
-      
-    
-  </ol>
-</nav>
-        
+            <ol>
+
+                <li aria-current="page">Hypergraph</li>
+
+
+            </ol>
+        </nav>
+
         <h1 class="lms-title">Hypergraph, <em>the state kernel</em></h1>
-        <p class="lms-lede">A scheduler and graph executor that runs a model&#39;s wiring to quiescence, glitch-free and batched, with fork scopes, effects and one observation surface.</p>
-        <article class="lms-body"><p>Hypergraph is Mercury's state kernel: the package <code>@fiberfx/hypergraph</code>, version 4.0.0, with no dependencies. A model is a graph of units, and Hypergraph runs it.</p>
-<h2 id="kernel">What Hypergraph is</h2>
-<p>Hypergraph is a scheduler and graph executor. It runs a model's wiring to quiescence, glitch-free and batched, with fork scopes, effects and one observation surface. Three things set it apart:</p>
-<ul><li><strong>Identity is the compiler's job, by design.</strong> Each unit has a stable identity, its sid, and a shape beside it, so a store can be found again across an edit, a server render or another runtime. Today the compiler's sid pass instruments only the legacy facade's calls, not Hypergraph's, so a Hypergraph unit has a sid only when you write one; an unnamed unit gets a run-time identity, <code>api:&lt;n&gt;</code>, until the compiler names it. Until the compiler emits shapes too, the kernel reads each store's shape from its initial value.</li>
-<li><strong>The wiring is data.</strong> A model's units and edges are a graph the kernel loads, so a browser, a server and a test can all run one description of it.</li>
-<li><strong>The semantics are vectors.</strong> What the kernel must do is stated as conformance vectors: 467 of them, in 19 families. Every runtime that holds a scope runs the same files, and a count against them is the claim.</li></ul>
-<h2 id="names">The names</h2>
-<ul><li><strong>Units take the names of their kinds:</strong> <code>store</code>, <code>event</code> and <code>effect</code>. An effect takes its handler directly.</li>
-<li><strong>Wiring:</strong> <code>sample</code> is the one composition primitive. <code>combine</code> batches its sources through a barrier. <code>split</code>, <code>attach</code>, <code>merge</code> and <code>restore</code> complete it, with <code>on</code>, <code>reset</code>, <code>map</code>, <code>filter</code>, <code>filterMap</code> and <code>prepend</code> on units.</li>
-<li><strong>Scopes:</strong> <code>fork</code> makes an isolated scope, <code>allSettled</code> steps it, and <code>scopeBind</code> binds a function to it. <code>snapshot</code> returns a frame with each value's shape, <code>apply</code> brings a scope to a frame, <code>diff</code> names what changed between two frames, and <code>dispose</code> ends a scope.</li>
-<li><strong>Watching:</strong> <code>watch(unit, fn, {scope})</code> is owned by its generation. When a model's graph is swapped, the old generation's watchers end with it.</li>
-<li><strong>Kinds:</strong> <code>kindOf</code> answers <code>store</code>, <code>event</code>, <code>effect</code>, <code>scope</code> or nothing.</li></ul>
-<pre><code class="language-ts">import { event, store } from &quot;@fiberfx/hypergraph&quot;;
+        <p class="lms-lede">A scheduler and graph executor that runs a model&#39;s wiring to quiescence, glitch-free and
+            batched, with fork scopes, effects and one observation surface.</p>
+        <article class="lms-body"><p>Hypergraph is Mercury's state kernel: the package <code>@fiberfx/hypergraph</code>,
+            version 4.0.0, with no dependencies. A model is a graph of units, and Hypergraph runs it.</p>
+            <h2 id="kernel">What Hypergraph is</h2>
+            <p>Hypergraph is a scheduler and graph executor. It runs a model's wiring to quiescence, glitch-free and
+                batched, with fork scopes, effects and one observation surface. Three things set it apart:</p>
+            <ul>
+                <li><strong>Identity is the compiler's job, by design.</strong> Each unit has a stable identity, its
+                    sid, and a shape beside it, so a store can be found again across an edit, a server render or another
+                    runtime. Today the compiler's sid pass instruments only the legacy facade's calls, not Hypergraph's,
+                    so a Hypergraph unit has a sid only when you write one; an unnamed unit gets a run-time identity,
+                    <code>api:&lt;n&gt;</code>, until the compiler names it. Until the compiler emits shapes too, the
+                    kernel reads each store's shape from its initial value.
+                </li>
+                <li><strong>The wiring is data.</strong> A model's units and edges are a graph the kernel loads, so a
+                    browser, a server and a test can all run one description of it.
+                </li>
+                <li><strong>The semantics are vectors.</strong> What the kernel must do is stated as conformance
+                    vectors: 467 of them, in 19 families. Every runtime that holds a scope runs the same files, and a
+                    count against them is the claim.
+                </li>
+            </ul>
+            <h2 id="names">The names</h2>
+            <ul>
+                <li><strong>Units take the names of their kinds:</strong> <code>store</code>, <code>event</code> and
+                    <code>effect</code>. An effect takes its handler directly.
+                </li>
+                <li><strong>Wiring:</strong> <code>sample</code> is the one composition primitive. <code>combine</code>
+                    batches its sources through a barrier. <code>split</code>, <code>attach</code>, <code>merge</code>
+                    and <code>restore</code> complete it, with <code>on</code>, <code>reset</code>, <code>map</code>,
+                    <code>filter</code>, <code>filterMap</code> and <code>prepend</code> on units.
+                </li>
+                <li><strong>Scopes:</strong> <code>fork</code> makes an isolated scope, <code>allSettled</code> steps
+                    it, and <code>scopeBind</code> binds a function to it. <code>snapshot</code> returns a frame with
+                    each value's shape, <code>apply</code> brings a scope to a frame, <code>diff</code> names what
+                    changed between two frames, and <code>dispose</code> ends a scope.
+                </li>
+                <li><strong>Watching:</strong> <code>watch(unit, fn, {scope})</code> is owned by its generation. When a
+                    model's graph is swapped, the old generation's watchers end with it.
+                </li>
+                <li><strong>Kinds:</strong> <code>kindOf</code> answers <code>store</code>, <code>event</code>, <code>effect</code>,
+                    <code>scope</code> or nothing.
+                </li>
+            </ul>
+            <pre><code class="language-ts">import { event, store } from &quot;@fiberfx/hypergraph&quot;;
 
 const increment = event&lt;number&gt;();
 export const $count = store(0, { name: &quot;$count&quot; }).on(increment, (count, by) =&gt; count + by);
 </code></pre>
-<h2 id="subpaths">Subpaths</h2>
-<ul><li><code>@fiberfx/hypergraph</code>: the units, the wiring, the scope's frames and the types.</li>
-<li><code>@fiberfx/hypergraph/node</code>: <code>nodeCarrier</code>, which carries a scope across an <code>await</code> on a JavaScript server. It is its own entry, so code for the browser never imports a server's modules.</li>
-<li><code>@fiberfx/hypergraph/inspect</code>: <code>inspect</code> and <code>describe</code>, and the types <code>Observation</code>, <code>Declaration</code>, <code>Kind</code> and <code>ResetReason</code>.</li></ul>
-<p>Two more subpaths are planned and not exported yet: <code>/hyperscript</code>, the bindings for Mercury Hyperscript (<code>useUnit</code>, <code>Provider</code>), and <code>/hmr</code>, hot replacement.</p>
-<h2 id="edit">How an edit behaves under mx dev</h2>
-<p>Once <code>mx dev</code> delivers the swap, a saved edit to a model swaps its graph instead of reloading the page. An edit that changes only the bodies of functions is swapped in place, so the scope, its values and any effect in flight stay as they are. Any other edit loads a new generation of the graph, carries over every store whose sid and shape both match, and then retires the old generation with its watchers.</p>
-<p>Every store that does not carry over is named, with a reason:</p>
-<ul><li><strong>removed:</strong> no store in the new graph claims its sid;</li>
-<li><strong>shape changed:</strong> its sid is there with another shape, and both shapes are named;</li>
-<li><strong>renamed:</strong> a hint only, never applied, when exactly one removed store and one new store share a name;</li>
-<li><strong>positional:</strong> its key came from its position in the file, which is no evidence of the same store once the file changed.</li></ul>
-<p>A store that only the new graph declares is <strong>new</strong>: it starts from its initial value and nothing was lost, so it is reported as information, not as a reset.</p>
-<h2 id="chapters">The chapters</h2>
-<p>Read them in this order; each builds on the ones before it.</p>
-<ul><li><strong><a href="/hypergraph/units" rel="noopener noreferrer">Units: store, event and effect</a>.</strong> A model is made of three kinds of unit, named after the kinds the graph records. A store holds a value, an event carries a payload, and an effect runs a handler and settles.</li>
-<li><strong><a href="/hypergraph/wiring" rel="noopener noreferrer">Wiring: units into a graph</a>.</strong> Wiring connects units into one graph. sample is the composition primitive; combine joins stores through a barrier; split, attach, merge and restore complete the set.</li>
-<li><strong><a href="/hypergraph/scopes" rel="noopener noreferrer">Scopes: fork, settle, hand over</a>.</strong> A scope is one isolated copy of a model's state, for a request on a server, a test, or a root on a page. Its frames carry each value by sid, with its shape, so a frame from one build applies in another.</li>
-<li><strong><a href="/hypergraph/observing" rel="noopener noreferrer">Observing: watch, inspect, describe</a>.</strong> Two ways to see a model. watch calls a function for a unit's updates; inspect, on its own subpath, is the one surface a tool reads, with every update, skip, failure, declaration, effect run and reset as an observation.</li>
-<li><strong><a href="/hypergraph/errors" rel="noopener noreferrer">Kinds, carriers and errors</a>.</strong> Three small parts that keep a model honest. kindOf tells a unit from a scope, a carrier keeps a scope across an await, and every refusal is a HypergraphError with a code that is the same on every runtime.</li>
-<li><strong><a href="/hypergraph/hot-replacement" rel="noopener noreferrer">Hot replacement: the swap</a>.</strong> An edit to a model should keep the state you were looking at, and say exactly what it could not keep. Hypergraph decides store by store, by sid and shape, and names a reason for every value it drops.</li>
-<li><strong><a href="/hypergraph/server-rendering" rel="noopener noreferrer">Server rendering: a scope per request</a>.</strong> On a server, many requests run one model at once. Each gets its own scope, settles it, and hands its values to the browser as a frame keyed by sid, which the client applies to a scope of its own.</li>
-<li><strong><a href="/hypergraph/testing" rel="noopener noreferrer">Testing a model: a scope per test</a>.</strong> A test is a scope. Fork one, give its effects the handlers the test needs, drive it with allSettled, and read what happened, from the scope's values or from its observations. The conformance vectors are the same idea written as data.</li>
-<li><strong><a href="/hypergraph/models" rel="noopener noreferrer">Models at scale: structure and identity</a>.</strong> A real model is many modules, many stores and a few effects. The kernel's rules on identity, derivation and scopes decide how to lay it out, so that it tests in a fork, hands over by frame and survives an edit.</li>
-<li><strong><a href="/hypergraph/capstone" rel="noopener noreferrer">Capstone: a model, round-tripped</a>.</strong> Everything in the course, in one file and one test. Build a model from the exports, run it in a scope, take its frame, bring a fresh scope to that frame, and prove the two hold the same state.</li></ul>
-<h2 id="effector">Coming from Effector</h2>
-<p>If you know Effector, this guide maps what you know onto Hypergraph: where each concept lives, the names that changed, and the few that are gone. Effector is retired; nothing here imports it.</p>
-<ul><li><strong><a href="/hypergraph/coming-from-effector" rel="noopener noreferrer">Coming from Effector</a>.</strong> Most of what you know carries over. Units take the names of their kinds, the scope speaks in frames, and a few Effector names are gone for good.</li>
-<li><strong><a href="/hypergraph/coming-from-effector/units-and-wiring" rel="noopener noreferrer">Units and wiring</a>.</strong> The constructors are renamed and the wiring is not. sample is still the one composition primitive.</li>
-<li><strong><a href="/hypergraph/coming-from-effector/scopes-and-testing" rel="noopener noreferrer">Scopes and testing</a>.</strong> fork, allSettled and scopeBind are where you left them. What leaves a scope is now a frame.</li>
-<li><strong><a href="/hypergraph/coming-from-effector/frameworks" rel="noopener noreferrer">Frameworks, after effector-react</a>.</strong> Mercury has one view layer, Hyperscript. Its Hypergraph bindings are next; until then a component reads a store through a hook Hyperscript already has.</li></ul>
-<h2 id="status">What is shipped</h2>
-<p>The kernel, its API and the swap are built inside <code>@fiberfx/hypergraph</code>. Version 4.0.0 is on npm since 2026-11-05. <code>mx dev</code> does not deliver the swap yet: that is the next step, and until then an edit to a model reloads the page.</p></article>
+            <h2 id="subpaths">Subpaths</h2>
+            <ul>
+                <li><code>@fiberfx/hypergraph</code>: the units, the wiring, the scope's frames and the types.</li>
+                <li><code>@fiberfx/hypergraph/node</code>: <code>nodeCarrier</code>, which carries a scope across an
+                    <code>await</code> on a JavaScript server. It is its own entry, so code for the browser never
+                    imports a server's modules.
+                </li>
+                <li><code>@fiberfx/hypergraph/inspect</code>: <code>inspect</code> and <code>describe</code>, and the
+                    types <code>Observation</code>, <code>Declaration</code>, <code>Kind</code> and
+                    <code>ResetReason</code>.
+                </li>
+            </ul>
+            <p>Two more subpaths are planned and not exported yet: <code>/hyperscript</code>, the bindings for Mercury
+                Hyperscript (<code>useUnit</code>, <code>Provider</code>), and <code>/hmr</code>, hot replacement.</p>
+            <h2 id="edit">How an edit behaves under mx dev</h2>
+            <p>Once <code>mx dev</code> delivers the swap, a saved edit to a model swaps its graph instead of reloading
+                the page. An edit that changes only the bodies of functions is swapped in place, so the scope, its
+                values and any effect in flight stay as they are. Any other edit loads a new generation of the graph,
+                carries over every store whose sid and shape both match, and then retires the old generation with its
+                watchers.</p>
+            <p>Every store that does not carry over is named, with a reason:</p>
+            <ul>
+                <li><strong>removed:</strong> no store in the new graph claims its sid;</li>
+                <li><strong>shape changed:</strong> its sid is there with another shape, and both shapes are named;</li>
+                <li><strong>renamed:</strong> a hint only, never applied, when exactly one removed store and one new
+                    store share a name;
+                </li>
+                <li><strong>positional:</strong> its key came from its position in the file, which is no evidence of the
+                    same store once the file changed.
+                </li>
+            </ul>
+            <p>A store that only the new graph declares is <strong>new</strong>: it starts from its initial value and
+                nothing was lost, so it is reported as information, not as a reset.</p>
+            <h2 id="chapters">The chapters</h2>
+            <p>Read them in this order; each builds on the ones before it.</p>
+            <ul>
+                <li><strong><a href="/hypergraph/units" rel="noopener noreferrer">Units: store, event and
+                    effect</a>.</strong> A model is made of three kinds of unit, named after the kinds the graph
+                    records. A store holds a value, an event carries a payload, and an effect runs a handler and
+                    settles.
+                </li>
+                <li><strong><a href="/hypergraph/wiring" rel="noopener noreferrer">Wiring: units into a
+                    graph</a>.</strong> Wiring connects units into one graph. sample is the composition primitive;
+                    combine joins stores through a barrier; split, attach, merge and restore complete the set.
+                </li>
+                <li><strong><a href="/hypergraph/scopes" rel="noopener noreferrer">Scopes: fork, settle, hand over</a>.</strong>
+                    A scope is one isolated copy of a model's state, for a request on a server, a test, or a root on a
+                    page. Its frames carry each value by sid, with its shape, so a frame from one build applies in
+                    another.
+                </li>
+                <li><strong><a href="/hypergraph/observing" rel="noopener noreferrer">Observing: watch, inspect,
+                    describe</a>.</strong> Two ways to see a model. watch calls a function for a unit's updates;
+                    inspect, on its own subpath, is the one surface a tool reads, with every update, skip, failure,
+                    declaration, effect run and reset as an observation.
+                </li>
+                <li><strong><a href="/hypergraph/errors" rel="noopener noreferrer">Kinds, carriers and
+                    errors</a>.</strong> Three small parts that keep a model honest. kindOf tells a unit from a scope, a
+                    carrier keeps a scope across an await, and every refusal is a HypergraphError with a code that is
+                    the same on every runtime.
+                </li>
+                <li><strong><a href="/hypergraph/hot-replacement" rel="noopener noreferrer">Hot replacement: the
+                    swap</a>.</strong> An edit to a model should keep the state you were looking at, and say exactly
+                    what it could not keep. Hypergraph decides store by store, by sid and shape, and names a reason for
+                    every value it drops.
+                </li>
+                <li><strong><a href="/hypergraph/server-rendering" rel="noopener noreferrer">Server rendering: a scope
+                    per request</a>.</strong> On a server, many requests run one model at once. Each gets its own scope,
+                    settles it, and hands its values to the browser as a frame keyed by sid, which the client applies to
+                    a scope of its own.
+                </li>
+                <li><strong><a href="/hypergraph/testing" rel="noopener noreferrer">Testing a model: a scope per
+                    test</a>.</strong> A test is a scope. Fork one, give its effects the handlers the test needs, drive
+                    it with allSettled, and read what happened, from the scope's values or from its observations. The
+                    conformance vectors are the same idea written as data.
+                </li>
+                <li><strong><a href="/hypergraph/models" rel="noopener noreferrer">Models at scale: structure and
+                    identity</a>.</strong> A real model is many modules, many stores and a few effects. The kernel's
+                    rules on identity, derivation and scopes decide how to lay it out, so that it tests in a fork, hands
+                    over by frame and survives an edit.
+                </li>
+                <li><strong><a href="/hypergraph/capstone" rel="noopener noreferrer">Capstone: a model,
+                    round-tripped</a>.</strong> Everything in the course, in one file and one test. Build a model from
+                    the exports, run it in a scope, take its frame, bring a fresh scope to that frame, and prove the two
+                    hold the same state.
+                </li>
+            </ul>
+            <h2 id="effector">Coming from Effector</h2>
+            <p>If you know Effector, this guide maps what you know onto Hypergraph: where each concept lives, the names
+                that changed, and the few that are gone. Effector is retired; nothing here imports it.</p>
+            <ul>
+                <li><strong><a href="/hypergraph/coming-from-effector" rel="noopener noreferrer">Coming from
+                    Effector</a>.</strong> Most of what you know carries over. Units take the names of their kinds, the
+                    scope speaks in frames, and a few Effector names are gone for good.
+                </li>
+                <li><strong><a href="/hypergraph/coming-from-effector/units-and-wiring" rel="noopener noreferrer">Units
+                    and wiring</a>.</strong> The constructors are renamed and the wiring is not. sample is still the one
+                    composition primitive.
+                </li>
+                <li><strong><a href="/hypergraph/coming-from-effector/scopes-and-testing" rel="noopener noreferrer">Scopes
+                    and testing</a>.</strong> fork, allSettled and scopeBind are where you left them. What leaves a
+                    scope is now a frame.
+                </li>
+                <li><strong><a href="/hypergraph/coming-from-effector/frameworks" rel="noopener noreferrer">Frameworks,
+                    after effector-react</a>.</strong> Mercury has one view layer, Hyperscript. Its Hypergraph bindings
+                    are next; until then a component reads a store through a hook Hyperscript already has.
+                </li>
+            </ul>
+            <h2 id="status">What is shipped</h2>
+            <p>The kernel, its API and the swap are built inside <code>@fiberfx/hypergraph</code>. Version 4.0.0 is on
+                npm since 2026-11-05. <code>mx dev</code> does not deliver the swap yet: that is the next step, and
+                until then an edit to a model reloads the page.</p></article>
         <nav class="lms-pager" aria-label="Previous and next">
-  <a class="lms-pager-prev" href="/ui/navigation" rel="prev"><span>Previous</span>UI6, navigation</a>
-  <a class="lms-pager-next" href="/hypergraph/units" rel="next"><span>Next</span>Units: store, event and effect</a>
-</nav>
-      </main>
-      <aside class="lms-toc" aria-label="On this page">
+            <a class="lms-pager-prev" href="/ui/navigation" rel="prev"><span>Previous</span>UI6, navigation</a>
+            <a class="lms-pager-next" href="/hypergraph/units" rel="next"><span>Next</span>Units: store, event and
+                effect</a>
+        </nav>
+    </main>
+    <aside class="lms-toc" aria-label="On this page">
         <p class="lms-toc-title">On this page</p>
         <ul>
-          <li><a href="#kernel">What Hypergraph is</a></li><li><a href="#names">The names</a></li><li><a href="#subpaths">Subpaths</a></li><li><a href="#edit">How an edit behaves under mx dev</a></li><li><a href="#chapters">The chapters</a></li><li><a href="#effector">Coming from Effector</a></li><li><a href="#status">What is shipped</a></li>
+            <li><a href="#kernel">What Hypergraph is</a></li>
+            <li><a href="#names">The names</a></li>
+            <li><a href="#subpaths">Subpaths</a></li>
+            <li><a href="#edit">How an edit behaves under mx dev</a></li>
+            <li><a href="#chapters">The chapters</a></li>
+            <li><a href="#effector">Coming from Effector</a></li>
+            <li><a href="#status">What is shipped</a></li>
         </ul>
-      </aside>
-    </div>
-    <footer class="lms-footer">
-  <p><a href="/agent/SKILL.md">SKILL.md</a><span> · <a href="/llms.txt">llms.txt</a></span> · <a href="/sitemap.xml">Sitemap</a> · <a href="/examples/first-page.html">Browser example</a></p>
-  <p>For agents: <a href="/hypergraph/llms.txt">/hypergraph/llms.txt</a> is this page as plain text, hand-written. No Node, no React.</p>
-  
+    </aside>
+</div>
+<footer class="lms-footer">
+    <p><a href="/agent/SKILL.md">SKILL.md</a><span> · <a href="/llms.txt">llms.txt</a></span> · <a href="/sitemap.xml">Sitemap</a>
+        · <a href="/examples/first-page.html">Browser example</a></p>
+    <p>For agents: <a href="/hypergraph/llms.txt">/hypergraph/llms.txt</a> is this page as plain text, hand-written. No
+        Node, no React.</p>
+
 </footer>
-  </body>
+</body>
 </html>

@@ -1,852 +1,982 @@
-<!doctype html><html lang="en" class="lms">
-  <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>UI2, actions and layout · Mercury</title>
-  <meta name="description" content="Mercury UI&#39;s actions, Button, IconButton and Link, and its layout composition tier, Box, Stack, Flex and Grid with the composites, all sized on the token scales.">
-  
-  <link rel="canonical" href="https://mercury.jonnify.com/ui/actions-and-layout">
-  <link rel="describedby" type="text/plain" href="/ui/actions-and-layout/llms.txt">
-  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="Mercury">
-  <meta property="og:title" content="UI2, actions and layout · Mercury">
-  <meta property="og:description" content="Mercury UI&#39;s actions, Button, IconButton and Link, and its layout composition tier, Box, Stack, Flex and Grid with the composites, all sized on the token scales.">
-  <meta property="og:url" content="https://mercury.jonnify.com/ui/actions-and-layout">
-  <meta property="og:image" content="https://mercury.jonnify.com/_lms/assets/mercury-hero.png">
-  <meta property="og:image:alt" content="Mercury">
-  <script type="application/ld+json">[{"@context":"https://schema.org","@type":"TechArticle","description":"Mercury UI's actions, Button, IconButton and Link, and its layout composition tier, Box, Stack, Flex and Grid with the composites, all sized on the token scales.","inLanguage":"en","name":"UI2, actions and layout","url":"https://mercury.jonnify.com/ui/actions-and-layout"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://mercury.jonnify.com/","name":"Mercury","position":1},{"@type":"ListItem","item":"https://mercury.jonnify.com/ui/actions-and-layout","name":"UI2, actions and layout","position":2}]}]</script>
-  <meta name="color-scheme" content="light dark">
-  
-  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#111113" media="(prefers-color-scheme: dark)">
-  <style>html{background-color:rgb(255 255 255)}@media (prefers-color-scheme: dark){html{background-color:rgb(17 17 19)}}</style>
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/ui/actions-and-layout"><link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/ui/actions-and-layout"><link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/ui/actions-and-layout">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap">
-  <link rel="stylesheet" href="/_lms/assets/lms.css">
-  <link rel="stylesheet" href="/_lms/assets/shell.css">
-  
+<!doctype html>
+<html lang="en" class="lms">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UI2, actions and layout · Mercury</title>
+    <meta name="description"
+          content="Mercury UI&#39;s actions, Button, IconButton and Link, and its layout composition tier, Box, Stack, Flex and Grid with the composites, all sized on the token scales.">
+
+    <link rel="canonical" href="https://mercury.jonnify.com/ui/actions-and-layout">
+    <link rel="describedby" type="text/plain" href="/ui/actions-and-layout/llms.txt">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Mercury">
+    <meta property="og:title" content="UI2, actions and layout · Mercury">
+    <meta property="og:description"
+          content="Mercury UI&#39;s actions, Button, IconButton and Link, and its layout composition tier, Box, Stack, Flex and Grid with the composites, all sized on the token scales.">
+    <meta property="og:url" content="https://mercury.jonnify.com/ui/actions-and-layout">
+    <meta property="og:image" content="https://mercury.jonnify.com/_lms/assets/mercury-hero.png">
+    <meta property="og:image:alt" content="Mercury">
+    <script type="application/ld+json">[
+        {
+            "@context": "https://schema.org",
+            "@type": "TechArticle",
+            "description": "Mercury UI's actions, Button, IconButton and Link, and its layout composition tier, Box, Stack, Flex and Grid with the composites, all sized on the token scales.",
+            "inLanguage": "en",
+            "name": "UI2, actions and layout",
+            "url": "https://mercury.jonnify.com/ui/actions-and-layout"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "item": "https://mercury.jonnify.com/",
+                    "name": "Mercury",
+                    "position": 1
+                },
+                {
+                    "@type": "ListItem",
+                    "item": "https://mercury.jonnify.com/ui/actions-and-layout",
+                    "name": "UI2, actions and layout",
+                    "position": 2
+                }
+            ]
+        }
+    ]</script>
+    <meta name="color-scheme" content="light dark">
+
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#111113" media="(prefers-color-scheme: dark)">
+    <style>html {
+        background-color: rgb(255 255 255)
+    }
+
+    @media (prefers-color-scheme: dark) {
+        html {
+            background-color: rgb(17 17 19)
+        }
+    }</style>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/ui/actions-and-layout">
+    <link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/ui/actions-and-layout">
+    <link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/ui/actions-and-layout">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="/_lms/assets/lms.css">
+    <link rel="stylesheet" href="/_lms/assets/shell.css">
+
 </head>
-  <body class="lms">
-    <a class="lms-skip" href="#main">Skip to content</a>
+<body class="lms">
+<a class="lms-skip" href="#main">Skip to content</a>
 <header class="lms-header">
-  <a class="lms-brand" href="/" aria-label="Mercury, home">
-    <svg viewBox="5 9 30 22" width="30" height="22" aria-hidden="true" focusable="false"><g fill="none" stroke-width="3" stroke-linecap="round"><path d="M7 29V15.5c0-2.5 2-4.5 4.5-4.5S16 13 16 15.5V29M16 16.5c0-3 2-5.5 4.5-5.5" stroke="currentColor"></path><path d="M23 16l10 13M33 16L23 29" stroke="rgb(var(--lms-accent))"></path></g></svg>
-    <span>Mercury</span>
-  </a>
-  <nav class="lms-nav" aria-label="Site">
-    <a href="/#principles">Principles</a><a href="/#foundations">Foundations</a><a href="/#components">Components</a><a href="/#usage">Usage</a>
-  </nav>
-  <div class="lms-actions">
-    <details class="lms-lang">
-  <summary aria-label="Language">English</summary>
-  <ul>
-    <li>
-      <a href="/ui/actions-and-layout" hreflang="en" lang="en" aria-current="true">English</a>
-      
-    </li><li>
-      <a href="/ru/ui/actions-and-layout" hreflang="ru" lang="ru">Русский</a>
-      
-    </li>
-  </ul>
-</details>
-    <a class="lms-github" href="/start/install-mx" aria-label="Install Mercury" title="Install Mercury">
-      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    <a class="lms-brand" href="/" aria-label="Mercury, home">
+        <svg viewBox="5 9 30 22" width="30" height="22" aria-hidden="true" focusable="false">
+            <g fill="none" stroke-width="3" stroke-linecap="round">
+                <path d="M7 29V15.5c0-2.5 2-4.5 4.5-4.5S16 13 16 15.5V29M16 16.5c0-3 2-5.5 4.5-5.5"
+                      stroke="currentColor"></path>
+                <path d="M23 16l10 13M33 16L23 29" stroke="rgb(var(--lms-accent))"></path>
+            </g>
+        </svg>
+        <span>Mercury</span>
     </a>
-    <form class="lms-theme" method="post" action="/_lms/theme">
-      <input type="hidden" name="back" value="/ui/actions-and-layout">
-      <button class="lms-theme-to-dark" type="submit" name="set" value="dark" aria-label="Dark theme" title="Dark theme">
-        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"></path></svg>
-      </button>
-      <button class="lms-theme-to-light" type="submit" name="set" value="light" aria-label="Light theme" title="Light theme">
-        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></g></svg>
-      </button>
-    </form>
-    <a class="lms-open-docs" href="/start">Open docs</a>
-    <details class="lms-drawer">
-      <summary>
-        <span class="lms-menu-label">Menu</span>
-        <svg class="lms-menu-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
-      </summary>
-      <div class="lms-drawer-panel">
-        <nav class="lms-menu-links" aria-label="Site">
-          <a class="lms-menu-docs" href="/start">Open docs</a>
-          <a href="/#principles">Principles</a><a href="/#foundations">Foundations</a><a href="/#components">Components</a><a href="/#usage">Usage</a>
-          <a href="/start/install-mx">Install Mercury</a>
-        </nav>
-        <div class="lms-menu-language">
-          <details class="lms-lang">
-  <summary aria-label="Language">English</summary>
-  <ul>
-    <li>
-      <a href="/ui/actions-and-layout" hreflang="en" lang="en" aria-current="true">English</a>
-      
-    </li><li>
-      <a href="/ru/ui/actions-and-layout" hreflang="ru" lang="ru">Русский</a>
-      
-    </li>
-  </ul>
-</details>
-        </div>
-        <nav aria-label="Courses and pages">
-          <p class="lms-menu-heading">Courses</p>
-          <details class="lms-side-course">
-  <summary>Start</summary>
-  <ul>
-    <li><a href="/start">Overview</a></li>
-    
-      
-      <li class="">
-        <a href="/start/browser">A page in the browser</a>
-      </li>
-    
-      <li class="lms-side-group">The pieces</li>
-      <li class="">
-        <a href="/start/install-mx">Choose a route to mx</a>
-      </li>
-    
-      <li class="lms-side-group">First steps</li>
-      <li class="">
-        <a href="/start/stability">Stability: Shipped, Preview, Planned</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/start/agents">Build a page with your agent</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/start/glossary">Glossary: the words this site uses</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/start/philosophy">Philosophy: native, not borrowed</a>
-      </li>
-    
-  </ul>
-</details><details class="lms-side-course">
-  <summary>mx</summary>
-  <ul>
-    <li><a href="/mx">Overview</a></li>
-    
-      <li class="lms-side-group">Install mx</li>
-      <li class="">
-        <a href="/mx/first-app">Your first Mercury page</a>
-      </li>
-    
-      <li class="lms-side-group">The chapters</li>
-      <li class="">
-        <a href="/mx/modules">Modules, mx.mod and mx.sum</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/mx/workspace">A workspace, mx.work</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/mx/dev">The dev loop, and hot replacement</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/mx/build">Build and ship, three kinds of build</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/mx/compile">The Hypercompiler, one module at a time</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/mx/tools">The tools, test, lsap and run</a>
-      </li>
-    
-  </ul>
-</details><details class="lms-side-course">
-  <summary>Hyperscript</summary>
-  <ul>
-    <li><a href="/hyperscript">Overview</a></li>
-    
-      <li class="lms-side-group">What Hyperscript is</li>
-      <li class="">
-        <a href="/hyperscript/dom">The DOM contract</a>
-      </li>
-    
-      <li class="lms-side-group">The chapters</li>
-      <li class="">
-        <a href="/hyperscript/components">Components and render</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hyperscript/hooks">Hooks, state and effects in a function</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hyperscript/context">Context, portals and memo</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hyperscript/server">Rendering on the server</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hyperscript/testing">Testing and inspecting</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hyperscript/tested-component">A tested component</a>
-      </li>
-    
-  </ul>
-</details><details class="lms-side-course" open>
-  <summary>UI</summary>
-  <ul>
-    <li><a href="/ui">Overview</a></li>
-    
-      <li class="lms-side-group">The chapters</li>
-      <li class="">
-        <a href="/ui/tokens-and-themes">UI0, tokens and themes</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ui/foundations">UI1, where a subtree lives</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ui/actions-and-layout" aria-current="page">UI2, actions and layout</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ui/inputs-and-forms">UI3, inputs and forms</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ui/selection">UI4, selection</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ui/feedback-and-data">UI5, feedback and data display</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ui/navigation">UI6, navigation</a>
-      </li>
-    
-  </ul>
-</details><details class="lms-side-course">
-  <summary>Hypergraph</summary>
-  <ul>
-    <li><a href="/hypergraph">Overview</a></li>
-    
-      <li class="lms-side-group">The chapters</li>
-      <li class="">
-        <a href="/hypergraph/units">Units: store, event and effect</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hypergraph/wiring">Wiring: units into a graph</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hypergraph/scopes">Scopes: fork, settle, hand over</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hypergraph/observing">Observing: watch, inspect, describe</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hypergraph/errors">Kinds, carriers and errors</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hypergraph/hot-replacement">Hot replacement: the swap</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hypergraph/server-rendering">Server rendering: a scope per request</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hypergraph/testing">Testing a model: a scope per test</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hypergraph/models">Models at scale: structure and identity</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hypergraph/capstone">Capstone: a model, round-tripped</a>
-      </li>
-    
-      <li class="lms-side-group">Coming from Effector</li>
-      <li class="">
-        <a href="/hypergraph/coming-from-effector">Coming from Effector</a>
-      </li>
-    
-      
-      <li class="lms-side-sub">
-        <a href="/hypergraph/coming-from-effector/units-and-wiring">Units and wiring</a>
-      </li>
-    
-      
-      <li class="lms-side-sub">
-        <a href="/hypergraph/coming-from-effector/scopes-and-testing">Scopes and testing</a>
-      </li>
-    
-      
-      <li class="lms-side-sub">
-        <a href="/hypergraph/coming-from-effector/frameworks">Frameworks, after effector-react</a>
-      </li>
-    
-  </ul>
-</details><details class="lms-side-course">
-  <summary>Content</summary>
-  <ul>
-    <li><a href="/content">Overview</a></li>
-    
-      <li class="lms-side-group">The course map</li>
-      <li class="">
-        <a href="/content/documents">Page documents: nodes, the schema and parseDocument</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/content/rendering">Rendering a document: renderDocument</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/content/blocks">The block catalog: nine groups, one registry</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/content/references">References, capabilities and responsive values</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/content/add-a-block">Add a block: the capstone</a>
-      </li>
-    
-  </ul>
-</details><details class="lms-side-course">
-  <summary>Live Mercury</summary>
-  <ul>
-    <li><a href="/live-mercury">Overview</a></li>
-    
-      <li class="lms-side-group">The course</li>
-      <li class="">
-        <a href="/live-mercury/islands">Islands: the element and its mount</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/live-mercury/liveview">An island in a LiveView: socket, hooks and events</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/live-mercury/building">Building islands with mx: no Node</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/live-mercury/props-and-streams">Props and streams: patches on the wire</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/live-mercury/server-rendering">Server rendering: what is there, and what is not</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/live-mercury/testing">Testing islands: both sides of the element</a>
-      </li>
-    
-  </ul>
-</details>
-        </nav>
-      </div>
-    </details>
-  </div>
+    <nav class="lms-nav" aria-label="Site">
+        <a href="/#principles">Principles</a><a href="/#foundations">Foundations</a><a
+            href="/#components">Components</a><a href="/#usage">Usage</a>
+    </nav>
+    <div class="lms-actions">
+        <details class="lms-lang">
+            <summary aria-label="Language">English</summary>
+            <ul>
+                <li>
+                    <a href="/ui/actions-and-layout" hreflang="en" lang="en" aria-current="true">English</a>
+
+                </li>
+                <li>
+                    <a href="/ru/ui/actions-and-layout" hreflang="ru" lang="ru">Русский</a>
+
+                </li>
+            </ul>
+        </details>
+        <a class="lms-github" href="/start/install-mx" aria-label="Install Mercury" title="Install Mercury">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+                <path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4" fill="none" stroke="currentColor" stroke-width="1.8"
+                      stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+        </a>
+        <form class="lms-theme" method="post" action="/_lms/theme">
+            <input type="hidden" name="back" value="/ui/actions-and-layout">
+            <button class="lms-theme-to-dark" type="submit" name="set" value="dark" aria-label="Dark theme"
+                    title="Dark theme">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+                    <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                          stroke-linejoin="round" d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"></path>
+                </svg>
+            </button>
+            <button class="lms-theme-to-light" type="submit" name="set" value="light" aria-label="Light theme"
+                    title="Light theme">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+                    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+                    </g>
+                </svg>
+            </button>
+        </form>
+        <a class="lms-open-docs" href="/start">Open docs</a>
+        <details class="lms-drawer">
+            <summary>
+                <span class="lms-menu-label">Menu</span>
+                <svg class="lms-menu-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"
+                     focusable="false">
+                    <path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="1.8"
+                          stroke-linecap="round"></path>
+                </svg>
+            </summary>
+            <div class="lms-drawer-panel">
+                <nav class="lms-menu-links" aria-label="Site">
+                    <a class="lms-menu-docs" href="/start">Open docs</a>
+                    <a href="/#principles">Principles</a><a href="/#foundations">Foundations</a><a href="/#components">Components</a><a
+                        href="/#usage">Usage</a>
+                    <a href="/start/install-mx">Install Mercury</a>
+                </nav>
+                <div class="lms-menu-language">
+                    <details class="lms-lang">
+                        <summary aria-label="Language">English</summary>
+                        <ul>
+                            <li>
+                                <a href="/ui/actions-and-layout" hreflang="en" lang="en" aria-current="true">English</a>
+
+                            </li>
+                            <li>
+                                <a href="/ru/ui/actions-and-layout" hreflang="ru" lang="ru">Русский</a>
+
+                            </li>
+                        </ul>
+                    </details>
+                </div>
+                <nav aria-label="Courses and pages">
+                    <p class="lms-menu-heading">Courses</p>
+                    <details class="lms-side-course">
+                        <summary>Start</summary>
+                        <ul>
+                            <li><a href="/start">Overview</a></li>
+
+
+                            <li class="">
+                                <a href="/start/browser">A page in the browser</a>
+                            </li>
+
+                            <li class="lms-side-group">The pieces</li>
+                            <li class="">
+                                <a href="/start/install-mx">Choose a route to mx</a>
+                            </li>
+
+                            <li class="lms-side-group">First steps</li>
+                            <li class="">
+                                <a href="/start/stability">Stability: Shipped, Preview, Planned</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/start/agents">Build a page with your agent</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/start/glossary">Glossary: the words this site uses</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/start/philosophy">Philosophy: native, not borrowed</a>
+                            </li>
+
+                        </ul>
+                    </details>
+                    <details class="lms-side-course">
+                        <summary>mx</summary>
+                        <ul>
+                            <li><a href="/mx">Overview</a></li>
+
+                            <li class="lms-side-group">Install mx</li>
+                            <li class="">
+                                <a href="/mx/first-app">Your first Mercury page</a>
+                            </li>
+
+                            <li class="lms-side-group">The chapters</li>
+                            <li class="">
+                                <a href="/mx/modules">Modules, mx.mod and mx.sum</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/mx/workspace">A workspace, mx.work</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/mx/dev">The dev loop, and hot replacement</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/mx/build">Build and ship, three kinds of build</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/mx/compile">The Hypercompiler, one module at a time</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/mx/tools">The tools, test, lsap and run</a>
+                            </li>
+
+                        </ul>
+                    </details>
+                    <details class="lms-side-course">
+                        <summary>Hyperscript</summary>
+                        <ul>
+                            <li><a href="/hyperscript">Overview</a></li>
+
+                            <li class="lms-side-group">What Hyperscript is</li>
+                            <li class="">
+                                <a href="/hyperscript/dom">The DOM contract</a>
+                            </li>
+
+                            <li class="lms-side-group">The chapters</li>
+                            <li class="">
+                                <a href="/hyperscript/components">Components and render</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/hyperscript/hooks">Hooks, state and effects in a function</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/hyperscript/context">Context, portals and memo</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/hyperscript/server">Rendering on the server</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/hyperscript/testing">Testing and inspecting</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/hyperscript/tested-component">A tested component</a>
+                            </li>
+
+                        </ul>
+                    </details>
+                    <details class="lms-side-course" open>
+                        <summary>UI</summary>
+                        <ul>
+                            <li><a href="/ui">Overview</a></li>
+
+                            <li class="lms-side-group">The chapters</li>
+                            <li class="">
+                                <a href="/ui/tokens-and-themes">UI0, tokens and themes</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ui/foundations">UI1, where a subtree lives</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ui/actions-and-layout" aria-current="page">UI2, actions and layout</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ui/inputs-and-forms">UI3, inputs and forms</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ui/selection">UI4, selection</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ui/feedback-and-data">UI5, feedback and data display</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/ui/navigation">UI6, navigation</a>
+                            </li>
+
+                        </ul>
+                    </details>
+                    <details class="lms-side-course">
+                        <summary>Hypergraph</summary>
+                        <ul>
+                            <li><a href="/hypergraph">Overview</a></li>
+
+                            <li class="lms-side-group">The chapters</li>
+                            <li class="">
+                                <a href="/hypergraph/units">Units: store, event and effect</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/hypergraph/wiring">Wiring: units into a graph</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/hypergraph/scopes">Scopes: fork, settle, hand over</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/hypergraph/observing">Observing: watch, inspect, describe</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/hypergraph/errors">Kinds, carriers and errors</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/hypergraph/hot-replacement">Hot replacement: the swap</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/hypergraph/server-rendering">Server rendering: a scope per request</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/hypergraph/testing">Testing a model: a scope per test</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/hypergraph/models">Models at scale: structure and identity</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/hypergraph/capstone">Capstone: a model, round-tripped</a>
+                            </li>
+
+                            <li class="lms-side-group">Coming from Effector</li>
+                            <li class="">
+                                <a href="/hypergraph/coming-from-effector">Coming from Effector</a>
+                            </li>
+
+
+                            <li class="lms-side-sub">
+                                <a href="/hypergraph/coming-from-effector/units-and-wiring">Units and wiring</a>
+                            </li>
+
+
+                            <li class="lms-side-sub">
+                                <a href="/hypergraph/coming-from-effector/scopes-and-testing">Scopes and testing</a>
+                            </li>
+
+
+                            <li class="lms-side-sub">
+                                <a href="/hypergraph/coming-from-effector/frameworks">Frameworks, after
+                                    effector-react</a>
+                            </li>
+
+                        </ul>
+                    </details>
+                    <details class="lms-side-course">
+                        <summary>Content</summary>
+                        <ul>
+                            <li><a href="/content">Overview</a></li>
+
+                            <li class="lms-side-group">The course map</li>
+                            <li class="">
+                                <a href="/content/documents">Page documents: nodes, the schema and parseDocument</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/content/rendering">Rendering a document: renderDocument</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/content/blocks">The block catalog: nine groups, one registry</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/content/references">References, capabilities and responsive values</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/content/add-a-block">Add a block: the capstone</a>
+                            </li>
+
+                        </ul>
+                    </details>
+                    <details class="lms-side-course">
+                        <summary>Live Mercury</summary>
+                        <ul>
+                            <li><a href="/live-mercury">Overview</a></li>
+
+                            <li class="lms-side-group">The course</li>
+                            <li class="">
+                                <a href="/live-mercury/islands">Islands: the element and its mount</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/live-mercury/liveview">An island in a LiveView: socket, hooks and events</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/live-mercury/building">Building islands with mx: no Node</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/live-mercury/props-and-streams">Props and streams: patches on the wire</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/live-mercury/server-rendering">Server rendering: what is there, and what is
+                                    not</a>
+                            </li>
+
+
+                            <li class="">
+                                <a href="/live-mercury/testing">Testing islands: both sides of the element</a>
+                            </li>
+
+                        </ul>
+                    </details>
+                </nav>
+            </div>
+        </details>
+    </div>
 </header>
-    <div class="lms-frame">
-      <nav class="lms-side" aria-label="Courses and pages">
+<div class="lms-frame">
+    <nav class="lms-side" aria-label="Courses and pages">
         <details class="lms-side-course">
-  <summary>Start</summary>
-  <ul>
-    <li><a href="/start">Overview</a></li>
-    
-      
-      <li class="">
-        <a href="/start/browser">A page in the browser</a>
-      </li>
-    
-      <li class="lms-side-group">The pieces</li>
-      <li class="">
-        <a href="/start/install-mx">Choose a route to mx</a>
-      </li>
-    
-      <li class="lms-side-group">First steps</li>
-      <li class="">
-        <a href="/start/stability">Stability: Shipped, Preview, Planned</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/start/agents">Build a page with your agent</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/start/glossary">Glossary: the words this site uses</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/start/philosophy">Philosophy: native, not borrowed</a>
-      </li>
-    
-  </ul>
-</details><details class="lms-side-course">
-  <summary>mx</summary>
-  <ul>
-    <li><a href="/mx">Overview</a></li>
-    
-      <li class="lms-side-group">Install mx</li>
-      <li class="">
-        <a href="/mx/first-app">Your first Mercury page</a>
-      </li>
-    
-      <li class="lms-side-group">The chapters</li>
-      <li class="">
-        <a href="/mx/modules">Modules, mx.mod and mx.sum</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/mx/workspace">A workspace, mx.work</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/mx/dev">The dev loop, and hot replacement</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/mx/build">Build and ship, three kinds of build</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/mx/compile">The Hypercompiler, one module at a time</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/mx/tools">The tools, test, lsap and run</a>
-      </li>
-    
-  </ul>
-</details><details class="lms-side-course">
-  <summary>Hyperscript</summary>
-  <ul>
-    <li><a href="/hyperscript">Overview</a></li>
-    
-      <li class="lms-side-group">What Hyperscript is</li>
-      <li class="">
-        <a href="/hyperscript/dom">The DOM contract</a>
-      </li>
-    
-      <li class="lms-side-group">The chapters</li>
-      <li class="">
-        <a href="/hyperscript/components">Components and render</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hyperscript/hooks">Hooks, state and effects in a function</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hyperscript/context">Context, portals and memo</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hyperscript/server">Rendering on the server</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hyperscript/testing">Testing and inspecting</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hyperscript/tested-component">A tested component</a>
-      </li>
-    
-  </ul>
-</details><details class="lms-side-course" open>
-  <summary>UI</summary>
-  <ul>
-    <li><a href="/ui">Overview</a></li>
-    
-      <li class="lms-side-group">The chapters</li>
-      <li class="">
-        <a href="/ui/tokens-and-themes">UI0, tokens and themes</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ui/foundations">UI1, where a subtree lives</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ui/actions-and-layout" aria-current="page">UI2, actions and layout</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ui/inputs-and-forms">UI3, inputs and forms</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ui/selection">UI4, selection</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ui/feedback-and-data">UI5, feedback and data display</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/ui/navigation">UI6, navigation</a>
-      </li>
-    
-  </ul>
-</details><details class="lms-side-course">
-  <summary>Hypergraph</summary>
-  <ul>
-    <li><a href="/hypergraph">Overview</a></li>
-    
-      <li class="lms-side-group">The chapters</li>
-      <li class="">
-        <a href="/hypergraph/units">Units: store, event and effect</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hypergraph/wiring">Wiring: units into a graph</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hypergraph/scopes">Scopes: fork, settle, hand over</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hypergraph/observing">Observing: watch, inspect, describe</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hypergraph/errors">Kinds, carriers and errors</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hypergraph/hot-replacement">Hot replacement: the swap</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hypergraph/server-rendering">Server rendering: a scope per request</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hypergraph/testing">Testing a model: a scope per test</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hypergraph/models">Models at scale: structure and identity</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/hypergraph/capstone">Capstone: a model, round-tripped</a>
-      </li>
-    
-      <li class="lms-side-group">Coming from Effector</li>
-      <li class="">
-        <a href="/hypergraph/coming-from-effector">Coming from Effector</a>
-      </li>
-    
-      
-      <li class="lms-side-sub">
-        <a href="/hypergraph/coming-from-effector/units-and-wiring">Units and wiring</a>
-      </li>
-    
-      
-      <li class="lms-side-sub">
-        <a href="/hypergraph/coming-from-effector/scopes-and-testing">Scopes and testing</a>
-      </li>
-    
-      
-      <li class="lms-side-sub">
-        <a href="/hypergraph/coming-from-effector/frameworks">Frameworks, after effector-react</a>
-      </li>
-    
-  </ul>
-</details><details class="lms-side-course">
-  <summary>Content</summary>
-  <ul>
-    <li><a href="/content">Overview</a></li>
-    
-      <li class="lms-side-group">The course map</li>
-      <li class="">
-        <a href="/content/documents">Page documents: nodes, the schema and parseDocument</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/content/rendering">Rendering a document: renderDocument</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/content/blocks">The block catalog: nine groups, one registry</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/content/references">References, capabilities and responsive values</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/content/add-a-block">Add a block: the capstone</a>
-      </li>
-    
-  </ul>
-</details><details class="lms-side-course">
-  <summary>Live Mercury</summary>
-  <ul>
-    <li><a href="/live-mercury">Overview</a></li>
-    
-      <li class="lms-side-group">The course</li>
-      <li class="">
-        <a href="/live-mercury/islands">Islands: the element and its mount</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/live-mercury/liveview">An island in a LiveView: socket, hooks and events</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/live-mercury/building">Building islands with mx: no Node</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/live-mercury/props-and-streams">Props and streams: patches on the wire</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/live-mercury/server-rendering">Server rendering: what is there, and what is not</a>
-      </li>
-    
-      
-      <li class="">
-        <a href="/live-mercury/testing">Testing islands: both sides of the element</a>
-      </li>
-    
-  </ul>
-</details>
-      </nav>
-      <main id="main" class="lms-main">
+            <summary>Start</summary>
+            <ul>
+                <li><a href="/start">Overview</a></li>
+
+
+                <li class="">
+                    <a href="/start/browser">A page in the browser</a>
+                </li>
+
+                <li class="lms-side-group">The pieces</li>
+                <li class="">
+                    <a href="/start/install-mx">Choose a route to mx</a>
+                </li>
+
+                <li class="lms-side-group">First steps</li>
+                <li class="">
+                    <a href="/start/stability">Stability: Shipped, Preview, Planned</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/start/agents">Build a page with your agent</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/start/glossary">Glossary: the words this site uses</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/start/philosophy">Philosophy: native, not borrowed</a>
+                </li>
+
+            </ul>
+        </details>
+        <details class="lms-side-course">
+            <summary>mx</summary>
+            <ul>
+                <li><a href="/mx">Overview</a></li>
+
+                <li class="lms-side-group">Install mx</li>
+                <li class="">
+                    <a href="/mx/first-app">Your first Mercury page</a>
+                </li>
+
+                <li class="lms-side-group">The chapters</li>
+                <li class="">
+                    <a href="/mx/modules">Modules, mx.mod and mx.sum</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/mx/workspace">A workspace, mx.work</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/mx/dev">The dev loop, and hot replacement</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/mx/build">Build and ship, three kinds of build</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/mx/compile">The Hypercompiler, one module at a time</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/mx/tools">The tools, test, lsap and run</a>
+                </li>
+
+            </ul>
+        </details>
+        <details class="lms-side-course">
+            <summary>Hyperscript</summary>
+            <ul>
+                <li><a href="/hyperscript">Overview</a></li>
+
+                <li class="lms-side-group">What Hyperscript is</li>
+                <li class="">
+                    <a href="/hyperscript/dom">The DOM contract</a>
+                </li>
+
+                <li class="lms-side-group">The chapters</li>
+                <li class="">
+                    <a href="/hyperscript/components">Components and render</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/hyperscript/hooks">Hooks, state and effects in a function</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/hyperscript/context">Context, portals and memo</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/hyperscript/server">Rendering on the server</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/hyperscript/testing">Testing and inspecting</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/hyperscript/tested-component">A tested component</a>
+                </li>
+
+            </ul>
+        </details>
+        <details class="lms-side-course" open>
+            <summary>UI</summary>
+            <ul>
+                <li><a href="/ui">Overview</a></li>
+
+                <li class="lms-side-group">The chapters</li>
+                <li class="">
+                    <a href="/ui/tokens-and-themes">UI0, tokens and themes</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ui/foundations">UI1, where a subtree lives</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ui/actions-and-layout" aria-current="page">UI2, actions and layout</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ui/inputs-and-forms">UI3, inputs and forms</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ui/selection">UI4, selection</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ui/feedback-and-data">UI5, feedback and data display</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/ui/navigation">UI6, navigation</a>
+                </li>
+
+            </ul>
+        </details>
+        <details class="lms-side-course">
+            <summary>Hypergraph</summary>
+            <ul>
+                <li><a href="/hypergraph">Overview</a></li>
+
+                <li class="lms-side-group">The chapters</li>
+                <li class="">
+                    <a href="/hypergraph/units">Units: store, event and effect</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/hypergraph/wiring">Wiring: units into a graph</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/hypergraph/scopes">Scopes: fork, settle, hand over</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/hypergraph/observing">Observing: watch, inspect, describe</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/hypergraph/errors">Kinds, carriers and errors</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/hypergraph/hot-replacement">Hot replacement: the swap</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/hypergraph/server-rendering">Server rendering: a scope per request</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/hypergraph/testing">Testing a model: a scope per test</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/hypergraph/models">Models at scale: structure and identity</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/hypergraph/capstone">Capstone: a model, round-tripped</a>
+                </li>
+
+                <li class="lms-side-group">Coming from Effector</li>
+                <li class="">
+                    <a href="/hypergraph/coming-from-effector">Coming from Effector</a>
+                </li>
+
+
+                <li class="lms-side-sub">
+                    <a href="/hypergraph/coming-from-effector/units-and-wiring">Units and wiring</a>
+                </li>
+
+
+                <li class="lms-side-sub">
+                    <a href="/hypergraph/coming-from-effector/scopes-and-testing">Scopes and testing</a>
+                </li>
+
+
+                <li class="lms-side-sub">
+                    <a href="/hypergraph/coming-from-effector/frameworks">Frameworks, after effector-react</a>
+                </li>
+
+            </ul>
+        </details>
+        <details class="lms-side-course">
+            <summary>Content</summary>
+            <ul>
+                <li><a href="/content">Overview</a></li>
+
+                <li class="lms-side-group">The course map</li>
+                <li class="">
+                    <a href="/content/documents">Page documents: nodes, the schema and parseDocument</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/content/rendering">Rendering a document: renderDocument</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/content/blocks">The block catalog: nine groups, one registry</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/content/references">References, capabilities and responsive values</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/content/add-a-block">Add a block: the capstone</a>
+                </li>
+
+            </ul>
+        </details>
+        <details class="lms-side-course">
+            <summary>Live Mercury</summary>
+            <ul>
+                <li><a href="/live-mercury">Overview</a></li>
+
+                <li class="lms-side-group">The course</li>
+                <li class="">
+                    <a href="/live-mercury/islands">Islands: the element and its mount</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/live-mercury/liveview">An island in a LiveView: socket, hooks and events</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/live-mercury/building">Building islands with mx: no Node</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/live-mercury/props-and-streams">Props and streams: patches on the wire</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/live-mercury/server-rendering">Server rendering: what is there, and what is not</a>
+                </li>
+
+
+                <li class="">
+                    <a href="/live-mercury/testing">Testing islands: both sides of the element</a>
+                </li>
+
+            </ul>
+        </details>
+    </nav>
+    <main id="main" class="lms-main">
         <nav class="lms-crumbs" aria-label="Breadcrumb">
-  <ol>
-    
-      
-      <li><a href="/ui">UI</a></li>
-      
-    
-      
-      
-      <li>The chapters</li>
-    
-      <li aria-current="page">UI2, actions and layout</li>
-      
-      
-    
-  </ol>
-</nav>
-        
+            <ol>
+
+
+                <li><a href="/ui">UI</a></li>
+
+
+                <li>The chapters</li>
+
+                <li aria-current="page">UI2, actions and layout</li>
+
+
+            </ol>
+        </nav>
+
         <h1 class="lms-title">UI2, <em>actions and layout</em></h1>
-        <p class="lms-lede">Three components carry every press and every inline link. Eleven plain functions lay a screen out on the token scales, so a layout never holds a literal space or radius.</p>
-        <article class="lms-body"><p>The actions family is small on purpose: <code>Button</code> for a press, <code>IconButton</code> for a press with only an icon, and <code>Link</code> for the inline text affordance. The layout tier sits beside it: plain functions whose spacing and radius props name steps of the token scales.</p>
-<h2 id="button">Button</h2>
-<table>
-<thead>
-<tr>
-<th>Prop</th>
-<th>Values</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>variant</code></td>
-<td><code>primary</code>, <code>secondary</code>, <code>outline</code>, <code>ghost</code>, <code>destructive</code>, <code>inverse</code></td>
-<td><code>primary</code></td>
-</tr>
-<tr>
-<td><code>size</code></td>
-<td><code>sm</code>, <code>md</code>, <code>lg</code></td>
-<td><code>md</code></td>
-</tr>
-<tr>
-<td><code>loading</code></td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-</tr>
-<tr>
-<td><code>fullWidth</code></td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-</tr>
-<tr>
-<td><code>leading</code>, <code>trailing</code></td>
-<td>children rendered before and after the label</td>
-<td>none</td>
-</tr>
-<tr>
-<td><code>type</code></td>
-<td><code>button</code>, <code>submit</code>, <code>reset</code></td>
-<td><code>button</code></td>
-</tr>
-</tbody>
-</table>
-<p><code>Button</code> renders a native <code>&lt;button&gt;</code> and passes every other button attribute through. Its <code>type</code> defaults to <code>button</code>, so a Button inside a form submits only when you ask it to with <code>type="submit"</code>.</p>
-<p>While <code>loading</code> is set, the button is disabled and marked <code>aria-busy</code>, a spinner takes the place of the leading icon, and the trailing icon is hidden. The label stays, so the button keeps its name.</p>
-<h2 id="iconbutton">IconButton</h2>
-<p><code>IconButton</code> is a button that carries only an icon, so its name is required:</p>
-<table>
-<thead>
-<tr>
-<th>Prop</th>
-<th>Values</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>icon</code></td>
-<td>a glyph name from <code>Icon</code>'s set</td>
-<td>required</td>
-</tr>
-<tr>
-<td><code>label</code></td>
-<td><code>string</code></td>
-<td>required</td>
-</tr>
-<tr>
-<td><code>variant</code></td>
-<td><code>primary</code>, <code>secondary</code>, <code>outline</code>, <code>ghost</code>, <code>destructive</code></td>
-<td><code>secondary</code></td>
-</tr>
-<tr>
-<td><code>size</code></td>
-<td><code>sm</code>, <code>md</code>, <code>lg</code> (a 16, 18 or 20 px glyph)</td>
-<td><code>md</code></td>
-</tr>
-<tr>
-<td><code>shape</code></td>
-<td><code>circle</code>, <code>square</code></td>
-<td><code>circle</code></td>
-</tr>
-</tbody>
-</table>
-<p><code>label</code> becomes the button's <code>aria-label</code> and its <code>title</code>, so an icon-only control always has an accessible name. The glyph itself is hidden from assistive technology. <code>Icon</code>'s set holds 38 glyphs, among them <code>check</code>, <code>close</code>, <code>plus</code>, <code>minus</code>, <code>search</code>, <code>chevron-right</code>, <code>chevron-down</code>, <code>copy</code>, <code>trash</code>, <code>download</code> and <code>upload</code>. The type <code>IconName</code> accepts any string, so check a name against the set: an unknown one draws an empty glyph.</p>
-<h2 id="link">Link</h2>
-<p><code>Link</code> is the inline text affordance of forms and flows: "Forgot password?", "Back to sign in". It renders an <code>&lt;a&gt;</code> when <code>href</code> is set, and a <code>&lt;button&gt;</code> otherwise, so one affordance covers navigation and in-app actions. A disabled Link is always a <code>&lt;button&gt;</code>, so it can't be followed.</p>
-<p>Its props are <code>href</code>, <code>onClick</code>, <code>disabled</code>, <code>size</code> (<code>sm</code> or <code>md</code>), <code>muted</code> (the tertiary colour instead of the brand colour), <code>leading</code>, <code>trailing</code>, <code>type</code>, <code>target</code>, <code>rel</code>, <code>class</code> and <code>aria-label</code>. It is presentational: the caller owns the navigation or the click.</p>
-<h2 id="scales">Layout on the token scales</h2>
-<p>The layout tier takes its sizes from the token sheet by name:</p>
-<ul>
-<li><strong><code>SpaceScale</code>:</strong> <code>"2"</code> to <code>"128"</code>, the steps of <code>--space-*</code>. <code>gap="12"</code> is <code>var(--space-12)</code>.</li>
-<li><strong><code>RadiusScale</code>:</strong> <code>"2"</code> to <code>"32"</code> and <code>"full"</code>, the steps of <code>--radius-*</code>.</li>
-<li><strong><code>Align</code>:</strong> <code>start</code>, <code>center</code>, <code>end</code>, <code>stretch</code>, <code>baseline</code>, for <code>align-items</code>.</li>
-<li><strong><code>Justify</code>:</strong> <code>start</code>, <code>center</code>, <code>end</code>, <code>between</code>, <code>around</code>, <code>evenly</code>.</li>
-</ul>
-<p>The four types are exported from <code>@fiberfx/ui</code>, so your own components can take the same scale. Each of the eleven components below is a plain function that accepts <code>as</code> to render another element, and passes its other attributes through. The family's other four, <code>AspectRatio</code>, <code>AuthLayout</code>, <code>Collapsible</code> and <code>ScrollArea</code>, are not part of this tier.</p>
-<h2 id="primitives">Box, Stack, Flex and Grid</h2>
-<ul>
-<li><strong><code>Box</code>:</strong> one padded surface. <code>p</code>, <code>px</code>, <code>py</code>, <code>pt</code>, <code>pr</code>, <code>pb</code>, <code>pl</code> take a space step; <code>bg</code> takes a surface (<code>primary</code>, <code>secondary</code>, <code>tertiary</code>, <code>brand</code>, <code>brand-subtle</code>, <code>elevated</code>); <code>radius</code> a radius step; <code>border</code> draws the secondary hairline; <code>shadow</code> takes <code>100</code> to <code>600</code>.</li>
-<li><strong><code>Stack</code>:</strong> a vertical flow, children top to bottom, with <code>gap</code>, <code>align</code> and <code>justify</code>.</li>
-<li><strong><code>Flex</code>:</strong> one line in any <code>direction</code> (<code>row</code>, <code>column</code>, <code>row-reverse</code>, <code>column-reverse</code>), with <code>gap</code>, <code>align</code>, <code>justify</code> and <code>wrap</code>.</li>
-<li><strong><code>Grid</code>:</strong> two dimensions. <code>cols</code> and <code>rows</code> take a count, which makes that many equal tracks, or a string used as the template as written; <code>flow</code> takes <code>row</code>, <code>column</code>, <code>dense</code>, <code>row dense</code> or <code>column dense</code>; with <code>gap</code>, <code>align</code> and <code>justify</code>.</li>
-</ul>
-<h2 id="composites">The composites</h2>
-<p>Seven more complete the tier:</p>
-<ul>
-<li><strong><code>Container</code>:</strong> a max-width reading column, centred by default.</li>
-<li><strong><code>Spacer</code>:</strong> flexible empty space inside a flex row or column.</li>
-<li><strong><code>GridItem</code>:</strong> a placement child for <code>Grid</code>, spanning columns or rows.</li>
-<li><strong><code>Center</code>:</strong> centres its child on both axes.</li>
-<li><strong><code>Sidebar</code>:</strong> a fixed-width rail beside a growing main column.</li>
-<li><strong><code>Cluster</code>:</strong> a horizontal group that wraps.</li>
-<li><strong><code>Section</code>:</strong> a semantic, padded page block, a vertical <code>Stack</code>.</li>
-</ul>
-<h2 id="together">Putting them together</h2>
-<pre><code class="language-tsx">import { Box, Button, Flex, IconButton, Link, Stack, Text } from "@fiberfx/ui";
+        <p class="lms-lede">Three components carry every press and every inline link. Eleven plain functions lay a
+            screen out on the token scales, so a layout never holds a literal space or radius.</p>
+        <article class="lms-body"><p>The actions family is small on purpose: <code>Button</code> for a press, <code>IconButton</code>
+            for a press with only an icon, and <code>Link</code> for the inline text affordance. The layout tier sits
+            beside it: plain functions whose spacing and radius props name steps of the token scales.</p>
+            <h2 id="button">Button</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>Prop</th>
+                    <th>Values</th>
+                    <th>Default</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><code>variant</code></td>
+                    <td><code>primary</code>, <code>secondary</code>, <code>outline</code>, <code>ghost</code>, <code>destructive</code>,
+                        <code>inverse</code></td>
+                    <td><code>primary</code></td>
+                </tr>
+                <tr>
+                    <td><code>size</code></td>
+                    <td><code>sm</code>, <code>md</code>, <code>lg</code></td>
+                    <td><code>md</code></td>
+                </tr>
+                <tr>
+                    <td><code>loading</code></td>
+                    <td><code>boolean</code></td>
+                    <td><code>false</code></td>
+                </tr>
+                <tr>
+                    <td><code>fullWidth</code></td>
+                    <td><code>boolean</code></td>
+                    <td><code>false</code></td>
+                </tr>
+                <tr>
+                    <td><code>leading</code>, <code>trailing</code></td>
+                    <td>children rendered before and after the label</td>
+                    <td>none</td>
+                </tr>
+                <tr>
+                    <td><code>type</code></td>
+                    <td><code>button</code>, <code>submit</code>, <code>reset</code></td>
+                    <td><code>button</code></td>
+                </tr>
+                </tbody>
+            </table>
+            <p><code>Button</code> renders a native <code>&lt;button&gt;</code> and passes every other button attribute
+                through. Its <code>type</code> defaults to <code>button</code>, so a Button inside a form submits only
+                when you ask it to with <code>type="submit"</code>.</p>
+            <p>While <code>loading</code> is set, the button is disabled and marked <code>aria-busy</code>, a spinner
+                takes the place of the leading icon, and the trailing icon is hidden. The label stays, so the button
+                keeps its name.</p>
+            <h2 id="iconbutton">IconButton</h2>
+            <p><code>IconButton</code> is a button that carries only an icon, so its name is required:</p>
+            <table>
+                <thead>
+                <tr>
+                    <th>Prop</th>
+                    <th>Values</th>
+                    <th>Default</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><code>icon</code></td>
+                    <td>a glyph name from <code>Icon</code>'s set</td>
+                    <td>required</td>
+                </tr>
+                <tr>
+                    <td><code>label</code></td>
+                    <td><code>string</code></td>
+                    <td>required</td>
+                </tr>
+                <tr>
+                    <td><code>variant</code></td>
+                    <td><code>primary</code>, <code>secondary</code>, <code>outline</code>, <code>ghost</code>, <code>destructive</code>
+                    </td>
+                    <td><code>secondary</code></td>
+                </tr>
+                <tr>
+                    <td><code>size</code></td>
+                    <td><code>sm</code>, <code>md</code>, <code>lg</code> (a 16, 18 or 20 px glyph)</td>
+                    <td><code>md</code></td>
+                </tr>
+                <tr>
+                    <td><code>shape</code></td>
+                    <td><code>circle</code>, <code>square</code></td>
+                    <td><code>circle</code></td>
+                </tr>
+                </tbody>
+            </table>
+            <p><code>label</code> becomes the button's <code>aria-label</code> and its <code>title</code>, so an
+                icon-only control always has an accessible name. The glyph itself is hidden from assistive technology.
+                <code>Icon</code>'s set holds 38 glyphs, among them <code>check</code>, <code>close</code>,
+                <code>plus</code>, <code>minus</code>, <code>search</code>, <code>chevron-right</code>, <code>chevron-down</code>,
+                <code>copy</code>, <code>trash</code>, <code>download</code> and <code>upload</code>. The type <code>IconName</code>
+                accepts any string, so check a name against the set: an unknown one draws an empty glyph.</p>
+            <h2 id="link">Link</h2>
+            <p><code>Link</code> is the inline text affordance of forms and flows: "Forgot password?", "Back to sign
+                in". It renders an <code>&lt;a&gt;</code> when <code>href</code> is set, and a
+                <code>&lt;button&gt;</code> otherwise, so one affordance covers navigation and in-app actions. A
+                disabled Link is always a <code>&lt;button&gt;</code>, so it can't be followed.</p>
+            <p>Its props are <code>href</code>, <code>onClick</code>, <code>disabled</code>, <code>size</code>
+                (<code>sm</code> or <code>md</code>), <code>muted</code> (the tertiary colour instead of the brand
+                colour), <code>leading</code>, <code>trailing</code>, <code>type</code>, <code>target</code>,
+                <code>rel</code>, <code>class</code> and <code>aria-label</code>. It is presentational: the caller owns
+                the navigation or the click.</p>
+            <h2 id="scales">Layout on the token scales</h2>
+            <p>The layout tier takes its sizes from the token sheet by name:</p>
+            <ul>
+                <li><strong><code>SpaceScale</code>:</strong> <code>"2"</code> to <code>"128"</code>, the steps of
+                    <code>--space-*</code>. <code>gap="12"</code> is <code>var(--space-12)</code>.
+                </li>
+                <li><strong><code>RadiusScale</code>:</strong> <code>"2"</code> to <code>"32"</code> and
+                    <code>"full"</code>, the steps of <code>--radius-*</code>.
+                </li>
+                <li><strong><code>Align</code>:</strong> <code>start</code>, <code>center</code>, <code>end</code>,
+                    <code>stretch</code>, <code>baseline</code>, for <code>align-items</code>.
+                </li>
+                <li><strong><code>Justify</code>:</strong> <code>start</code>, <code>center</code>, <code>end</code>,
+                    <code>between</code>, <code>around</code>, <code>evenly</code>.
+                </li>
+            </ul>
+            <p>The four types are exported from <code>@fiberfx/ui</code>, so your own components can take the same
+                scale. Each of the eleven components below is a plain function that accepts <code>as</code> to render
+                another element, and passes its other attributes through. The family's other four,
+                <code>AspectRatio</code>, <code>AuthLayout</code>, <code>Collapsible</code> and <code>ScrollArea</code>,
+                are not part of this tier.</p>
+            <h2 id="primitives">Box, Stack, Flex and Grid</h2>
+            <ul>
+                <li><strong><code>Box</code>:</strong> one padded surface. <code>p</code>, <code>px</code>,
+                    <code>py</code>, <code>pt</code>, <code>pr</code>, <code>pb</code>, <code>pl</code> take a space
+                    step; <code>bg</code> takes a surface (<code>primary</code>, <code>secondary</code>,
+                    <code>tertiary</code>, <code>brand</code>, <code>brand-subtle</code>, <code>elevated</code>); <code>radius</code>
+                    a radius step; <code>border</code> draws the secondary hairline; <code>shadow</code> takes
+                    <code>100</code> to <code>600</code>.
+                </li>
+                <li><strong><code>Stack</code>:</strong> a vertical flow, children top to bottom, with <code>gap</code>,
+                    <code>align</code> and <code>justify</code>.
+                </li>
+                <li><strong><code>Flex</code>:</strong> one line in any <code>direction</code> (<code>row</code>, <code>column</code>,
+                    <code>row-reverse</code>, <code>column-reverse</code>), with <code>gap</code>, <code>align</code>,
+                    <code>justify</code> and <code>wrap</code>.
+                </li>
+                <li><strong><code>Grid</code>:</strong> two dimensions. <code>cols</code> and <code>rows</code> take a
+                    count, which makes that many equal tracks, or a string used as the template as written;
+                    <code>flow</code> takes <code>row</code>, <code>column</code>, <code>dense</code>, <code>row
+                        dense</code> or <code>column dense</code>; with <code>gap</code>, <code>align</code> and <code>justify</code>.
+                </li>
+            </ul>
+            <h2 id="composites">The composites</h2>
+            <p>Seven more complete the tier:</p>
+            <ul>
+                <li><strong><code>Container</code>:</strong> a max-width reading column, centred by default.</li>
+                <li><strong><code>Spacer</code>:</strong> flexible empty space inside a flex row or column.</li>
+                <li><strong><code>GridItem</code>:</strong> a placement child for <code>Grid</code>, spanning columns or
+                    rows.
+                </li>
+                <li><strong><code>Center</code>:</strong> centres its child on both axes.</li>
+                <li><strong><code>Sidebar</code>:</strong> a fixed-width rail beside a growing main column.</li>
+                <li><strong><code>Cluster</code>:</strong> a horizontal group that wraps.</li>
+                <li><strong><code>Section</code>:</strong> a semantic, padded page block, a vertical <code>Stack</code>.
+                </li>
+            </ul>
+            <h2 id="together">Putting them together</h2>
+            <pre><code class="language-tsx">import { Box, Button, Flex, IconButton, Link, Stack, Text } from "@fiberfx/ui";
 
 export function SaveBar({ saving }: { saving: boolean }) {
   return (
@@ -865,23 +995,32 @@ export function SaveBar({ saving }: { saving: boolean }) {
   );
 }
 </code></pre>
-<p>Nothing in it is a literal: every space, radius, surface and border is a step of the token sheet, so the bar follows the theme with the rest of the page.</p></article>
+            <p>Nothing in it is a literal: every space, radius, surface and border is a step of the token sheet, so the
+                bar follows the theme with the rest of the page.</p></article>
         <nav class="lms-pager" aria-label="Previous and next">
-  <a class="lms-pager-prev" href="/ui/foundations" rel="prev"><span>Previous</span>UI1, where a subtree lives</a>
-  <a class="lms-pager-next" href="/ui/inputs-and-forms" rel="next"><span>Next</span>UI3, inputs and forms</a>
-</nav>
-      </main>
-      <aside class="lms-toc" aria-label="On this page">
+            <a class="lms-pager-prev" href="/ui/foundations" rel="prev"><span>Previous</span>UI1, where a subtree lives</a>
+            <a class="lms-pager-next" href="/ui/inputs-and-forms" rel="next"><span>Next</span>UI3, inputs and forms</a>
+        </nav>
+    </main>
+    <aside class="lms-toc" aria-label="On this page">
         <p class="lms-toc-title">On this page</p>
         <ul>
-          <li><a href="#button">Button</a></li><li><a href="#iconbutton">IconButton</a></li><li><a href="#link">Link</a></li><li><a href="#scales">Layout on the token scales</a></li><li><a href="#primitives">Box, Stack, Flex and Grid</a></li><li><a href="#composites">The composites</a></li><li><a href="#together">Putting them together</a></li>
+            <li><a href="#button">Button</a></li>
+            <li><a href="#iconbutton">IconButton</a></li>
+            <li><a href="#link">Link</a></li>
+            <li><a href="#scales">Layout on the token scales</a></li>
+            <li><a href="#primitives">Box, Stack, Flex and Grid</a></li>
+            <li><a href="#composites">The composites</a></li>
+            <li><a href="#together">Putting them together</a></li>
         </ul>
-      </aside>
-    </div>
-    <footer class="lms-footer">
-  <p><a href="/agent/SKILL.md">SKILL.md</a><span> · <a href="/llms.txt">llms.txt</a></span> · <a href="/sitemap.xml">Sitemap</a> · <a href="/examples/first-page.html">Browser example</a></p>
-  <p>For agents: <a href="/ui/actions-and-layout/llms.txt">/ui/actions-and-layout/llms.txt</a> is this page as plain text, hand-written. No Node, no React.</p>
-  
+    </aside>
+</div>
+<footer class="lms-footer">
+    <p><a href="/agent/SKILL.md">SKILL.md</a><span> · <a href="/llms.txt">llms.txt</a></span> · <a href="/sitemap.xml">Sitemap</a>
+        · <a href="/examples/first-page.html">Browser example</a></p>
+    <p>For agents: <a href="/ui/actions-and-layout/llms.txt">/ui/actions-and-layout/llms.txt</a> is this page as plain
+        text, hand-written. No Node, no React.</p>
+
 </footer>
-  </body>
+</body>
 </html>
