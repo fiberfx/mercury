@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mercury Is Agentic"
+  short_description: "Improve website agent readiness with verified PTE"
+  default_prompt: "Use $mercury-is-agentic to audit this website, implement justified readiness improvements with PTE, and verify its fresh Is Agentic score."
