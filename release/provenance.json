@@ -42,6 +42,31 @@
       "en",
       "ru"
     ],
-    "publication": "awaiting live release verification"
+    "publication": {
+      "verifiedAt": "2026-11-06T12:17:31.053573+00:00",
+      "sourceRevision": "60d852105d4f0c55440ec7f1e4da3a8649c739e4",
+      "publicArtifactCommit": "ef4f07c",
+      "flyApp": "echd-os",
+      "flyRelease": 53,
+      "status": "published and live behavior verified",
+      "publicationBoundary": "2026-11-06T12:05:26Z",
+      "deploymentUrl": "https://fly.io/apps/echd-os/deployments/2288242",
+      "liveBookChecks": 34,
+      "liveMcpChecks": 74,
+      "artifactHashesMatched": 15,
+      "recursiveDiscovery": {
+        "nodes": 17,
+        "edges": 191,
+        "errors": 0
+      },
+      "readiness": {
+        "score": 100,
+        "scannedAt": "2026-11-06T08:26:35.635Z",
+        "freshness": "before_boundary",
+        "status": "post-release verification blocked by cached external report",
+        "action": "Official Rescan completed; reload and report API still returned the pre-release snapshot.",
+        "nextCheck": "Request an official rescan after the documented cache window; accept only a completed report later than publicationBoundary."
+      }
+    }
   }
 }
