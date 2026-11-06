@@ -28,3 +28,5 @@ Do not offer a working export until its artifact can be opened. Clipboard copy i
 For the documentation-interface edition, verify all nine numbered chapters, their tables and reference links, and the final evidence/limits section. Preserve its distinction between browser observations and broader accessibility claims. A redesigned cover or summary must not displace the full text.
 
 Choose a relevant negative case: an intentionally invalid token must not enter exports, a missing chapter must fail completeness review, an overflowing table must trigger layout correction, or an absent font must leave the document readable. Keep source checks, browser checks, PDF inspection and assistive-technology sessions separate in the evidence report.
+
+When a reader is published through a container build, verify the same context boundary as deployment: exact revision, working directory and ignore rules. A prepared tar stream can bypass the client’s ignore filtering and conceal missing allowlisted inputs. Keep shared packaging helpers and notices explicit, exclude internal workbench sources, and test the filtered directory context before calling a local build deployment-ready.
