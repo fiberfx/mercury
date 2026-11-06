@@ -13,7 +13,7 @@ For a new playground with live controls and a generated prompt, the available `m
 
 Inspect the host route, entry point, styles, dependency manifests, and repository instructions before choosing an implementation. Keep an existing framework or build workflow unless migration is requested. A Mercury distribution bundle may contain documentation and a starter without the full module source tree.
 
-Find the actual `@fiberfx/ui` and `@fiberfx/hyperscript` versions. For each component being changed, inspect its public exports, types, implementation, and co-located `.prompt.md` when available. Use the matching bundled documentation when source is absent. Resolve stale examples against those contracts; do not invent a prop, component, token, or package location.
+Find the actual `@fiberfx/ui` and `@fiberfx/hyperscript` versions. For each component being changed, inspect its public exports, types, implementation, and co-located `.prompt.md` when available. Use the matching bundled documentation when source is absent. Resolve stale examples against those contracts; do not invent a prop, component, token, or package location. If prose and implementation disagree, record the version and discrepancy, inspect the affected behavior, and keep the explanation qualified until resolved. A successful import cannot resolve a behavioral disagreement.
 
 Choose the smallest supported route:
 
