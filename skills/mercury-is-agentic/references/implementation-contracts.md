@@ -16,6 +16,8 @@ Follow the current [llms.txt proposal](https://llmstxt.org/). The reviewed v2 st
 
 When useful, generate a bounded `llms-full.txt` from the same public content. Do not leak drafts, private explorers, environment values or source-only prompts. Serve honest content types. If supporting `Accept: text/markdown`, implement negotiation—including quality preferences—and `Vary: Accept`; test both representations through the cache. Publish discoverable alternate/describedby links where supported. HTML and Markdown must agree on facts, permissions and availability.
 
+For multilingual publications, verify the actual content language, localized title/headings and corresponding discovery links for each published locale. Use the site’s supported canonical/hreflang policy; advertise only real counterparts. A translated navigation shell over untranslated content is not a complete edition. Keep code/identifiers and source qualifications faithful, and label original-language downloads accurately. Reader preferences must not rewrite the machine-readable source.
+
 Generate [sitemaps](https://www.sitemaps.org/protocol.html) from public canonical routes, with the proper namespace, escaping and accurate modification dates. Handle sitemap indexes where needed; do not list private pages or invent freshness. Validate the declared format instead of merely checking for status 200.
 
 ## 3. Identity, trust and structured data
