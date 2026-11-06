@@ -4,7 +4,7 @@
 
 Keep the source text central, with ordinary chapter links and optional search. Search should reveal real matches, identify no-results state, and preserve a path back to the full book. A compact contents rail and collapsible appearance settings are useful choices, not standards. Keep settings and token experiments visually subordinate to reading; preserve focus and reading position when values update. Keep action names meaningful when responsive layouts hide visible labels; preserve modified-click and browser-history behavior on chapter links.
 
-Provide labeled native or genuine Mercury controls for font, text size, unitless leading and ch measure. Defaults follow the supplied book. Apply reading preferences separately from source tables. Remember valid preferences locally when useful, tolerate unavailable storage or malformed saved data, and offer “Reset to Mercury.” Do not request remote fonts merely to populate a selector; use supplied DM Sans and available system alternatives with fallbacks.
+Provide labeled native or genuine Mercury controls for font, text size, unitless leading and ch measure. Defaults follow the supplied book. Apply reading preferences separately from source tables. Remember valid preferences locally when useful, tolerate unavailable storage or malformed saved data, and offer a clearly named reset to the source defaults (“Reset to Mercury” for this example). Do not request remote fonts merely to populate a selector; use supplied DM Sans and available system alternatives with fallbacks.
 
 ## Units, color and SVG
 
@@ -46,3 +46,5 @@ W3C Understanding pages explain requirements; APG offers interaction guidance. N
 Scope evidence honestly: computed contrast does not prove reading order, a screenshot does not prove keyboard operation, and a browser stress check does not replace an assistive-technology session.
 
 For print views, explicitly reset paper, ink, muted text and tinted surfaces; changing only page foreground/background can leave dark-mode table headers unreadable. Check the full source introduction and every chapter in the print representation.
+
+Measure the actual paragraphs, labels and code spans after applying preferences, not only their parent container. Library typography may set an explicit paragraph size or leading that defeats inheritance; make the app-owned reading boundary inherit intentionally and verify computed text values. Keep status feedback out of the reading path, and provide a reachable return action after long mobile settings.

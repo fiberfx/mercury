@@ -1,13 +1,13 @@
 ---
 name: mercury-brand-book
-description: Author, revise, and deliver Mercury brand books and interactive design-book readers with source-faithful typography, SVG identity, semantic tokens, accessible customization, and verified format exports. Use for Mercury brand guidance and its reader; use the available format tools for requested PDF, Word, or slide outputs.
+description: Build, revise, and deliver brand books in multiple formats and interactive readers using Mercury UI, source-faithful typography, SVG identity, semantic tokens, and accessible customization. Use for brand guidance, design-book readers, and requested HTML, PDF, Word, slide, or token editions.
 metadata:
   short-description: Mercury brand books and interactive readers
 ---
 
 # Mercury Brand Book
 
-Make Mercury guidance readable, editable, and traceable to the actual design system. Preserve the supplied book and distinguish established identity, observed implementation, proposed guidance, and verification limits. A reader is a presentation of that source; personal settings and token experiments do not change the approved brand.
+Make brand guidance readable, editable, and traceable to the actual design system. Mercury supplies the reader components; the supplied brand supplies the identity. For another brand, preserve its own fonts, marks, voice and palette instead of imposing the Mercury example. Preserve the supplied book and distinguish established identity, observed implementation, proposed guidance, and verification limits. A reader is a presentation of that source; personal settings and token experiments do not change the approved brand.
 
 ## Choose the useful increment
 
