@@ -1,862 +1,755 @@
-<!doctype html>
-<html lang="ru" class="lms">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Выберите способ установки mx · Mercury</title>
-    <meta name="description"
-          content="Нативный архив mx для Linux x86_64 и стартовое приложение Mercury: проверка SHA-256 и установка зависимостей без Node, npm CLI, Rust и BEAM.">
-
-    <link rel="canonical" href="https://mercury.jonnify.com/ru/start/install-mx">
-    <link rel="describedby" type="text/plain" href="/ru/start/install-mx/llms.txt">
-    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
-    <meta property="og:type" content="article">
-    <meta property="og:site_name" content="Mercury">
-    <meta property="og:title" content="Выберите способ установки mx · Mercury">
-    <meta property="og:description"
-          content="Нативный архив mx для Linux x86_64 и стартовое приложение Mercury: проверка SHA-256 и установка зависимостей без Node, npm CLI, Rust и BEAM.">
-    <meta property="og:url" content="https://mercury.jonnify.com/ru/start/install-mx">
-    <meta property="og:image" content="https://mercury.jonnify.com/_lms/assets/mercury-hero.png">
-    <meta property="og:image:alt" content="Mercury">
-    <script type="application/ld+json">[
-        {
-            "@context": "https://schema.org",
-            "@type": "TechArticle",
-            "description": "Нативный архив mx для Linux x86_64 и стартовое приложение Mercury: проверка SHA-256 и установка зависимостей без Node, npm CLI, Rust и BEAM.",
-            "inLanguage": "ru",
-            "name": "Выберите способ установки mx",
-            "url": "https://mercury.jonnify.com/ru/start/install-mx"
-        },
-        {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-                {
-                    "@type": "ListItem",
-                    "item": "https://mercury.jonnify.com/",
-                    "name": "Mercury",
-                    "position": 1
-                },
-                {
-                    "@type": "ListItem",
-                    "item": "https://mercury.jonnify.com/ru/start/install-mx",
-                    "name": "Выберите способ установки mx",
-                    "position": 2
-                }
-            ]
-        }
-    ]</script>
-    <meta name="color-scheme" content="light dark">
-
-    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#111113" media="(prefers-color-scheme: dark)">
-    <style>html {
-        background-color: rgb(255 255 255)
-    }
-
-    @media (prefers-color-scheme: dark) {
-        html {
-            background-color: rgb(17 17 19)
-        }
-    }</style>
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/start/install-mx">
-    <link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/start/install-mx">
-    <link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/start/install-mx">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap">
-    <link rel="stylesheet" href="/_lms/assets/lms.css">
-    <link rel="stylesheet" href="/_lms/assets/shell.css">
-
+<!doctype html><html lang="ru" class="lms">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="is-agentic-site-type" content="content">
+  <title>Выберите способ установки mx · Mercury</title>
+  <meta name="description" content="Нативный архив mx для Linux x86_64 и стартовое приложение Mercury: проверка SHA-256 и установка зависимостей без Node, npm CLI, Rust и BEAM.">
+  
+  <link rel="canonical" href="https://mercury.jonnify.com/ru/start/install-mx">
+  <link rel="describedby" type="text/plain" href="/ru/start/install-mx/llms.txt">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+  <link rel="mcp" href="https://mercury.jonnify.com/mcp">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Mercury">
+  <meta property="og:title" content="Выберите способ установки mx · Mercury">
+  <meta property="og:description" content="Нативный архив mx для Linux x86_64 и стартовое приложение Mercury: проверка SHA-256 и установка зависимостей без Node, npm CLI, Rust и BEAM.">
+  <meta property="og:url" content="https://mercury.jonnify.com/ru/start/install-mx">
+  <meta property="og:image" content="https://mercury.jonnify.com/_lms/assets/mercury-hero.png">
+  <meta property="og:image:alt" content="Mercury">
+  <script type="application/ld+json">[{"@context":"https://schema.org","@type":"TechArticle","description":"Нативный архив mx для Linux x86_64 и стартовое приложение Mercury: проверка SHA-256 и установка зависимостей без Node, npm CLI, Rust и BEAM.","inLanguage":"ru","name":"Выберите способ установки mx","url":"https://mercury.jonnify.com/ru/start/install-mx"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://mercury.jonnify.com/","name":"Mercury","position":1},{"@type":"ListItem","item":"https://mercury.jonnify.com/ru/start/install-mx","name":"Выберите способ установки mx","position":2}]}]</script>
+  <meta name="color-scheme" content="light dark">
+  
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#111113" media="(prefers-color-scheme: dark)">
+  <style>html{background-color:rgb(255 255 255)}@media (prefers-color-scheme: dark){html{background-color:rgb(17 17 19)}}</style>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/start/install-mx"><link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/start/install-mx"><link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/start/install-mx">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="/_lms/assets/lms.css">
+  <link rel="stylesheet" href="/_lms/assets/shell.css">
+  
 </head>
-<body class="lms">
-<a class="lms-skip" href="#main">Перейти к содержанию</a>
+  <body class="lms">
+    <a class="lms-skip" href="#main">Перейти к содержанию</a>
 <header class="lms-header">
-    <a class="lms-brand" href="/ru" aria-label="Mercury, главная">
-        <svg viewBox="5 9 30 22" width="30" height="22" aria-hidden="true" focusable="false">
-            <g fill="none" stroke-width="3" stroke-linecap="round">
-                <path d="M7 29V15.5c0-2.5 2-4.5 4.5-4.5S16 13 16 15.5V29M16 16.5c0-3 2-5.5 4.5-5.5"
-                      stroke="currentColor"></path>
-                <path d="M23 16l10 13M33 16L23 29" stroke="rgb(var(--lms-accent))"></path>
-            </g>
-        </svg>
-        <span>Mercury</span>
+  <a class="lms-brand" href="/ru" aria-label="Mercury, главная">
+    <svg viewBox="5 9 30 22" width="30" height="22" aria-hidden="true" focusable="false"><g fill="none" stroke-width="3" stroke-linecap="round"><path d="M7 29V15.5c0-2.5 2-4.5 4.5-4.5S16 13 16 15.5V29M16 16.5c0-3 2-5.5 4.5-5.5" stroke="currentColor"></path><path d="M23 16l10 13M33 16L23 29" stroke="rgb(var(--lms-accent))"></path></g></svg>
+    <span>Mercury</span>
+  </a>
+  <nav class="lms-nav" aria-label="Сайт">
+    <a href="/ru#principles">Принципы</a><a href="/ru#foundations">Основы</a><a href="/ru#components">Компоненты</a><a href="/ru#usage">Использование</a>
+  </nav>
+  <div class="lms-actions">
+    <details class="lms-lang">
+  <summary aria-label="Язык">Русский</summary>
+  <ul>
+    <li>
+      <a href="/start/install-mx" hreflang="en" lang="en">English</a>
+      
+    </li><li>
+      <a href="/ru/start/install-mx" hreflang="ru" lang="ru" aria-current="true">Русский</a>
+      
+    </li>
+  </ul>
+</details>
+    <a class="lms-github" href="/ru/start/install-mx" aria-label="Установить Mercury" title="Установить Mercury">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
     </a>
-    <nav class="lms-nav" aria-label="Сайт">
-        <a href="/ru#principles">Принципы</a><a href="/ru#foundations">Основы</a><a href="/ru#components">Компоненты</a><a
-            href="/ru#usage">Использование</a>
-    </nav>
-    <div class="lms-actions">
-        <details class="lms-lang">
-            <summary aria-label="Язык">Русский</summary>
-            <ul>
-                <li>
-                    <a href="/start/install-mx" hreflang="en" lang="en">English</a>
-
-                </li>
-                <li>
-                    <a href="/ru/start/install-mx" hreflang="ru" lang="ru" aria-current="true">Русский</a>
-
-                </li>
-            </ul>
-        </details>
-        <a class="lms-github" href="/ru/start/install-mx" aria-label="Установить Mercury" title="Установить Mercury">
-            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
-                <path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4" fill="none" stroke="currentColor" stroke-width="1.8"
-                      stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-        </a>
-        <form class="lms-theme" method="post" action="/_lms/theme">
-            <input type="hidden" name="back" value="/ru/start/install-mx">
-            <button class="lms-theme-to-dark" type="submit" name="set" value="dark" aria-label="Тёмная тема"
-                    title="Тёмная тема">
-                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
-                    <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                          stroke-linejoin="round" d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"></path>
-                </svg>
-            </button>
-            <button class="lms-theme-to-light" type="submit" name="set" value="light" aria-label="Светлая тема"
-                    title="Светлая тема">
-                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
-                    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
-                        <circle cx="12" cy="12" r="4"></circle>
-                        <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
-                    </g>
-                </svg>
-            </button>
-        </form>
-        <a class="lms-open-docs" href="/ru/start">Документация</a>
-        <details class="lms-drawer">
-            <summary>
-                <span class="lms-menu-label">Меню</span>
-                <svg class="lms-menu-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"
-                     focusable="false">
-                    <path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="1.8"
-                          stroke-linecap="round"></path>
-                </svg>
-            </summary>
-            <div class="lms-drawer-panel">
-                <nav class="lms-menu-links" aria-label="Сайт">
-                    <a class="lms-menu-docs" href="/ru/start">Документация</a>
-                    <a href="/ru#principles">Принципы</a><a href="/ru#foundations">Основы</a><a href="/ru#components">Компоненты</a><a
-                        href="/ru#usage">Использование</a>
-                    <a href="/ru/start/install-mx">Установить Mercury</a>
-                </nav>
-                <div class="lms-menu-language">
-                    <details class="lms-lang">
-                        <summary aria-label="Язык">Русский</summary>
-                        <ul>
-                            <li>
-                                <a href="/start/install-mx" hreflang="en" lang="en">English</a>
-
-                            </li>
-                            <li>
-                                <a href="/ru/start/install-mx" hreflang="ru" lang="ru" aria-current="true">Русский</a>
-
-                            </li>
-                        </ul>
-                    </details>
-                </div>
-                <nav aria-label="Курсы и страницы">
-                    <p class="lms-menu-heading">Курсы</p>
-                    <details class="lms-side-course" open>
-                        <summary>Начало</summary>
-                        <ul>
-                            <li><a href="/ru/start">Обзор</a></li>
-
-
-                            <li class="">
-                                <a href="/ru/start/browser">Страница в браузере</a>
-                            </li>
-
-                            <li class="lms-side-group">Из чего он состоит</li>
-                            <li class="">
-                                <a href="/ru/start/install-mx" aria-current="page">Выберите способ установки mx</a>
-                            </li>
-
-                            <li class="lms-side-group">Первые шаги</li>
-                            <li class="">
-                                <a href="/ru/start/stability">Стабильность: опубликовано, предварительная версия,
-                                    запланировано</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ru/start/agents">Создайте страницу с агентом</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ru/start/glossary">Глоссарий: термины этого сайта</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ru/start/philosophy">Философия: свои технологии, а не заимствованные</a>
-                            </li>
-
-                        </ul>
-                    </details>
-                    <details class="lms-side-course">
-                        <summary>mx</summary>
-                        <ul>
-                            <li><a href="/ru/mx">Обзор</a></li>
-
-                            <li class="lms-side-group">Установка mx</li>
-                            <li class="">
-                                <a href="/ru/mx/first-app">Первая страница Mercury</a>
-                            </li>
-
-                            <li class="lms-side-group">Главы</li>
-                            <li class="">
-                                <a href="/ru/mx/modules">Модули: mx.mod и mx.sum</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ru/mx/workspace">Рабочая область: mx.work</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ru/mx/dev">Цикл разработки и горячая замена</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ru/mx/build">Сборка и поставка: три вида сборки</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ru/mx/compile">Hypercompiler: по одному модулю</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ru/mx/tools">Инструменты: test, lsap и run</a>
-                            </li>
-
-                        </ul>
-                    </details>
-                    <details class="lms-side-course">
-                        <summary>Hyperscript</summary>
-                        <ul>
-                            <li><a href="/ru/hyperscript">Обзор</a></li>
-
-                            <li class="lms-side-group">Что такое Hyperscript</li>
-                            <li class="">
-                                <a href="/ru/hyperscript/dom">Контракт DOM</a>
-                            </li>
-
-                            <li class="lms-side-group">Главы</li>
-                            <li class="">
-                                <a href="/ru/hyperscript/components">Компоненты и render</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ru/hyperscript/hooks">Хуки: состояние и эффекты в функции</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ru/hyperscript/context">Контекст, порталы и memo</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ru/hyperscript/server">Рендеринг на сервере</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ru/hyperscript/testing">Тестирование и наблюдение</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ru/hyperscript/tested-component">Компонент с тестами</a>
-                            </li>
-
-                        </ul>
-                    </details>
-                    <details class="lms-side-course">
-                        <summary>UI</summary>
-                        <ul>
-                            <li><a href="/ru/ui">Обзор</a></li>
-
-                            <li class="lms-side-group">Главы</li>
-                            <li class="">
-                                <a href="/ru/ui/tokens-and-themes">UI0: токены и темы</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ru/ui/foundations">UI1: окружение поддерева</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ru/ui/actions-and-layout">UI2: действия и раскладка</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ru/ui/inputs-and-forms">UI3, поля ввода и формы</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ru/ui/selection">UI4, выбор значений</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ru/ui/feedback-and-data">UI5, обратная связь и отображение данных</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ru/ui/navigation">UI6, навигация</a>
-                            </li>
-
-                        </ul>
-                    </details>
-                    <details class="lms-side-course">
-                        <summary>Hypergraph</summary>
-                        <ul>
-                            <li><a href="/ru/hypergraph">Обзор</a></li>
-
-                            <li class="lms-side-group">Главы</li>
-                            <li class="">
-                                <a href="/ru/hypergraph/units">Единицы: store, event и effect</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ru/hypergraph/wiring">Связи: из единиц в граф</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ru/hypergraph/scopes">Области состояния: создать, завершить работу,
-                                    передать</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ru/hypergraph/observing">Наблюдение: watch, inspect, describe</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ru/hypergraph/errors">Виды, перенос контекста и ошибки</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ru/hypergraph/hot-replacement">Горячая замена: смена графа</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ru/hypergraph/server-rendering">Серверный рендеринг: своя область для каждого
-                                    запроса</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ru/hypergraph/testing">Тестирование модели: своя область для каждого теста</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ru/hypergraph/models">Большие модели: структура и идентичность</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ru/hypergraph/capstone">Итоговый пример: передача и восстановление модели</a>
-                            </li>
-
-                            <li class="lms-side-group">Переход с Effector</li>
-                            <li class="">
-                                <a href="/ru/hypergraph/coming-from-effector">Переход с Effector</a>
-                            </li>
-
-
-                            <li class="lms-side-sub">
-                                <a href="/ru/hypergraph/coming-from-effector/units-and-wiring">Единицы и связи</a>
-                            </li>
-
-
-                            <li class="lms-side-sub">
-                                <a href="/ru/hypergraph/coming-from-effector/scopes-and-testing">Области и
-                                    тестирование</a>
-                            </li>
-
-
-                            <li class="lms-side-sub">
-                                <a href="/ru/hypergraph/coming-from-effector/frameworks">Фреймворки после
-                                    effector-react</a>
-                            </li>
-
-                        </ul>
-                    </details>
-                    <details class="lms-side-course">
-                        <summary>Контент</summary>
-                        <ul>
-                            <li><a href="/ru/content">Обзор</a></li>
-
-                            <li class="lms-side-group">Карта курса</li>
-                            <li class="">
-                                <a href="/ru/content/documents">Документы страниц: узлы, схема и parseDocument</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ru/content/rendering">Рендеринг документа: renderDocument</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ru/content/blocks">Каталог блоков: девять групп, один реестр</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ru/content/references">Ссылки, возможности окружения и адаптивные значения</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ru/content/add-a-block">Добавление блока: итоговое задание</a>
-                            </li>
-
-                        </ul>
-                    </details>
-                    <details class="lms-side-course">
-                        <summary>Live Mercury</summary>
-                        <ul>
-                            <li><a href="/ru/live-mercury">Обзор</a></li>
-
-                            <li class="lms-side-group">Курс</li>
-                            <li class="">
-                                <a href="/ru/live-mercury/islands">Острова: элемент и его монтирование</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ru/live-mercury/liveview">Остров в LiveView: сокет, хуки и события</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ru/live-mercury/building">Сборка островов с mx: без Node</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ru/live-mercury/props-and-streams">Свойства и потоки: патчи по сети</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ru/live-mercury/server-rendering">Серверный рендеринг: что есть и чего пока
-                                    нет</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ru/live-mercury/testing">Тестирование островов: по обе стороны элемента</a>
-                            </li>
-
-                        </ul>
-                    </details>
-                </nav>
-            </div>
-        </details>
-    </div>
-</header>
-<div class="lms-frame">
-    <nav class="lms-side" aria-label="Курсы и страницы">
-        <details class="lms-side-course" open>
-            <summary>Начало</summary>
-            <ul>
-                <li><a href="/ru/start">Обзор</a></li>
-
-
-                <li class="">
-                    <a href="/ru/start/browser">Страница в браузере</a>
-                </li>
-
-                <li class="lms-side-group">Из чего он состоит</li>
-                <li class="">
-                    <a href="/ru/start/install-mx" aria-current="page">Выберите способ установки mx</a>
-                </li>
-
-                <li class="lms-side-group">Первые шаги</li>
-                <li class="">
-                    <a href="/ru/start/stability">Стабильность: опубликовано, предварительная версия, запланировано</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ru/start/agents">Создайте страницу с агентом</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ru/start/glossary">Глоссарий: термины этого сайта</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ru/start/philosophy">Философия: свои технологии, а не заимствованные</a>
-                </li>
-
-            </ul>
-        </details>
-        <details class="lms-side-course">
-            <summary>mx</summary>
-            <ul>
-                <li><a href="/ru/mx">Обзор</a></li>
-
-                <li class="lms-side-group">Установка mx</li>
-                <li class="">
-                    <a href="/ru/mx/first-app">Первая страница Mercury</a>
-                </li>
-
-                <li class="lms-side-group">Главы</li>
-                <li class="">
-                    <a href="/ru/mx/modules">Модули: mx.mod и mx.sum</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ru/mx/workspace">Рабочая область: mx.work</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ru/mx/dev">Цикл разработки и горячая замена</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ru/mx/build">Сборка и поставка: три вида сборки</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ru/mx/compile">Hypercompiler: по одному модулю</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ru/mx/tools">Инструменты: test, lsap и run</a>
-                </li>
-
-            </ul>
-        </details>
-        <details class="lms-side-course">
-            <summary>Hyperscript</summary>
-            <ul>
-                <li><a href="/ru/hyperscript">Обзор</a></li>
-
-                <li class="lms-side-group">Что такое Hyperscript</li>
-                <li class="">
-                    <a href="/ru/hyperscript/dom">Контракт DOM</a>
-                </li>
-
-                <li class="lms-side-group">Главы</li>
-                <li class="">
-                    <a href="/ru/hyperscript/components">Компоненты и render</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ru/hyperscript/hooks">Хуки: состояние и эффекты в функции</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ru/hyperscript/context">Контекст, порталы и memo</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ru/hyperscript/server">Рендеринг на сервере</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ru/hyperscript/testing">Тестирование и наблюдение</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ru/hyperscript/tested-component">Компонент с тестами</a>
-                </li>
-
-            </ul>
-        </details>
-        <details class="lms-side-course">
-            <summary>UI</summary>
-            <ul>
-                <li><a href="/ru/ui">Обзор</a></li>
-
-                <li class="lms-side-group">Главы</li>
-                <li class="">
-                    <a href="/ru/ui/tokens-and-themes">UI0: токены и темы</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ru/ui/foundations">UI1: окружение поддерева</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ru/ui/actions-and-layout">UI2: действия и раскладка</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ru/ui/inputs-and-forms">UI3, поля ввода и формы</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ru/ui/selection">UI4, выбор значений</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ru/ui/feedback-and-data">UI5, обратная связь и отображение данных</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ru/ui/navigation">UI6, навигация</a>
-                </li>
-
-            </ul>
-        </details>
-        <details class="lms-side-course">
-            <summary>Hypergraph</summary>
-            <ul>
-                <li><a href="/ru/hypergraph">Обзор</a></li>
-
-                <li class="lms-side-group">Главы</li>
-                <li class="">
-                    <a href="/ru/hypergraph/units">Единицы: store, event и effect</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ru/hypergraph/wiring">Связи: из единиц в граф</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ru/hypergraph/scopes">Области состояния: создать, завершить работу, передать</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ru/hypergraph/observing">Наблюдение: watch, inspect, describe</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ru/hypergraph/errors">Виды, перенос контекста и ошибки</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ru/hypergraph/hot-replacement">Горячая замена: смена графа</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ru/hypergraph/server-rendering">Серверный рендеринг: своя область для каждого запроса</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ru/hypergraph/testing">Тестирование модели: своя область для каждого теста</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ru/hypergraph/models">Большие модели: структура и идентичность</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ru/hypergraph/capstone">Итоговый пример: передача и восстановление модели</a>
-                </li>
-
-                <li class="lms-side-group">Переход с Effector</li>
-                <li class="">
-                    <a href="/ru/hypergraph/coming-from-effector">Переход с Effector</a>
-                </li>
-
-
-                <li class="lms-side-sub">
-                    <a href="/ru/hypergraph/coming-from-effector/units-and-wiring">Единицы и связи</a>
-                </li>
-
-
-                <li class="lms-side-sub">
-                    <a href="/ru/hypergraph/coming-from-effector/scopes-and-testing">Области и тестирование</a>
-                </li>
-
-
-                <li class="lms-side-sub">
-                    <a href="/ru/hypergraph/coming-from-effector/frameworks">Фреймворки после effector-react</a>
-                </li>
-
-            </ul>
-        </details>
-        <details class="lms-side-course">
-            <summary>Контент</summary>
-            <ul>
-                <li><a href="/ru/content">Обзор</a></li>
-
-                <li class="lms-side-group">Карта курса</li>
-                <li class="">
-                    <a href="/ru/content/documents">Документы страниц: узлы, схема и parseDocument</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ru/content/rendering">Рендеринг документа: renderDocument</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ru/content/blocks">Каталог блоков: девять групп, один реестр</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ru/content/references">Ссылки, возможности окружения и адаптивные значения</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ru/content/add-a-block">Добавление блока: итоговое задание</a>
-                </li>
-
-            </ul>
-        </details>
-        <details class="lms-side-course">
-            <summary>Live Mercury</summary>
-            <ul>
-                <li><a href="/ru/live-mercury">Обзор</a></li>
-
-                <li class="lms-side-group">Курс</li>
-                <li class="">
-                    <a href="/ru/live-mercury/islands">Острова: элемент и его монтирование</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ru/live-mercury/liveview">Остров в LiveView: сокет, хуки и события</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ru/live-mercury/building">Сборка островов с mx: без Node</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ru/live-mercury/props-and-streams">Свойства и потоки: патчи по сети</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ru/live-mercury/server-rendering">Серверный рендеринг: что есть и чего пока нет</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ru/live-mercury/testing">Тестирование островов: по обе стороны элемента</a>
-                </li>
-
-            </ul>
-        </details>
-    </nav>
-    <main id="main" class="lms-main">
-        <nav class="lms-crumbs" aria-label="Навигационная цепочка">
-            <ol>
-
-
-                <li><a href="/ru/start">Начало</a></li>
-
-
-                <li>Из чего он состоит</li>
-
-                <li aria-current="page">Выберите способ установки mx</li>
-
-
-            </ol>
+    <form class="lms-theme" method="post" action="/_lms/theme">
+      <input type="hidden" name="back" value="/ru/start/install-mx">
+      <button class="lms-theme-to-dark" type="submit" name="set" value="dark" aria-label="Тёмная тема" title="Тёмная тема">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"></path></svg>
+      </button>
+      <button class="lms-theme-to-light" type="submit" name="set" value="light" aria-label="Светлая тема" title="Светлая тема">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></g></svg>
+      </button>
+    </form>
+    <a class="lms-open-docs" href="/ru/book">Дизайн книга</a>
+    <details class="lms-drawer">
+      <summary>
+        <span class="lms-menu-label">Меню</span>
+        <svg class="lms-menu-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
+      </summary>
+      <div class="lms-drawer-panel">
+        <nav class="lms-menu-links" aria-label="Сайт">
+          <a class="lms-menu-docs" href="/ru/book">Дизайн книга</a>
+          <a href="/ru#principles">Принципы</a><a href="/ru#foundations">Основы</a><a href="/ru#components">Компоненты</a><a href="/ru#usage">Использование</a>
+          <a href="/ru/start/install-mx">Установить Mercury</a>
         </nav>
-
+        <div class="lms-menu-language">
+          <details class="lms-lang">
+  <summary aria-label="Язык">Русский</summary>
+  <ul>
+    <li>
+      <a href="/start/install-mx" hreflang="en" lang="en">English</a>
+      
+    </li><li>
+      <a href="/ru/start/install-mx" hreflang="ru" lang="ru" aria-current="true">Русский</a>
+      
+    </li>
+  </ul>
+</details>
+        </div>
+        <nav aria-label="Курсы и страницы">
+          <p class="lms-menu-heading">Курсы</p>
+          <details class="lms-side-course" open>
+  <summary>Начало</summary>
+  <ul>
+    <li><a href="/ru/start">Обзор</a></li>
+    
+      
+      <li class="">
+        <a href="/ru/start/browser">Страница в браузере</a>
+      </li>
+    
+      <li class="lms-side-group">Из чего он состоит</li>
+      <li class="">
+        <a href="/ru/start/install-mx" aria-current="page">Выберите способ установки mx</a>
+      </li>
+    
+      <li class="lms-side-group">Первые шаги</li>
+      <li class="">
+        <a href="/ru/start/stability">Стабильность: опубликовано, предварительная версия, запланировано</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/start/agents">Создайте страницу с агентом</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/start/glossary">Глоссарий: термины этого сайта</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/start/philosophy">Философия: свои технологии, а не заимствованные</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>mx</summary>
+  <ul>
+    <li><a href="/ru/mx">Обзор</a></li>
+    
+      <li class="lms-side-group">Установка mx</li>
+      <li class="">
+        <a href="/ru/mx/first-app">Первая страница Mercury</a>
+      </li>
+    
+      <li class="lms-side-group">Главы</li>
+      <li class="">
+        <a href="/ru/mx/modules">Модули: mx.mod и mx.sum</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/mx/workspace">Рабочая область: mx.work</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/mx/dev">Цикл разработки и горячая замена</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/mx/build">Сборка и поставка: три вида сборки</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/mx/compile">Hypercompiler: по одному модулю</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/mx/tools">Инструменты: test, lsap и run</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>Hyperscript</summary>
+  <ul>
+    <li><a href="/ru/hyperscript">Обзор</a></li>
+    
+      <li class="lms-side-group">Что такое Hyperscript</li>
+      <li class="">
+        <a href="/ru/hyperscript/dom">Контракт DOM</a>
+      </li>
+    
+      <li class="lms-side-group">Главы</li>
+      <li class="">
+        <a href="/ru/hyperscript/components">Компоненты и render</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hyperscript/hooks">Хуки: состояние и эффекты в функции</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hyperscript/context">Контекст, порталы и memo</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hyperscript/server">Рендеринг на сервере</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hyperscript/testing">Тестирование и наблюдение</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hyperscript/tested-component">Компонент с тестами</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>UI</summary>
+  <ul>
+    <li><a href="/ru/ui">Обзор</a></li>
+    
+      <li class="lms-side-group">Главы</li>
+      <li class="">
+        <a href="/ru/ui/tokens-and-themes">UI0: токены и темы</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/ui/foundations">UI1: окружение поддерева</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/ui/actions-and-layout">UI2: действия и раскладка</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/ui/inputs-and-forms">UI3, поля ввода и формы</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/ui/selection">UI4, выбор значений</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/ui/feedback-and-data">UI5, обратная связь и отображение данных</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/ui/navigation">UI6, навигация</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>Hypergraph</summary>
+  <ul>
+    <li><a href="/ru/hypergraph">Обзор</a></li>
+    
+      <li class="lms-side-group">Главы</li>
+      <li class="">
+        <a href="/ru/hypergraph/units">Единицы: store, event и effect</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hypergraph/wiring">Связи: из единиц в граф</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hypergraph/scopes">Области состояния: создать, завершить работу, передать</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hypergraph/observing">Наблюдение: watch, inspect, describe</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hypergraph/errors">Виды, перенос контекста и ошибки</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hypergraph/hot-replacement">Горячая замена: смена графа</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hypergraph/server-rendering">Серверный рендеринг: своя область для каждого запроса</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hypergraph/testing">Тестирование модели: своя область для каждого теста</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hypergraph/models">Большие модели: структура и идентичность</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hypergraph/capstone">Итоговый пример: передача и восстановление модели</a>
+      </li>
+    
+      <li class="lms-side-group">Переход с Effector</li>
+      <li class="">
+        <a href="/ru/hypergraph/coming-from-effector">Переход с Effector</a>
+      </li>
+    
+      
+      <li class="lms-side-sub">
+        <a href="/ru/hypergraph/coming-from-effector/units-and-wiring">Единицы и связи</a>
+      </li>
+    
+      
+      <li class="lms-side-sub">
+        <a href="/ru/hypergraph/coming-from-effector/scopes-and-testing">Области и тестирование</a>
+      </li>
+    
+      
+      <li class="lms-side-sub">
+        <a href="/ru/hypergraph/coming-from-effector/frameworks">Фреймворки после effector-react</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>Контент</summary>
+  <ul>
+    <li><a href="/ru/content">Обзор</a></li>
+    
+      <li class="lms-side-group">Карта курса</li>
+      <li class="">
+        <a href="/ru/content/documents">Документы страниц: узлы, схема и parseDocument</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/content/rendering">Рендеринг документа: renderDocument</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/content/blocks">Каталог блоков: девять групп, один реестр</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/content/references">Ссылки, возможности окружения и адаптивные значения</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/content/add-a-block">Добавление блока: итоговое задание</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>Live Mercury</summary>
+  <ul>
+    <li><a href="/ru/live-mercury">Обзор</a></li>
+    
+      <li class="lms-side-group">Курс</li>
+      <li class="">
+        <a href="/ru/live-mercury/islands">Острова: элемент и его монтирование</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/live-mercury/liveview">Остров в LiveView: сокет, хуки и события</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/live-mercury/building">Сборка островов с mx: без Node</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/live-mercury/props-and-streams">Свойства и потоки: патчи по сети</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/live-mercury/server-rendering">Серверный рендеринг: что есть и чего пока нет</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/live-mercury/testing">Тестирование островов: по обе стороны элемента</a>
+      </li>
+    
+  </ul>
+</details>
+        </nav>
+      </div>
+    </details>
+  </div>
+</header>
+    <div class="lms-frame">
+      <nav class="lms-side" aria-label="Курсы и страницы">
+        <details class="lms-side-course" open>
+  <summary>Начало</summary>
+  <ul>
+    <li><a href="/ru/start">Обзор</a></li>
+    
+      
+      <li class="">
+        <a href="/ru/start/browser">Страница в браузере</a>
+      </li>
+    
+      <li class="lms-side-group">Из чего он состоит</li>
+      <li class="">
+        <a href="/ru/start/install-mx" aria-current="page">Выберите способ установки mx</a>
+      </li>
+    
+      <li class="lms-side-group">Первые шаги</li>
+      <li class="">
+        <a href="/ru/start/stability">Стабильность: опубликовано, предварительная версия, запланировано</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/start/agents">Создайте страницу с агентом</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/start/glossary">Глоссарий: термины этого сайта</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/start/philosophy">Философия: свои технологии, а не заимствованные</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>mx</summary>
+  <ul>
+    <li><a href="/ru/mx">Обзор</a></li>
+    
+      <li class="lms-side-group">Установка mx</li>
+      <li class="">
+        <a href="/ru/mx/first-app">Первая страница Mercury</a>
+      </li>
+    
+      <li class="lms-side-group">Главы</li>
+      <li class="">
+        <a href="/ru/mx/modules">Модули: mx.mod и mx.sum</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/mx/workspace">Рабочая область: mx.work</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/mx/dev">Цикл разработки и горячая замена</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/mx/build">Сборка и поставка: три вида сборки</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/mx/compile">Hypercompiler: по одному модулю</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/mx/tools">Инструменты: test, lsap и run</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>Hyperscript</summary>
+  <ul>
+    <li><a href="/ru/hyperscript">Обзор</a></li>
+    
+      <li class="lms-side-group">Что такое Hyperscript</li>
+      <li class="">
+        <a href="/ru/hyperscript/dom">Контракт DOM</a>
+      </li>
+    
+      <li class="lms-side-group">Главы</li>
+      <li class="">
+        <a href="/ru/hyperscript/components">Компоненты и render</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hyperscript/hooks">Хуки: состояние и эффекты в функции</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hyperscript/context">Контекст, порталы и memo</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hyperscript/server">Рендеринг на сервере</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hyperscript/testing">Тестирование и наблюдение</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hyperscript/tested-component">Компонент с тестами</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>UI</summary>
+  <ul>
+    <li><a href="/ru/ui">Обзор</a></li>
+    
+      <li class="lms-side-group">Главы</li>
+      <li class="">
+        <a href="/ru/ui/tokens-and-themes">UI0: токены и темы</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/ui/foundations">UI1: окружение поддерева</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/ui/actions-and-layout">UI2: действия и раскладка</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/ui/inputs-and-forms">UI3, поля ввода и формы</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/ui/selection">UI4, выбор значений</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/ui/feedback-and-data">UI5, обратная связь и отображение данных</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/ui/navigation">UI6, навигация</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>Hypergraph</summary>
+  <ul>
+    <li><a href="/ru/hypergraph">Обзор</a></li>
+    
+      <li class="lms-side-group">Главы</li>
+      <li class="">
+        <a href="/ru/hypergraph/units">Единицы: store, event и effect</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hypergraph/wiring">Связи: из единиц в граф</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hypergraph/scopes">Области состояния: создать, завершить работу, передать</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hypergraph/observing">Наблюдение: watch, inspect, describe</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hypergraph/errors">Виды, перенос контекста и ошибки</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hypergraph/hot-replacement">Горячая замена: смена графа</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hypergraph/server-rendering">Серверный рендеринг: своя область для каждого запроса</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hypergraph/testing">Тестирование модели: своя область для каждого теста</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hypergraph/models">Большие модели: структура и идентичность</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/hypergraph/capstone">Итоговый пример: передача и восстановление модели</a>
+      </li>
+    
+      <li class="lms-side-group">Переход с Effector</li>
+      <li class="">
+        <a href="/ru/hypergraph/coming-from-effector">Переход с Effector</a>
+      </li>
+    
+      
+      <li class="lms-side-sub">
+        <a href="/ru/hypergraph/coming-from-effector/units-and-wiring">Единицы и связи</a>
+      </li>
+    
+      
+      <li class="lms-side-sub">
+        <a href="/ru/hypergraph/coming-from-effector/scopes-and-testing">Области и тестирование</a>
+      </li>
+    
+      
+      <li class="lms-side-sub">
+        <a href="/ru/hypergraph/coming-from-effector/frameworks">Фреймворки после effector-react</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>Контент</summary>
+  <ul>
+    <li><a href="/ru/content">Обзор</a></li>
+    
+      <li class="lms-side-group">Карта курса</li>
+      <li class="">
+        <a href="/ru/content/documents">Документы страниц: узлы, схема и parseDocument</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/content/rendering">Рендеринг документа: renderDocument</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/content/blocks">Каталог блоков: девять групп, один реестр</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/content/references">Ссылки, возможности окружения и адаптивные значения</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/content/add-a-block">Добавление блока: итоговое задание</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>Live Mercury</summary>
+  <ul>
+    <li><a href="/ru/live-mercury">Обзор</a></li>
+    
+      <li class="lms-side-group">Курс</li>
+      <li class="">
+        <a href="/ru/live-mercury/islands">Острова: элемент и его монтирование</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/live-mercury/liveview">Остров в LiveView: сокет, хуки и события</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/live-mercury/building">Сборка островов с mx: без Node</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/live-mercury/props-and-streams">Свойства и потоки: патчи по сети</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/live-mercury/server-rendering">Серверный рендеринг: что есть и чего пока нет</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ru/live-mercury/testing">Тестирование островов: по обе стороны элемента</a>
+      </li>
+    
+  </ul>
+</details>
+      </nav>
+      <main id="main" class="lms-main">
+        <nav class="lms-crumbs" aria-label="Навигационная цепочка">
+  <ol>
+    
+      
+      <li><a href="/ru/start">Начало</a></li>
+      
+    
+      
+      
+      <li>Из чего он состоит</li>
+    
+      <li aria-current="page">Выберите способ установки mx</li>
+      
+      
+    
+  </ol>
+</nav>
+        
         <h1 class="lms-title">Выберите способ <em>установки mx</em></h1>
-        <p class="lms-lede">Скачайте нативный mx и стартовое приложение с закреплёнными зависимостями в пустой
-            каталог.</p>
-        <article class="lms-body"><p>Для первой страницы нужны нативный исполняемый файл <code>mx</code> для Linux
-            x86_64 и стартовое приложение с закреплёнными зависимостями Mercury 4.0.0. Репозиторий, Rust, Node.js, npm
-            CLI, Elixir и BEAM не требуются. <code>mx</code> собирает JavaScript для браузера; браузер по-прежнему
-            исполняет JavaScript.</p>
-            <h2 id="routes">Выбор пути</h2>
-            <p>Сохраните работающий <code>mx</code> или инструменты существующего приложения. Для простой страницы без
-                CLI используйте <a href="/ru/start/browser" rel="noopener noreferrer">браузерный путь</a>. Для нативной
-                разработки на TSX выберите один из способов начальной установки ниже.</p>
-            <p><strong>Статус публикации:</strong> <code>@fiberfx/mx@0.1.0</code> и нативные архивы ещё ожидают
-                публикации и проверки установки у потребителя. Команды ниже задают предполагаемый порядок установки; имя
-                пакета или URL сами по себе не подтверждают доступность. Проверьте <a href="/downloads.json"
-                                                                                      rel="noopener noreferrer">метаданные
-                    выпуска</a> и остановитесь, если артефакта нет. Не сообщайте об успешной нативной установке без её
-                выполнения.</p>
-            <h2 id="npm">Начальная установка через npm</h2>
-            <p>Планируемый корневой пакет <code>@fiberfx/mx</code> содержит обёртку на Node и необязательные
-                платформенные пакеты. Для Linux x64 пакет <code>@fiberfx/mx-linux-x64</code> содержит нативные файлы;
-                обёртка находит установленный файл через <code>require.resolve</code> и запускает его. Не удаляйте Node:
-                каждый вызов установленного через npm <code>mx</code> проходит через эту обёртку. В npm-пути нет <code>postinstall</code>
-                и загрузки бинарных файлов из GitHub Releases: платформенный пакет получает npm. Не исключайте
-                необязательные зависимости. Проверки есть только для бинарного файла Linux x64; ему нужна glibc 2.39 или
-                новее. Оба полученных исполняемых файла, mx и Hyperscript LSAP, требуют версию символа ELF <code>GLIBC_2.39</code>;
-                на машине сборки использовалась glibc 2.41. Это измеренные требования файлов, а не выполненная проверка
-                у потребителя с glibc 2.39. Другие платформенные пакеты запланированы, но не собраны и недоступны.
-                Поддержка других архитектур, musl, macOS и Windows не подтверждена.</p>
-            <p>После публикации, в каталоге без <code>mercury-native-tools</code>, используйте отдельный префикс:</p>
-            <pre><code class="language-sh">set -eu
+        <p class="lms-lede">Скачайте нативный mx и стартовое приложение с закреплёнными зависимостями в пустой каталог.</p>
+        <article class="lms-body"><p>Для первой страницы нужны нативный исполняемый файл <code>mx</code> для Linux x86_64 и стартовое приложение с закреплёнными зависимостями Mercury 4.0.0. Репозиторий, Rust, Node.js, npm CLI, Elixir и BEAM не требуются. <code>mx</code> собирает JavaScript для браузера; браузер по-прежнему исполняет JavaScript.</p>
+<h2 id="routes">Выбор пути</h2>
+<p>Сохраните работающий <code>mx</code> или инструменты существующего приложения. Для простой страницы без CLI используйте <a href="/ru/start/browser" rel="noopener noreferrer">браузерный путь</a>. Для нативной разработки на TSX выберите один из способов начальной установки ниже.</p>
+<p><strong>Статус публикации:</strong> <code>@fiberfx/mx@0.1.0</code> и нативные архивы ещё ожидают публикации и проверки установки у потребителя. Команды ниже задают предполагаемый порядок установки; имя пакета или URL сами по себе не подтверждают доступность. Проверьте <a href="/downloads.json" rel="noopener noreferrer">метаданные выпуска</a> и остановитесь, если артефакта нет. Не сообщайте об успешной нативной установке без её выполнения.</p>
+<h2 id="npm">Начальная установка через npm</h2>
+<p>Планируемый корневой пакет <code>@fiberfx/mx</code> содержит обёртку на Node и необязательные платформенные пакеты. Для Linux x64 пакет <code>@fiberfx/mx-linux-x64</code> содержит нативные файлы; обёртка находит установленный файл через <code>require.resolve</code> и запускает его. Не удаляйте Node: каждый вызов установленного через npm <code>mx</code> проходит через эту обёртку. В npm-пути нет <code>postinstall</code> и загрузки бинарных файлов из GitHub Releases: платформенный пакет получает npm. Не исключайте необязательные зависимости. Проверки есть только для бинарного файла Linux x64; ему нужна glibc 2.39 или новее. Оба полученных исполняемых файла, mx и Hyperscript LSAP, требуют версию символа ELF <code>GLIBC_2.39</code>; на машине сборки использовалась glibc 2.41. Это измеренные требования файлов, а не выполненная проверка у потребителя с glibc 2.39. Другие платформенные пакеты запланированы, но не собраны и недоступны. Поддержка других архитектур, musl, macOS и Windows не подтверждена.</p>
+<p>После публикации, в каталоге без <code>mercury-native-tools</code>, используйте отдельный префикс:</p>
+<pre><code class="language-sh">set -eu
 mkdir mercury-native-tools
 cd mercury-native-tools
 npm install --prefix "$PWD/.mx-tools" --global --ignore-scripts @fiberfx/mx@0.1.0
 export PATH="$PWD/.mx-tools/bin:$PATH"
 mx --version
 </code></pre>
-            <p>Префикс находится внутри нового каталога; <code>PATH</code> меняется только в текущей оболочке. Сохраните
-                пакетные файлы существующего проекта. После запуска mx получите стартовое приложение описанным ниже
-                способом, проверьте манифест выпуска и используйте <code>mx install</code>, <code>mx verify</code>,
-                <code>mx dev</code> и <code>mx build</code>. npm устанавливает обёртку на Node и нативный платформенный
-                пакет; для вызова mx через эту обёртку Node нужен и после установки. Архивный путь и образ запускают
-                нативные файлы без Node.</p>
-            <p>Если mx уже работает (в том числе после установки через npm), не заменяйте его архивной копией. После
-                публикации стартового архива скачайте только приложение и манифест в новый каталог:</p>
-            <pre><code class="language-sh">set -eu
+<p>Префикс находится внутри нового каталога; <code>PATH</code> меняется только в текущей оболочке. Сохраните пакетные файлы существующего проекта. После запуска mx получите стартовое приложение описанным ниже способом, проверьте манифест выпуска и используйте <code>mx install</code>, <code>mx verify</code>, <code>mx dev</code> и <code>mx build</code>. npm устанавливает обёртку на Node и нативный платформенный пакет; для вызова mx через эту обёртку Node нужен и после установки. Архивный путь и образ запускают нативные файлы без Node.</p>
+<p>Если mx уже работает (в том числе после установки через npm), не заменяйте его архивной копией. После публикации стартового архива скачайте только приложение и манифест в новый каталог:</p>
+<pre><code class="language-sh">set -eu
 mkdir mercury-native-app
 cd mercury-native-app
 curl -fLO https://mercury.jonnify.com/downloads/mercury-first-page.tar.gz
@@ -867,22 +760,13 @@ cd mercury-first-page
 mx install
 mx verify
 </code></pre>
-            <p>Перед распаковкой проверка должна вывести <code>mercury-first-page.tar.gz: OK</code>; <code>--ignore-missing</code>
-                пропускает строку нативного архива, который в этом пути не скачивается. Ошибка суммы останавливает
-                последовательность. Остальные команды ниже относятся к полной архивной установке.</p>
-            <h2 id="requirements">Что потребуется</h2>
-            <p>Для кандидата нативного архива нужна среда Linux x86_64 с glibc 2.39 или новее, командной оболочкой,
-                <code>curl</code>, <code>tar</code>, <code>sha256sum</code>, доступом по HTTPS и браузером для проверки
-                результата. Требуемая версия glibc зафиксирована в <code>DYNAMIC_DEPENDENCIES.txt</code> выпуска;
-                проверка у потребителя ещё не выполнена. Установка на macOS и Windows требует отдельных проверок; этот
-                Linux-файл там запускать не следует.</p>
-            <p><a href="/downloads.json" rel="noopener noreferrer">Метаданные выпуска</a> содержат адреса архивов,
-                контрольные суммы и ревизию исходников. Если загрузка не удалась, остановитесь: нельзя подменять
-                исполняемый файл случайной сборкой или продолжать с неполным архивом.</p>
-            <h2 id="install">Загрузка и проверка</h2>
-            <p>Запустите команды там, где ещё нет каталога <code>mercury-scratch</code>. Они создают новый каталог,
-                прекращают выполнение при ошибке и проверяют оба архива до распаковки и запуска:</p>
-            <pre><code class="language-sh">set -eu
+<p>Перед распаковкой проверка должна вывести <code>mercury-first-page.tar.gz: OK</code>; <code>--ignore-missing</code> пропускает строку нативного архива, который в этом пути не скачивается. Ошибка суммы останавливает последовательность. Остальные команды ниже относятся к полной архивной установке.</p>
+<h2 id="requirements">Что потребуется</h2>
+<p>Для кандидата нативного архива нужна среда Linux x86_64 с glibc 2.39 или новее, командной оболочкой, <code>curl</code>, <code>tar</code>, <code>sha256sum</code>, доступом по HTTPS и браузером для проверки результата. Требуемая версия glibc зафиксирована в <code>DYNAMIC_DEPENDENCIES.txt</code> выпуска; проверка у потребителя ещё не выполнена. Установка на macOS и Windows требует отдельных проверок; этот Linux-файл там запускать не следует.</p>
+<p><a href="/downloads.json" rel="noopener noreferrer">Метаданные выпуска</a> содержат адреса архивов, контрольные суммы и ревизию исходников. Если загрузка не удалась, остановитесь: нельзя подменять исполняемый файл случайной сборкой или продолжать с неполным архивом.</p>
+<h2 id="install">Загрузка и проверка</h2>
+<p>Запустите команды там, где ещё нет каталога <code>mercury-scratch</code>. Они создают новый каталог, прекращают выполнение при ошибке и проверяют оба архива до распаковки и запуска:</p>
+<pre><code class="language-sh">set -eu
 mkdir mercury-scratch
 cd mercury-scratch
 curl -fLO https://mercury.jonnify.com/downloads/mx-linux-x86_64.tar.gz
@@ -897,71 +781,40 @@ cd mercury-first-page
 mx install
 mx verify
 </code></pre>
-            <p>Обе строки проверки должны завершиться с <code>OK</code>. Отсутствующий файл или несовпадение суммы
-                останавливают последовательность. Нативный архив содержит <code>bin/mx</code> и сведения о выпуске и
-                лицензиях; архив приложения — каталог <code>mercury-first-page/</code>. <code>PATH</code> меняется
-                только в текущей оболочке. Файлы её настройки не затрагиваются.</p>
-            <p>В приложении есть <code>index.html</code>, <code>app/main.tsx</code>, <code>package.json</code>, <code>mx.mod</code>
-                и <code>mx.sum</code>. Зависимости <code>@fiberfx/hyperscript</code>, <code>@fiberfx/core</code> и
-                <code>@fiberfx/ui</code> закреплены на 4.0.0. Команда <code>mx install</code> получает пакеты через
-                публичный источник mx; <code>mx verify</code> сверяет установленные файлы с записанными суммами.
-                Сохраните <code>mx.sum</code>.</p>
-            <h2 id="next">Запуск первой страницы</h2>
-            <p>Из <code>mercury-first-page/</code> выполните:</p>
-            <pre><code class="language-sh">mx dev
+<p>Обе строки проверки должны завершиться с <code>OK</code>. Отсутствующий файл или несовпадение суммы останавливают последовательность. Нативный архив содержит <code>bin/mx</code> и сведения о выпуске и лицензиях; архив приложения — каталог <code>mercury-first-page/</code>. <code>PATH</code> меняется только в текущей оболочке. Файлы её настройки не затрагиваются.</p>
+<p>В приложении есть <code>index.html</code>, <code>app/main.tsx</code>, <code>package.json</code>, <code>mx.mod</code> и <code>mx.sum</code>. Зависимости <code>@fiberfx/hyperscript</code>, <code>@fiberfx/core</code> и <code>@fiberfx/ui</code> закреплены на 4.0.0. Команда <code>mx install</code> получает пакеты через публичный источник mx; <code>mx verify</code> сверяет установленные файлы с записанными суммами. Сохраните <code>mx.sum</code>.</p>
+<h2 id="next">Запуск первой страницы</h2>
+<p>Из <code>mercury-first-page/</code> выполните:</p>
+<pre><code class="language-sh">mx dev
 </code></pre>
-            <p>Откройте локальный адрес, который выведет mx. Остановите сервер сочетанием Ctrl-C и соберите
-                приложение:</p>
-            <pre><code class="language-sh">mx build
+<p>Откройте локальный адрес, который выведет mx. Остановите сервер сочетанием Ctrl-C и соберите приложение:</p>
+<pre><code class="language-sh">mx build
 </code></pre>
-            <p>В уроке <a href="/ru/mx/first-app" rel="noopener noreferrer">Первая страница Mercury</a> приведены код
-                компонента, ожидаемое поведение и проверки сборки.</p>
-            <h2 id="trust">Что подтверждают проверки</h2>
-            <p>Суммы архивов подтверждают совпадение скачанных байтов с опубликованным манифестом. Доверие к самому
-                манифесту по-прежнему зависит от HTTPS и издателя. Файл <code>mx.sum</code> закрепляет содержимое
-                зависимостей для последующих установок. Эти суммы не доказывают наличие записи в аутентифицированной
-                базе контрольных сумм. <code>mx verify</code> проверяет содержимое установленных пакетов, но не
-                взаимодействие со страницей.</p>
-            <h2 id="advanced">Добавление зависимостей</h2>
-            <p>Стартовому приложению с готовым <code>mx.sum</code> исключение не нужно. Если у новой версии пакета ещё
-                нет записи в <code>mx.sum</code>, mx может отказать с сообщением <code>nothing vouches for these
-                    bytes</code>. Предпочтительны доверенная закреплённая сумма или настроенная аутентифицированная база
-                контрольных сумм. Если вы осознанно принимаете публичный источник пакетов как основание для первой
-                загрузки, исключение на одну команду позволяет получить новые записи зависимостей <code>registry.npmjs.org/fiberfx/*</code>:
-            </p>
-            <pre><code class="language-sh">MXNOSUMDB=registry.npmjs.org/fiberfx/* mx mod tidy
+<p>В уроке <a href="/ru/mx/first-app" rel="noopener noreferrer">Первая страница Mercury</a> приведены код компонента, ожидаемое поведение и проверки сборки.</p>
+<h2 id="trust">Что подтверждают проверки</h2>
+<p>Суммы архивов подтверждают совпадение скачанных байтов с опубликованным манифестом. Доверие к самому манифесту по-прежнему зависит от HTTPS и издателя. Файл <code>mx.sum</code> закрепляет содержимое зависимостей для последующих установок. Эти суммы не доказывают наличие записи в аутентифицированной базе контрольных сумм. <code>mx verify</code> проверяет содержимое установленных пакетов, но не взаимодействие со страницей.</p>
+<h2 id="advanced">Добавление зависимостей</h2>
+<p>Стартовому приложению с готовым <code>mx.sum</code> исключение не нужно. Если у новой версии пакета ещё нет записи в <code>mx.sum</code>, mx может отказать с сообщением <code>nothing vouches for these bytes</code>. Предпочтительны доверенная закреплённая сумма или настроенная аутентифицированная база контрольных сумм. Если вы осознанно принимаете публичный источник пакетов как основание для первой загрузки, исключение на одну команду позволяет получить новые записи зависимостей <code>registry.npmjs.org/fiberfx/*</code>:</p>
+<pre><code class="language-sh">MXNOSUMDB=registry.npmjs.org/fiberfx/* mx mod tidy
 </code></pre>
-            <p>При этом команда пропускает аутентификацию через базу контрольных сумм для указанного пространства имён.
-                Проверьте и сохраните полученный <code>mx.sum</code>: последующее совпадение сумм не подтверждает задним
-                числом подлинность первой загрузки. Не экспортируйте переменную глобально и не добавляйте её в обычную
-                установку стартового приложения. Формат модуля описан в уроке <a href="/ru/mx/modules"
-                                                                                 rel="noopener noreferrer">Модули</a>.
-            </p></article>
+<p>При этом команда пропускает аутентификацию через базу контрольных сумм для указанного пространства имён. Проверьте и сохраните полученный <code>mx.sum</code>: последующее совпадение сумм не подтверждает задним числом подлинность первой загрузки. Не экспортируйте переменную глобально и не добавляйте её в обычную установку стартового приложения. Формат модуля описан в уроке <a href="/ru/mx/modules" rel="noopener noreferrer">Модули</a>.</p></article>
         <nav class="lms-pager" aria-label="Назад и далее">
-            <a class="lms-pager-prev" href="/ru/start/browser" rel="prev"><span>Назад</span>Страница в браузере</a>
-            <a class="lms-pager-next" href="/ru/start/stability" rel="next"><span>Далее</span>Стабильность:
-                опубликовано, предварительная версия, запланировано</a>
-        </nav>
-    </main>
-    <aside class="lms-toc" aria-label="На этой странице">
+  <a class="lms-pager-prev" href="/ru/start/browser" rel="prev"><span>Назад</span>Страница в браузере</a>
+  <a class="lms-pager-next" href="/ru/start/stability" rel="next"><span>Далее</span>Стабильность: опубликовано, предварительная версия, запланировано</a>
+</nav>
+      </main>
+      <aside class="lms-toc" aria-label="На этой странице">
         <p class="lms-toc-title">На этой странице</p>
         <ul>
-            <li><a href="#routes">Выбор пути</a></li>
-            <li><a href="#npm">Начальная установка через npm</a></li>
-            <li><a href="#requirements">Что потребуется</a></li>
-            <li><a href="#install">Загрузка и проверка</a></li>
-            <li><a href="#next">Запуск первой страницы</a></li>
-            <li><a href="#trust">Что подтверждают проверки</a></li>
-            <li><a href="#advanced">Добавление зависимостей</a></li>
+          <li><a href="#routes">Выбор пути</a></li><li><a href="#npm">Начальная установка через npm</a></li><li><a href="#requirements">Что потребуется</a></li><li><a href="#install">Загрузка и проверка</a></li><li><a href="#next">Запуск первой страницы</a></li><li><a href="#trust">Что подтверждают проверки</a></li><li><a href="#advanced">Добавление зависимостей</a></li>
         </ul>
-    </aside>
-</div>
-<footer class="lms-footer">
-    <p><a href="/agent/SKILL.md">SKILL.md</a><span> · <a href="/llms.txt">llms.txt</a></span> · <a href="/sitemap.xml">Sitemap</a>
-        · <a href="/examples/first-page.html">Пример в браузере</a></p>
-    <p>Для агентов: <a href="/ru/start/install-mx/llms.txt">/ru/start/install-mx/llms.txt</a> — текстовая версия этой
-        страницы, написанная вручную. Без Node и React.</p>
-
+      </aside>
+    </div>
+    <footer class="lms-footer">
+  <p><a href="/about">О Mercury</a> · <a href="/contact">Контакты</a> · <a href="/privacy">Конфиденциальность</a> · <a href="/reference">Mercury API</a> · <a href="/start/mcp">MCP</a></p>
+  <p><a href="/agent/SKILL.md">SKILL.md</a><span> · <a href="/llms.txt">llms.txt</a></span> · <a href="/sitemap.xml">Sitemap</a> · <a href="/examples/first-page.html">Пример в браузере</a></p>
+  <p>Для агентов: <a href="/ru/start/install-mx/llms.txt">/ru/start/install-mx/llms.txt</a> — текстовая версия этой страницы, написанная вручную. Без Node и React.</p>
+  
 </footer>
-</body>
+  </body>
 </html>

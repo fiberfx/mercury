@@ -1,0 +1,13 @@
+# Mercury documentation MCP
+
+Use the public Streamable HTTP endpoint https://mercury.jonnify.com/mcp to read skill installation guidance, mx platform instructions and UI component prompts. This is an Elixir server behind the website edge. No auth, installation, execution or project mutation is offered.
+
+Initialize MCP 2025-11-25 (2025-06-18 also supported), send notifications/initialized, then tools/list. POST JSON with Accept: application/json, text/event-stream and the negotiated MCP-Protocol-Version header. GET/DELETE return 405; notifications return 202.
+
+Tools: mercury_skills (no arguments), mercury_installation ({platform}), mercury_component ({name}). Discover exact names in prompts/list; prompts/get has no arguments. resources/list and resources/read expose public lesson companions and skills only. Invalid inputs and unknown resources fail safely.
+
+Limits: 16 KiB request bodies, 120 requests/IP/minute/instance; Retry-After on 429. No session state or standalone SSE. Preserve existing apps and inspect package types before choosing props.
+
+[Connection guide](/start/mcp) · [API reference](/reference) · [Agent index](/llms.txt) · [Skills](/agent/skills.md)
+
+[Sitemap](/sitemap.xml) · [All English companions](/llms-full.txt)

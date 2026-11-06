@@ -5,881 +5,199 @@
    width"): header, main and footer share node/apps/website's container, max-width --maxw (80rem) with
    --pad-x gutters, as its .nav-inner does; the bars stay full width and their content sits on the
    container's edges, so the mark, the title and the footer start where the website's logo does. */
-html.lms, body.lms {
-    margin: 0;
-    background: rgb(var(--bg-primary));
-    color: rgb(var(--fg-primary));
-    font-family: var(--font-primary);
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-}
-
-body.lms {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    font-size: var(--lms-type-body-size);
-    line-height: var(--lms-type-body-leading);
-}
-
-.lms-skip {
-    position: absolute;
-    left: -62.4375rem;
-}
-
-.lms-skip:focus {
-    left: var(--lms-gutter);
-    top: 0.5rem;
-    padding: 0.5rem 0.75rem;
-    background: rgb(var(--bg-primary));
-    outline: var(--lms-focus-outline-width) solid rgb(var(--lms-accent));
-    z-index: 2;
-}
-
-.lms-header {
-    box-sizing: border-box;
-    position: sticky;
-    top: 0;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    gap: 2.5rem;
-    height: var(--lms-header-height);
-    padding: 0 max(var(--lms-gutter), calc((100% - var(--lms-container)) / 2 + var(--lms-gutter)));
-    background: rgb(var(--bg-primary));
-    border-bottom: var(--lms-rule-width) solid rgb(var(--border-secondary));
-}
-
-.lms-brand {
-    flex-shrink: 0;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    color: rgb(var(--fg-primary));
-    text-decoration: none;
-    font-weight: var(--lms-type-brand-weight);
-    font-size: 1.375rem;
-    letter-spacing: var(--lms-type-brand-tracking);
-}
-
-.lms-nav {
-    display: flex;
-    gap: 1.75rem;
-    font-size: var(--lms-type-nav-size);
-    font-weight: var(--lms-type-nav-weight);
-}
-
-.lms-nav a {
-    color: rgb(var(--lms-nav-fg));
-    text-decoration: none;
-    padding: 0.5rem 0;
-}
-
-.lms-nav a[aria-current="page"], .lms-nav a:hover {
-    color: rgb(var(--fg-primary));
-}
-
+html.lms, body.lms { margin: 0; background: rgb(var(--bg-primary)); color: rgb(var(--fg-primary)); font-family: var(--font-primary); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+body.lms { min-height: 100vh; display: flex; flex-direction: column; font-size: var(--lms-type-body-size); line-height: var(--lms-type-body-leading); }
+.lms-skip { position: absolute; left: -62.4375rem; }
+.lms-skip:focus { left: var(--lms-gutter); top: 0.5rem; padding: 0.5rem 0.75rem; background: rgb(var(--bg-primary)); outline: var(--lms-focus-outline-width) solid rgb(var(--lms-accent)); z-index: 2; }
+.lms-header { container: lms-header / inline-size; box-sizing: border-box; position: sticky; top: 0; z-index: 1; display: flex; align-items: center; gap: 2.5rem; height: var(--lms-header-height); padding: 0 max(var(--lms-gutter), calc((100% - var(--lms-container)) / 2 + var(--lms-gutter))); background: rgb(var(--bg-primary)); border-bottom: var(--lms-rule-width) solid rgb(var(--border-secondary)); }
+.lms-brand { flex-shrink: 0; display: inline-flex; align-items: center; gap: 0.6rem; color: rgb(var(--fg-primary)); text-decoration: none; font-weight: var(--lms-type-brand-weight); font-size: 1.375rem; letter-spacing: var(--lms-type-brand-tracking); }
+.lms-nav { display: flex; gap: 1.75rem; font-size: var(--lms-type-nav-size); font-weight: var(--lms-type-nav-weight); }
+.lms-nav a { color: rgb(var(--lms-nav-fg)); text-decoration: none; padding: 0.5rem 0; }
+.lms-nav a[aria-current="page"], .lms-nav a:hover { color: rgb(var(--fg-primary)); }
 /* The header's actions (design lms-navigation D-NV.4, ruled (b)): the main page's .nav-cta
    (styles.css:126) holding GitHub, the moon/sun toggle and "Open docs" as its .btn .btn-fill .btn-sm
    (:140-160). The toggle is a form of two buttons; the one shown is the theme the page is NOT in:
    the moon in light, the sun in dark, whether dark comes from the system or the cookie (D-NV.6). */
-.lms-actions {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-left: auto;
-    flex-shrink: 0;
-}
-
-.lms-github, .lms-theme button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.25rem;
-    height: 2.25rem;
-    padding: 0;
-    border: 0;
-    border-radius: 0.5rem;
-    background: none;
-    color: rgb(var(--fg-primary));
-    cursor: pointer;
-}
-
-.lms-github:hover, .lms-theme button:hover {
-    background: rgb(var(--bg-hover));
-}
-
-.lms-theme {
-    display: inline-flex;
-    margin: 0;
-}
-
-.lms-theme-to-light {
-    display: none !important;
-}
-
+.lms-actions { display: flex; align-items: center; gap: 0.75rem; margin-left: auto; flex-shrink: 0; }
+.lms-github, .lms-theme button { display: inline-flex; align-items: center; justify-content: center; width: 2.25rem; height: 2.25rem; padding: 0; border: 0; border-radius: 0.5rem; background: none; color: rgb(var(--fg-primary)); cursor: pointer; }
+.lms-github:hover, .lms-theme button:hover { background: rgb(var(--bg-hover)); }
+.lms-theme { display: inline-flex; margin: 0; }
+.lms-theme-to-light { display: none !important; }
 @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) .lms-theme-to-dark {
-        display: none !important;
-    }
-
-    :root:not([data-theme="light"]) .lms-theme-to-light {
-        display: inline-flex !important;
-    }
+  :root:not([data-theme="light"]) .lms-theme-to-dark { display: none !important; }
+  :root:not([data-theme="light"]) .lms-theme-to-light { display: inline-flex !important; }
 }
-
-:root[data-theme="dark"] .lms-theme-to-dark {
-    display: none !important;
-}
-
-:root[data-theme="dark"] .lms-theme-to-light {
-    display: inline-flex !important;
-}
-
+:root[data-theme="dark"] .lms-theme-to-dark { display: none !important; }
+:root[data-theme="dark"] .lms-theme-to-light { display: inline-flex !important; }
 /* The language switcher (design lms-navigation D-NV.7): a <details> menu, no script; a translation not
    written yet is plain text, aria-disabled. */
-.lms-lang {
-    position: relative;
-}
-
-.lms-lang > summary {
-    list-style: none;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    height: 2.25rem;
-    padding: 0 0.625rem;
-    border-radius: 0.5rem;
-    font-size: 0.8125rem;
-    font-weight: 600;
-    color: rgb(var(--fg-primary));
-}
-
-.lms-lang > summary::-webkit-details-marker {
-    display: none;
-}
-
-.lms-lang > summary::after {
-    content: "";
-    width: 0.375rem;
-    height: 0.375rem;
-    margin-left: 0.5rem;
-    border-right: 1.5px solid currentColor;
-    border-bottom: 1.5px solid currentColor;
-    transform: translateY(-2px) rotate(45deg);
-}
-
-.lms-lang > summary:hover, .lms-lang[open] > summary {
-    background: rgb(var(--bg-hover));
-}
-
-.lms-lang[open] > summary::after {
-    transform: translateY(1px) rotate(225deg);
-}
-
-.lms-lang ul {
-    position: absolute;
-    right: 0;
-    top: calc(100% + 0.5rem);
-    z-index: 4;
-    min-width: 11.25rem;
-    margin: 0;
-    padding: 0.375rem;
-    list-style: none;
-    background: rgb(var(--bg-elevated));
-    border: var(--lms-rule-width) solid rgb(var(--border-secondary));
-    border-radius: var(--radius-12);
-    box-shadow: 0 0.5rem 1.5rem rgb(0 0 0 / 0.12);
-}
-
-.lms-lang li a, .lms-lang li span {
-    display: block;
-    padding: 0.5rem 0.625rem;
-    border-radius: 0.375rem;
-    font-size: 0.875rem;
-    color: rgb(var(--fg-primary));
-    text-decoration: none;
-}
-
-.lms-lang li a:hover {
-    background: rgb(var(--bg-hover));
-}
-
-.lms-lang li a[aria-current="true"] {
-    font-weight: 600;
-    background: rgb(var(--bg-tertiary));
-}
-
-.lms-lang li span[aria-disabled="true"] {
-    color: rgb(var(--fg-tertiary));
-    cursor: default;
-}
-
-.lms-open-docs {
-    display: inline-flex;
-    align-items: center;
-    height: 2.25rem;
-    padding: 0 1rem;
-    border-radius: 0.5rem;
-    background: rgb(var(--bg-brand));
-    color: rgb(var(--fg-on-brand));
-    font-size: 0.8125rem;
-    font-weight: 600;
-    text-decoration: none;
-}
-
-.lms-open-docs:hover {
-    background: rgb(var(--bg-brand-hover));
-}
-
-.lms-main {
-    flex: 1;
-    width: 100%;
-    max-width: var(--lms-content-max-width);
-    box-sizing: border-box;
-    margin: 0 auto;
-    padding: 3rem var(--lms-gutter) 4rem;
-}
-
+.lms-lang { position: relative; }
+.lms-lang > summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; height: 2.25rem; padding: 0 0.625rem; border-radius: 0.5rem; font-size: 0.8125rem; font-weight: 600; color: rgb(var(--fg-primary)); }
+.lms-lang > summary::-webkit-details-marker { display: none; }
+.lms-lang > summary::after { content: ""; width: 0.375rem; height: 0.375rem; margin-left: 0.5rem; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: translateY(-2px) rotate(45deg); }
+.lms-lang > summary:hover, .lms-lang[open] > summary { background: rgb(var(--bg-hover)); }
+.lms-lang[open] > summary::after { transform: translateY(1px) rotate(225deg); }
+.lms-lang ul { position: absolute; right: 0; top: calc(100% + 0.5rem); z-index: 4; min-width: 11.25rem; margin: 0; padding: 0.375rem; list-style: none; background: rgb(var(--bg-elevated)); border: var(--lms-rule-width) solid rgb(var(--border-secondary)); border-radius: var(--radius-12); box-shadow: 0 0.5rem 1.5rem rgb(0 0 0 / 0.12); }
+.lms-lang li a, .lms-lang li span { display: block; padding: 0.5rem 0.625rem; border-radius: 0.375rem; font-size: 0.875rem; color: rgb(var(--fg-primary)); text-decoration: none; }
+.lms-lang li a:hover { background: rgb(var(--bg-hover)); }
+.lms-lang li a[aria-current="true"] { font-weight: 600; background: rgb(var(--bg-tertiary)); }
+.lms-lang li span[aria-disabled="true"] { color: rgb(var(--fg-tertiary)); cursor: default; }
+.lms-open-docs { display: inline-flex; align-items: center; height: 2.25rem; padding: 0 1rem; border-radius: 0.5rem; background: rgb(var(--bg-brand)); color: rgb(var(--fg-on-brand)); font-size: 0.8125rem; font-weight: 600; text-decoration: none; }
+.lms-open-docs:hover { background: rgb(var(--bg-brand-hover)); }
+.lms-main { flex: 1; width: 100%; max-width: var(--lms-content-max-width); box-sizing: border-box; margin: 0 auto; padding: 3rem var(--lms-gutter) 4rem; }
 /* The navigation (design lms-navigation, the Operator 2026-11-05: content "navigated clicking left
    Navigational Side Panel"). Every page's frame is the website's container in columns: the panel starts
    on the brand's line, the lesson follows it, and from 1280 px an On this page rail closes the row.
    No script: courses are <details>, and below 1024 px the panel moves into the header's drawer. */
-.lms-frame {
-    flex: 1;
-    display: grid;
-    grid-template-columns: var(--lms-side-width) minmax(0, 1fr);
-    column-gap: var(--lms-side-gap);
-    width: 100%;
-    max-width: var(--lms-content-max-width);
-    box-sizing: border-box;
-    margin: 0 auto;
-    padding: 0 var(--lms-gutter);
-}
-
-.lms-frame .lms-main {
-    max-width: none;
-    margin: 0;
-    padding: 3rem 0 4rem;
-    min-width: 0;
-}
-
-.lms-side {
-    position: sticky;
-    top: var(--lms-header-height);
-    align-self: start;
-    max-height: calc(100vh - var(--lms-header-height));
-    overflow-y: auto;
-    box-sizing: border-box;
-    padding: 2.5rem 0 2rem;
-    font-size: var(--lms-type-nav-size);
-}
-
-.lms-side-course {
-    border-bottom: var(--lms-rule-width) solid rgb(var(--border-secondary));
-}
-
-.lms-side-course > summary {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.75rem 0;
-    cursor: pointer;
-    list-style: none;
-    font-weight: 600;
-    color: rgb(var(--fg-primary));
-}
-
-.lms-side-course > summary::-webkit-details-marker {
-    display: none;
-}
-
-.lms-side-course > summary::after {
-    content: "";
-    width: 0.375rem;
-    height: 0.375rem;
-    margin-right: 0.25rem;
-    border-right: 1.5px solid currentColor;
-    border-bottom: 1.5px solid currentColor;
-    transform: rotate(-45deg);
-}
-
-.lms-side-course[open] > summary::after {
-    transform: rotate(45deg);
-}
-
-.lms-side-course ul {
-    list-style: none;
-    margin: 0 0 0.75rem;
-    padding: 0;
-}
-
-.lms-side-course li {
-    margin: 0;
-}
-
-.lms-side-group {
-    margin: 1rem 0 0.25rem;
-    padding: 0 0.5rem;
-    font-size: var(--lms-type-label-size);
-    font-weight: var(--lms-type-label-weight);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgb(var(--fg-tertiary));
-}
-
-.lms-side-course li.lms-side-sub {
-    padding-left: 0.85rem;
-}
-
-.lms-side a, .lms-drawer-panel a {
-    display: block;
-    padding: 0.375rem 0.5rem;
-    border-radius: var(--radius-4);
-    line-height: var(--lms-type-compact-leading);
-    color: rgb(var(--lms-nav-fg));
-    text-decoration: none;
-}
-
-.lms-side a:hover, .lms-drawer-panel a:hover {
-    color: rgb(var(--fg-primary));
-    background: rgb(var(--bg-hover));
-}
-
-.lms-side a[aria-current="page"], .lms-drawer-panel a[aria-current="page"] {
-    color: rgb(var(--fg-primary));
-    background: rgb(var(--bg-tertiary));
-    font-weight: 600;
-}
-
-.lms-crumbs ol {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin: 0 0 1rem;
-    padding: 0;
-    list-style: none;
-    font-size: var(--lms-type-small-size);
-    color: rgb(var(--fg-secondary));
-}
-
-.lms-crumbs li + li::before {
-    content: "›";
-    margin-right: 0.5rem;
-    color: rgb(var(--fg-tertiary));
-}
-
-.lms-crumbs a {
-    color: rgb(var(--fg-secondary));
-    text-decoration: none;
-}
-
-.lms-crumbs a:hover {
-    color: rgb(var(--fg-primary));
-    text-decoration: underline;
-}
-
-.lms-crumbs [aria-current="page"] {
-    color: rgb(var(--fg-primary));
-}
-
-.lms-pager {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    max-width: var(--lms-measure);
-    margin: 3rem 0 0;
-    padding: 1.5rem 0 0;
-    border-top: var(--lms-rule-width) solid rgb(var(--border-secondary));
-}
-
-.lms-pager a {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-    max-width: 48%;
-    color: rgb(var(--fg-primary));
-    font-weight: 600;
-    text-decoration: none;
-}
-
-.lms-pager a span {
-    font-size: var(--lms-type-small-size);
-    font-weight: 400;
-    color: rgb(var(--fg-secondary));
-}
-
-.lms-pager a:hover {
-    color: rgb(var(--fg-link-hover));
-}
-
-.lms-pager-next {
-    margin-left: auto;
-    text-align: right;
-}
-
-.lms-toc {
-    display: none;
-}
-
-.lms-toc-title {
-    margin: 0 0 0.5rem;
-    font-size: var(--lms-type-label-size);
-    font-weight: var(--lms-type-label-weight);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgb(var(--fg-tertiary));
-}
-
-.lms-toc ul {
-    list-style: none;
-    margin: 0;
-    padding: 0 0 0 0.75rem;
-    border-left: var(--lms-rule-width) solid rgb(var(--border-secondary));
-}
-
-.lms-toc a {
-    display: block;
-    padding: 0.25rem 0;
-    font-size: var(--lms-type-small-size);
-    color: rgb(var(--fg-secondary));
-    text-decoration: none;
-}
-
-.lms-toc a:hover {
-    color: rgb(var(--fg-primary));
-}
-
+.lms-frame { flex: 1; display: grid; grid-template-columns: var(--lms-side-width) minmax(0, 1fr); column-gap: var(--lms-side-gap); width: 100%; max-width: var(--lms-content-max-width); box-sizing: border-box; margin: 0 auto; padding: 0 var(--lms-gutter); }
+.lms-frame .lms-main { max-width: none; margin: 0; padding: 3rem 0 4rem; min-width: 0; }
+.lms-side { position: sticky; top: var(--lms-header-height); align-self: start; max-height: calc(100vh - var(--lms-header-height)); overflow-y: auto; box-sizing: border-box; padding: 2.25rem 0 2rem; scroll-padding-block: 0.5rem; scrollbar-gutter: stable; font-size: var(--lms-type-nav-size); }
+.lms-side-course { border-bottom: var(--lms-rule-width) solid rgb(var(--border-secondary)); }
+.lms-side-course > summary { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; padding: 0.75rem var(--lms-nav-inset); border-radius: var(--radius-4); cursor: pointer; list-style: none; font-weight: 600; color: rgb(var(--fg-primary)); }
+.lms-side-course > summary:hover { background: rgb(var(--bg-hover)); }
+.lms-side-course > summary::-webkit-details-marker { display: none; }
+.lms-side-course > summary::after { content: ""; width: 0.375rem; height: 0.375rem; flex-shrink: 0; margin-right: 0.125rem; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(-45deg); }
+.lms-side-course[open] > summary::after { transform: rotate(45deg); }
+.lms-side-course ul { list-style: none; margin: 0 0 0.75rem; padding: 0; }
+.lms-side-course li { margin: 0; }
+.lms-side-course li.lms-side-group { margin: 0.75rem 0 0.25rem; padding: 0 var(--lms-nav-inset); font-size: var(--lms-type-label-size); font-weight: var(--lms-type-label-weight); letter-spacing: 0.08em; text-transform: uppercase; color: rgb(var(--fg-tertiary)); }
+.lms-side-course li.lms-side-sub { padding-inline-start: 0.75rem; }
+.lms-side a, .lms-drawer-panel a { display: block; box-sizing: border-box; min-height: 2.25rem; padding: 0.5rem var(--lms-nav-inset); border-radius: var(--radius-4); line-height: var(--lms-type-compact-leading); color: rgb(var(--lms-nav-fg)); text-decoration: none; }
+.lms-side a:hover, .lms-drawer-panel a:hover { color: rgb(var(--fg-primary)); background: rgb(var(--bg-hover)); }
+.lms-side a[aria-current="page"], .lms-drawer-panel a[aria-current="page"] { color: rgb(var(--fg-primary)); background: rgb(var(--bg-tertiary)); box-shadow: inset 0.125rem 0 0 rgb(var(--lms-accent)); font-weight: 600; }
+.lms-crumbs ol { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 1rem; padding: 0; list-style: none; font-size: var(--lms-type-small-size); color: rgb(var(--fg-secondary)); }
+.lms-crumbs li + li::before { content: "›"; margin-right: 0.5rem; color: rgb(var(--fg-tertiary)); }
+.lms-crumbs a { color: rgb(var(--fg-secondary)); text-decoration: none; }
+.lms-crumbs a:hover { color: rgb(var(--fg-primary)); text-decoration: underline; }
+.lms-crumbs [aria-current="page"] { color: rgb(var(--fg-primary)); }
+.lms-pager { display: flex; justify-content: space-between; gap: 1rem; max-width: var(--lms-measure); margin: 3rem 0 0; padding: 1.5rem 0 0; border-top: var(--lms-rule-width) solid rgb(var(--border-secondary)); }
+.lms-pager a { display: flex; flex-direction: column; gap: 0.25rem; max-width: 48%; color: rgb(var(--fg-primary)); font-weight: 600; text-decoration: none; }
+.lms-pager a span { font-size: var(--lms-type-small-size); font-weight: 400; color: rgb(var(--fg-secondary)); }
+.lms-pager a:hover { color: rgb(var(--fg-link-hover)); }
+.lms-pager-next { margin-left: auto; text-align: right; }
+.lms-toc { display: none; }
+.lms-toc-title { margin: 0 0 0.5rem; font-size: var(--lms-type-label-size); font-weight: var(--lms-type-label-weight); letter-spacing: 0.08em; text-transform: uppercase; color: rgb(var(--fg-tertiary)); }
+.lms-toc ul { list-style: none; margin: 0; padding: 0 0 0 0.75rem; border-left: var(--lms-rule-width) solid rgb(var(--border-secondary)); }
+.lms-toc a { display: block; padding: 0.375rem 0; font-size: var(--lms-type-small-size); color: rgb(var(--fg-secondary)); text-decoration: none; }
+.lms-toc a:hover { color: rgb(var(--fg-primary)); }
 @media (min-width: 80rem) {
-    .lms-frame:has(> .lms-toc) {
-        grid-template-columns: var(--lms-side-width) minmax(0, 1fr) var(--lms-toc-width);
-    }
-
-    .lms-toc {
-        display: block;
-        position: sticky;
-        top: var(--lms-header-height);
-        align-self: start;
-        padding: 3rem 0 2rem;
-    }
+  .lms-frame:has(> .lms-toc) { grid-template-columns: var(--lms-side-width) minmax(0, 1fr) var(--lms-toc-width); }
+  .lms-toc { display: block; position: sticky; top: var(--lms-header-height); align-self: start; padding: 3rem 0 2rem; }
 }
-
 /* One compact disclosure holds secondary destinations on smaller screens. */
-.lms-drawer {
-    display: none;
-    position: relative;
-}
-
-.lms-drawer > summary {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 2.75rem;
-    padding: 0 0.75rem;
-    list-style: none;
-    cursor: pointer;
-    border: var(--lms-rule-width) solid rgb(var(--border-secondary));
-    border-radius: var(--radius-12);
-    font-size: var(--lms-type-nav-size);
-    font-weight: 600;
-    line-height: 1.25rem;
-}
-
-.lms-menu-icon {
-    display: none;
-}
-
-.lms-drawer > summary::-webkit-details-marker {
-    display: none;
-}
-
-.lms-drawer[open] > summary {
-    background: rgb(var(--bg-hover));
-}
-
-.lms-drawer-panel {
-    position: absolute;
-    right: 0;
-    top: calc(100% + 0.75rem);
-    z-index: 3;
-    width: min(22rem, calc(100vw - 2 * var(--lms-gutter-mobile)));
-    max-height: calc(100dvh - var(--lms-header-height) - 1.5rem);
-    overflow-y: auto;
-    box-sizing: border-box;
-    padding: 0.75rem 1rem;
-    background: rgb(var(--bg-primary));
-    border: var(--lms-rule-width) solid rgb(var(--border-secondary));
-    border-radius: var(--radius-12);
-    box-shadow: 0 0.5rem 1.5rem rgb(0 0 0 / 0.12);
-    font-size: var(--lms-type-nav-size);
-}
-
-.lms-menu-links {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.25rem;
-    padding-bottom: 0.75rem;
-    border-bottom: var(--lms-rule-width) solid rgb(var(--border-secondary));
-}
-
-.lms-menu-links .lms-menu-docs {
-    grid-column: 1 / -1;
-    font-weight: 600;
-    background: rgb(var(--bg-tertiary));
-}
-
-.lms-drawer-panel a {
-    overflow-wrap: anywhere;
-    display: flex;
-    align-items: center;
-    min-height: 2.75rem;
-    box-sizing: border-box;
-}
-
-.lms-menu-language {
-    padding: 0.75rem 0;
-    border-bottom: var(--lms-rule-width) solid rgb(var(--border-secondary));
-}
-
-.lms-menu-language .lms-lang > summary {
-    min-height: 2.75rem;
-}
-
-.lms-menu-language .lms-lang ul {
-    min-width: 0;
-    max-width: 100%;
-    box-sizing: border-box;
-    position: static;
-    margin-top: 0.5rem;
-    box-shadow: none;
-}
-
-.lms-menu-heading {
-    margin: 1rem 0 0.25rem;
-    color: rgb(var(--fg-secondary));
-    font-size: var(--lms-type-small-size);
-    line-height: var(--lms-type-compact-leading);
-}
-
+.lms-drawer { display: none; position: relative; }
+.lms-drawer > summary { display: flex; align-items: center; justify-content: center; min-height: 2.75rem; padding: 0 0.75rem; list-style: none; cursor: pointer; border: var(--lms-rule-width) solid rgb(var(--border-secondary)); border-radius: var(--radius-12); font-size: var(--lms-type-nav-size); font-weight: 600; line-height: 1.25rem; }
+.lms-menu-icon { display: none; }
+.lms-drawer > summary::-webkit-details-marker { display: none; }
+.lms-drawer[open] > summary { background: rgb(var(--bg-hover)); }
+.lms-drawer-panel { position: absolute; right: 0; top: calc(100% + 0.75rem); z-index: 3; width: min(22rem, calc(100vw - 2 * var(--lms-gutter-mobile))); max-height: calc(100dvh - var(--lms-header-height) - 1.5rem); overflow-y: auto; box-sizing: border-box; padding: 0.75rem 1rem; background: rgb(var(--bg-primary)); border: var(--lms-rule-width) solid rgb(var(--border-secondary)); border-radius: var(--radius-12); box-shadow: 0 0.5rem 1.5rem rgb(0 0 0 / 0.12); font-size: var(--lms-type-nav-size); }
+.lms-menu-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.25rem; padding-bottom: 0.75rem; border-bottom: var(--lms-rule-width) solid rgb(var(--border-secondary)); }
+.lms-menu-links .lms-menu-docs { grid-column: 1 / -1; font-weight: 600; background: rgb(var(--bg-tertiary)); }
+.lms-drawer-panel a { overflow-wrap: anywhere; display: flex; align-items: center; min-height: 2.75rem; box-sizing: border-box; }
+.lms-menu-language { padding: 0.75rem 0; border-bottom: var(--lms-rule-width) solid rgb(var(--border-secondary)); }
+.lms-menu-language .lms-lang > summary { min-height: 2.75rem; }
+.lms-menu-language .lms-lang ul { min-width: 0; max-width: 100%; box-sizing: border-box; position: static; margin-top: 0.5rem; box-shadow: none; }
+.lms-menu-heading { margin: 1rem 0 0.25rem; color: rgb(var(--fg-secondary)); font-size: var(--lms-type-small-size); line-height: var(--lms-type-compact-leading); }
 @media (max-width: 63.9375rem) {
-    .lms-frame {
-        grid-template-columns: minmax(0, 1fr);
-    }
-
-    .lms-side {
-        display: none;
-    }
+  .lms-frame { grid-template-columns: minmax(0, 1fr); }
+  .lms-side { display: none; }
 }
-
-.lms-eyebrow {
-    margin: 0 0 1rem;
-    font-family: var(--font-primary);
-    font-size: var(--lms-type-label-size);
-    font-weight: var(--lms-type-label-weight);
-    letter-spacing: var(--lms-type-label-tracking);
-    text-transform: uppercase;
-    color: rgb(var(--fg-brand));
-}
-
-.lms-title {
-    margin: 0;
-    font-size: var(--lms-type-h1-size);
-    font-weight: var(--lms-type-h1-weight);
-    letter-spacing: var(--lms-type-h1-tracking);
-    line-height: var(--lms-type-h1-leading);
-    text-wrap: balance;
-}
-
-.lms-title em {
-    font-style: normal;
-    color: rgb(var(--fg-brand));
-}
-
-.lms-lede {
-    margin: 1rem 0 2rem;
-    max-width: var(--lms-measure);
-    font-size: var(--lms-type-lede-size);
-    line-height: var(--lms-type-lede-leading);
-    color: rgb(var(--fg-secondary));
-}
-
-.lms-body, .lms-lede, .lms-footer {
-    overflow-wrap: anywhere;
-}
-
-.lms-body {
-    max-width: var(--lms-measure);
-    font-size: var(--lms-type-body-size);
-    line-height: var(--lms-type-body-leading);
-}
-
-.lms-main [id], #main {
-    scroll-margin-top: calc(var(--lms-header-height) + 1.5rem);
-}
-
-.lms-body h2 {
-    margin: 2.5rem 0 0.75rem;
-    font-size: var(--lms-type-h2-size);
-    font-weight: var(--lms-type-h2-weight);
-    letter-spacing: var(--lms-type-h2-tracking);
-    line-height: var(--lms-type-h2-leading);
-}
-
-.lms-body a, .lms-lede a, .lms-footer a {
-    color: rgb(var(--fg-link));
-    text-decoration: underline;
-    text-decoration-thickness: var(--lms-link-underline-thickness);
-    text-underline-offset: var(--lms-link-underline-offset);
-}
-
-.lms-body a:hover, .lms-lede a:hover, .lms-footer a:hover {
-    color: rgb(var(--fg-link-hover));
-}
-
-.lms-body code {
-    font-family: var(--font-secondary);
-    font-size: var(--lms-type-code-inline-size);
-    background: rgb(var(--lms-code-inline-bg));
-    color: rgb(var(--lms-code-inline-fg));
-    padding: 0.1em 0.35em;
-    border-radius: var(--radius-4);
-}
-
-.lms-body pre {
-    background: rgb(var(--lms-code-bg));
-    color: rgb(var(--lms-code-fg));
-    border: var(--lms-rule-width) solid rgb(var(--lms-code-border));
-    border-radius: var(--radius-12);
-    padding: 1.25rem 1.5rem;
-    overflow-x: auto;
-    font-family: var(--font-secondary);
-    font-size: var(--lms-type-code-block-size);
-    line-height: var(--lms-type-code-block-leading);
-}
-
-.lms-body pre code {
-    background: none;
-    color: inherit;
-    padding: 0;
-    border-radius: 0;
-    font-size: inherit;
-}
-
-/* Inline code in prose may break anywhere: a 48-character path in /mx/compile widened a 390 px phone's
+.lms-eyebrow { margin: 0 0 1rem; font-family: var(--font-primary); font-size: var(--lms-type-label-size); font-weight: var(--lms-type-label-weight); letter-spacing: var(--lms-type-label-tracking); text-transform: uppercase; color: rgb(var(--fg-brand)); }
+.lms-title { margin: 0; font-size: var(--lms-type-h1-size); font-weight: var(--lms-type-h1-weight); letter-spacing: var(--lms-type-h1-tracking); line-height: var(--lms-type-h1-leading); text-wrap: balance; }
+.lms-title em { font-style: normal; color: rgb(var(--fg-brand)); }
+.lms-lede { margin: 1rem 0 2rem; max-width: var(--lms-measure); font-size: var(--lms-type-lede-size); line-height: var(--lms-type-lede-leading); color: rgb(var(--fg-secondary)); }
+.lms-body, .lms-lede, .lms-footer { overflow-wrap: anywhere; }
+.lms-body { max-width: var(--lms-measure); font-size: var(--lms-type-body-size); line-height: var(--lms-type-body-leading); }
+.lms-main [id], #main { scroll-margin-top: calc(var(--lms-header-height) + 1.5rem); }
+.lms-body h2 { margin: 2.5rem 0 0.75rem; font-size: var(--lms-type-h2-size); font-weight: var(--lms-type-h2-weight); letter-spacing: var(--lms-type-h2-tracking); line-height: var(--lms-type-h2-leading); }
+.lms-body a, .lms-lede a, .lms-footer a { color: rgb(var(--fg-link)); text-decoration: underline; text-decoration-thickness: var(--lms-link-underline-thickness); text-underline-offset: var(--lms-link-underline-offset); }
+.lms-body a:hover, .lms-lede a:hover, .lms-footer a:hover { color: rgb(var(--fg-link-hover)); }
+.lms-body code { font-family: var(--font-secondary); font-size: var(--lms-type-code-inline-size); background: rgb(var(--lms-code-inline-bg)); color: rgb(var(--lms-code-inline-fg)); padding: 0.1em 0.35em; border-radius: var(--radius-4); }
+.lms-body pre { background: rgb(var(--lms-code-bg)); color: rgb(var(--lms-code-fg)); border: var(--lms-rule-width) solid rgb(var(--lms-code-border)); border-radius: var(--radius-12); padding: 1.25rem 1.5rem; overflow-x: auto; font-family: var(--font-secondary); font-size: var(--lms-type-code-block-size); line-height: var(--lms-type-code-block-leading); }
+.lms-body pre code { background: none; color: inherit; padding: 0; border-radius: 0; font-size: inherit; }
+/* Inline code keeps the surrounding prose line box; its smaller font must not add leading.
+   Inline code in prose may break anywhere: a 48-character path in /mx/compile widened a 390 px phone's
    layout to 433 px (measured 2026-11-04). Code blocks keep their lines and scroll instead. */
-.lms-body :not(pre) > code {
-    overflow-wrap: anywhere;
-    vertical-align: baseline;
-    line-height: inherit;
-}
-
-.lms-body p, .lms-body ul, .lms-body ol {
-    margin-block: 0 1.5rem;
-}
-
-.lms-body ul, .lms-body ol {
-    padding-inline-start: 1.5rem;
-}
-
-.lms-body li + li {
-    margin-top: var(--lms-baseline);
-}
-
-.lms-body li > p {
-    margin-block: 0.5rem;
-}
-
-.lms-body pre {
-    margin-block: 0 1.5rem;
-}
-
-.lms-body h3 {
-    margin-block: 2rem 0.75rem;
-    font-size: 1.125rem;
-    line-height: 1.5rem;
-}
-
-.lms-body h4 {
-    margin-block: 1.5rem 0.75rem;
-    font-size: 1rem;
-    line-height: 1.5rem;
-}
-
-.lms-brand svg {
-    width: 1.875rem;
-    height: 1.375rem;
-}
-
-.lms-body table {
-    border-collapse: collapse;
-    width: 100%;
-    margin-block: 0 1.5rem;
-    font-size: var(--lms-type-small-size);
-    line-height: var(--lms-type-compact-leading);
-}
-
-.lms-body th, .lms-body td {
-    text-align: left;
-    padding: 0.75rem 0.75rem 0.75rem 0;
-    border-bottom: var(--lms-rule-width) solid rgb(var(--border-secondary));
-    vertical-align: top;
-}
-
-.lms-body th {
-    font-size: var(--lms-type-table-head-size);
-    font-weight: 700;
-    letter-spacing: var(--lms-type-table-head-tracking);
-    text-transform: uppercase;
-    color: rgb(var(--fg-secondary));
-}
-
-.lms-footer {
-    padding: 1.5rem max(var(--lms-gutter), calc((100% - var(--lms-container)) / 2 + var(--lms-gutter)));
-    border-top: var(--lms-rule-width) solid rgb(var(--border-secondary));
-    font-size: var(--lms-type-small-size);
-    color: rgb(var(--fg-secondary));
-}
-
-:focus-visible {
-    outline: var(--lms-focus-outline-width) solid rgb(var(--lms-accent));
-    outline-offset: var(--lms-focus-outline-offset);
-}
-
+.lms-body :not(pre) > code { overflow-wrap: anywhere; vertical-align: baseline; line-height: 1; }
+.lms-body p, .lms-body ul, .lms-body ol { margin-block: 0 1.5rem; }
+.lms-body ul, .lms-body ol { padding-inline-start: 1.5rem; }
+.lms-body li + li { margin-top: var(--lms-baseline); }
+.lms-body li > p { margin-block: 0.5rem; }
+.lms-body pre { margin-block: 0 1.5rem; }
+.lms-body h3 { margin-block: 2rem 0.75rem; font-size: 1.125rem; line-height: 1.5rem; }
+.lms-body h4 { margin-block: 1.5rem 0.75rem; font-size: 1rem; line-height: 1.5rem; }
+.lms-brand svg { width: 1.875rem; height: 1.375rem; }
+.lms-body table { overflow-wrap: normal; border-collapse: collapse; width: 100%; margin-block: 0 1.5rem; font-size: var(--lms-type-small-size); line-height: var(--lms-type-compact-leading); }
+.lms-body th, .lms-body td { text-align: left; padding: 0.75rem 0.75rem 0.75rem 0; border-bottom: var(--lms-rule-width) solid rgb(var(--border-secondary)); vertical-align: top; }
+.lms-body th { font-size: var(--lms-type-table-head-size); font-weight: 700; letter-spacing: var(--lms-type-table-head-tracking); text-transform: uppercase; color: rgb(var(--fg-secondary)); }
+.lms-footer { padding: 1.5rem max(var(--lms-gutter), calc((100% - var(--lms-container)) / 2 + var(--lms-gutter))); border-top: var(--lms-rule-width) solid rgb(var(--border-secondary)); font-size: var(--lms-type-small-size); color: rgb(var(--fg-secondary)); }
+:focus-visible { outline: var(--lms-focus-outline-width) solid rgb(var(--lms-accent)); outline-offset: var(--lms-focus-outline-offset); }
 /* Keep the focus ring inside scrollable navigation, where an outside ring is clipped. */
-.lms-side :focus-visible, .lms-drawer-panel :focus-visible {
-    outline-offset: calc(-1 * var(--lms-focus-outline-width));
-}
-
+.lms-side :focus-visible, .lms-drawer-panel :focus-visible { outline-offset: calc(-1 * var(--lms-focus-outline-width)); }
 /* Reaching the drawer's end should not also move the lesson underneath it. */
-.lms-drawer-panel {
-    overscroll-behavior-y: contain;
-}
-
+.lms-drawer-panel { overscroll-behavior-y: contain; }
 /* Coarse pointers need a comfortable target; desktop navigation keeps its compact rhythm. */
 @media (pointer: coarse) {
-    .lms-github, .lms-theme button {
-        width: 2.75rem;
-        height: 2.75rem;
-    }
-
-    .lms-lang > summary, .lms-open-docs {
-        min-height: 2.75rem;
-    }
-
-    .lms-drawer > summary, .lms-side-course > summary,
-    .lms-drawer-panel a, .lms-lang li a {
-        display: flex;
-        align-items: center;
-        box-sizing: border-box;
-        min-height: 2.75rem;
-    }
+  .lms-github, .lms-theme button { width: 2.75rem; height: 2.75rem; }
+  .lms-lang > summary, .lms-open-docs { min-height: 2.75rem; }
+  .lms-drawer > summary, .lms-side-course > summary,
+  .lms-side a, .lms-drawer-panel a, .lms-lang li a, .lms-toc a {
+    display: flex; align-items: center; box-sizing: border-box; min-height: 2.75rem;
+  }
 }
 
 /* A single row at every width. The complete navigation remains in the native menu. */
 @media (max-width: 74.9375rem) {
-    :is(html, body).lms {
-        --lms-header-height: 4rem;
-    }
-
-    .lms-header {
-        box-sizing: border-box;
-        height: var(--lms-header-height);
-        gap: 0.75rem;
-    }
-
-    .lms-nav, .lms-actions > .lms-lang, .lms-actions > .lms-github, .lms-actions > .lms-open-docs {
-        display: none;
-    }
-
-    .lms-actions {
-        gap: 0.5rem;
-    }
-
-    .lms-theme button {
-        width: 2.75rem;
-        height: 2.75rem;
-    }
-
-    .lms-drawer {
-        display: block;
-    }
+  :is(html, body).lms { --lms-header-height: 4rem; }
+  .lms-header { box-sizing: border-box; height: var(--lms-header-height); gap: 0.75rem; }
+  .lms-nav, .lms-actions > .lms-lang, .lms-actions > .lms-github, .lms-actions > .lms-open-docs { display: none; }
+  .lms-actions { gap: 0.5rem; }
+  .lms-theme button { width: 2.75rem; height: 2.75rem; }
+  .lms-drawer { display: block; }
 }
-
 @media (max-width: 40rem) {
-    .lms-header, .lms-main, .lms-footer {
-        padding-left: var(--lms-gutter-mobile);
-        padding-right: var(--lms-gutter-mobile);
-    }
-
-    .lms-body table {
-        display: block;
-        overflow-x: auto;
-    }
-
-    .lms-body pre {
-        padding: 1rem;
-    }
-
-    .lms-title {
-        font-size: 2rem;
-        line-height: 2.5rem;
-    }
-
-    .lms-frame {
-        padding: 0 var(--lms-gutter-mobile);
-    }
-
-    .lms-frame .lms-main {
-        padding-top: 2rem;
-    }
+  .lms-header, .lms-main, .lms-footer { padding-left: var(--lms-gutter-mobile); padding-right: var(--lms-gutter-mobile); }
+  .lms-body table { display: block; overflow-x: auto; }
+  .lms-body pre { padding: 1rem; }
+  .lms-title { font-size: 2rem; line-height: 2.5rem; }
+  .lms-frame { padding: 0 var(--lms-gutter-mobile); }
+  .lms-frame .lms-main { padding-top: 2rem; }
 }
 
-/* Compact copy shares five quarter-rem steps instead of inherited fractional lines. */
+/* Compact copy uses a 1.25rem line box; long-form prose has its own 1.75 ratio. */
 .lms-nav, .lms-side, .lms-drawer-panel, .lms-crumbs,
 .lms-pager a span, .lms-toc, .lms-footer {
-    line-height: var(--lms-type-compact-leading);
+  line-height: var(--lms-type-compact-leading);
 }
-
 /* Preserve text scaling and touch targets when the effective viewport is very narrow. */
 @media (max-width: 24rem) {
-    .lms-brand > span {
-        display: none;
-    }
+  .lms-brand > span { display: none; }
+  .lms-header, .lms-actions { gap: 0.25rem; }
+  .lms-drawer > summary { box-sizing: border-box; width: 2.75rem; padding: 0; }
+  .lms-menu-icon { display: block; }
+  .lms-menu-label { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .lms-menu-links { grid-template-columns: minmax(0, 1fr); }
+}
 
-    .lms-header, .lms-actions {
-        gap: 0.25rem;
-    }
-
-    .lms-drawer > summary {
-        box-sizing: border-box;
-        width: 2.75rem;
-        padding: 0;
-    }
-
-    .lms-menu-icon {
-        display: block;
-    }
-
-    .lms-menu-label {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        overflow: hidden;
-        clip-path: inset(50%);
-        white-space: nowrap;
-    }
-
-    .lms-menu-links {
-        grid-template-columns: minmax(0, 1fr);
-    }
+/* Viewport breakpoints are the fallback. Container em queries also react when the
+   reader enlarges root text without changing viewport width: controls stay reachable. */
+@container lms-header (width < 64em) {
+  .lms-nav, .lms-actions > .lms-lang, .lms-actions > .lms-github, .lms-actions > .lms-open-docs { display: none; }
+  .lms-actions { gap: 0.5rem; }
+  .lms-theme button { width: 2.75rem; height: 2.75rem; }
+  .lms-drawer { display: block; }
+}
+@container lms-header (width < 20em) {
+  .lms-brand > span { display: none; }
+  .lms-actions { gap: 0.25rem; }
+  .lms-drawer > summary { box-sizing: border-box; width: 2.75rem; padding: 0; }
+  .lms-menu-icon { display: block; }
+  .lms-menu-label { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 }
 
 /* Between pages, a native cross-document crossfade, no script (mx-coach's ruling B, KAN CRS0RpQbHawfz6;
    mercury.47 D47-3: motion in CSS). It runs only when both documents opt in, as the main page does too;
    a reader who asks for reduced motion gets none. */
 @media (prefers-reduced-motion: no-preference) {
-    @view-transition {
-        navigation: auto;
-    }
+  @view-transition { navigation: auto; }
 }

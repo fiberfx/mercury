@@ -52,3 +52,9 @@
 - [/ru/start](/ru/start/llms.txt)
 - [/ru/ui](/ru/ui/llms.txt)
 - [English index](/llms.txt)
+
+## Дизайн книга
+
+- [Дизайн книга Mercury](https://mercury.jonnify.com/ru/book): девять глав, полные таблицы и интерактивная лаборатория типографики, SVG, интервалов и цветов.
+- [Руководство для агентов](https://mercury.jonnify.com/ru/book/llms.txt): русский Markdown, исходный PDF на английском, токены и навыки.
+- [English edition](https://mercury.jonnify.com/book): исходная английская редакция.

@@ -88,300 +88,267 @@
 
 :is(html, body).lms,
 .lms .light-theme {
-    color-scheme: light;
+  color-scheme: light;
 
-    /* Type families: ui's names, the website's faces */
-    --font-primary: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; /* styles.css:8 */
-    --font-display: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    --font-secondary: ui-monospace, "SF Mono", Menlo, Consolas, monospace; /* :1460 code only */
+  /* Type families: ui's names, the website's faces */
+  --font-primary:   "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; /* styles.css:8 */
+  --font-display:   "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-secondary: ui-monospace, "SF Mono", Menlo, Consolas, monospace;                           /* :1460 code only */
 
-    /* Relative layout and a shared quarter-rem rhythm. Font sizes retain the Mercury scale;
-       line boxes and block spacing use whole baseline steps. Borders remain device-pixel hairlines. */
-    --lms-baseline: 0.25rem;
-    --radius-4: 0.25rem;
-    --radius-12: 0.75rem;
-    --lms-type-h1-leading: 3rem;
-    --lms-type-h2-leading: 1.75rem;
-    --lms-type-compact-leading: 1.25rem;
+  /* Relative layout and a shared quarter-rem rhythm. Font sizes retain the Mercury scale;
+     line boxes and block spacing use whole baseline steps. Borders remain device-pixel hairlines. */
+  --lms-baseline: 0.25rem;
+  --radius-4: 0.25rem;
+  --radius-12: 0.75rem;
+  --lms-type-h1-leading: 3rem;
+  --lms-type-h2-leading: 1.75rem;
+  --lms-type-compact-leading: 1.25rem;
 
-    /* LMS layout */
-    --lms-header-height: 4.5rem; /* styles.css:63 */
-    --lms-container: 80rem; /* styles.css:34 --maxw: the website's container */
-    --lms-content-max-width: var(--lms-container); /* the Operator 2026-11-04: the website's container width */
-    --lms-measure: 68ch; /* assumed */
-    --lms-gutter: clamp(1.5rem, 5vw, 6rem); /* styles.css:35 --pad-x */
-    --lms-gutter-mobile: 1rem; /* assumed: a 390 px phone keeps 358 px of text */
-    --lms-side-width: 15rem; /* assumed: the longest chapter title wraps to two lines */
-    --lms-side-gap: 3rem; /* assumed: the header's 40px gap, rounded to the 8px grid */
-    --lms-toc-width: 12.5rem; /* assumed: On this page's longest title on two lines */
-    --lms-rule-width: 1px;
-    --lms-focus-outline-width: 2px;
-    --lms-focus-outline-offset: 2px;
-    --lms-link-underline-offset: 0.16em;
-    --lms-link-underline-thickness: 0.08em;
+  /* LMS layout */
+  --lms-header-height:       4.5rem;                         /* styles.css:63 */
+  --lms-container:           80rem;                       /* styles.css:34 --maxw: the website's container */
+  --lms-content-max-width:   var(--lms-container);         /* the Operator 2026-11-04: the website's container width */
+  --lms-measure:             68ch;                         /* reading-width ceiling, not an exact character count */
+  --lms-gutter:              clamp(1.5rem, 5vw, 6rem);       /* styles.css:35 --pad-x */
+  --lms-gutter-mobile:       1rem;                         /* assumed: a 390 px phone keeps 358 px of text */
+  --lms-side-width:          15rem;                        /* assumed: the longest chapter title wraps to two lines */
+  --lms-nav-inset:           0.75rem;                      /* shared course, link and group-label text edge */
+  --lms-side-gap:            3rem;                         /* assumed: the header's 40px gap, rounded to the 8px grid */
+  --lms-toc-width:           12.5rem;                        /* assumed: On this page's longest title on two lines */
+  --lms-rule-width:          1px;
+  --lms-focus-outline-width:  2px;
+  --lms-focus-outline-offset: 2px;
+  --lms-link-underline-offset:    0.16em;
+  --lms-link-underline-thickness: 0.08em;
 
-    /* LMS type scale: the website's weights and tracking */
-    --lms-type-brand-weight: 800; /* styles.css:72 */
-    --lms-type-brand-tracking: -0.04em; /* :73 */
-    --lms-type-h1-size: 2.5rem; /* :333 min 40px */
-    --lms-type-h1-tracking: -0.03em; /* :334 */
-    --lms-type-h1-weight: 700; /* :333 */
-    --lms-type-h2-size: 1.25rem; /* :543 20px */
-    --lms-type-h2-tracking: -0.01em; /* :544 */
-    --lms-type-h2-weight: 700; /* :543 */
-    --lms-type-lede-size: 1.25rem; /* assumed */
-    --lms-type-lede-leading: 1.75rem; /* seven baseline steps */
-    --lms-type-body-size: 1rem; /* 16px at the default root, styles.css:44 */
-    --lms-type-body-leading: 1.5; /* 24px at the default root; inherited as a ratio */
-    --lms-type-small-size: 0.8125rem; /* 13px, .btn-sm :152 */
-    --lms-type-nav-size: 0.875rem; /* :120 */
-    --lms-type-nav-weight: 500; /* :120 */
-    --lms-type-label-size: 0.75rem; /* assumed: the 14px label (:327) at eyebrow size */
-    --lms-type-label-tracking: 0.1875rem; /* :328 */
-    --lms-type-label-weight: 700; /* :327 */
-    --lms-type-table-head-size: 0.75rem;
-    --lms-type-table-head-tracking: 0.04em; /* the badge's tracking, :1111 */
-    --lms-type-code-block-size: 0.8125rem; /* :1460 */
-    --lms-type-code-block-leading: 1.5rem; /* six baseline steps; scales with the reader’s text size */
-    --lms-type-code-inline-size: 0.88em;
+  /* LMS type scale: the website's weights and tracking */
+  --lms-type-brand-weight:   800;                          /* styles.css:72 */
+  --lms-type-brand-tracking: -0.04em;                      /* :73 */
+  --lms-type-h1-size:     2.5rem;                          /* :333 min 40px */
+  --lms-type-h1-tracking: -0.03em;                         /* :334 */
+  --lms-type-h1-weight:   700;                             /* :333 */
+  --lms-type-h2-size:     1.25rem;                         /* :543 20px */
+  --lms-type-h2-tracking: -0.01em;                         /* :544 */
+  --lms-type-h2-weight:   700;                             /* :543 */
+  --lms-type-lede-size:     1.25rem;                       /* assumed */
+  --lms-type-lede-leading:  1.6;                           /* 2rem at the default root: eight rhythm steps */
+  --lms-type-body-size:    1rem;                          /* 16px at the default root, styles.css:44 */
+  --lms-type-body-leading: 1.75;                          /* 1.75rem at the default root; scales with text */
+  --lms-type-small-size:   0.8125rem;                      /* 13px, .btn-sm :152 */
+  --lms-type-nav-size:     0.875rem;                           /* :120 */
+  --lms-type-nav-weight:   500;                            /* :120 */
+  --lms-type-label-size:     0.75rem;                         /* assumed: the 14px label (:327) at eyebrow size */
+  --lms-type-label-tracking: 0.1875rem;                          /* :328 */
+  --lms-type-label-weight:   700;                          /* :327 */
+  --lms-type-table-head-size:     0.75rem;
+  --lms-type-table-head-tracking: 0.04em;                  /* the badge's tracking, :1111 */
+  --lms-type-code-block-size:    0.8125rem;                     /* :1460 */
+  --lms-type-code-block-leading: 1.5rem;                     /* six baseline steps; scales with the reader’s text size */
+  --lms-type-code-inline-size:   0.88em;
 
-    /* LMS accent: Mercury purple, for focus and the active state */
-    --lms-accent: 78 70 180; /* --piggy :24 */
+  /* LMS accent: Mercury purple, for focus and the active state */
+  --lms-accent: 78 70 180;                  /* --piggy :24 */
 
-    /* Surfaces */
-    --bg-primary: 255 255 255; /* --white :22, the page (fixed decision) */
-    --bg-secondary: 253 253 253; /* --paper :21 */
-    --bg-tertiary: 245 245 245; /* --tint :20, code blocks */
-    --bg-elevated: 255 255 255; /* --white: cards, popovers */
-    --bg-inverse: 0 0 0; /* --ink :11 */
-    --bg-inverse-hover: 34 34 37; /* --ink-2 :12 */
-    --bg-inverse-pressed: 39 45 54; /* --ink-3 :13 */
-    --bg-disabled: 245 245 245; /* --tint */
+  /* Surfaces */
+  --bg-primary:        255 255 255;         /* --white :22, the page (fixed decision) */
+  --bg-secondary:      253 253 253;         /* --paper :21 */
+  --bg-tertiary:       245 245 245;         /* --tint :20, code blocks */
+  --bg-elevated:       255 255 255;         /* --white: cards, popovers */
+  --bg-inverse:          0   0   0;         /* --ink :11 */
+  --bg-inverse-hover:   34  34  37;         /* --ink-2 :12 */
+  --bg-inverse-pressed: 39  45  54;         /* --ink-3 :13 */
+  --bg-disabled:       245 245 245;         /* --tint */
 
-    /* Scrims: ink at low alpha; selection in piggy-soft */
-    --bg-hover: 0 0 0 / 0.04;
-    --bg-pressed: 0 0 0 / 0.08;
-    --bg-selected: 78 70 180 / 0.12; /* --piggy-soft :25 */
-    --bg-backdrop: 0 0 0 / 0.56;
-    --bg-overlay: 0 0 0 / 0.32;
+  /* Scrims: ink at low alpha; selection in piggy-soft */
+  --bg-hover:      0   0   0 / 0.04;
+  --bg-pressed:    0   0   0 / 0.08;
+  --bg-selected:  78  70 180 / 0.12;        /* --piggy-soft :25 */
+  --bg-backdrop:   0   0   0 / 0.56;
+  --bg-overlay:    0   0   0 / 0.32;
 
-    /* Brand: the website's primary button is an ink fill that turns purple on hover */
-    --bg-brand: 0 0 0; /* .btn-fill :157 */
-    --bg-brand-hover: 78 70 180; /* .btn-fill:hover :160 */
-    --bg-brand-pressed: 39 45 54; /* --ink-3 */
-    --bg-brand-subtle: 234 233 246; /* --piggy-soft over white */
-    --bg-brand-muted: 220 218 240; /* piggy 20% over white */
+  /* Brand: the website's primary button is an ink fill that turns purple on hover */
+  --bg-brand:          0   0   0;           /* .btn-fill :157 */
+  --bg-brand-hover:   78  70 180;           /* .btn-fill:hover :160 */
+  --bg-brand-pressed: 39  45  54;           /* --ink-3 */
+  --bg-brand-subtle: 234 233 246;           /* --piggy-soft over white */
+  --bg-brand-muted:  220 218 240;           /* piggy 20% over white */
 
-    /* Active = Mercury purple */
-    --bg-active: var(--lms-accent);
-    --bg-active-hover: 92 84 196; /* .btn-brand:hover :166 */
-    --bg-active-subtle: 234 233 246; /* --piggy-soft over white */
+  /* Active = Mercury purple */
+  --bg-active:        var(--lms-accent);
+  --bg-active-hover:   92  84 196;          /* .btn-brand:hover :166 */
+  --bg-active-subtle: 234 233 246;          /* --piggy-soft over white */
 
-    /* Foregrounds */
-    --fg-primary: 0 0 0; /* --ink */
-    --fg-secondary: 61 61 61; /* --muted-1 :14 */
-    --fg-tertiary: 89 93 98; /* --muted-2 :15 */
-    --fg-disabled: 166 166 166; /* --muted-4 :17; exempt (disabled) */
-    --fg-inverse: 255 255 255;
-    --fg-on-brand: 255 255 255; /* .btn-fill :158 */
-    --fg-on-active: 255 255 255;
-    --fg-brand: 78 70 180; /* --piggy */
-    --fg-brand-hover: 92 84 196;
-    --fg-active: 78 70 180;
-    --fg-link: 0 0 0; /* links are ink, underlined */
-    --fg-link-hover: 78 70 180;
-    --fg-link-visited: 0 0 0;
-    /* Status text: ui's own mapping onto the -11 steps, set below */
-    --fg-positive: var(--green-11);
-    --fg-negative: var(--red-11);
-    --fg-caution: var(--orange-11);
-    --fg-discovery: var(--plum-11);
-    --fg-info: var(--indigo-11);
+  /* Foregrounds */
+  --fg-primary:      0   0   0;             /* --ink */
+  --fg-secondary:   61  61  61;             /* --muted-1 :14 */
+  --fg-tertiary:    89  93  98;             /* --muted-2 :15 */
+  --fg-disabled:   166 166 166;             /* --muted-4 :17; exempt (disabled) */
+  --fg-inverse:    255 255 255;
+  --fg-on-brand:   255 255 255;             /* .btn-fill :158 */
+  --fg-on-active:  255 255 255;
+  --fg-brand:        78  70 180;            /* --piggy */
+  --fg-brand-hover:  92  84 196;
+  --fg-active:       78  70 180;
+  --fg-link:          0   0   0;            /* links are ink, underlined */
+  --fg-link-hover:   78  70 180;
+  --fg-link-visited:  0   0   0;
+  /* Status text: ui's own mapping onto the -11 steps, set below */
+  --fg-positive:   var(--green-11);
+  --fg-negative:   var(--red-11);
+  --fg-caution:    var(--orange-11);
+  --fg-discovery:  var(--plum-11);
+  --fg-info:       var(--indigo-11);
 
-    /* Scale steps ui's CSS reads directly (see the header) */
-    --green-9: 32 110 72;
-    --green-11: 19 100 44;
-    --indigo-9: 55 88 197;
-    --indigo-11: 10 88 157;
-    --iris-9: 78 70 180;
-    --iris-11: 78 70 180; /* --piggy */
-    --plum-9: 144 62 156;
-    --plum-11: 130 54 142;
-    --red-9: 172 54 58;
-    --red-11: 164 34 39;
-    --orange-9: 158 68 13;
-    --orange-11: 149 56 4;
-    --slate-12: 255 255 255; /* the ink of ui's three caution/orange rules: white on the darkened orange */
+  /* Scale steps ui's CSS reads directly (see the header) */
+  --green-9:    32 110  72;   --green-11:   19 100  44;
+  --indigo-9:   55  88 197;   --indigo-11:  10  88 157;
+  --iris-9:     78  70 180;   --iris-11:    78  70 180;   /* --piggy */
+  --plum-9:    144  62 156;   --plum-11:   130  54 142;
+  --red-9:     172  54  58;   --red-11:    164  34  39;
+  --orange-9:  158  68  13;   --orange-11: 149  56   4;
+  --slate-12:  255 255 255;   /* the ink of ui's three caution/orange rules: white on the darkened orange */
 
-    /* Borders */
-    --border-primary: 128 131 141; /* ui --slate-10 :98: input boundary >= 3:1 */
-    --border-secondary: 185 187 198; /* ui --slate-8 :96: the hairline (--line-1 fails DECO 1.5) */
-    --border-strong: 89 93 98; /* --muted-2 */
-    --border-disabled: 235 235 235; /* --line-2 :19; exempt (disabled) */
-    --border-focus: var(--lms-accent);
-    --border-active: var(--lms-accent);
-    --border-brand: 0 0 0;
-    --border-inverse: 0 0 0;
-    --ring-focus: 78 70 180 / 1; /* opaque: an alpha ring falls below 3:1 */
+  /* Borders */
+  --border-primary:   128 131 141;          /* ui --slate-10 :98: input boundary >= 3:1 */
+  --border-secondary: 185 187 198;          /* ui --slate-8 :96: the hairline (--line-1 fails DECO 1.5) */
+  --border-strong:     89  93  98;          /* --muted-2 */
+  --border-disabled:  235 235 235;          /* --line-2 :19; exempt (disabled) */
+  --border-focus:     var(--lms-accent);
+  --border-active:    var(--lms-accent);
+  --border-brand:       0   0   0;
+  --border-inverse:     0   0   0;
+  --ring-focus:        78  70 180 / 1;      /* opaque: an alpha ring falls below 3:1 */
 
-    /* LMS colour tokens */
-    --lms-nav-fg: 89 93 98; /* --muted-2, nav links :121 */
-    --lms-code-bg: var(--bg-tertiary); /* --tint */
-    --lms-code-fg: 0 0 0; /* ink */
-    --lms-code-border: var(--border-secondary);
-    --lms-code-inline-bg: var(--bg-tertiary);
-    --lms-code-inline-fg: 0 0 0;
-    /* Syntax: ui's own status and brand steps, so code reads in Mercury's palette */
-    --lms-syntax-comment: var(--fg-tertiary);
-    --lms-syntax-keyword: var(--iris-11);
-    --lms-syntax-string: var(--green-11);
-    --lms-syntax-number: var(--orange-11);
-    --lms-syntax-type: var(--indigo-11);
-    --lms-syntax-function: var(--indigo-11);
-    --lms-syntax-property: var(--plum-11);
-    --lms-syntax-punctuation: var(--fg-secondary);
-    --lms-selection-bg: 218 220 255; /* ui --iris-5 :107, what ui's own ::selection reads */
-    --lms-selection-fg: 0 0 0;
+  /* LMS colour tokens */
+  --lms-nav-fg:         89  93  98;         /* --muted-2, nav links :121 */
+  --lms-code-bg:        var(--bg-tertiary); /* --tint */
+  --lms-code-fg:          0   0   0;        /* ink */
+  --lms-code-border:    var(--border-secondary);
+  --lms-code-inline-bg: var(--bg-tertiary);
+  --lms-code-inline-fg:   0   0   0;
+  /* Syntax: ui's own status and brand steps, so code reads in Mercury's palette */
+  --lms-syntax-comment:     var(--fg-tertiary);
+  --lms-syntax-keyword:     var(--iris-11);
+  --lms-syntax-string:      var(--green-11);
+  --lms-syntax-number:      var(--orange-11);
+  --lms-syntax-type:        var(--indigo-11);
+  --lms-syntax-function:    var(--indigo-11);
+  --lms-syntax-property:    var(--plum-11);
+  --lms-syntax-punctuation: var(--fg-secondary);
+  --lms-selection-bg:  218 220 255;         /* ui --iris-5 :107, what ui's own ::selection reads */
+  --lms-selection-fg:    0   0   0;
 }
 
 /* Dark, the system default while no theme cookie is set (D-NV.6) */
 @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]).lms,
-    :root:not([data-theme="light"]) body.lms,
-    :root:not([data-theme="light"]) .lms .light-theme {
-        color-scheme: dark;
+:root:not([data-theme="light"]).lms,
+:root:not([data-theme="light"]) body.lms,
+:root:not([data-theme="light"]) .lms .light-theme {
+  color-scheme: dark;
 
-        /* LMS accent: ui's dark brand solid */
-        --lms-accent: 116 116 220; /* ui --bg-brand = --iris-9, dark :335 */
+  /* LMS accent: ui's dark brand solid */
+  --lms-accent: 116 116 220;                /* ui --bg-brand = --iris-9, dark :335 */
 
-        /* Surfaces: ui's dark mapping */
-        --bg-primary: 17 17 19; /* ui --bg-primary = --slate-1, dark :314 */
-        --bg-secondary: 24 25 27; /* ui --bg-secondary = --slate-2 :315 */
-        --bg-tertiary: 33 34 37; /* ui --bg-tertiary = --slate-3 :316, code blocks */
-        --bg-elevated: 17 17 19; /* ui --bg-elevated = --slate-1 :314 */
-        --bg-inverse: 237 238 240; /* ui --bg-inverse = --slate-12 :325 */
-        --bg-inverse-hover: 176 180 186; /* ui --bg-inverse-hover = --slate-11 :324 */
-        --bg-inverse-pressed: 176 180 186; /* ui --slate-11 :324, the next step: ui's --bg-inverse-pressed (--slate-10) put --fg-inverse at 4.45 */
-        --bg-disabled: 33 34 37; /* ui --bg-disabled = --slate-3 :316 */
+  /* Surfaces: ui's dark mapping */
+  --bg-primary:         17  17  19;         /* ui --bg-primary = --slate-1, dark :314 */
+  --bg-secondary:       24  25  27;         /* ui --bg-secondary = --slate-2 :315 */
+  --bg-tertiary:        33  34  37;         /* ui --bg-tertiary = --slate-3 :316, code blocks */
+  --bg-elevated:        17  17  19;         /* ui --bg-elevated = --slate-1 :314 */
+  --bg-inverse:        237 238 240;         /* ui --bg-inverse = --slate-12 :325 */
+  --bg-inverse-hover:  176 180 186;         /* ui --bg-inverse-hover = --slate-11 :324 */
+  --bg-inverse-pressed: 176 180 186;        /* ui --slate-11 :324, the next step: ui's --bg-inverse-pressed (--slate-10) put --fg-inverse at 4.45 */
+  --bg-disabled:        33  34  37;         /* ui --bg-disabled = --slate-3 :316 */
 
-        /* Scrims: ui's dark values */
-        --bg-hover: 237 238 240 / 0.06; /* ui dark :352 */
-        --bg-pressed: 237 238 240 / 0.12; /* ui dark :353 */
-        --bg-selected: 91 91 214 / 0.18; /* ui dark :354 */
-        --bg-backdrop: 0 0 0 / 0.72; /* ui dark :355 */
-        --bg-overlay: 0 0 0 / 0.48; /* ui dark :356 */
+  /* Scrims: ui's dark values */
+  --bg-hover:     237 238 240 / 0.06;       /* ui dark :352 */
+  --bg-pressed:   237 238 240 / 0.12;       /* ui dark :353 */
+  --bg-selected:   91  91 214 / 0.18;       /* ui dark :354 */
+  --bg-backdrop:    0   0   0 / 0.72;       /* ui dark :355 */
+  --bg-overlay:     0   0   0 / 0.48;       /* ui dark :356 */
 
-        /* Brand: the light block's ink pill has no ui dark analogue (the website has no dark);
-           it takes ui's ink-fill role, --bg-inverse, and its hover keeps Mercury purple */
-        --bg-brand: 237 238 240; /* website ink; ui --bg-inverse = --slate-12 :325 */
-        --bg-brand-hover: 116 116 220; /* website piggy; ui --bg-brand = --iris-9 :335 */
-        --bg-brand-pressed: 176 180 186; /* website --ink-3, as --bg-inverse-pressed: ui --slate-11 :324 (--slate-10 put --fg-on-brand at 4.45) */
-        --bg-brand-subtle: 32 34 72; /* ui --bg-brand-subtle = --iris-3 :329 */
-        --bg-brand-muted: 38 42 101; /* ui --bg-brand-muted = --iris-4 :330 */
+  /* Brand: the light block's ink pill has no ui dark analogue (the website has no dark);
+     it takes ui's ink-fill role, --bg-inverse, and its hover keeps Mercury purple */
+  --bg-brand:         237 238 240;          /* website ink; ui --bg-inverse = --slate-12 :325 */
+  --bg-brand-hover:   116 116 220;          /* website piggy; ui --bg-brand = --iris-9 :335 */
+  --bg-brand-pressed: 176 180 186;          /* website --ink-3, as --bg-inverse-pressed: ui --slate-11 :324 (--slate-10 put --fg-on-brand at 4.45) */
+  --bg-brand-subtle:   32  34  72;          /* ui --bg-brand-subtle = --iris-3 :329 */
+  --bg-brand-muted:    38  42 101;          /* ui --bg-brand-muted = --iris-4 :330 */
 
-        /* Active = Mercury purple, in ui's dark brand steps */
-        --bg-active: var(--lms-accent);
-        --bg-active-hover: 128 126 230; /* website .btn-brand:hover; ui --bg-brand-hover = --iris-10 :336 */
-        --bg-active-subtle: 32 34 72; /* website piggy-soft; ui --bg-brand-subtle = --iris-3 :329 */
+  /* Active = Mercury purple, in ui's dark brand steps */
+  --bg-active:        var(--lms-accent);
+  --bg-active-hover:  128 126 230;          /* website .btn-brand:hover; ui --bg-brand-hover = --iris-10 :336 */
+  --bg-active-subtle:  32  34  72;          /* website piggy-soft; ui --bg-brand-subtle = --iris-3 :329 */
 
-        /* Foregrounds */
-        --fg-primary: 237 238 240; /* ui --fg-primary = --slate-12 :325 */
-        --fg-secondary: 176 180 186; /* ui --fg-secondary = --slate-11 :324 */
-        --fg-tertiary: 176 180 186;
-        /* ui --slate-11 :324, the next step: ui's --fg-tertiary (--slate-10) was 4.45 on --bg-primary, 3.00 on a pressed scrim;
-                                         in dark it equals --fg-secondary (no lower step on ui's scale clears 4.5) */
-        --fg-disabled: 90 97 105; /* ui --fg-disabled = --slate-8 :321; exempt (disabled) */
-        --fg-inverse: 17 17 19; /* ui --fg-inverse = --slate-1 :314 */
-        --fg-on-brand: 17 17 19; /* ui --fg-on-brand = --slate-1 :314 */
-        --fg-on-active: 17 17 19; /* ui --fg-on-active = --slate-1 :314 */
-        --fg-brand: 177 169 255; /* ui --fg-brand = --iris-11 :337 */
-        --fg-brand-hover: 128 126 230; /* ui --fg-brand-hover = --iris-10 :336 */
-        --fg-active: 177 169 255; /* LMS active is purple: ui --fg-brand = --iris-11 :337 (ui's own --fg-active is --indigo-11) */
-        --fg-link: 237 238 240; /* links are ink: ui --fg-primary = --slate-12 :325 (ui's own --fg-link is --indigo-11) */
-        --fg-link-hover: 177 169 255; /* website piggy: ui --fg-brand = --iris-11 :337 */
-        --fg-link-visited: 237 238 240; /* ink, as --fg-link */
-        --fg-positive: var(--green-11);
-        --fg-negative: var(--red-11);
-        --fg-caution: var(--orange-11);
-        --fg-discovery: var(--plum-11);
-        --fg-info: var(--indigo-11);
+  /* Foregrounds */
+  --fg-primary:    237 238 240;             /* ui --fg-primary = --slate-12 :325 */
+  --fg-secondary:  176 180 186;             /* ui --fg-secondary = --slate-11 :324 */
+  --fg-tertiary:   176 180 186;             /* ui --slate-11 :324, the next step: ui's --fg-tertiary (--slate-10) was 4.45 on --bg-primary, 3.00 on a pressed scrim;
+                                              in dark it equals --fg-secondary (no lower step on ui's scale clears 4.5) */
+  --fg-disabled:    90  97 105;             /* ui --fg-disabled = --slate-8 :321; exempt (disabled) */
+  --fg-inverse:     17  17  19;             /* ui --fg-inverse = --slate-1 :314 */
+  --fg-on-brand:    17  17  19;             /* ui --fg-on-brand = --slate-1 :314 */
+  --fg-on-active:   17  17  19;             /* ui --fg-on-active = --slate-1 :314 */
+  --fg-brand:      177 169 255;             /* ui --fg-brand = --iris-11 :337 */
+  --fg-brand-hover: 128 126 230;            /* ui --fg-brand-hover = --iris-10 :336 */
+  --fg-active:     177 169 255;             /* LMS active is purple: ui --fg-brand = --iris-11 :337 (ui's own --fg-active is --indigo-11) */
+  --fg-link:       237 238 240;             /* links are ink: ui --fg-primary = --slate-12 :325 (ui's own --fg-link is --indigo-11) */
+  --fg-link-hover: 177 169 255;             /* website piggy: ui --fg-brand = --iris-11 :337 */
+  --fg-link-visited: 237 238 240;           /* ink, as --fg-link */
+  --fg-positive:   var(--green-11);
+  --fg-negative:   var(--red-11);
+  --fg-caution:    var(--orange-11);
+  --fg-discovery:  var(--plum-11);
+  --fg-info:       var(--indigo-11);
 
-        /* Scale steps: ui's .dark-theme values, re-bound here because the LMS's <html> never
-           carries .dark-theme, and ui's components read these steps directly */
-        --slate-1: 17 17 19;
-        --slate-2: 24 25 27;
-        --slate-3: 33 34 37; /* ui dark :314-316 */
-        --slate-4: 39 42 45;
-        --slate-5: 46 49 53;
-        --slate-6: 54 58 63; /* :317-319 */
-        --slate-7: 67 72 78;
-        --slate-8: 90 97 105;
-        --slate-9: 105 110 119; /* :320-322 */
-        --slate-10: 119 123 132;
-        --slate-11: 176 180 186;
-        --slate-12: 17 17 19; /* :323-324 */
-        /* --slate-12 is the ink of ui's three caution/orange rules (mercury.css:346, :414, additions.css:479),
-           as in the light block. ui says on-caution "stays dark" (tokens.css:360-361) yet its dark --slate-12 is
-           237 238 240 (2.56 on --orange-9): ui bug, reported by the lead. Dark ink here is ui's --slate-1 :314. */
-        --iris-1: 19 19 30;
-        --iris-2: 23 22 37;
-        --iris-3: 32 34 72; /* :327-329 */
-        --iris-4: 38 42 101;
-        --iris-5: 48 51 116;
-        --iris-6: 61 62 130; /* :330-332 */
-        --iris-7: 74 74 149;
-        --iris-8: 89 88 177;
-        --iris-9: 116 116 220; /* :333-335 */
-        --iris-10: 128 126 230;
-        --iris-11: 177 169 255;
-        --iris-12: 224 223 254; /* :336-338 */
-        --indigo-3: 26 40 84;
-        --indigo-9: 89 121 226;
-        --indigo-10: 84 114 228; /* :312, :340-341 */
-        --indigo-11: 158 177 255;
-        --indigo-12: 214 225 255; /* :342-343 */
-        --green-3: 22 57 38;
-        --green-9: 48 164 108;
-        --green-11: 78 212 136; /* :308; -9 is ui's base :131 (dark keeps it) */
-        --red-3: 61 25 30;
-        --red-9: 229 72 77;
-        --red-11: 255 125 133; /* :309; -9 base :133 */
-        --orange-3: 63 36 17;
-        --orange-9: 247 107 21;
-        --orange-11: 255 160 87; /* :310; -9 base :135 */
-        --plum-3: 58 29 65;
-        --plum-9: 180 94 194;
-        --plum-11: 211 131 228; /* :311, :350 */
+  /* Scale steps: ui's .dark-theme values, re-bound here because the LMS's <html> never
+     carries .dark-theme, and ui's components read these steps directly */
+  --slate-1:   17  17  19;  --slate-2:   24  25  27;  --slate-3:   33  34  37;   /* ui dark :314-316 */
+  --slate-4:   39  42  45;  --slate-5:   46  49  53;  --slate-6:   54  58  63;   /* :317-319 */
+  --slate-7:   67  72  78;  --slate-8:   90  97 105;  --slate-9:  105 110 119;   /* :320-322 */
+  --slate-10: 119 123 132;  --slate-11: 176 180 186;  --slate-12:  17  17  19;   /* :323-324 */
+  /* --slate-12 is the ink of ui's three caution/orange rules (mercury.css:346, :414, additions.css:479),
+     as in the light block. ui says on-caution "stays dark" (tokens.css:360-361) yet its dark --slate-12 is
+     237 238 240 (2.56 on --orange-9): ui bug, reported by the lead. Dark ink here is ui's --slate-1 :314. */
+  --iris-1:    19  19  30;  --iris-2:    23  22  37;  --iris-3:    32  34  72;   /* :327-329 */
+  --iris-4:    38  42 101;  --iris-5:    48  51 116;  --iris-6:    61  62 130;   /* :330-332 */
+  --iris-7:    74  74 149;  --iris-8:    89  88 177;  --iris-9:   116 116 220;   /* :333-335 */
+  --iris-10:  128 126 230;  --iris-11:  177 169 255;  --iris-12:  224 223 254;   /* :336-338 */
+  --indigo-3:  26  40  84;  --indigo-9:  89 121 226;  --indigo-10: 84 114 228;   /* :312, :340-341 */
+  --indigo-11: 158 177 255; --indigo-12: 214 225 255;                          /* :342-343 */
+  --green-3:   22  57  38;  --green-9:   48 164 108;  --green-11:  78 212 136;   /* :308; -9 is ui's base :131 (dark keeps it) */
+  --red-3:     61  25  30;  --red-9:    229  72  77;  --red-11:   255 125 133;   /* :309; -9 base :133 */
+  --orange-3:  63  36  17;  --orange-9: 247 107  21;  --orange-11: 255 160  87;  /* :310; -9 base :135 */
+  --plum-3:    58  29  65;  --plum-9:   180  94 194;  --plum-11:  211 131 228;   /* :311, :350 */
 
-        /* Borders */
-        --border-primary: 119 123 132; /* the light block's ui step, --slate-10, dark :323 (ui's --border-primary, --slate-6, is below UI 3.0) */
-        --border-secondary: 90 97 105; /* the light block's ui step, --slate-8, dark :321 */
-        --border-strong: 119 123 132; /* website --muted-2 = the fg-tertiary role: ui --slate-10 :323 */
-        --border-disabled: 46 49 53; /* ui --border-disabled = --slate-5 :318; exempt (disabled) */
-        --border-focus: var(--lms-accent);
-        --border-active: var(--lms-accent);
-        --border-brand: 237 238 240; /* follows --bg-brand: ui --slate-12 :325 */
-        --border-inverse: 237 238 240; /* ui --border-inverse = --slate-12 :325 */
-        --ring-focus: 116 116 220 / 1; /* --lms-accent, opaque as in light (ui's dark ring is iris at 0.4, :357) */
+  /* Borders */
+  --border-primary:   119 123 132;          /* the light block's ui step, --slate-10, dark :323 (ui's --border-primary, --slate-6, is below UI 3.0) */
+  --border-secondary:  90  97 105;          /* the light block's ui step, --slate-8, dark :321 */
+  --border-strong:    119 123 132;          /* website --muted-2 = the fg-tertiary role: ui --slate-10 :323 */
+  --border-disabled:   46  49  53;          /* ui --border-disabled = --slate-5 :318; exempt (disabled) */
+  --border-focus:     var(--lms-accent);
+  --border-active:    var(--lms-accent);
+  --border-brand:     237 238 240;          /* follows --bg-brand: ui --slate-12 :325 */
+  --border-inverse:   237 238 240;          /* ui --border-inverse = --slate-12 :325 */
+  --ring-focus:       116 116 220 / 1;      /* --lms-accent, opaque as in light (ui's dark ring is iris at 0.4, :357) */
 
-        /* LMS colour tokens */
-        --lms-nav-fg: 176 180 186; /* follows --fg-tertiary: ui --slate-11 :324 (--slate-10 was 4.45 on --bg-primary) */
-        --lms-code-bg: var(--bg-tertiary);
-        --lms-code-fg: 237 238 240; /* follows ui --fg-primary = --slate-12 :325 */
-        --lms-code-border: var(--border-secondary);
-        --lms-code-inline-bg: var(--bg-tertiary);
-        --lms-code-inline-fg: 237 238 240; /* follows ui --fg-primary */
-        --lms-syntax-comment: var(--fg-tertiary); /* --slate-11 in dark (--slate-10 was 3.75 on --lms-code-bg) */
-        --lms-syntax-keyword: var(--iris-11);
-        --lms-syntax-string: var(--green-11);
-        --lms-syntax-number: var(--orange-11);
-        --lms-syntax-type: var(--indigo-11);
-        --lms-syntax-function: var(--indigo-11);
-        --lms-syntax-property: var(--plum-11);
-        --lms-syntax-punctuation: var(--fg-secondary);
-        --lms-selection-bg: 48 51 116; /* what ui's ::selection reads: --iris-5, dark :331 */
-        --lms-selection-fg: 237 238 240; /* ui's ::selection colour --fg-primary = --slate-12 */
-    }
+  /* LMS colour tokens */
+  --lms-nav-fg:       176 180 186;          /* follows --fg-tertiary: ui --slate-11 :324 (--slate-10 was 4.45 on --bg-primary) */
+  --lms-code-bg:      var(--bg-tertiary);
+  --lms-code-fg:      237 238 240;          /* follows ui --fg-primary = --slate-12 :325 */
+  --lms-code-border:  var(--border-secondary);
+  --lms-code-inline-bg: var(--bg-tertiary);
+  --lms-code-inline-fg: 237 238 240;        /* follows ui --fg-primary */
+  --lms-syntax-comment:     var(--fg-tertiary);   /* --slate-11 in dark (--slate-10 was 3.75 on --lms-code-bg) */
+  --lms-syntax-keyword:     var(--iris-11);
+  --lms-syntax-string:      var(--green-11);
+  --lms-syntax-number:      var(--orange-11);
+  --lms-syntax-type:        var(--indigo-11);
+  --lms-syntax-function:    var(--indigo-11);
+  --lms-syntax-property:    var(--plum-11);
+  --lms-syntax-punctuation: var(--fg-secondary);
+  --lms-selection-bg:  48  51 116;          /* what ui's ::selection reads: --iris-5, dark :331 */
+  --lms-selection-fg: 237 238 240;          /* ui's ::selection colour --fg-primary = --slate-12 */
+}
 }
 
 /* Dark, forced by the theme cookie the server writes into <html data-theme> (D-NV.6).
@@ -389,143 +356,115 @@
 :root[data-theme="dark"].lms,
 :root[data-theme="dark"] body.lms,
 :root[data-theme="dark"] .lms .light-theme {
-    color-scheme: dark;
+  color-scheme: dark;
 
-    /* LMS accent: ui's dark brand solid */
-    --lms-accent: 116 116 220; /* ui --bg-brand = --iris-9, dark :335 */
+  /* LMS accent: ui's dark brand solid */
+  --lms-accent: 116 116 220;                /* ui --bg-brand = --iris-9, dark :335 */
 
-    /* Surfaces: ui's dark mapping */
-    --bg-primary: 17 17 19; /* ui --bg-primary = --slate-1, dark :314 */
-    --bg-secondary: 24 25 27; /* ui --bg-secondary = --slate-2 :315 */
-    --bg-tertiary: 33 34 37; /* ui --bg-tertiary = --slate-3 :316, code blocks */
-    --bg-elevated: 17 17 19; /* ui --bg-elevated = --slate-1 :314 */
-    --bg-inverse: 237 238 240; /* ui --bg-inverse = --slate-12 :325 */
-    --bg-inverse-hover: 176 180 186; /* ui --bg-inverse-hover = --slate-11 :324 */
-    --bg-inverse-pressed: 176 180 186; /* ui --slate-11 :324, the next step: ui's --bg-inverse-pressed (--slate-10) put --fg-inverse at 4.45 */
-    --bg-disabled: 33 34 37; /* ui --bg-disabled = --slate-3 :316 */
+  /* Surfaces: ui's dark mapping */
+  --bg-primary:         17  17  19;         /* ui --bg-primary = --slate-1, dark :314 */
+  --bg-secondary:       24  25  27;         /* ui --bg-secondary = --slate-2 :315 */
+  --bg-tertiary:        33  34  37;         /* ui --bg-tertiary = --slate-3 :316, code blocks */
+  --bg-elevated:        17  17  19;         /* ui --bg-elevated = --slate-1 :314 */
+  --bg-inverse:        237 238 240;         /* ui --bg-inverse = --slate-12 :325 */
+  --bg-inverse-hover:  176 180 186;         /* ui --bg-inverse-hover = --slate-11 :324 */
+  --bg-inverse-pressed: 176 180 186;        /* ui --slate-11 :324, the next step: ui's --bg-inverse-pressed (--slate-10) put --fg-inverse at 4.45 */
+  --bg-disabled:        33  34  37;         /* ui --bg-disabled = --slate-3 :316 */
 
-    /* Scrims: ui's dark values */
-    --bg-hover: 237 238 240 / 0.06; /* ui dark :352 */
-    --bg-pressed: 237 238 240 / 0.12; /* ui dark :353 */
-    --bg-selected: 91 91 214 / 0.18; /* ui dark :354 */
-    --bg-backdrop: 0 0 0 / 0.72; /* ui dark :355 */
-    --bg-overlay: 0 0 0 / 0.48; /* ui dark :356 */
+  /* Scrims: ui's dark values */
+  --bg-hover:     237 238 240 / 0.06;       /* ui dark :352 */
+  --bg-pressed:   237 238 240 / 0.12;       /* ui dark :353 */
+  --bg-selected:   91  91 214 / 0.18;       /* ui dark :354 */
+  --bg-backdrop:    0   0   0 / 0.72;       /* ui dark :355 */
+  --bg-overlay:     0   0   0 / 0.48;       /* ui dark :356 */
 
-    /* Brand: the light block's ink pill has no ui dark analogue (the website has no dark);
-       it takes ui's ink-fill role, --bg-inverse, and its hover keeps Mercury purple */
-    --bg-brand: 237 238 240; /* website ink; ui --bg-inverse = --slate-12 :325 */
-    --bg-brand-hover: 116 116 220; /* website piggy; ui --bg-brand = --iris-9 :335 */
-    --bg-brand-pressed: 176 180 186; /* website --ink-3, as --bg-inverse-pressed: ui --slate-11 :324 (--slate-10 put --fg-on-brand at 4.45) */
-    --bg-brand-subtle: 32 34 72; /* ui --bg-brand-subtle = --iris-3 :329 */
-    --bg-brand-muted: 38 42 101; /* ui --bg-brand-muted = --iris-4 :330 */
+  /* Brand: the light block's ink pill has no ui dark analogue (the website has no dark);
+     it takes ui's ink-fill role, --bg-inverse, and its hover keeps Mercury purple */
+  --bg-brand:         237 238 240;          /* website ink; ui --bg-inverse = --slate-12 :325 */
+  --bg-brand-hover:   116 116 220;          /* website piggy; ui --bg-brand = --iris-9 :335 */
+  --bg-brand-pressed: 176 180 186;          /* website --ink-3, as --bg-inverse-pressed: ui --slate-11 :324 (--slate-10 put --fg-on-brand at 4.45) */
+  --bg-brand-subtle:   32  34  72;          /* ui --bg-brand-subtle = --iris-3 :329 */
+  --bg-brand-muted:    38  42 101;          /* ui --bg-brand-muted = --iris-4 :330 */
 
-    /* Active = Mercury purple, in ui's dark brand steps */
-    --bg-active: var(--lms-accent);
-    --bg-active-hover: 128 126 230; /* website .btn-brand:hover; ui --bg-brand-hover = --iris-10 :336 */
-    --bg-active-subtle: 32 34 72; /* website piggy-soft; ui --bg-brand-subtle = --iris-3 :329 */
+  /* Active = Mercury purple, in ui's dark brand steps */
+  --bg-active:        var(--lms-accent);
+  --bg-active-hover:  128 126 230;          /* website .btn-brand:hover; ui --bg-brand-hover = --iris-10 :336 */
+  --bg-active-subtle:  32  34  72;          /* website piggy-soft; ui --bg-brand-subtle = --iris-3 :329 */
 
-    /* Foregrounds */
-    --fg-primary: 237 238 240; /* ui --fg-primary = --slate-12 :325 */
-    --fg-secondary: 176 180 186; /* ui --fg-secondary = --slate-11 :324 */
-    --fg-tertiary: 176 180 186;
-    /* ui --slate-11 :324, the next step: ui's --fg-tertiary (--slate-10) was 4.45 on --bg-primary, 3.00 on a pressed scrim;
-                                     in dark it equals --fg-secondary (no lower step on ui's scale clears 4.5) */
-    --fg-disabled: 90 97 105; /* ui --fg-disabled = --slate-8 :321; exempt (disabled) */
-    --fg-inverse: 17 17 19; /* ui --fg-inverse = --slate-1 :314 */
-    --fg-on-brand: 17 17 19; /* ui --fg-on-brand = --slate-1 :314 */
-    --fg-on-active: 17 17 19; /* ui --fg-on-active = --slate-1 :314 */
-    --fg-brand: 177 169 255; /* ui --fg-brand = --iris-11 :337 */
-    --fg-brand-hover: 128 126 230; /* ui --fg-brand-hover = --iris-10 :336 */
-    --fg-active: 177 169 255; /* LMS active is purple: ui --fg-brand = --iris-11 :337 (ui's own --fg-active is --indigo-11) */
-    --fg-link: 237 238 240; /* links are ink: ui --fg-primary = --slate-12 :325 (ui's own --fg-link is --indigo-11) */
-    --fg-link-hover: 177 169 255; /* website piggy: ui --fg-brand = --iris-11 :337 */
-    --fg-link-visited: 237 238 240; /* ink, as --fg-link */
-    --fg-positive: var(--green-11);
-    --fg-negative: var(--red-11);
-    --fg-caution: var(--orange-11);
-    --fg-discovery: var(--plum-11);
-    --fg-info: var(--indigo-11);
+  /* Foregrounds */
+  --fg-primary:    237 238 240;             /* ui --fg-primary = --slate-12 :325 */
+  --fg-secondary:  176 180 186;             /* ui --fg-secondary = --slate-11 :324 */
+  --fg-tertiary:   176 180 186;             /* ui --slate-11 :324, the next step: ui's --fg-tertiary (--slate-10) was 4.45 on --bg-primary, 3.00 on a pressed scrim;
+                                              in dark it equals --fg-secondary (no lower step on ui's scale clears 4.5) */
+  --fg-disabled:    90  97 105;             /* ui --fg-disabled = --slate-8 :321; exempt (disabled) */
+  --fg-inverse:     17  17  19;             /* ui --fg-inverse = --slate-1 :314 */
+  --fg-on-brand:    17  17  19;             /* ui --fg-on-brand = --slate-1 :314 */
+  --fg-on-active:   17  17  19;             /* ui --fg-on-active = --slate-1 :314 */
+  --fg-brand:      177 169 255;             /* ui --fg-brand = --iris-11 :337 */
+  --fg-brand-hover: 128 126 230;            /* ui --fg-brand-hover = --iris-10 :336 */
+  --fg-active:     177 169 255;             /* LMS active is purple: ui --fg-brand = --iris-11 :337 (ui's own --fg-active is --indigo-11) */
+  --fg-link:       237 238 240;             /* links are ink: ui --fg-primary = --slate-12 :325 (ui's own --fg-link is --indigo-11) */
+  --fg-link-hover: 177 169 255;             /* website piggy: ui --fg-brand = --iris-11 :337 */
+  --fg-link-visited: 237 238 240;           /* ink, as --fg-link */
+  --fg-positive:   var(--green-11);
+  --fg-negative:   var(--red-11);
+  --fg-caution:    var(--orange-11);
+  --fg-discovery:  var(--plum-11);
+  --fg-info:       var(--indigo-11);
 
-    /* Scale steps: ui's .dark-theme values, re-bound here because the LMS's <html> never
-       carries .dark-theme, and ui's components read these steps directly */
-    --slate-1: 17 17 19;
-    --slate-2: 24 25 27;
-    --slate-3: 33 34 37; /* ui dark :314-316 */
-    --slate-4: 39 42 45;
-    --slate-5: 46 49 53;
-    --slate-6: 54 58 63; /* :317-319 */
-    --slate-7: 67 72 78;
-    --slate-8: 90 97 105;
-    --slate-9: 105 110 119; /* :320-322 */
-    --slate-10: 119 123 132;
-    --slate-11: 176 180 186;
-    --slate-12: 17 17 19; /* :323-324 */
-    /* --slate-12 is the ink of ui's three caution/orange rules (mercury.css:346, :414, additions.css:479),
-       as in the light block. ui says on-caution "stays dark" (tokens.css:360-361) yet its dark --slate-12 is
-       237 238 240 (2.56 on --orange-9): ui bug, reported by the lead. Dark ink here is ui's --slate-1 :314. */
-    --iris-1: 19 19 30;
-    --iris-2: 23 22 37;
-    --iris-3: 32 34 72; /* :327-329 */
-    --iris-4: 38 42 101;
-    --iris-5: 48 51 116;
-    --iris-6: 61 62 130; /* :330-332 */
-    --iris-7: 74 74 149;
-    --iris-8: 89 88 177;
-    --iris-9: 116 116 220; /* :333-335 */
-    --iris-10: 128 126 230;
-    --iris-11: 177 169 255;
-    --iris-12: 224 223 254; /* :336-338 */
-    --indigo-3: 26 40 84;
-    --indigo-9: 89 121 226;
-    --indigo-10: 84 114 228; /* :312, :340-341 */
-    --indigo-11: 158 177 255;
-    --indigo-12: 214 225 255; /* :342-343 */
-    --green-3: 22 57 38;
-    --green-9: 48 164 108;
-    --green-11: 78 212 136; /* :308; -9 is ui's base :131 (dark keeps it) */
-    --red-3: 61 25 30;
-    --red-9: 229 72 77;
-    --red-11: 255 125 133; /* :309; -9 base :133 */
-    --orange-3: 63 36 17;
-    --orange-9: 247 107 21;
-    --orange-11: 255 160 87; /* :310; -9 base :135 */
-    --plum-3: 58 29 65;
-    --plum-9: 180 94 194;
-    --plum-11: 211 131 228; /* :311, :350 */
+  /* Scale steps: ui's .dark-theme values, re-bound here because the LMS's <html> never
+     carries .dark-theme, and ui's components read these steps directly */
+  --slate-1:   17  17  19;  --slate-2:   24  25  27;  --slate-3:   33  34  37;   /* ui dark :314-316 */
+  --slate-4:   39  42  45;  --slate-5:   46  49  53;  --slate-6:   54  58  63;   /* :317-319 */
+  --slate-7:   67  72  78;  --slate-8:   90  97 105;  --slate-9:  105 110 119;   /* :320-322 */
+  --slate-10: 119 123 132;  --slate-11: 176 180 186;  --slate-12:  17  17  19;   /* :323-324 */
+  /* --slate-12 is the ink of ui's three caution/orange rules (mercury.css:346, :414, additions.css:479),
+     as in the light block. ui says on-caution "stays dark" (tokens.css:360-361) yet its dark --slate-12 is
+     237 238 240 (2.56 on --orange-9): ui bug, reported by the lead. Dark ink here is ui's --slate-1 :314. */
+  --iris-1:    19  19  30;  --iris-2:    23  22  37;  --iris-3:    32  34  72;   /* :327-329 */
+  --iris-4:    38  42 101;  --iris-5:    48  51 116;  --iris-6:    61  62 130;   /* :330-332 */
+  --iris-7:    74  74 149;  --iris-8:    89  88 177;  --iris-9:   116 116 220;   /* :333-335 */
+  --iris-10:  128 126 230;  --iris-11:  177 169 255;  --iris-12:  224 223 254;   /* :336-338 */
+  --indigo-3:  26  40  84;  --indigo-9:  89 121 226;  --indigo-10: 84 114 228;   /* :312, :340-341 */
+  --indigo-11: 158 177 255; --indigo-12: 214 225 255;                          /* :342-343 */
+  --green-3:   22  57  38;  --green-9:   48 164 108;  --green-11:  78 212 136;   /* :308; -9 is ui's base :131 (dark keeps it) */
+  --red-3:     61  25  30;  --red-9:    229  72  77;  --red-11:   255 125 133;   /* :309; -9 base :133 */
+  --orange-3:  63  36  17;  --orange-9: 247 107  21;  --orange-11: 255 160  87;  /* :310; -9 base :135 */
+  --plum-3:    58  29  65;  --plum-9:   180  94 194;  --plum-11:  211 131 228;   /* :311, :350 */
 
-    /* Borders */
-    --border-primary: 119 123 132; /* the light block's ui step, --slate-10, dark :323 (ui's --border-primary, --slate-6, is below UI 3.0) */
-    --border-secondary: 90 97 105; /* the light block's ui step, --slate-8, dark :321 */
-    --border-strong: 119 123 132; /* website --muted-2 = the fg-tertiary role: ui --slate-10 :323 */
-    --border-disabled: 46 49 53; /* ui --border-disabled = --slate-5 :318; exempt (disabled) */
-    --border-focus: var(--lms-accent);
-    --border-active: var(--lms-accent);
-    --border-brand: 237 238 240; /* follows --bg-brand: ui --slate-12 :325 */
-    --border-inverse: 237 238 240; /* ui --border-inverse = --slate-12 :325 */
-    --ring-focus: 116 116 220 / 1; /* --lms-accent, opaque as in light (ui's dark ring is iris at 0.4, :357) */
+  /* Borders */
+  --border-primary:   119 123 132;          /* the light block's ui step, --slate-10, dark :323 (ui's --border-primary, --slate-6, is below UI 3.0) */
+  --border-secondary:  90  97 105;          /* the light block's ui step, --slate-8, dark :321 */
+  --border-strong:    119 123 132;          /* website --muted-2 = the fg-tertiary role: ui --slate-10 :323 */
+  --border-disabled:   46  49  53;          /* ui --border-disabled = --slate-5 :318; exempt (disabled) */
+  --border-focus:     var(--lms-accent);
+  --border-active:    var(--lms-accent);
+  --border-brand:     237 238 240;          /* follows --bg-brand: ui --slate-12 :325 */
+  --border-inverse:   237 238 240;          /* ui --border-inverse = --slate-12 :325 */
+  --ring-focus:       116 116 220 / 1;      /* --lms-accent, opaque as in light (ui's dark ring is iris at 0.4, :357) */
 
-    /* LMS colour tokens */
-    --lms-nav-fg: 176 180 186; /* follows --fg-tertiary: ui --slate-11 :324 (--slate-10 was 4.45 on --bg-primary) */
-    --lms-code-bg: var(--bg-tertiary);
-    --lms-code-fg: 237 238 240; /* follows ui --fg-primary = --slate-12 :325 */
-    --lms-code-border: var(--border-secondary);
-    --lms-code-inline-bg: var(--bg-tertiary);
-    --lms-code-inline-fg: 237 238 240; /* follows ui --fg-primary */
-    --lms-syntax-comment: var(--fg-tertiary); /* --slate-11 in dark (--slate-10 was 3.75 on --lms-code-bg) */
-    --lms-syntax-keyword: var(--iris-11);
-    --lms-syntax-string: var(--green-11);
-    --lms-syntax-number: var(--orange-11);
-    --lms-syntax-type: var(--indigo-11);
-    --lms-syntax-function: var(--indigo-11);
-    --lms-syntax-property: var(--plum-11);
-    --lms-syntax-punctuation: var(--fg-secondary);
-    --lms-selection-bg: 48 51 116; /* what ui's ::selection reads: --iris-5, dark :331 */
-    --lms-selection-fg: 237 238 240; /* ui's ::selection colour --fg-primary = --slate-12 */
+  /* LMS colour tokens */
+  --lms-nav-fg:       176 180 186;          /* follows --fg-tertiary: ui --slate-11 :324 (--slate-10 was 4.45 on --bg-primary) */
+  --lms-code-bg:      var(--bg-tertiary);
+  --lms-code-fg:      237 238 240;          /* follows ui --fg-primary = --slate-12 :325 */
+  --lms-code-border:  var(--border-secondary);
+  --lms-code-inline-bg: var(--bg-tertiary);
+  --lms-code-inline-fg: 237 238 240;        /* follows ui --fg-primary */
+  --lms-syntax-comment:     var(--fg-tertiary);   /* --slate-11 in dark (--slate-10 was 3.75 on --lms-code-bg) */
+  --lms-syntax-keyword:     var(--iris-11);
+  --lms-syntax-string:      var(--green-11);
+  --lms-syntax-number:      var(--orange-11);
+  --lms-syntax-type:        var(--indigo-11);
+  --lms-syntax-function:    var(--indigo-11);
+  --lms-syntax-property:    var(--plum-11);
+  --lms-syntax-punctuation: var(--fg-secondary);
+  --lms-selection-bg:  48  51 116;          /* what ui's ::selection reads: --iris-5, dark :331 */
+  --lms-selection-fg: 237 238 240;          /* ui's ::selection colour --fg-primary = --slate-12 */
 }
 
 /* ui's ::selection reads the --iris-5 scale step (tokens.css:449); the LMS selection is a
    scoped rule with the same colour, so no scale step is re-bound for it. */
 .lms ::selection {
-    background: rgb(var(--lms-selection-bg));
-    color: rgb(var(--lms-selection-fg));
+  background: rgb(var(--lms-selection-bg));
+  color: rgb(var(--lms-selection-fg));
 }

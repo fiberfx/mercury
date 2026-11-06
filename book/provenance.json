@@ -1,18 +1,26 @@
 {
-  "revision": "51ead01be32db5bf65479a79c77a332476e1cdb8",
-  "imageId": "sha256:617a61811c6b9fd50536add372dd261fc0840a54faa1de59c23220728cbd175b",
+  "revision": "60d852105d4f0c55440ec7f1e4da3a8649c739e4",
+  "imageId": "sha256:11716dfbd0466fefae4d1547cec346e5926dddf17e73751eafa2fb72e8330cee",
   "files": {
     "favicon.svg": {
       "bytes": 518,
       "sha256": "e75066c6e799928f2dff2e5781b23fdfe6bd2e1d53248f4788d67840cb243d26"
     },
     "index.html": {
-      "bytes": 969715,
-      "sha256": "c0e30ef08252f02028017519ddc95f8a52083b183dfeb8fd0616ad8f2dfaad4d"
+      "bytes": 1077297,
+      "sha256": "ce7125c2dcc22cab48e364df065995cc03874931469d729749fd97133e230b3b"
+    },
+    "index.ru.html": {
+      "bytes": 1096587,
+      "sha256": "e78fd18d31ed99500456f9caceda0e9fd96ce3f3e15a8f0c5378a3915c3b9227"
+    },
+    "llms.ru.txt": {
+      "bytes": 3912,
+      "sha256": "9177f5fd5ab41c77d83677dfa37ac0f00f917487e3abe58192969e6fac933484"
     },
     "llms.txt": {
-      "bytes": 2045,
-      "sha256": "c44d5ea1b5e511135e3c06cd31c49cc4ecfde9b5492813ae6731696776954096"
+      "bytes": 2259,
+      "sha256": "e8453f183ed95b6d4f0d3b49cdf39a84126400b6a0d77c6ba1804ab635a340c5"
     },
     "mercury-brand-book.md": {
       "bytes": 18821,
@@ -21,6 +29,10 @@
     "mercury-brand-book.pdf": {
       "bytes": 63530,
       "sha256": "eea23f4e35e19d620173254a006929f047c1f9f19e0174aa53d49e806daabcb0"
+    },
+    "mercury-brand-book.ru.md": {
+      "bytes": 37412,
+      "sha256": "9b63f633f7a9883150e47d8d1b7e1268ac088844b1306f801fa7831500b7fc06"
     },
     "mx-mark-on-dark.svg": {
       "bytes": 280,
@@ -50,7 +62,5 @@
       "bytes": 900,
       "sha256": "858b5b3ab619e2b78255ab96bb3b120ce43f422fea698fcf1363330e6f9a47ed"
     }
-  },
-  "build_context": "Exact revision extracted to a directory; Docker CLI applies committed .dockerignore rules.",
-  "dockerignore_sha256": "7ef95516360913e9c346d7168c7b8c25a3034989ef7427db3b12b672f9790a64"
+  }
 }

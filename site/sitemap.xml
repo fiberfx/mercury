@@ -1,753 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-    <url>
-        <loc>https://mercury.jonnify.com/</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/content</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/content"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/content"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/content"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/content/add-a-block</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/content/add-a-block"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/content/add-a-block"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/content/add-a-block"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/content/blocks</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/content/blocks"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/content/blocks"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/content/blocks"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/content/documents</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/content/documents"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/content/documents"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/content/documents"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/content/references</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/content/references"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/content/references"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/content/references"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/content/rendering</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/content/rendering"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/content/rendering"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/content/rendering"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/hypergraph</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/hypergraph/capstone</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/capstone"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/capstone"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/capstone"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/hypergraph/coming-from-effector</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/coming-from-effector"/>
-        <xhtml:link rel="alternate" hreflang="ru"
-                    href="https://mercury.jonnify.com/ru/hypergraph/coming-from-effector"/>
-        <xhtml:link rel="alternate" hreflang="x-default"
-                    href="https://mercury.jonnify.com/hypergraph/coming-from-effector"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/hypergraph/coming-from-effector/frameworks</loc>
-        <xhtml:link rel="alternate" hreflang="en"
-                    href="https://mercury.jonnify.com/hypergraph/coming-from-effector/frameworks"/>
-        <xhtml:link rel="alternate" hreflang="ru"
-                    href="https://mercury.jonnify.com/ru/hypergraph/coming-from-effector/frameworks"/>
-        <xhtml:link rel="alternate" hreflang="x-default"
-                    href="https://mercury.jonnify.com/hypergraph/coming-from-effector/frameworks"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/hypergraph/coming-from-effector/scopes-and-testing</loc>
-        <xhtml:link rel="alternate" hreflang="en"
-                    href="https://mercury.jonnify.com/hypergraph/coming-from-effector/scopes-and-testing"/>
-        <xhtml:link rel="alternate" hreflang="ru"
-                    href="https://mercury.jonnify.com/ru/hypergraph/coming-from-effector/scopes-and-testing"/>
-        <xhtml:link rel="alternate" hreflang="x-default"
-                    href="https://mercury.jonnify.com/hypergraph/coming-from-effector/scopes-and-testing"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/hypergraph/coming-from-effector/units-and-wiring</loc>
-        <xhtml:link rel="alternate" hreflang="en"
-                    href="https://mercury.jonnify.com/hypergraph/coming-from-effector/units-and-wiring"/>
-        <xhtml:link rel="alternate" hreflang="ru"
-                    href="https://mercury.jonnify.com/ru/hypergraph/coming-from-effector/units-and-wiring"/>
-        <xhtml:link rel="alternate" hreflang="x-default"
-                    href="https://mercury.jonnify.com/hypergraph/coming-from-effector/units-and-wiring"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/hypergraph/errors</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/errors"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/errors"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/errors"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/hypergraph/hot-replacement</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/hot-replacement"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/hot-replacement"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/hot-replacement"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/hypergraph/models</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/models"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/models"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/models"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/hypergraph/observing</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/observing"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/observing"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/observing"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/hypergraph/scopes</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/scopes"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/scopes"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/scopes"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/hypergraph/server-rendering</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/server-rendering"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/server-rendering"/>
-        <xhtml:link rel="alternate" hreflang="x-default"
-                    href="https://mercury.jonnify.com/hypergraph/server-rendering"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/hypergraph/testing</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/testing"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/testing"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/testing"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/hypergraph/units</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/units"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/units"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/units"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/hypergraph/wiring</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/wiring"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/wiring"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/wiring"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/hyperscript</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hyperscript"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hyperscript"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hyperscript"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/hyperscript/components</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hyperscript/components"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hyperscript/components"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hyperscript/components"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/hyperscript/context</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hyperscript/context"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hyperscript/context"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hyperscript/context"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/hyperscript/dom</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hyperscript/dom"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hyperscript/dom"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hyperscript/dom"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/hyperscript/hooks</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hyperscript/hooks"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hyperscript/hooks"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hyperscript/hooks"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/hyperscript/server</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hyperscript/server"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hyperscript/server"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hyperscript/server"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/hyperscript/tested-component</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hyperscript/tested-component"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hyperscript/tested-component"/>
-        <xhtml:link rel="alternate" hreflang="x-default"
-                    href="https://mercury.jonnify.com/hyperscript/tested-component"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/hyperscript/testing</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hyperscript/testing"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hyperscript/testing"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hyperscript/testing"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/live-mercury</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/live-mercury"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/live-mercury"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/live-mercury"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/live-mercury/building</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/live-mercury/building"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/live-mercury/building"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/live-mercury/building"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/live-mercury/islands</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/live-mercury/islands"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/live-mercury/islands"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/live-mercury/islands"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/live-mercury/liveview</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/live-mercury/liveview"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/live-mercury/liveview"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/live-mercury/liveview"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/live-mercury/props-and-streams</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/live-mercury/props-and-streams"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/live-mercury/props-and-streams"/>
-        <xhtml:link rel="alternate" hreflang="x-default"
-                    href="https://mercury.jonnify.com/live-mercury/props-and-streams"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/live-mercury/server-rendering</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/live-mercury/server-rendering"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/live-mercury/server-rendering"/>
-        <xhtml:link rel="alternate" hreflang="x-default"
-                    href="https://mercury.jonnify.com/live-mercury/server-rendering"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/live-mercury/testing</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/live-mercury/testing"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/live-mercury/testing"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/live-mercury/testing"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/mx</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/mx"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/mx"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/mx"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/mx/build</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/mx/build"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/mx/build"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/mx/build"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/mx/compile</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/mx/compile"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/mx/compile"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/mx/compile"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/mx/dev</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/mx/dev"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/mx/dev"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/mx/dev"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/mx/first-app</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/mx/first-app"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/mx/first-app"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/mx/first-app"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/mx/modules</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/mx/modules"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/mx/modules"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/mx/modules"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/mx/tools</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/mx/tools"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/mx/tools"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/mx/tools"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/mx/workspace</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/mx/workspace"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/mx/workspace"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/mx/workspace"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/content</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/content"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/content"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/content"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/content/add-a-block</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/content/add-a-block"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/content/add-a-block"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/content/add-a-block"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/content/blocks</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/content/blocks"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/content/blocks"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/content/blocks"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/content/documents</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/content/documents"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/content/documents"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/content/documents"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/content/references</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/content/references"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/content/references"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/content/references"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/content/rendering</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/content/rendering"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/content/rendering"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/content/rendering"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/hypergraph</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/hypergraph/capstone</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/capstone"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/capstone"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/capstone"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/hypergraph/coming-from-effector</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/coming-from-effector"/>
-        <xhtml:link rel="alternate" hreflang="ru"
-                    href="https://mercury.jonnify.com/ru/hypergraph/coming-from-effector"/>
-        <xhtml:link rel="alternate" hreflang="x-default"
-                    href="https://mercury.jonnify.com/hypergraph/coming-from-effector"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/hypergraph/coming-from-effector/frameworks</loc>
-        <xhtml:link rel="alternate" hreflang="en"
-                    href="https://mercury.jonnify.com/hypergraph/coming-from-effector/frameworks"/>
-        <xhtml:link rel="alternate" hreflang="ru"
-                    href="https://mercury.jonnify.com/ru/hypergraph/coming-from-effector/frameworks"/>
-        <xhtml:link rel="alternate" hreflang="x-default"
-                    href="https://mercury.jonnify.com/hypergraph/coming-from-effector/frameworks"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/hypergraph/coming-from-effector/scopes-and-testing</loc>
-        <xhtml:link rel="alternate" hreflang="en"
-                    href="https://mercury.jonnify.com/hypergraph/coming-from-effector/scopes-and-testing"/>
-        <xhtml:link rel="alternate" hreflang="ru"
-                    href="https://mercury.jonnify.com/ru/hypergraph/coming-from-effector/scopes-and-testing"/>
-        <xhtml:link rel="alternate" hreflang="x-default"
-                    href="https://mercury.jonnify.com/hypergraph/coming-from-effector/scopes-and-testing"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/hypergraph/coming-from-effector/units-and-wiring</loc>
-        <xhtml:link rel="alternate" hreflang="en"
-                    href="https://mercury.jonnify.com/hypergraph/coming-from-effector/units-and-wiring"/>
-        <xhtml:link rel="alternate" hreflang="ru"
-                    href="https://mercury.jonnify.com/ru/hypergraph/coming-from-effector/units-and-wiring"/>
-        <xhtml:link rel="alternate" hreflang="x-default"
-                    href="https://mercury.jonnify.com/hypergraph/coming-from-effector/units-and-wiring"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/hypergraph/errors</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/errors"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/errors"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/errors"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/hypergraph/hot-replacement</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/hot-replacement"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/hot-replacement"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/hot-replacement"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/hypergraph/models</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/models"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/models"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/models"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/hypergraph/observing</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/observing"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/observing"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/observing"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/hypergraph/scopes</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/scopes"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/scopes"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/scopes"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/hypergraph/server-rendering</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/server-rendering"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/server-rendering"/>
-        <xhtml:link rel="alternate" hreflang="x-default"
-                    href="https://mercury.jonnify.com/hypergraph/server-rendering"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/hypergraph/testing</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/testing"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/testing"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/testing"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/hypergraph/units</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/units"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/units"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/units"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/hypergraph/wiring</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/wiring"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/wiring"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/wiring"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/hyperscript</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hyperscript"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hyperscript"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hyperscript"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/hyperscript/components</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hyperscript/components"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hyperscript/components"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hyperscript/components"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/hyperscript/context</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hyperscript/context"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hyperscript/context"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hyperscript/context"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/hyperscript/dom</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hyperscript/dom"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hyperscript/dom"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hyperscript/dom"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/hyperscript/hooks</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hyperscript/hooks"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hyperscript/hooks"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hyperscript/hooks"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/hyperscript/server</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hyperscript/server"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hyperscript/server"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hyperscript/server"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/hyperscript/tested-component</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hyperscript/tested-component"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hyperscript/tested-component"/>
-        <xhtml:link rel="alternate" hreflang="x-default"
-                    href="https://mercury.jonnify.com/hyperscript/tested-component"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/hyperscript/testing</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hyperscript/testing"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hyperscript/testing"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hyperscript/testing"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/live-mercury</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/live-mercury"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/live-mercury"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/live-mercury"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/live-mercury/building</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/live-mercury/building"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/live-mercury/building"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/live-mercury/building"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/live-mercury/islands</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/live-mercury/islands"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/live-mercury/islands"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/live-mercury/islands"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/live-mercury/liveview</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/live-mercury/liveview"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/live-mercury/liveview"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/live-mercury/liveview"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/live-mercury/props-and-streams</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/live-mercury/props-and-streams"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/live-mercury/props-and-streams"/>
-        <xhtml:link rel="alternate" hreflang="x-default"
-                    href="https://mercury.jonnify.com/live-mercury/props-and-streams"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/live-mercury/server-rendering</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/live-mercury/server-rendering"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/live-mercury/server-rendering"/>
-        <xhtml:link rel="alternate" hreflang="x-default"
-                    href="https://mercury.jonnify.com/live-mercury/server-rendering"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/live-mercury/testing</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/live-mercury/testing"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/live-mercury/testing"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/live-mercury/testing"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/mx</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/mx"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/mx"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/mx"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/mx/build</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/mx/build"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/mx/build"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/mx/build"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/mx/compile</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/mx/compile"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/mx/compile"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/mx/compile"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/mx/dev</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/mx/dev"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/mx/dev"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/mx/dev"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/mx/first-app</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/mx/first-app"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/mx/first-app"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/mx/first-app"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/mx/modules</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/mx/modules"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/mx/modules"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/mx/modules"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/mx/tools</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/mx/tools"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/mx/tools"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/mx/tools"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/mx/workspace</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/mx/workspace"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/mx/workspace"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/mx/workspace"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/start</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/start"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/start"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/start"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/start/agents</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/start/agents"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/start/agents"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/start/agents"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/start/browser</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/start/browser"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/start/browser"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/start/browser"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/start/glossary</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/start/glossary"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/start/glossary"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/start/glossary"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/start/install-mx</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/start/install-mx"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/start/install-mx"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/start/install-mx"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/start/philosophy</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/start/philosophy"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/start/philosophy"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/start/philosophy"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/start/stability</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/start/stability"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/start/stability"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/start/stability"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/ui</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/ui"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/ui"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/ui"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/ui/actions-and-layout</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/ui/actions-and-layout"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/ui/actions-and-layout"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/ui/actions-and-layout"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/ui/feedback-and-data</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/ui/feedback-and-data"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/ui/feedback-and-data"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/ui/feedback-and-data"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/ui/foundations</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/ui/foundations"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/ui/foundations"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/ui/foundations"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/ui/inputs-and-forms</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/ui/inputs-and-forms"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/ui/inputs-and-forms"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/ui/inputs-and-forms"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/ui/navigation</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/ui/navigation"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/ui/navigation"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/ui/navigation"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/ui/selection</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/ui/selection"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/ui/selection"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/ui/selection"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ru/ui/tokens-and-themes</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/ui/tokens-and-themes"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/ui/tokens-and-themes"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/ui/tokens-and-themes"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/start</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/start"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/start"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/start"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/start/agents</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/start/agents"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/start/agents"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/start/agents"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/start/browser</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/start/browser"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/start/browser"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/start/browser"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/start/glossary</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/start/glossary"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/start/glossary"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/start/glossary"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/start/install-mx</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/start/install-mx"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/start/install-mx"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/start/install-mx"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/start/philosophy</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/start/philosophy"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/start/philosophy"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/start/philosophy"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/start/stability</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/start/stability"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/start/stability"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/start/stability"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ui</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/ui"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/ui"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/ui"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ui/actions-and-layout</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/ui/actions-and-layout"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/ui/actions-and-layout"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/ui/actions-and-layout"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ui/feedback-and-data</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/ui/feedback-and-data"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/ui/feedback-and-data"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/ui/feedback-and-data"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ui/foundations</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/ui/foundations"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/ui/foundations"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/ui/foundations"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ui/inputs-and-forms</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/ui/inputs-and-forms"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/ui/inputs-and-forms"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/ui/inputs-and-forms"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ui/navigation</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/ui/navigation"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/ui/navigation"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/ui/navigation"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ui/selection</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/ui/selection"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/ui/selection"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/ui/selection"/>
-    </url>
-    <url>
-        <loc>https://mercury.jonnify.com/ui/tokens-and-themes</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/ui/tokens-and-themes"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/ui/tokens-and-themes"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/ui/tokens-and-themes"/>
-    </url>
+  <url><loc>https://mercury.jonnify.com/</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/"/></url>
+  <url><loc>https://mercury.jonnify.com/about</loc></url>
+  <url><loc>https://mercury.jonnify.com/book</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/book"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/book"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/book"/></url>
+  <url><loc>https://mercury.jonnify.com/contact</loc></url>
+  <url><loc>https://mercury.jonnify.com/content</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/content"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/content"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/content"/></url>
+  <url><loc>https://mercury.jonnify.com/content/add-a-block</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/content/add-a-block"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/content/add-a-block"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/content/add-a-block"/></url>
+  <url><loc>https://mercury.jonnify.com/content/blocks</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/content/blocks"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/content/blocks"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/content/blocks"/></url>
+  <url><loc>https://mercury.jonnify.com/content/documents</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/content/documents"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/content/documents"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/content/documents"/></url>
+  <url><loc>https://mercury.jonnify.com/content/references</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/content/references"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/content/references"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/content/references"/></url>
+  <url><loc>https://mercury.jonnify.com/content/rendering</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/content/rendering"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/content/rendering"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/content/rendering"/></url>
+  <url><loc>https://mercury.jonnify.com/examples/first-page.html</loc></url>
+  <url><loc>https://mercury.jonnify.com/hypergraph</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph"/></url>
+  <url><loc>https://mercury.jonnify.com/hypergraph/capstone</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/capstone"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/capstone"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/capstone"/></url>
+  <url><loc>https://mercury.jonnify.com/hypergraph/coming-from-effector</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/coming-from-effector"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/coming-from-effector"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/coming-from-effector"/></url>
+  <url><loc>https://mercury.jonnify.com/hypergraph/coming-from-effector/frameworks</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/coming-from-effector/frameworks"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/coming-from-effector/frameworks"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/coming-from-effector/frameworks"/></url>
+  <url><loc>https://mercury.jonnify.com/hypergraph/coming-from-effector/scopes-and-testing</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/coming-from-effector/scopes-and-testing"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/coming-from-effector/scopes-and-testing"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/coming-from-effector/scopes-and-testing"/></url>
+  <url><loc>https://mercury.jonnify.com/hypergraph/coming-from-effector/units-and-wiring</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/coming-from-effector/units-and-wiring"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/coming-from-effector/units-and-wiring"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/coming-from-effector/units-and-wiring"/></url>
+  <url><loc>https://mercury.jonnify.com/hypergraph/errors</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/errors"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/errors"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/errors"/></url>
+  <url><loc>https://mercury.jonnify.com/hypergraph/hot-replacement</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/hot-replacement"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/hot-replacement"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/hot-replacement"/></url>
+  <url><loc>https://mercury.jonnify.com/hypergraph/models</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/models"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/models"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/models"/></url>
+  <url><loc>https://mercury.jonnify.com/hypergraph/observing</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/observing"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/observing"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/observing"/></url>
+  <url><loc>https://mercury.jonnify.com/hypergraph/scopes</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/scopes"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/scopes"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/scopes"/></url>
+  <url><loc>https://mercury.jonnify.com/hypergraph/server-rendering</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/server-rendering"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/server-rendering"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/server-rendering"/></url>
+  <url><loc>https://mercury.jonnify.com/hypergraph/testing</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/testing"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/testing"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/testing"/></url>
+  <url><loc>https://mercury.jonnify.com/hypergraph/units</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/units"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/units"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/units"/></url>
+  <url><loc>https://mercury.jonnify.com/hypergraph/wiring</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/wiring"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/wiring"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/wiring"/></url>
+  <url><loc>https://mercury.jonnify.com/hyperscript</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hyperscript"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hyperscript"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hyperscript"/></url>
+  <url><loc>https://mercury.jonnify.com/hyperscript/components</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hyperscript/components"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hyperscript/components"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hyperscript/components"/></url>
+  <url><loc>https://mercury.jonnify.com/hyperscript/context</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hyperscript/context"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hyperscript/context"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hyperscript/context"/></url>
+  <url><loc>https://mercury.jonnify.com/hyperscript/dom</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hyperscript/dom"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hyperscript/dom"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hyperscript/dom"/></url>
+  <url><loc>https://mercury.jonnify.com/hyperscript/hooks</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hyperscript/hooks"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hyperscript/hooks"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hyperscript/hooks"/></url>
+  <url><loc>https://mercury.jonnify.com/hyperscript/server</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hyperscript/server"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hyperscript/server"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hyperscript/server"/></url>
+  <url><loc>https://mercury.jonnify.com/hyperscript/tested-component</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hyperscript/tested-component"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hyperscript/tested-component"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hyperscript/tested-component"/></url>
+  <url><loc>https://mercury.jonnify.com/hyperscript/testing</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hyperscript/testing"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hyperscript/testing"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hyperscript/testing"/></url>
+  <url><loc>https://mercury.jonnify.com/live-mercury</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/live-mercury"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/live-mercury"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/live-mercury"/></url>
+  <url><loc>https://mercury.jonnify.com/live-mercury/building</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/live-mercury/building"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/live-mercury/building"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/live-mercury/building"/></url>
+  <url><loc>https://mercury.jonnify.com/live-mercury/islands</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/live-mercury/islands"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/live-mercury/islands"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/live-mercury/islands"/></url>
+  <url><loc>https://mercury.jonnify.com/live-mercury/liveview</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/live-mercury/liveview"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/live-mercury/liveview"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/live-mercury/liveview"/></url>
+  <url><loc>https://mercury.jonnify.com/live-mercury/props-and-streams</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/live-mercury/props-and-streams"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/live-mercury/props-and-streams"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/live-mercury/props-and-streams"/></url>
+  <url><loc>https://mercury.jonnify.com/live-mercury/server-rendering</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/live-mercury/server-rendering"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/live-mercury/server-rendering"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/live-mercury/server-rendering"/></url>
+  <url><loc>https://mercury.jonnify.com/live-mercury/testing</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/live-mercury/testing"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/live-mercury/testing"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/live-mercury/testing"/></url>
+  <url><loc>https://mercury.jonnify.com/mx</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/mx"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/mx"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/mx"/></url>
+  <url><loc>https://mercury.jonnify.com/mx/build</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/mx/build"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/mx/build"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/mx/build"/></url>
+  <url><loc>https://mercury.jonnify.com/mx/compile</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/mx/compile"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/mx/compile"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/mx/compile"/></url>
+  <url><loc>https://mercury.jonnify.com/mx/dev</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/mx/dev"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/mx/dev"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/mx/dev"/></url>
+  <url><loc>https://mercury.jonnify.com/mx/first-app</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/mx/first-app"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/mx/first-app"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/mx/first-app"/></url>
+  <url><loc>https://mercury.jonnify.com/mx/modules</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/mx/modules"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/mx/modules"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/mx/modules"/></url>
+  <url><loc>https://mercury.jonnify.com/mx/tools</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/mx/tools"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/mx/tools"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/mx/tools"/></url>
+  <url><loc>https://mercury.jonnify.com/mx/workspace</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/mx/workspace"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/mx/workspace"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/mx/workspace"/></url>
+  <url><loc>https://mercury.jonnify.com/privacy</loc></url>
+  <url><loc>https://mercury.jonnify.com/reference</loc></url>
+  <url><loc>https://mercury.jonnify.com/ru</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/book</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/book"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/book"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/book"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/content</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/content"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/content"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/content"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/content/add-a-block</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/content/add-a-block"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/content/add-a-block"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/content/add-a-block"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/content/blocks</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/content/blocks"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/content/blocks"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/content/blocks"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/content/documents</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/content/documents"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/content/documents"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/content/documents"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/content/references</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/content/references"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/content/references"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/content/references"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/content/rendering</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/content/rendering"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/content/rendering"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/content/rendering"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/hypergraph</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/hypergraph/capstone</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/capstone"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/capstone"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/capstone"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/hypergraph/coming-from-effector</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/coming-from-effector"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/coming-from-effector"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/coming-from-effector"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/hypergraph/coming-from-effector/frameworks</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/coming-from-effector/frameworks"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/coming-from-effector/frameworks"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/coming-from-effector/frameworks"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/hypergraph/coming-from-effector/scopes-and-testing</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/coming-from-effector/scopes-and-testing"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/coming-from-effector/scopes-and-testing"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/coming-from-effector/scopes-and-testing"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/hypergraph/coming-from-effector/units-and-wiring</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/coming-from-effector/units-and-wiring"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/coming-from-effector/units-and-wiring"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/coming-from-effector/units-and-wiring"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/hypergraph/errors</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/errors"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/errors"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/errors"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/hypergraph/hot-replacement</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/hot-replacement"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/hot-replacement"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/hot-replacement"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/hypergraph/models</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/models"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/models"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/models"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/hypergraph/observing</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/observing"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/observing"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/observing"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/hypergraph/scopes</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/scopes"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/scopes"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/scopes"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/hypergraph/server-rendering</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/server-rendering"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/server-rendering"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/server-rendering"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/hypergraph/testing</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/testing"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/testing"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/testing"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/hypergraph/units</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/units"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/units"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/units"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/hypergraph/wiring</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hypergraph/wiring"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hypergraph/wiring"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hypergraph/wiring"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/hyperscript</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hyperscript"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hyperscript"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hyperscript"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/hyperscript/components</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hyperscript/components"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hyperscript/components"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hyperscript/components"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/hyperscript/context</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hyperscript/context"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hyperscript/context"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hyperscript/context"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/hyperscript/dom</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hyperscript/dom"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hyperscript/dom"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hyperscript/dom"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/hyperscript/hooks</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hyperscript/hooks"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hyperscript/hooks"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hyperscript/hooks"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/hyperscript/server</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hyperscript/server"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hyperscript/server"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hyperscript/server"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/hyperscript/tested-component</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hyperscript/tested-component"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hyperscript/tested-component"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hyperscript/tested-component"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/hyperscript/testing</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/hyperscript/testing"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/hyperscript/testing"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/hyperscript/testing"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/live-mercury</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/live-mercury"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/live-mercury"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/live-mercury"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/live-mercury/building</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/live-mercury/building"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/live-mercury/building"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/live-mercury/building"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/live-mercury/islands</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/live-mercury/islands"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/live-mercury/islands"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/live-mercury/islands"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/live-mercury/liveview</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/live-mercury/liveview"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/live-mercury/liveview"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/live-mercury/liveview"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/live-mercury/props-and-streams</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/live-mercury/props-and-streams"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/live-mercury/props-and-streams"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/live-mercury/props-and-streams"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/live-mercury/server-rendering</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/live-mercury/server-rendering"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/live-mercury/server-rendering"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/live-mercury/server-rendering"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/live-mercury/testing</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/live-mercury/testing"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/live-mercury/testing"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/live-mercury/testing"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/mx</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/mx"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/mx"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/mx"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/mx/build</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/mx/build"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/mx/build"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/mx/build"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/mx/compile</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/mx/compile"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/mx/compile"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/mx/compile"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/mx/dev</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/mx/dev"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/mx/dev"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/mx/dev"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/mx/first-app</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/mx/first-app"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/mx/first-app"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/mx/first-app"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/mx/modules</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/mx/modules"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/mx/modules"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/mx/modules"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/mx/tools</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/mx/tools"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/mx/tools"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/mx/tools"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/mx/workspace</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/mx/workspace"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/mx/workspace"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/mx/workspace"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/start</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/start"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/start"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/start"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/start/agents</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/start/agents"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/start/agents"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/start/agents"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/start/browser</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/start/browser"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/start/browser"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/start/browser"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/start/glossary</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/start/glossary"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/start/glossary"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/start/glossary"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/start/install-mx</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/start/install-mx"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/start/install-mx"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/start/install-mx"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/start/philosophy</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/start/philosophy"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/start/philosophy"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/start/philosophy"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/start/stability</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/start/stability"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/start/stability"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/start/stability"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/ui</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/ui"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/ui"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/ui"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/ui/actions-and-layout</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/ui/actions-and-layout"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/ui/actions-and-layout"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/ui/actions-and-layout"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/ui/feedback-and-data</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/ui/feedback-and-data"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/ui/feedback-and-data"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/ui/feedback-and-data"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/ui/foundations</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/ui/foundations"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/ui/foundations"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/ui/foundations"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/ui/inputs-and-forms</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/ui/inputs-and-forms"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/ui/inputs-and-forms"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/ui/inputs-and-forms"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/ui/navigation</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/ui/navigation"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/ui/navigation"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/ui/navigation"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/ui/selection</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/ui/selection"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/ui/selection"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/ui/selection"/></url>
+  <url><loc>https://mercury.jonnify.com/ru/ui/tokens-and-themes</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/ui/tokens-and-themes"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/ui/tokens-and-themes"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/ui/tokens-and-themes"/></url>
+  <url><loc>https://mercury.jonnify.com/start</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/start"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/start"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/start"/></url>
+  <url><loc>https://mercury.jonnify.com/start/agents</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/start/agents"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/start/agents"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/start/agents"/></url>
+  <url><loc>https://mercury.jonnify.com/start/browser</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/start/browser"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/start/browser"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/start/browser"/></url>
+  <url><loc>https://mercury.jonnify.com/start/glossary</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/start/glossary"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/start/glossary"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/start/glossary"/></url>
+  <url><loc>https://mercury.jonnify.com/start/install-mx</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/start/install-mx"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/start/install-mx"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/start/install-mx"/></url>
+  <url><loc>https://mercury.jonnify.com/start/mcp</loc></url>
+  <url><loc>https://mercury.jonnify.com/start/philosophy</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/start/philosophy"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/start/philosophy"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/start/philosophy"/></url>
+  <url><loc>https://mercury.jonnify.com/start/stability</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/start/stability"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/start/stability"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/start/stability"/></url>
+  <url><loc>https://mercury.jonnify.com/ui</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/ui"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/ui"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/ui"/></url>
+  <url><loc>https://mercury.jonnify.com/ui/actions-and-layout</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/ui/actions-and-layout"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/ui/actions-and-layout"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/ui/actions-and-layout"/></url>
+  <url><loc>https://mercury.jonnify.com/ui/feedback-and-data</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/ui/feedback-and-data"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/ui/feedback-and-data"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/ui/feedback-and-data"/></url>
+  <url><loc>https://mercury.jonnify.com/ui/foundations</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/ui/foundations"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/ui/foundations"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/ui/foundations"/></url>
+  <url><loc>https://mercury.jonnify.com/ui/inputs-and-forms</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/ui/inputs-and-forms"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/ui/inputs-and-forms"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/ui/inputs-and-forms"/></url>
+  <url><loc>https://mercury.jonnify.com/ui/navigation</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/ui/navigation"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/ui/navigation"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/ui/navigation"/></url>
+  <url><loc>https://mercury.jonnify.com/ui/selection</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/ui/selection"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/ui/selection"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/ui/selection"/></url>
+  <url><loc>https://mercury.jonnify.com/ui/tokens-and-themes</loc><xhtml:link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/ui/tokens-and-themes"/><xhtml:link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/ui/tokens-and-themes"/><xhtml:link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/ui/tokens-and-themes"/></url>
 </urlset>

@@ -1,1048 +1,905 @@
-<!doctype html>
-<html lang="en" class="lms">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Islands: the element and its mount · Mercury</title>
-    <meta name="description"
-          content="LM0. What an island is, the element LiveMercury.mercury/1 and EchoEduWeb.Island.island/1 render, and how @fiberfx/live-mercury&#39;s MercuryHook mounts a hyperscript component into it.">
-
-    <link rel="canonical" href="https://mercury.jonnify.com/live-mercury/islands">
-    <link rel="describedby" type="text/plain" href="/live-mercury/islands/llms.txt">
-    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
-    <meta property="og:type" content="article">
-    <meta property="og:site_name" content="Mercury">
-    <meta property="og:title" content="Islands: the element and its mount · Mercury">
-    <meta property="og:description"
-          content="LM0. What an island is, the element LiveMercury.mercury/1 and EchoEduWeb.Island.island/1 render, and how @fiberfx/live-mercury&#39;s MercuryHook mounts a hyperscript component into it.">
-    <meta property="og:url" content="https://mercury.jonnify.com/live-mercury/islands">
-    <meta property="og:image" content="https://mercury.jonnify.com/_lms/assets/mercury-hero.png">
-    <meta property="og:image:alt" content="Mercury">
-    <script type="application/ld+json">[
-        {
-            "@context": "https://schema.org",
-            "@type": "TechArticle",
-            "description": "LM0. What an island is, the element LiveMercury.mercury/1 and EchoEduWeb.Island.island/1 render, and how @fiberfx/live-mercury's MercuryHook mounts a hyperscript component into it.",
-            "inLanguage": "en",
-            "name": "Islands: the element and its mount",
-            "url": "https://mercury.jonnify.com/live-mercury/islands"
-        },
-        {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-                {
-                    "@type": "ListItem",
-                    "item": "https://mercury.jonnify.com/",
-                    "name": "Mercury",
-                    "position": 1
-                },
-                {
-                    "@type": "ListItem",
-                    "item": "https://mercury.jonnify.com/live-mercury/islands",
-                    "name": "Islands: the element and its mount",
-                    "position": 2
-                }
-            ]
-        }
-    ]</script>
-    <meta name="color-scheme" content="light dark">
-
-    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#111113" media="(prefers-color-scheme: dark)">
-    <style>html {
-        background-color: rgb(255 255 255)
-    }
-
-    @media (prefers-color-scheme: dark) {
-        html {
-            background-color: rgb(17 17 19)
-        }
-    }</style>
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/live-mercury/islands">
-    <link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/live-mercury/islands">
-    <link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/live-mercury/islands">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap">
-    <link rel="stylesheet" href="/_lms/assets/lms.css">
-    <link rel="stylesheet" href="/_lms/assets/shell.css">
-
+<!doctype html><html lang="en" class="lms">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="is-agentic-site-type" content="content">
+  <title>Islands: the element and its mount · Mercury</title>
+  <meta name="description" content="LM0. What an island is, the element LiveMercury.mercury/1 and EchoEduWeb.Island.island/1 render, and how @fiberfx/live-mercury&#39;s MercuryHook mounts a hyperscript component into it.">
+  
+  <link rel="canonical" href="https://mercury.jonnify.com/live-mercury/islands">
+  <link rel="describedby" type="text/plain" href="/live-mercury/islands/llms.txt">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+  <link rel="mcp" href="https://mercury.jonnify.com/mcp">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Mercury">
+  <meta property="og:title" content="Islands: the element and its mount · Mercury">
+  <meta property="og:description" content="LM0. What an island is, the element LiveMercury.mercury/1 and EchoEduWeb.Island.island/1 render, and how @fiberfx/live-mercury&#39;s MercuryHook mounts a hyperscript component into it.">
+  <meta property="og:url" content="https://mercury.jonnify.com/live-mercury/islands">
+  <meta property="og:image" content="https://mercury.jonnify.com/_lms/assets/mercury-hero.png">
+  <meta property="og:image:alt" content="Mercury">
+  <script type="application/ld+json">[{"@context":"https://schema.org","@type":"TechArticle","description":"LM0. What an island is, the element LiveMercury.mercury/1 and EchoEduWeb.Island.island/1 render, and how @fiberfx/live-mercury's MercuryHook mounts a hyperscript component into it.","inLanguage":"en","name":"Islands: the element and its mount","url":"https://mercury.jonnify.com/live-mercury/islands"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://mercury.jonnify.com/","name":"Mercury","position":1},{"@type":"ListItem","item":"https://mercury.jonnify.com/live-mercury/islands","name":"Islands: the element and its mount","position":2}]}]</script>
+  <meta name="color-scheme" content="light dark">
+  
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#111113" media="(prefers-color-scheme: dark)">
+  <style>html{background-color:rgb(255 255 255)}@media (prefers-color-scheme: dark){html{background-color:rgb(17 17 19)}}</style>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/live-mercury/islands"><link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/live-mercury/islands"><link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/live-mercury/islands">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="/_lms/assets/lms.css">
+  <link rel="stylesheet" href="/_lms/assets/shell.css">
+  
 </head>
-<body class="lms">
-<a class="lms-skip" href="#main">Skip to content</a>
+  <body class="lms">
+    <a class="lms-skip" href="#main">Skip to content</a>
 <header class="lms-header">
-    <a class="lms-brand" href="/" aria-label="Mercury, home">
-        <svg viewBox="5 9 30 22" width="30" height="22" aria-hidden="true" focusable="false">
-            <g fill="none" stroke-width="3" stroke-linecap="round">
-                <path d="M7 29V15.5c0-2.5 2-4.5 4.5-4.5S16 13 16 15.5V29M16 16.5c0-3 2-5.5 4.5-5.5"
-                      stroke="currentColor"></path>
-                <path d="M23 16l10 13M33 16L23 29" stroke="rgb(var(--lms-accent))"></path>
-            </g>
-        </svg>
-        <span>Mercury</span>
+  <a class="lms-brand" href="/" aria-label="Mercury, home">
+    <svg viewBox="5 9 30 22" width="30" height="22" aria-hidden="true" focusable="false"><g fill="none" stroke-width="3" stroke-linecap="round"><path d="M7 29V15.5c0-2.5 2-4.5 4.5-4.5S16 13 16 15.5V29M16 16.5c0-3 2-5.5 4.5-5.5" stroke="currentColor"></path><path d="M23 16l10 13M33 16L23 29" stroke="rgb(var(--lms-accent))"></path></g></svg>
+    <span>Mercury</span>
+  </a>
+  <nav class="lms-nav" aria-label="Site">
+    <a href="/#principles">Principles</a><a href="/#foundations">Foundations</a><a href="/#components">Components</a><a href="/#usage">Usage</a>
+  </nav>
+  <div class="lms-actions">
+    <details class="lms-lang">
+  <summary aria-label="Language">English</summary>
+  <ul>
+    <li>
+      <a href="/live-mercury/islands" hreflang="en" lang="en" aria-current="true">English</a>
+      
+    </li><li>
+      <a href="/ru/live-mercury/islands" hreflang="ru" lang="ru">Русский</a>
+      
+    </li>
+  </ul>
+</details>
+    <a class="lms-github" href="/start/install-mx" aria-label="Install Mercury" title="Install Mercury">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
     </a>
-    <nav class="lms-nav" aria-label="Site">
-        <a href="/#principles">Principles</a><a href="/#foundations">Foundations</a><a
-            href="/#components">Components</a><a href="/#usage">Usage</a>
-    </nav>
-    <div class="lms-actions">
-        <details class="lms-lang">
-            <summary aria-label="Language">English</summary>
-            <ul>
-                <li>
-                    <a href="/live-mercury/islands" hreflang="en" lang="en" aria-current="true">English</a>
-
-                </li>
-                <li>
-                    <a href="/ru/live-mercury/islands" hreflang="ru" lang="ru">Русский</a>
-
-                </li>
-            </ul>
-        </details>
-        <a class="lms-github" href="/start/install-mx" aria-label="Install Mercury" title="Install Mercury">
-            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
-                <path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4" fill="none" stroke="currentColor" stroke-width="1.8"
-                      stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-        </a>
-        <form class="lms-theme" method="post" action="/_lms/theme">
-            <input type="hidden" name="back" value="/live-mercury/islands">
-            <button class="lms-theme-to-dark" type="submit" name="set" value="dark" aria-label="Dark theme"
-                    title="Dark theme">
-                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
-                    <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                          stroke-linejoin="round" d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"></path>
-                </svg>
-            </button>
-            <button class="lms-theme-to-light" type="submit" name="set" value="light" aria-label="Light theme"
-                    title="Light theme">
-                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
-                    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
-                        <circle cx="12" cy="12" r="4"></circle>
-                        <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
-                    </g>
-                </svg>
-            </button>
-        </form>
-        <a class="lms-open-docs" href="/start">Open docs</a>
-        <details class="lms-drawer">
-            <summary>
-                <span class="lms-menu-label">Menu</span>
-                <svg class="lms-menu-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"
-                     focusable="false">
-                    <path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="1.8"
-                          stroke-linecap="round"></path>
-                </svg>
-            </summary>
-            <div class="lms-drawer-panel">
-                <nav class="lms-menu-links" aria-label="Site">
-                    <a class="lms-menu-docs" href="/start">Open docs</a>
-                    <a href="/#principles">Principles</a><a href="/#foundations">Foundations</a><a href="/#components">Components</a><a
-                        href="/#usage">Usage</a>
-                    <a href="/start/install-mx">Install Mercury</a>
-                </nav>
-                <div class="lms-menu-language">
-                    <details class="lms-lang">
-                        <summary aria-label="Language">English</summary>
-                        <ul>
-                            <li>
-                                <a href="/live-mercury/islands" hreflang="en" lang="en" aria-current="true">English</a>
-
-                            </li>
-                            <li>
-                                <a href="/ru/live-mercury/islands" hreflang="ru" lang="ru">Русский</a>
-
-                            </li>
-                        </ul>
-                    </details>
-                </div>
-                <nav aria-label="Courses and pages">
-                    <p class="lms-menu-heading">Courses</p>
-                    <details class="lms-side-course">
-                        <summary>Start</summary>
-                        <ul>
-                            <li><a href="/start">Overview</a></li>
-
-
-                            <li class="">
-                                <a href="/start/browser">A page in the browser</a>
-                            </li>
-
-                            <li class="lms-side-group">The pieces</li>
-                            <li class="">
-                                <a href="/start/install-mx">Choose a route to mx</a>
-                            </li>
-
-                            <li class="lms-side-group">First steps</li>
-                            <li class="">
-                                <a href="/start/stability">Stability: Shipped, Preview, Planned</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/start/agents">Build a page with your agent</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/start/glossary">Glossary: the words this site uses</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/start/philosophy">Philosophy: native, not borrowed</a>
-                            </li>
-
-                        </ul>
-                    </details>
-                    <details class="lms-side-course">
-                        <summary>mx</summary>
-                        <ul>
-                            <li><a href="/mx">Overview</a></li>
-
-                            <li class="lms-side-group">Install mx</li>
-                            <li class="">
-                                <a href="/mx/first-app">Your first Mercury page</a>
-                            </li>
-
-                            <li class="lms-side-group">The chapters</li>
-                            <li class="">
-                                <a href="/mx/modules">Modules, mx.mod and mx.sum</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/mx/workspace">A workspace, mx.work</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/mx/dev">The dev loop, and hot replacement</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/mx/build">Build and ship, three kinds of build</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/mx/compile">The Hypercompiler, one module at a time</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/mx/tools">The tools, test, lsap and run</a>
-                            </li>
-
-                        </ul>
-                    </details>
-                    <details class="lms-side-course">
-                        <summary>Hyperscript</summary>
-                        <ul>
-                            <li><a href="/hyperscript">Overview</a></li>
-
-                            <li class="lms-side-group">What Hyperscript is</li>
-                            <li class="">
-                                <a href="/hyperscript/dom">The DOM contract</a>
-                            </li>
-
-                            <li class="lms-side-group">The chapters</li>
-                            <li class="">
-                                <a href="/hyperscript/components">Components and render</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/hyperscript/hooks">Hooks, state and effects in a function</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/hyperscript/context">Context, portals and memo</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/hyperscript/server">Rendering on the server</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/hyperscript/testing">Testing and inspecting</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/hyperscript/tested-component">A tested component</a>
-                            </li>
-
-                        </ul>
-                    </details>
-                    <details class="lms-side-course">
-                        <summary>UI</summary>
-                        <ul>
-                            <li><a href="/ui">Overview</a></li>
-
-                            <li class="lms-side-group">The chapters</li>
-                            <li class="">
-                                <a href="/ui/tokens-and-themes">UI0, tokens and themes</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ui/foundations">UI1, where a subtree lives</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ui/actions-and-layout">UI2, actions and layout</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ui/inputs-and-forms">UI3, inputs and forms</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ui/selection">UI4, selection</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ui/feedback-and-data">UI5, feedback and data display</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ui/navigation">UI6, navigation</a>
-                            </li>
-
-                        </ul>
-                    </details>
-                    <details class="lms-side-course">
-                        <summary>Hypergraph</summary>
-                        <ul>
-                            <li><a href="/hypergraph">Overview</a></li>
-
-                            <li class="lms-side-group">The chapters</li>
-                            <li class="">
-                                <a href="/hypergraph/units">Units: store, event and effect</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/hypergraph/wiring">Wiring: units into a graph</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/hypergraph/scopes">Scopes: fork, settle, hand over</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/hypergraph/observing">Observing: watch, inspect, describe</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/hypergraph/errors">Kinds, carriers and errors</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/hypergraph/hot-replacement">Hot replacement: the swap</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/hypergraph/server-rendering">Server rendering: a scope per request</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/hypergraph/testing">Testing a model: a scope per test</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/hypergraph/models">Models at scale: structure and identity</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/hypergraph/capstone">Capstone: a model, round-tripped</a>
-                            </li>
-
-                            <li class="lms-side-group">Coming from Effector</li>
-                            <li class="">
-                                <a href="/hypergraph/coming-from-effector">Coming from Effector</a>
-                            </li>
-
-
-                            <li class="lms-side-sub">
-                                <a href="/hypergraph/coming-from-effector/units-and-wiring">Units and wiring</a>
-                            </li>
-
-
-                            <li class="lms-side-sub">
-                                <a href="/hypergraph/coming-from-effector/scopes-and-testing">Scopes and testing</a>
-                            </li>
-
-
-                            <li class="lms-side-sub">
-                                <a href="/hypergraph/coming-from-effector/frameworks">Frameworks, after
-                                    effector-react</a>
-                            </li>
-
-                        </ul>
-                    </details>
-                    <details class="lms-side-course">
-                        <summary>Content</summary>
-                        <ul>
-                            <li><a href="/content">Overview</a></li>
-
-                            <li class="lms-side-group">The course map</li>
-                            <li class="">
-                                <a href="/content/documents">Page documents: nodes, the schema and parseDocument</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/content/rendering">Rendering a document: renderDocument</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/content/blocks">The block catalog: nine groups, one registry</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/content/references">References, capabilities and responsive values</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/content/add-a-block">Add a block: the capstone</a>
-                            </li>
-
-                        </ul>
-                    </details>
-                    <details class="lms-side-course" open>
-                        <summary>Live Mercury</summary>
-                        <ul>
-                            <li><a href="/live-mercury">Overview</a></li>
-
-                            <li class="lms-side-group">The course</li>
-                            <li class="">
-                                <a href="/live-mercury/islands" aria-current="page">Islands: the element and its
-                                    mount</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/live-mercury/liveview">An island in a LiveView: socket, hooks and events</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/live-mercury/building">Building islands with mx: no Node</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/live-mercury/props-and-streams">Props and streams: patches on the wire</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/live-mercury/server-rendering">Server rendering: what is there, and what is
-                                    not</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/live-mercury/testing">Testing islands: both sides of the element</a>
-                            </li>
-
-                        </ul>
-                    </details>
-                </nav>
-            </div>
-        </details>
-    </div>
-</header>
-<div class="lms-frame">
-    <nav class="lms-side" aria-label="Courses and pages">
-        <details class="lms-side-course">
-            <summary>Start</summary>
-            <ul>
-                <li><a href="/start">Overview</a></li>
-
-
-                <li class="">
-                    <a href="/start/browser">A page in the browser</a>
-                </li>
-
-                <li class="lms-side-group">The pieces</li>
-                <li class="">
-                    <a href="/start/install-mx">Choose a route to mx</a>
-                </li>
-
-                <li class="lms-side-group">First steps</li>
-                <li class="">
-                    <a href="/start/stability">Stability: Shipped, Preview, Planned</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/start/agents">Build a page with your agent</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/start/glossary">Glossary: the words this site uses</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/start/philosophy">Philosophy: native, not borrowed</a>
-                </li>
-
-            </ul>
-        </details>
-        <details class="lms-side-course">
-            <summary>mx</summary>
-            <ul>
-                <li><a href="/mx">Overview</a></li>
-
-                <li class="lms-side-group">Install mx</li>
-                <li class="">
-                    <a href="/mx/first-app">Your first Mercury page</a>
-                </li>
-
-                <li class="lms-side-group">The chapters</li>
-                <li class="">
-                    <a href="/mx/modules">Modules, mx.mod and mx.sum</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/mx/workspace">A workspace, mx.work</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/mx/dev">The dev loop, and hot replacement</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/mx/build">Build and ship, three kinds of build</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/mx/compile">The Hypercompiler, one module at a time</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/mx/tools">The tools, test, lsap and run</a>
-                </li>
-
-            </ul>
-        </details>
-        <details class="lms-side-course">
-            <summary>Hyperscript</summary>
-            <ul>
-                <li><a href="/hyperscript">Overview</a></li>
-
-                <li class="lms-side-group">What Hyperscript is</li>
-                <li class="">
-                    <a href="/hyperscript/dom">The DOM contract</a>
-                </li>
-
-                <li class="lms-side-group">The chapters</li>
-                <li class="">
-                    <a href="/hyperscript/components">Components and render</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/hyperscript/hooks">Hooks, state and effects in a function</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/hyperscript/context">Context, portals and memo</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/hyperscript/server">Rendering on the server</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/hyperscript/testing">Testing and inspecting</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/hyperscript/tested-component">A tested component</a>
-                </li>
-
-            </ul>
-        </details>
-        <details class="lms-side-course">
-            <summary>UI</summary>
-            <ul>
-                <li><a href="/ui">Overview</a></li>
-
-                <li class="lms-side-group">The chapters</li>
-                <li class="">
-                    <a href="/ui/tokens-and-themes">UI0, tokens and themes</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ui/foundations">UI1, where a subtree lives</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ui/actions-and-layout">UI2, actions and layout</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ui/inputs-and-forms">UI3, inputs and forms</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ui/selection">UI4, selection</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ui/feedback-and-data">UI5, feedback and data display</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ui/navigation">UI6, navigation</a>
-                </li>
-
-            </ul>
-        </details>
-        <details class="lms-side-course">
-            <summary>Hypergraph</summary>
-            <ul>
-                <li><a href="/hypergraph">Overview</a></li>
-
-                <li class="lms-side-group">The chapters</li>
-                <li class="">
-                    <a href="/hypergraph/units">Units: store, event and effect</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/hypergraph/wiring">Wiring: units into a graph</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/hypergraph/scopes">Scopes: fork, settle, hand over</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/hypergraph/observing">Observing: watch, inspect, describe</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/hypergraph/errors">Kinds, carriers and errors</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/hypergraph/hot-replacement">Hot replacement: the swap</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/hypergraph/server-rendering">Server rendering: a scope per request</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/hypergraph/testing">Testing a model: a scope per test</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/hypergraph/models">Models at scale: structure and identity</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/hypergraph/capstone">Capstone: a model, round-tripped</a>
-                </li>
-
-                <li class="lms-side-group">Coming from Effector</li>
-                <li class="">
-                    <a href="/hypergraph/coming-from-effector">Coming from Effector</a>
-                </li>
-
-
-                <li class="lms-side-sub">
-                    <a href="/hypergraph/coming-from-effector/units-and-wiring">Units and wiring</a>
-                </li>
-
-
-                <li class="lms-side-sub">
-                    <a href="/hypergraph/coming-from-effector/scopes-and-testing">Scopes and testing</a>
-                </li>
-
-
-                <li class="lms-side-sub">
-                    <a href="/hypergraph/coming-from-effector/frameworks">Frameworks, after effector-react</a>
-                </li>
-
-            </ul>
-        </details>
-        <details class="lms-side-course">
-            <summary>Content</summary>
-            <ul>
-                <li><a href="/content">Overview</a></li>
-
-                <li class="lms-side-group">The course map</li>
-                <li class="">
-                    <a href="/content/documents">Page documents: nodes, the schema and parseDocument</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/content/rendering">Rendering a document: renderDocument</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/content/blocks">The block catalog: nine groups, one registry</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/content/references">References, capabilities and responsive values</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/content/add-a-block">Add a block: the capstone</a>
-                </li>
-
-            </ul>
-        </details>
-        <details class="lms-side-course" open>
-            <summary>Live Mercury</summary>
-            <ul>
-                <li><a href="/live-mercury">Overview</a></li>
-
-                <li class="lms-side-group">The course</li>
-                <li class="">
-                    <a href="/live-mercury/islands" aria-current="page">Islands: the element and its mount</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/live-mercury/liveview">An island in a LiveView: socket, hooks and events</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/live-mercury/building">Building islands with mx: no Node</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/live-mercury/props-and-streams">Props and streams: patches on the wire</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/live-mercury/server-rendering">Server rendering: what is there, and what is not</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/live-mercury/testing">Testing islands: both sides of the element</a>
-                </li>
-
-            </ul>
-        </details>
-    </nav>
-    <main id="main" class="lms-main">
-        <nav class="lms-crumbs" aria-label="Breadcrumb">
-            <ol>
-
-
-                <li><a href="/live-mercury">Live Mercury</a></li>
-
-
-                <li>The course</li>
-
-                <li aria-current="page">Islands: the element and its mount</li>
-
-
-            </ol>
+    <form class="lms-theme" method="post" action="/_lms/theme">
+      <input type="hidden" name="back" value="/live-mercury/islands">
+      <button class="lms-theme-to-dark" type="submit" name="set" value="dark" aria-label="Dark theme" title="Dark theme">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"></path></svg>
+      </button>
+      <button class="lms-theme-to-light" type="submit" name="set" value="light" aria-label="Light theme" title="Light theme">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></g></svg>
+      </button>
+    </form>
+    <a class="lms-open-docs" href="/book">Design Book</a>
+    <details class="lms-drawer">
+      <summary>
+        <span class="lms-menu-label">Menu</span>
+        <svg class="lms-menu-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
+      </summary>
+      <div class="lms-drawer-panel">
+        <nav class="lms-menu-links" aria-label="Site">
+          <a class="lms-menu-docs" href="/book">Design Book</a>
+          <a href="/#principles">Principles</a><a href="/#foundations">Foundations</a><a href="/#components">Components</a><a href="/#usage">Usage</a>
+          <a href="/start/install-mx">Install Mercury</a>
         </nav>
-
+        <div class="lms-menu-language">
+          <details class="lms-lang">
+  <summary aria-label="Language">English</summary>
+  <ul>
+    <li>
+      <a href="/live-mercury/islands" hreflang="en" lang="en" aria-current="true">English</a>
+      
+    </li><li>
+      <a href="/ru/live-mercury/islands" hreflang="ru" lang="ru">Русский</a>
+      
+    </li>
+  </ul>
+</details>
+        </div>
+        <nav aria-label="Courses and pages">
+          <p class="lms-menu-heading">Courses</p>
+          <details class="lms-side-course">
+  <summary>Start</summary>
+  <ul>
+    <li><a href="/start">Overview</a></li>
+    
+      
+      <li class="">
+        <a href="/start/browser">A page in the browser</a>
+      </li>
+    
+      <li class="lms-side-group">The pieces</li>
+      <li class="">
+        <a href="/start/install-mx">Choose a route to mx</a>
+      </li>
+    
+      <li class="lms-side-group">Agent connection</li>
+      <li class="">
+        <a href="/start/mcp">Mercury documentation MCP server</a>
+      </li>
+    
+      <li class="lms-side-group">First steps</li>
+      <li class="">
+        <a href="/start/stability">Stability: Shipped, Preview, Planned</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/start/agents">Build a page with your agent</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/start/glossary">Glossary: the words this site uses</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/start/philosophy">Philosophy: native, not borrowed</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>mx</summary>
+  <ul>
+    <li><a href="/mx">Overview</a></li>
+    
+      <li class="lms-side-group">Install mx</li>
+      <li class="">
+        <a href="/mx/first-app">Your first Mercury page</a>
+      </li>
+    
+      <li class="lms-side-group">The chapters</li>
+      <li class="">
+        <a href="/mx/modules">Modules, mx.mod and mx.sum</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/mx/workspace">A workspace, mx.work</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/mx/dev">The dev loop, and hot replacement</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/mx/build">Build and ship, three kinds of build</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/mx/compile">The Hypercompiler, one module at a time</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/mx/tools">The tools, test, lsap and run</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>Hyperscript</summary>
+  <ul>
+    <li><a href="/hyperscript">Overview</a></li>
+    
+      <li class="lms-side-group">What Hyperscript is</li>
+      <li class="">
+        <a href="/hyperscript/dom">The DOM contract</a>
+      </li>
+    
+      <li class="lms-side-group">The chapters</li>
+      <li class="">
+        <a href="/hyperscript/components">Components and render</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hyperscript/hooks">Hooks, state and effects in a function</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hyperscript/context">Context, portals and memo</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hyperscript/server">Rendering on the server</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hyperscript/testing">Testing and inspecting</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hyperscript/tested-component">A tested component</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>UI</summary>
+  <ul>
+    <li><a href="/ui">Overview</a></li>
+    
+      <li class="lms-side-group">The chapters</li>
+      <li class="">
+        <a href="/ui/tokens-and-themes">UI0, tokens and themes</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ui/foundations">UI1, where a subtree lives</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ui/actions-and-layout">UI2, actions and layout</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ui/inputs-and-forms">UI3, inputs and forms</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ui/selection">UI4, selection</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ui/feedback-and-data">UI5, feedback and data display</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ui/navigation">UI6, navigation</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>Hypergraph</summary>
+  <ul>
+    <li><a href="/hypergraph">Overview</a></li>
+    
+      <li class="lms-side-group">The chapters</li>
+      <li class="">
+        <a href="/hypergraph/units">Units: store, event and effect</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/wiring">Wiring: units into a graph</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/scopes">Scopes: fork, settle, hand over</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/observing">Observing: watch, inspect, describe</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/errors">Kinds, carriers and errors</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/hot-replacement">Hot replacement: the swap</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/server-rendering">Server rendering: a scope per request</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/testing">Testing a model: a scope per test</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/models">Models at scale: structure and identity</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/capstone">Capstone: a model, round-tripped</a>
+      </li>
+    
+      <li class="lms-side-group">Coming from Effector</li>
+      <li class="">
+        <a href="/hypergraph/coming-from-effector">Coming from Effector</a>
+      </li>
+    
+      
+      <li class="lms-side-sub">
+        <a href="/hypergraph/coming-from-effector/units-and-wiring">Units and wiring</a>
+      </li>
+    
+      
+      <li class="lms-side-sub">
+        <a href="/hypergraph/coming-from-effector/scopes-and-testing">Scopes and testing</a>
+      </li>
+    
+      
+      <li class="lms-side-sub">
+        <a href="/hypergraph/coming-from-effector/frameworks">Frameworks, after effector-react</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>Content</summary>
+  <ul>
+    <li><a href="/content">Overview</a></li>
+    
+      <li class="lms-side-group">The course map</li>
+      <li class="">
+        <a href="/content/documents">Page documents: nodes, the schema and parseDocument</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/content/rendering">Rendering a document: renderDocument</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/content/blocks">The block catalog: nine groups, one registry</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/content/references">References, capabilities and responsive values</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/content/add-a-block">Add a block: the capstone</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course" open>
+  <summary>Live Mercury</summary>
+  <ul>
+    <li><a href="/live-mercury">Overview</a></li>
+    
+      <li class="lms-side-group">The course</li>
+      <li class="">
+        <a href="/live-mercury/islands" aria-current="page">Islands: the element and its mount</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/live-mercury/liveview">An island in a LiveView: socket, hooks and events</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/live-mercury/building">Building islands with mx: no Node</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/live-mercury/props-and-streams">Props and streams: patches on the wire</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/live-mercury/server-rendering">Server rendering: what is there, and what is not</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/live-mercury/testing">Testing islands: both sides of the element</a>
+      </li>
+    
+  </ul>
+</details>
+        </nav>
+      </div>
+    </details>
+  </div>
+</header>
+    <div class="lms-frame">
+      <nav class="lms-side" aria-label="Courses and pages">
+        <details class="lms-side-course">
+  <summary>Start</summary>
+  <ul>
+    <li><a href="/start">Overview</a></li>
+    
+      
+      <li class="">
+        <a href="/start/browser">A page in the browser</a>
+      </li>
+    
+      <li class="lms-side-group">The pieces</li>
+      <li class="">
+        <a href="/start/install-mx">Choose a route to mx</a>
+      </li>
+    
+      <li class="lms-side-group">Agent connection</li>
+      <li class="">
+        <a href="/start/mcp">Mercury documentation MCP server</a>
+      </li>
+    
+      <li class="lms-side-group">First steps</li>
+      <li class="">
+        <a href="/start/stability">Stability: Shipped, Preview, Planned</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/start/agents">Build a page with your agent</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/start/glossary">Glossary: the words this site uses</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/start/philosophy">Philosophy: native, not borrowed</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>mx</summary>
+  <ul>
+    <li><a href="/mx">Overview</a></li>
+    
+      <li class="lms-side-group">Install mx</li>
+      <li class="">
+        <a href="/mx/first-app">Your first Mercury page</a>
+      </li>
+    
+      <li class="lms-side-group">The chapters</li>
+      <li class="">
+        <a href="/mx/modules">Modules, mx.mod and mx.sum</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/mx/workspace">A workspace, mx.work</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/mx/dev">The dev loop, and hot replacement</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/mx/build">Build and ship, three kinds of build</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/mx/compile">The Hypercompiler, one module at a time</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/mx/tools">The tools, test, lsap and run</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>Hyperscript</summary>
+  <ul>
+    <li><a href="/hyperscript">Overview</a></li>
+    
+      <li class="lms-side-group">What Hyperscript is</li>
+      <li class="">
+        <a href="/hyperscript/dom">The DOM contract</a>
+      </li>
+    
+      <li class="lms-side-group">The chapters</li>
+      <li class="">
+        <a href="/hyperscript/components">Components and render</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hyperscript/hooks">Hooks, state and effects in a function</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hyperscript/context">Context, portals and memo</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hyperscript/server">Rendering on the server</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hyperscript/testing">Testing and inspecting</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hyperscript/tested-component">A tested component</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>UI</summary>
+  <ul>
+    <li><a href="/ui">Overview</a></li>
+    
+      <li class="lms-side-group">The chapters</li>
+      <li class="">
+        <a href="/ui/tokens-and-themes">UI0, tokens and themes</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ui/foundations">UI1, where a subtree lives</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ui/actions-and-layout">UI2, actions and layout</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ui/inputs-and-forms">UI3, inputs and forms</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ui/selection">UI4, selection</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ui/feedback-and-data">UI5, feedback and data display</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ui/navigation">UI6, navigation</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>Hypergraph</summary>
+  <ul>
+    <li><a href="/hypergraph">Overview</a></li>
+    
+      <li class="lms-side-group">The chapters</li>
+      <li class="">
+        <a href="/hypergraph/units">Units: store, event and effect</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/wiring">Wiring: units into a graph</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/scopes">Scopes: fork, settle, hand over</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/observing">Observing: watch, inspect, describe</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/errors">Kinds, carriers and errors</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/hot-replacement">Hot replacement: the swap</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/server-rendering">Server rendering: a scope per request</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/testing">Testing a model: a scope per test</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/models">Models at scale: structure and identity</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/capstone">Capstone: a model, round-tripped</a>
+      </li>
+    
+      <li class="lms-side-group">Coming from Effector</li>
+      <li class="">
+        <a href="/hypergraph/coming-from-effector">Coming from Effector</a>
+      </li>
+    
+      
+      <li class="lms-side-sub">
+        <a href="/hypergraph/coming-from-effector/units-and-wiring">Units and wiring</a>
+      </li>
+    
+      
+      <li class="lms-side-sub">
+        <a href="/hypergraph/coming-from-effector/scopes-and-testing">Scopes and testing</a>
+      </li>
+    
+      
+      <li class="lms-side-sub">
+        <a href="/hypergraph/coming-from-effector/frameworks">Frameworks, after effector-react</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>Content</summary>
+  <ul>
+    <li><a href="/content">Overview</a></li>
+    
+      <li class="lms-side-group">The course map</li>
+      <li class="">
+        <a href="/content/documents">Page documents: nodes, the schema and parseDocument</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/content/rendering">Rendering a document: renderDocument</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/content/blocks">The block catalog: nine groups, one registry</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/content/references">References, capabilities and responsive values</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/content/add-a-block">Add a block: the capstone</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course" open>
+  <summary>Live Mercury</summary>
+  <ul>
+    <li><a href="/live-mercury">Overview</a></li>
+    
+      <li class="lms-side-group">The course</li>
+      <li class="">
+        <a href="/live-mercury/islands" aria-current="page">Islands: the element and its mount</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/live-mercury/liveview">An island in a LiveView: socket, hooks and events</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/live-mercury/building">Building islands with mx: no Node</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/live-mercury/props-and-streams">Props and streams: patches on the wire</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/live-mercury/server-rendering">Server rendering: what is there, and what is not</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/live-mercury/testing">Testing islands: both sides of the element</a>
+      </li>
+    
+  </ul>
+</details>
+      </nav>
+      <main id="main" class="lms-main">
+        <nav class="lms-crumbs" aria-label="Breadcrumb">
+  <ol>
+    
+      
+      <li><a href="/live-mercury">Live Mercury</a></li>
+      
+    
+      
+      
+      <li>The course</li>
+    
+      <li aria-current="page">Islands: the element and its mount</li>
+      
+      
+    
+  </ol>
+</nav>
+        
         <h1 class="lms-title">Islands: <em>the element and its mount</em></h1>
-        <p class="lms-lede">The server renders one element, marks it as LiveView&#39;s to ignore, and puts the props on
-            it. The client finds the component by name or by URL and renders it there.</p>
-        <article class="lms-body"><p>An island is one element of a server-rendered page that a client component owns.
-            This lesson takes the element apart: what the server writes, what the client reads, and what happens when
-            the two disagree.</p>
-            <h2 id="island">What an island is</h2>
-            <p>Three things make an element an island:</p>
-            <ul>
-                <li><strong><code>phx-update="ignore"</code>.</strong> LiveView patches the page around the element and
-                    never inside it, so what the component renders survives every LiveView update.
-                </li>
-                <li><strong><code>phx-hook</code>.</strong> LiveView calls the named hook's <code>mounted</code>, <code>updated</code>,
-                    <code>reconnected</code> and <code>destroyed</code> with the element as <code>this.el</code>. The
-                    hook is where the component mounts.
-                </li>
-                <li><strong>The props on the element.</strong> The component's input is written into the element by the
-                    server, so the first render needs no request of its own.
-                </li>
-            </ul>
-            <p>This repository has two hosts that make such an element: <code>LiveMercury.mercury/1</code>, whose hook
-                is <code>MercuryHook</code>, and EDU's <code>EchoEduWeb.Island.island/1</code>, whose hook is <code>CourseIsland</code>.
-            </p>
-            <h2 id="mercury">The LiveView host, LiveMercury.mercury/1</h2>
-            <p><code>mercury/1</code> is a function component. Every assign is a prop except the reserved ones:</p>
-            <table>
-                <thead>
-                <tr>
-                    <th>Assign</th>
-                    <th>What it does</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td><code>name</code></td>
-                    <td>the component's name in the client's <code>getHooks</code> map; required</td>
-                </tr>
-                <tr>
-                    <td><code>id</code></td>
-                    <td>the element's id; when omitted, <code>"&lt;name&gt;-&lt;n&gt;"</code> from a counter in the
-                        LiveView process
-                    </td>
-                </tr>
-                <tr>
-                    <td><code>class</code></td>
-                    <td>classes for the element</td>
-                </tr>
-                <tr>
-                    <td><code>ssr</code></td>
-                    <td>server-render the first, dead render; defaults to <code>config :live_mercury, :ssr</code>, which
-                        is <code>false</code></td>
-                </tr>
-                <tr>
-                    <td><code>diff</code></td>
-                    <td>send changed props as a patch; defaults to <code>config :live_mercury, :enable_props_diff</code>,
-                        <code>true</code></td>
-                </tr>
-                <tr>
-                    <td><code>socket</code></td>
-                    <td>only decides whether the very first render is dead</td>
-                </tr>
-                </tbody>
-            </table>
-            <p>An assign holding a stream made with <code>Phoenix.LiveView.stream/4</code> is sent as a stream, not a
-                prop, and the default <code>:inner_block</code> slot is passed to the component as its children. Props
-                are encoded with the <code>LiveMercury.Encoder</code> protocol: plain maps, lists and primitives work as
-                they are; a struct needs a protocol implementation, derived with <code>@derive</code> or written
-                explicitly.</p>
-            <pre><code class="language-elixir">~H"""
+        <p class="lms-lede">The server renders one element, marks it as LiveView&#39;s to ignore, and puts the props on it. The client finds the component by name or by URL and renders it there.</p>
+        <article class="lms-body"><p>An island is one element of a server-rendered page that a client component owns. This lesson takes the element apart: what the server writes, what the client reads, and what happens when the two disagree.</p>
+<h2 id="island">What an island is</h2>
+<p>Three things make an element an island:</p>
+<ul>
+<li><strong><code>phx-update="ignore"</code>.</strong> LiveView patches the page around the element and never inside it, so what the component renders survives every LiveView update.</li>
+<li><strong><code>phx-hook</code>.</strong> LiveView calls the named hook's <code>mounted</code>, <code>updated</code>, <code>reconnected</code> and <code>destroyed</code> with the element as <code>this.el</code>. The hook is where the component mounts.</li>
+<li><strong>The props on the element.</strong> The component's input is written into the element by the server, so the first render needs no request of its own.</li>
+</ul>
+<p>This repository has two hosts that make such an element: <code>LiveMercury.mercury/1</code>, whose hook is <code>MercuryHook</code>, and EDU's <code>EchoEduWeb.Island.island/1</code>, whose hook is <code>CourseIsland</code>.</p>
+<h2 id="mercury">The LiveView host, LiveMercury.mercury/1</h2>
+<p><code>mercury/1</code> is a function component. Every assign is a prop except the reserved ones:</p>
+<table>
+<thead>
+<tr>
+<th>Assign</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>the component's name in the client's <code>getHooks</code> map; required</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td>the element's id; when omitted, <code>"&lt;name&gt;-&lt;n&gt;"</code> from a counter in the LiveView process</td>
+</tr>
+<tr>
+<td><code>class</code></td>
+<td>classes for the element</td>
+</tr>
+<tr>
+<td><code>ssr</code></td>
+<td>server-render the first, dead render; defaults to <code>config :live_mercury, :ssr</code>, which is <code>false</code></td>
+</tr>
+<tr>
+<td><code>diff</code></td>
+<td>send changed props as a patch; defaults to <code>config :live_mercury, :enable_props_diff</code>, <code>true</code></td>
+</tr>
+<tr>
+<td><code>socket</code></td>
+<td>only decides whether the very first render is dead</td>
+</tr>
+</tbody>
+</table>
+<p>An assign holding a stream made with <code>Phoenix.LiveView.stream/4</code> is sent as a stream, not a prop, and the default <code>:inner_block</code> slot is passed to the component as its children. Props are encoded with the <code>LiveMercury.Encoder</code> protocol: plain maps, lists and primitives work as they are; a struct needs a protocol implementation, derived with <code>@derive</code> or written explicitly.</p>
+<pre><code class="language-elixir">~H"""
 &lt;.mercury name="Card" title={@title}&gt;
   &lt;p&gt;Rendered by LiveView, passed to the component as children.&lt;/p&gt;
 &lt;/.mercury&gt;
 """
 </code></pre>
-            <p>The element it renders carries everything the client needs:</p>
-            <ul>
-                <li><code>data-name</code>: the component's name;</li>
-                <li><code>data-props</code>: the full props, as compact JSON;</li>
-                <li><code>data-props-diff</code> and <code>data-use-diff</code>: the changed props as a patch, and
-                    whether the client should read it;
-                </li>
-                <li><code>data-streams-diff</code>: the streams' changes as a patch;</li>
-                <li><code>data-slots</code>: the default slot's HTML;</li>
-                <li><code>data-ssr</code>: whether the element already holds a server render;</li>
-                <li><code>phx-update="ignore"</code> and <code>phx-hook="MercuryHook"</code>.</li>
-            </ul>
-            <h2 id="mount">How the client mounts it</h2>
-            <p>The page's bundle registers its components by name:</p>
-            <pre><code class="language-ts">import { getHooks } from "@fiberfx/live-mercury";
+<p>The element it renders carries everything the client needs:</p>
+<ul>
+<li><code>data-name</code>: the component's name;</li>
+<li><code>data-props</code>: the full props, as compact JSON;</li>
+<li><code>data-props-diff</code> and <code>data-use-diff</code>: the changed props as a patch, and whether the client should read it;</li>
+<li><code>data-streams-diff</code>: the streams' changes as a patch;</li>
+<li><code>data-slots</code>: the default slot's HTML;</li>
+<li><code>data-ssr</code>: whether the element already holds a server render;</li>
+<li><code>phx-update="ignore"</code> and <code>phx-hook="MercuryHook"</code>.</li>
+</ul>
+<h2 id="mount">How the client mounts it</h2>
+<p>The page's bundle registers its components by name:</p>
+<pre><code class="language-ts">import { getHooks } from "@fiberfx/live-mercury";
 
 const hooks = getHooks({ KanBoard, SeatsExplorer, SquadsExplorer, KanAdmin });
 </code></pre>
-            <p><code>getHooks(components)</code> returns <code>{ MercuryHook }</code>. When LiveView mounts the element,
-                the hook reads <code>data-name</code>, finds <code>components[name]</code> and renders it:</p>
-            <ol>
-                <li>The props are <code>data-props</code>, decoded with <code>decodeCompactJson</code> (<code>{}</code>
-                    when the attribute is absent). The streams start from <code>data-streams-diff</code>, applied to an
-                    empty object.
-                </li>
-                <li>The component receives one props object: the props, then the streams, then the hook's six functions
-                    (<code>pushEvent</code>, <code>pushEventTo</code>, <code>handleEvent</code>,
-                    <code>removeHandleEvent</code>, <code>upload</code>, <code>uploadTo</code>). The slot's HTML, if
-                    any, is its child.
-                </li>
-                <li>It renders inside <code>LiveMercuryProvider</code>, so any component below it can reach the same
-                    functions with <code>useLiveMercury()</code>.
-                </li>
-                <li>With <code>data-ssr</code> set, the first paint clears the server's markup and renders afresh. There
-                    is no hydration.
-                </li>
-            </ol>
-            <p><code>getHooks</code> is a map in front of <code>createMercuryHook(resolve)</code>, which takes any
-                function from the element to its component, or to a promise of it. A component that arrives late still
-                sees every update that came first: the props and streams keep applying, and its first render shows them
-                as they stand.</p>
-            <h2 id="edu">The EDU host, EchoEduWeb.Island.island/1</h2>
-            <p>EDU's pages load each island as its own bundle, by URL. Its host takes three attributes, <code>id</code>
-                and <code>bundle</code> (both required) and <code>props</code> (a map, <code>%{}</code> by default), and
-                a slot for the server render:</p>
-            <pre><code class="language-elixir">~H"""
+<p><code>getHooks(components)</code> returns <code>{ MercuryHook }</code>. When LiveView mounts the element, the hook reads <code>data-name</code>, finds <code>components[name]</code> and renders it:</p>
+<ol>
+<li>The props are <code>data-props</code>, decoded with <code>decodeCompactJson</code> (<code>{}</code> when the attribute is absent). The streams start from <code>data-streams-diff</code>, applied to an empty object.</li>
+<li>The component receives one props object: the props, then the streams, then the hook's six functions (<code>pushEvent</code>, <code>pushEventTo</code>, <code>handleEvent</code>, <code>removeHandleEvent</code>, <code>upload</code>, <code>uploadTo</code>). The slot's HTML, if any, is its child.</li>
+<li>It renders inside <code>LiveMercuryProvider</code>, so any component below it can reach the same functions with <code>useLiveMercury()</code>.</li>
+<li>With <code>data-ssr</code> set, the first paint clears the server's markup and renders afresh. There is no hydration.</li>
+</ol>
+<p><code>getHooks</code> is a map in front of <code>createMercuryHook(resolve)</code>, which takes any function from the element to its component, or to a promise of it. A component that arrives late still sees every update that came first: the props and streams keep applying, and its first render shows them as they stand.</p>
+<h2 id="edu">The EDU host, EchoEduWeb.Island.island/1</h2>
+<p>EDU's pages load each island as its own bundle, by URL. Its host takes three attributes, <code>id</code> and <code>bundle</code> (both required) and <code>props</code> (a map, <code>%{}</code> by default), and a slot for the server render:</p>
+<pre><code class="language-elixir">~H"""
 &lt;.island id={@island_id} bundle={@bundle} props={%{title: "The demo island"}}&gt;
   &lt;p class="mx-text mx-text--muted"&gt;The island mounts here when JavaScript runs.&lt;/p&gt;
 &lt;/.island&gt;
 """
 </code></pre>
-            <p>It renders <code>phx-hook="CourseIsland"</code>, <code>phx-update="ignore"</code> and
-                <code>data-bundle</code>, and puts the props in a <code>&lt;script type="application/json"&gt;</code>
-                first child rather than an attribute. <code>props_json/1</code> writes every <code>&lt;</code> as <code>\u003c</code>,
-                so a value can never close the script element. The slot stays inside the element, so the page reads
-                without JavaScript.</p>
-            <p>The bundle meets the boot through two exports:</p>
-            <pre><code class="language-ts">import { courseIsland } from "@echd/edu-boot/island";
+<p>It renders <code>phx-hook="CourseIsland"</code>, <code>phx-update="ignore"</code> and <code>data-bundle</code>, and puts the props in a <code>&lt;script type="application/json"&gt;</code> first child rather than an attribute. <code>props_json/1</code> writes every <code>&lt;</code> as <code>\u003c</code>, so a value can never close the script element. The slot stays inside the element, so the page reads without JavaScript.</p>
+<p>The bundle meets the boot through two exports:</p>
+<pre><code class="language-ts">import { courseIsland } from "@echd/edu-boot/island";
 import { DemoIsland } from "./DemoIsland";
 
 export default DemoIsland;
 
 export const hook = courseIsland(DemoIsland);
 </code></pre>
-            <p>EDU's boot, <code>edu-boot.js</code>, defines <code>CourseIsland</code>. On <code>mounted</code> it
-                imports the URL in <code>data-bundle</code>, checks that the module's <code>hook</code> has the four
-                callbacks, sets the server render aside (all but the props child), and calls the bundle's <code>hook.mounted</code>.
-                On <code>destroyed</code> it calls the bundle's hook and puts the server render back.</p>
-            <p><code>courseIsland(component)</code> is <code>createMercuryHook</code> with EDU's rules: it reads the
-                JSON child once, renders the component inside a <code>data-island-root</code> element, and passes it the
-                hook's functions, the props, and <code>islandId</code>, the element's id. EDU's props win over any key
-                Live Mercury carries.</p>
-            <h2 id="failures">When an island cannot mount</h2>
-            <p>The two hosts report failure differently.</p>
-            <ul>
-                <li><strong><code>MercuryHook</code></strong> throws: <code>"the island has no data-name
-                    attribute"</code> when the element has none, or <code>getHooks's map has no component named "&lt;name&gt;"</code>.
-                    A component that was a promise and rejected is logged to the console.
-                </li>
-                <li><strong><code>CourseIsland</code></strong> writes a code to the element's
-                    <code>data-island-error</code> and logs it: <code>no-bundle</code> (no <code>data-bundle</code>),
-                    <code>import</code> (the bundle did not load), <code>no-hook</code> (no valid <code>hook</code>
-                    export), <code>props</code> (the JSON child does not parse) or <code>render</code> (the bundle's
-                    <code>mounted</code> threw). On <code>props</code> and <code>render</code> the server render is put
-                    back.
-                </li>
-            </ul>
-            <p>EDU also checks hosts at build time. <code>EchoEduWeb.Island.check_hosts/3</code>, which <code>mix
-                edu.gen</code> uses, requires that each <code>CourseIsland</code> host lies in the body, has an id no
-                other element has, carries <code>phx-update="ignore"</code> and a <code>data-bundle</code> that is a
-                path or an http(s) URL, and has a JSON script first child that parses and holds no raw <code>&lt;</code>.
-            </p>
-            <h2 id="choose">Which host to use</h2>
-            <table>
-                <thead>
-                <tr>
-                    <th></th>
-                    <th><code>LiveMercury.mercury/1</code></th>
-                    <th><code>EchoEduWeb.Island.island/1</code></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>hook</td>
-                    <td><code>MercuryHook</code></td>
-                    <td><code>CourseIsland</code></td>
-                </tr>
-                <tr>
-                    <td>component found by</td>
-                    <td><code>data-name</code>, in the page bundle's <code>getHooks</code> map</td>
-                    <td><code>data-bundle</code>, a URL the boot imports</td>
-                </tr>
-                <tr>
-                    <td>props</td>
-                    <td><code>data-props</code>, updated by patches as assigns change</td>
-                    <td>a JSON child, read once at mount</td>
-                </tr>
-                <tr>
-                    <td>server render</td>
-                    <td><code>ssr</code>, off by default; cleared at first paint</td>
-                    <td>the slot, kept until the island mounts and restored after</td>
-                </tr>
-                <tr>
-                    <td>in this repository</td>
-                    <td>echd_os's four KAN views</td>
-                    <td>the demo island, and the KAN course's pages under <code>html/kan</code>, which write the same
-                        host in HTML
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-            <p>Use <code>mercury/1</code> when the island's props follow a LiveView's assigns. Use EDU's host for a
-                self-contained island on a course page, whose props are fixed when the page renders and whose events go
-                through the page's LiveView, as the <a href="/live-mercury/liveview" rel="noopener noreferrer">next
-                    lesson</a> shows.</p></article>
+<p>EDU's boot, <code>edu-boot.js</code>, defines <code>CourseIsland</code>. On <code>mounted</code> it imports the URL in <code>data-bundle</code>, checks that the module's <code>hook</code> has the four callbacks, sets the server render aside (all but the props child), and calls the bundle's <code>hook.mounted</code>. On <code>destroyed</code> it calls the bundle's hook and puts the server render back.</p>
+<p><code>courseIsland(component)</code> is <code>createMercuryHook</code> with EDU's rules: it reads the JSON child once, renders the component inside a <code>data-island-root</code> element, and passes it the hook's functions, the props, and <code>islandId</code>, the element's id. EDU's props win over any key Live Mercury carries.</p>
+<h2 id="failures">When an island cannot mount</h2>
+<p>The two hosts report failure differently.</p>
+<ul>
+<li><strong><code>MercuryHook</code></strong> throws: <code>"the island has no data-name attribute"</code> when the element has none, or <code>getHooks's map has no component named "&lt;name&gt;"</code>. A component that was a promise and rejected is logged to the console.</li>
+<li><strong><code>CourseIsland</code></strong> writes a code to the element's <code>data-island-error</code> and logs it: <code>no-bundle</code> (no <code>data-bundle</code>), <code>import</code> (the bundle did not load), <code>no-hook</code> (no valid <code>hook</code> export), <code>props</code> (the JSON child does not parse) or <code>render</code> (the bundle's <code>mounted</code> threw). On <code>props</code> and <code>render</code> the server render is put back.</li>
+</ul>
+<p>EDU also checks hosts at build time. <code>EchoEduWeb.Island.check_hosts/3</code>, which <code>mix edu.gen</code> uses, requires that each <code>CourseIsland</code> host lies in the body, has an id no other element has, carries <code>phx-update="ignore"</code> and a <code>data-bundle</code> that is a path or an http(s) URL, and has a JSON script first child that parses and holds no raw <code>&lt;</code>.</p>
+<h2 id="choose">Which host to use</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><code>LiveMercury.mercury/1</code></th>
+<th><code>EchoEduWeb.Island.island/1</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hook</td>
+<td><code>MercuryHook</code></td>
+<td><code>CourseIsland</code></td>
+</tr>
+<tr>
+<td>component found by</td>
+<td><code>data-name</code>, in the page bundle's <code>getHooks</code> map</td>
+<td><code>data-bundle</code>, a URL the boot imports</td>
+</tr>
+<tr>
+<td>props</td>
+<td><code>data-props</code>, updated by patches as assigns change</td>
+<td>a JSON child, read once at mount</td>
+</tr>
+<tr>
+<td>server render</td>
+<td><code>ssr</code>, off by default; cleared at first paint</td>
+<td>the slot, kept until the island mounts and restored after</td>
+</tr>
+<tr>
+<td>in this repository</td>
+<td>echd_os's four KAN views</td>
+<td>the demo island, and the KAN course's pages under <code>html/kan</code>, which write the same host in HTML</td>
+</tr>
+</tbody>
+</table>
+<p>Use <code>mercury/1</code> when the island's props follow a LiveView's assigns. Use EDU's host for a self-contained island on a course page, whose props are fixed when the page renders and whose events go through the page's LiveView, as the <a href="/live-mercury/liveview" rel="noopener noreferrer">next lesson</a> shows.</p></article>
         <nav class="lms-pager" aria-label="Previous and next">
-            <a class="lms-pager-prev" href="/live-mercury" rel="prev"><span>Previous</span>Live Mercury, islands on the
-                BEAM</a>
-            <a class="lms-pager-next" href="/live-mercury/liveview" rel="next"><span>Next</span>An island in a LiveView:
-                socket, hooks and events</a>
-        </nav>
-    </main>
-    <aside class="lms-toc" aria-label="On this page">
+  <a class="lms-pager-prev" href="/live-mercury" rel="prev"><span>Previous</span>Live Mercury, islands on the BEAM</a>
+  <a class="lms-pager-next" href="/live-mercury/liveview" rel="next"><span>Next</span>An island in a LiveView: socket, hooks and events</a>
+</nav>
+      </main>
+      <aside class="lms-toc" aria-label="On this page">
         <p class="lms-toc-title">On this page</p>
         <ul>
-            <li><a href="#island">What an island is</a></li>
-            <li><a href="#mercury">The LiveView host, LiveMercury.mercury/1</a></li>
-            <li><a href="#mount">How the client mounts it</a></li>
-            <li><a href="#edu">The EDU host, EchoEduWeb.Island.island/1</a></li>
-            <li><a href="#failures">When an island cannot mount</a></li>
-            <li><a href="#choose">Which host to use</a></li>
+          <li><a href="#island">What an island is</a></li><li><a href="#mercury">The LiveView host, LiveMercury.mercury/1</a></li><li><a href="#mount">How the client mounts it</a></li><li><a href="#edu">The EDU host, EchoEduWeb.Island.island/1</a></li><li><a href="#failures">When an island cannot mount</a></li><li><a href="#choose">Which host to use</a></li>
         </ul>
-    </aside>
-</div>
-<footer class="lms-footer">
-    <p><a href="/agent/SKILL.md">SKILL.md</a><span> · <a href="/llms.txt">llms.txt</a></span> · <a href="/sitemap.xml">Sitemap</a>
-        · <a href="/examples/first-page.html">Browser example</a></p>
-    <p>For agents: <a href="/live-mercury/islands/llms.txt">/live-mercury/islands/llms.txt</a> is this page as plain
-        text, hand-written. No Node, no React.</p>
-
+      </aside>
+    </div>
+    <footer class="lms-footer">
+  <p><a href="/about">About</a> · <a href="/contact">Contact</a> · <a href="/privacy">Privacy</a> · <a href="/reference">Mercury API</a> · <a href="/start/mcp">MCP</a></p>
+  <p><a href="/agent/SKILL.md">SKILL.md</a><span> · <a href="/llms.txt">llms.txt</a></span> · <a href="/sitemap.xml">Sitemap</a> · <a href="/examples/first-page.html">Browser example</a></p>
+  <p>For agents: <a href="/live-mercury/islands/llms.txt">/live-mercury/islands/llms.txt</a> is this page as plain text, hand-written. No Node, no React.</p>
+  
 </footer>
-</body>
+  </body>
 </html>

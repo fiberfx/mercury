@@ -1,850 +1,769 @@
-<!doctype html>
-<html lang="en" class="lms">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>The Hypercompiler, one module at a time · Mercury</title>
-    <meta name="description"
-          content="MX4: mx compile runs the Hypercompiler, linked into mx, on one file: what it lowers (TypeScript and JSX to plain modules on @fiberfx/hyperscript&#39;s runtime), what it refuses and how (a CompileError JSON with a phase and a kind), and the two options, sid and roots, that mx dev and mx build pass to every module they serve.">
-
-    <link rel="canonical" href="https://mercury.jonnify.com/mx/compile">
-    <link rel="describedby" type="text/plain" href="/mx/compile/llms.txt">
-    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
-    <meta property="og:type" content="article">
-    <meta property="og:site_name" content="Mercury">
-    <meta property="og:title" content="The Hypercompiler, one module at a time · Mercury">
-    <meta property="og:description"
-          content="MX4: mx compile runs the Hypercompiler, linked into mx, on one file: what it lowers (TypeScript and JSX to plain modules on @fiberfx/hyperscript&#39;s runtime), what it refuses and how (a CompileError JSON with a phase and a kind), and the two options, sid and roots, that mx dev and mx build pass to every module they serve.">
-    <meta property="og:url" content="https://mercury.jonnify.com/mx/compile">
-    <meta property="og:image" content="https://mercury.jonnify.com/_lms/assets/mercury-hero.png">
-    <meta property="og:image:alt" content="Mercury">
-    <script type="application/ld+json">[
-        {
-            "@context": "https://schema.org",
-            "@type": "TechArticle",
-            "description": "MX4: mx compile runs the Hypercompiler, linked into mx, on one file: what it lowers (TypeScript and JSX to plain modules on @fiberfx/hyperscript's runtime), what it refuses and how (a CompileError JSON with a phase and a kind), and the two options, sid and roots, that mx dev and mx build pass to every module they serve.",
-            "inLanguage": "en",
-            "name": "The Hypercompiler, one module at a time",
-            "url": "https://mercury.jonnify.com/mx/compile"
-        },
-        {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-                {
-                    "@type": "ListItem",
-                    "item": "https://mercury.jonnify.com/",
-                    "name": "Mercury",
-                    "position": 1
-                },
-                {
-                    "@type": "ListItem",
-                    "item": "https://mercury.jonnify.com/mx/compile",
-                    "name": "The Hypercompiler, one module at a time",
-                    "position": 2
-                }
-            ]
-        }
-    ]</script>
-    <meta name="color-scheme" content="light dark">
-
-    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#111113" media="(prefers-color-scheme: dark)">
-    <style>html {
-        background-color: rgb(255 255 255)
-    }
-
-    @media (prefers-color-scheme: dark) {
-        html {
-            background-color: rgb(17 17 19)
-        }
-    }</style>
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/mx/compile">
-    <link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/mx/compile">
-    <link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/mx/compile">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap">
-    <link rel="stylesheet" href="/_lms/assets/lms.css">
-    <link rel="stylesheet" href="/_lms/assets/shell.css">
-
+<!doctype html><html lang="en" class="lms">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="is-agentic-site-type" content="content">
+  <title>The Hypercompiler, one module at a time · Mercury</title>
+  <meta name="description" content="MX4: mx compile runs the Hypercompiler, linked into mx, on one file: what it lowers (TypeScript and JSX to plain modules on @fiberfx/hyperscript&#39;s runtime), what it refuses and how (a CompileError JSON with a phase and a kind), and the two options, sid and roots, that mx dev and mx build pass to every module they serve.">
+  
+  <link rel="canonical" href="https://mercury.jonnify.com/mx/compile">
+  <link rel="describedby" type="text/plain" href="/mx/compile/llms.txt">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+  <link rel="mcp" href="https://mercury.jonnify.com/mcp">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Mercury">
+  <meta property="og:title" content="The Hypercompiler, one module at a time · Mercury">
+  <meta property="og:description" content="MX4: mx compile runs the Hypercompiler, linked into mx, on one file: what it lowers (TypeScript and JSX to plain modules on @fiberfx/hyperscript&#39;s runtime), what it refuses and how (a CompileError JSON with a phase and a kind), and the two options, sid and roots, that mx dev and mx build pass to every module they serve.">
+  <meta property="og:url" content="https://mercury.jonnify.com/mx/compile">
+  <meta property="og:image" content="https://mercury.jonnify.com/_lms/assets/mercury-hero.png">
+  <meta property="og:image:alt" content="Mercury">
+  <script type="application/ld+json">[{"@context":"https://schema.org","@type":"TechArticle","description":"MX4: mx compile runs the Hypercompiler, linked into mx, on one file: what it lowers (TypeScript and JSX to plain modules on @fiberfx/hyperscript's runtime), what it refuses and how (a CompileError JSON with a phase and a kind), and the two options, sid and roots, that mx dev and mx build pass to every module they serve.","inLanguage":"en","name":"The Hypercompiler, one module at a time","url":"https://mercury.jonnify.com/mx/compile"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://mercury.jonnify.com/","name":"Mercury","position":1},{"@type":"ListItem","item":"https://mercury.jonnify.com/mx/compile","name":"The Hypercompiler, one module at a time","position":2}]}]</script>
+  <meta name="color-scheme" content="light dark">
+  
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#111113" media="(prefers-color-scheme: dark)">
+  <style>html{background-color:rgb(255 255 255)}@media (prefers-color-scheme: dark){html{background-color:rgb(17 17 19)}}</style>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="alternate" hreflang="en" href="https://mercury.jonnify.com/mx/compile"><link rel="alternate" hreflang="ru" href="https://mercury.jonnify.com/ru/mx/compile"><link rel="alternate" hreflang="x-default" href="https://mercury.jonnify.com/mx/compile">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="/_lms/assets/lms.css">
+  <link rel="stylesheet" href="/_lms/assets/shell.css">
+  
 </head>
-<body class="lms">
-<a class="lms-skip" href="#main">Skip to content</a>
+  <body class="lms">
+    <a class="lms-skip" href="#main">Skip to content</a>
 <header class="lms-header">
-    <a class="lms-brand" href="/" aria-label="Mercury, home">
-        <svg viewBox="5 9 30 22" width="30" height="22" aria-hidden="true" focusable="false">
-            <g fill="none" stroke-width="3" stroke-linecap="round">
-                <path d="M7 29V15.5c0-2.5 2-4.5 4.5-4.5S16 13 16 15.5V29M16 16.5c0-3 2-5.5 4.5-5.5"
-                      stroke="currentColor"></path>
-                <path d="M23 16l10 13M33 16L23 29" stroke="rgb(var(--lms-accent))"></path>
-            </g>
-        </svg>
-        <span>Mercury</span>
+  <a class="lms-brand" href="/" aria-label="Mercury, home">
+    <svg viewBox="5 9 30 22" width="30" height="22" aria-hidden="true" focusable="false"><g fill="none" stroke-width="3" stroke-linecap="round"><path d="M7 29V15.5c0-2.5 2-4.5 4.5-4.5S16 13 16 15.5V29M16 16.5c0-3 2-5.5 4.5-5.5" stroke="currentColor"></path><path d="M23 16l10 13M33 16L23 29" stroke="rgb(var(--lms-accent))"></path></g></svg>
+    <span>Mercury</span>
+  </a>
+  <nav class="lms-nav" aria-label="Site">
+    <a href="/#principles">Principles</a><a href="/#foundations">Foundations</a><a href="/#components">Components</a><a href="/#usage">Usage</a>
+  </nav>
+  <div class="lms-actions">
+    <details class="lms-lang">
+  <summary aria-label="Language">English</summary>
+  <ul>
+    <li>
+      <a href="/mx/compile" hreflang="en" lang="en" aria-current="true">English</a>
+      
+    </li><li>
+      <a href="/ru/mx/compile" hreflang="ru" lang="ru">Русский</a>
+      
+    </li>
+  </ul>
+</details>
+    <a class="lms-github" href="/start/install-mx" aria-label="Install Mercury" title="Install Mercury">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
     </a>
-    <nav class="lms-nav" aria-label="Site">
-        <a href="/#principles">Principles</a><a href="/#foundations">Foundations</a><a
-            href="/#components">Components</a><a href="/#usage">Usage</a>
-    </nav>
-    <div class="lms-actions">
-        <details class="lms-lang">
-            <summary aria-label="Language">English</summary>
-            <ul>
-                <li>
-                    <a href="/mx/compile" hreflang="en" lang="en" aria-current="true">English</a>
-
-                </li>
-                <li>
-                    <a href="/ru/mx/compile" hreflang="ru" lang="ru">Русский</a>
-
-                </li>
-            </ul>
-        </details>
-        <a class="lms-github" href="/start/install-mx" aria-label="Install Mercury" title="Install Mercury">
-            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
-                <path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4" fill="none" stroke="currentColor" stroke-width="1.8"
-                      stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-        </a>
-        <form class="lms-theme" method="post" action="/_lms/theme">
-            <input type="hidden" name="back" value="/mx/compile">
-            <button class="lms-theme-to-dark" type="submit" name="set" value="dark" aria-label="Dark theme"
-                    title="Dark theme">
-                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
-                    <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                          stroke-linejoin="round" d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"></path>
-                </svg>
-            </button>
-            <button class="lms-theme-to-light" type="submit" name="set" value="light" aria-label="Light theme"
-                    title="Light theme">
-                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
-                    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
-                        <circle cx="12" cy="12" r="4"></circle>
-                        <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
-                    </g>
-                </svg>
-            </button>
-        </form>
-        <a class="lms-open-docs" href="/start">Open docs</a>
-        <details class="lms-drawer">
-            <summary>
-                <span class="lms-menu-label">Menu</span>
-                <svg class="lms-menu-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"
-                     focusable="false">
-                    <path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="1.8"
-                          stroke-linecap="round"></path>
-                </svg>
-            </summary>
-            <div class="lms-drawer-panel">
-                <nav class="lms-menu-links" aria-label="Site">
-                    <a class="lms-menu-docs" href="/start">Open docs</a>
-                    <a href="/#principles">Principles</a><a href="/#foundations">Foundations</a><a href="/#components">Components</a><a
-                        href="/#usage">Usage</a>
-                    <a href="/start/install-mx">Install Mercury</a>
-                </nav>
-                <div class="lms-menu-language">
-                    <details class="lms-lang">
-                        <summary aria-label="Language">English</summary>
-                        <ul>
-                            <li>
-                                <a href="/mx/compile" hreflang="en" lang="en" aria-current="true">English</a>
-
-                            </li>
-                            <li>
-                                <a href="/ru/mx/compile" hreflang="ru" lang="ru">Русский</a>
-
-                            </li>
-                        </ul>
-                    </details>
-                </div>
-                <nav aria-label="Courses and pages">
-                    <p class="lms-menu-heading">Courses</p>
-                    <details class="lms-side-course">
-                        <summary>Start</summary>
-                        <ul>
-                            <li><a href="/start">Overview</a></li>
-
-
-                            <li class="">
-                                <a href="/start/browser">A page in the browser</a>
-                            </li>
-
-                            <li class="lms-side-group">The pieces</li>
-                            <li class="">
-                                <a href="/start/install-mx">Choose a route to mx</a>
-                            </li>
-
-                            <li class="lms-side-group">First steps</li>
-                            <li class="">
-                                <a href="/start/stability">Stability: Shipped, Preview, Planned</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/start/agents">Build a page with your agent</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/start/glossary">Glossary: the words this site uses</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/start/philosophy">Philosophy: native, not borrowed</a>
-                            </li>
-
-                        </ul>
-                    </details>
-                    <details class="lms-side-course" open>
-                        <summary>mx</summary>
-                        <ul>
-                            <li><a href="/mx">Overview</a></li>
-
-                            <li class="lms-side-group">Install mx</li>
-                            <li class="">
-                                <a href="/mx/first-app">Your first Mercury page</a>
-                            </li>
-
-                            <li class="lms-side-group">The chapters</li>
-                            <li class="">
-                                <a href="/mx/modules">Modules, mx.mod and mx.sum</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/mx/workspace">A workspace, mx.work</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/mx/dev">The dev loop, and hot replacement</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/mx/build">Build and ship, three kinds of build</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/mx/compile" aria-current="page">The Hypercompiler, one module at a time</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/mx/tools">The tools, test, lsap and run</a>
-                            </li>
-
-                        </ul>
-                    </details>
-                    <details class="lms-side-course">
-                        <summary>Hyperscript</summary>
-                        <ul>
-                            <li><a href="/hyperscript">Overview</a></li>
-
-                            <li class="lms-side-group">What Hyperscript is</li>
-                            <li class="">
-                                <a href="/hyperscript/dom">The DOM contract</a>
-                            </li>
-
-                            <li class="lms-side-group">The chapters</li>
-                            <li class="">
-                                <a href="/hyperscript/components">Components and render</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/hyperscript/hooks">Hooks, state and effects in a function</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/hyperscript/context">Context, portals and memo</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/hyperscript/server">Rendering on the server</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/hyperscript/testing">Testing and inspecting</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/hyperscript/tested-component">A tested component</a>
-                            </li>
-
-                        </ul>
-                    </details>
-                    <details class="lms-side-course">
-                        <summary>UI</summary>
-                        <ul>
-                            <li><a href="/ui">Overview</a></li>
-
-                            <li class="lms-side-group">The chapters</li>
-                            <li class="">
-                                <a href="/ui/tokens-and-themes">UI0, tokens and themes</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ui/foundations">UI1, where a subtree lives</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ui/actions-and-layout">UI2, actions and layout</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ui/inputs-and-forms">UI3, inputs and forms</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ui/selection">UI4, selection</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ui/feedback-and-data">UI5, feedback and data display</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/ui/navigation">UI6, navigation</a>
-                            </li>
-
-                        </ul>
-                    </details>
-                    <details class="lms-side-course">
-                        <summary>Hypergraph</summary>
-                        <ul>
-                            <li><a href="/hypergraph">Overview</a></li>
-
-                            <li class="lms-side-group">The chapters</li>
-                            <li class="">
-                                <a href="/hypergraph/units">Units: store, event and effect</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/hypergraph/wiring">Wiring: units into a graph</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/hypergraph/scopes">Scopes: fork, settle, hand over</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/hypergraph/observing">Observing: watch, inspect, describe</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/hypergraph/errors">Kinds, carriers and errors</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/hypergraph/hot-replacement">Hot replacement: the swap</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/hypergraph/server-rendering">Server rendering: a scope per request</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/hypergraph/testing">Testing a model: a scope per test</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/hypergraph/models">Models at scale: structure and identity</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/hypergraph/capstone">Capstone: a model, round-tripped</a>
-                            </li>
-
-                            <li class="lms-side-group">Coming from Effector</li>
-                            <li class="">
-                                <a href="/hypergraph/coming-from-effector">Coming from Effector</a>
-                            </li>
-
-
-                            <li class="lms-side-sub">
-                                <a href="/hypergraph/coming-from-effector/units-and-wiring">Units and wiring</a>
-                            </li>
-
-
-                            <li class="lms-side-sub">
-                                <a href="/hypergraph/coming-from-effector/scopes-and-testing">Scopes and testing</a>
-                            </li>
-
-
-                            <li class="lms-side-sub">
-                                <a href="/hypergraph/coming-from-effector/frameworks">Frameworks, after
-                                    effector-react</a>
-                            </li>
-
-                        </ul>
-                    </details>
-                    <details class="lms-side-course">
-                        <summary>Content</summary>
-                        <ul>
-                            <li><a href="/content">Overview</a></li>
-
-                            <li class="lms-side-group">The course map</li>
-                            <li class="">
-                                <a href="/content/documents">Page documents: nodes, the schema and parseDocument</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/content/rendering">Rendering a document: renderDocument</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/content/blocks">The block catalog: nine groups, one registry</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/content/references">References, capabilities and responsive values</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/content/add-a-block">Add a block: the capstone</a>
-                            </li>
-
-                        </ul>
-                    </details>
-                    <details class="lms-side-course">
-                        <summary>Live Mercury</summary>
-                        <ul>
-                            <li><a href="/live-mercury">Overview</a></li>
-
-                            <li class="lms-side-group">The course</li>
-                            <li class="">
-                                <a href="/live-mercury/islands">Islands: the element and its mount</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/live-mercury/liveview">An island in a LiveView: socket, hooks and events</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/live-mercury/building">Building islands with mx: no Node</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/live-mercury/props-and-streams">Props and streams: patches on the wire</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/live-mercury/server-rendering">Server rendering: what is there, and what is
-                                    not</a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/live-mercury/testing">Testing islands: both sides of the element</a>
-                            </li>
-
-                        </ul>
-                    </details>
-                </nav>
-            </div>
-        </details>
-    </div>
-</header>
-<div class="lms-frame">
-    <nav class="lms-side" aria-label="Courses and pages">
-        <details class="lms-side-course">
-            <summary>Start</summary>
-            <ul>
-                <li><a href="/start">Overview</a></li>
-
-
-                <li class="">
-                    <a href="/start/browser">A page in the browser</a>
-                </li>
-
-                <li class="lms-side-group">The pieces</li>
-                <li class="">
-                    <a href="/start/install-mx">Choose a route to mx</a>
-                </li>
-
-                <li class="lms-side-group">First steps</li>
-                <li class="">
-                    <a href="/start/stability">Stability: Shipped, Preview, Planned</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/start/agents">Build a page with your agent</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/start/glossary">Glossary: the words this site uses</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/start/philosophy">Philosophy: native, not borrowed</a>
-                </li>
-
-            </ul>
-        </details>
-        <details class="lms-side-course" open>
-            <summary>mx</summary>
-            <ul>
-                <li><a href="/mx">Overview</a></li>
-
-                <li class="lms-side-group">Install mx</li>
-                <li class="">
-                    <a href="/mx/first-app">Your first Mercury page</a>
-                </li>
-
-                <li class="lms-side-group">The chapters</li>
-                <li class="">
-                    <a href="/mx/modules">Modules, mx.mod and mx.sum</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/mx/workspace">A workspace, mx.work</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/mx/dev">The dev loop, and hot replacement</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/mx/build">Build and ship, three kinds of build</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/mx/compile" aria-current="page">The Hypercompiler, one module at a time</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/mx/tools">The tools, test, lsap and run</a>
-                </li>
-
-            </ul>
-        </details>
-        <details class="lms-side-course">
-            <summary>Hyperscript</summary>
-            <ul>
-                <li><a href="/hyperscript">Overview</a></li>
-
-                <li class="lms-side-group">What Hyperscript is</li>
-                <li class="">
-                    <a href="/hyperscript/dom">The DOM contract</a>
-                </li>
-
-                <li class="lms-side-group">The chapters</li>
-                <li class="">
-                    <a href="/hyperscript/components">Components and render</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/hyperscript/hooks">Hooks, state and effects in a function</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/hyperscript/context">Context, portals and memo</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/hyperscript/server">Rendering on the server</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/hyperscript/testing">Testing and inspecting</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/hyperscript/tested-component">A tested component</a>
-                </li>
-
-            </ul>
-        </details>
-        <details class="lms-side-course">
-            <summary>UI</summary>
-            <ul>
-                <li><a href="/ui">Overview</a></li>
-
-                <li class="lms-side-group">The chapters</li>
-                <li class="">
-                    <a href="/ui/tokens-and-themes">UI0, tokens and themes</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ui/foundations">UI1, where a subtree lives</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ui/actions-and-layout">UI2, actions and layout</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ui/inputs-and-forms">UI3, inputs and forms</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ui/selection">UI4, selection</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ui/feedback-and-data">UI5, feedback and data display</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/ui/navigation">UI6, navigation</a>
-                </li>
-
-            </ul>
-        </details>
-        <details class="lms-side-course">
-            <summary>Hypergraph</summary>
-            <ul>
-                <li><a href="/hypergraph">Overview</a></li>
-
-                <li class="lms-side-group">The chapters</li>
-                <li class="">
-                    <a href="/hypergraph/units">Units: store, event and effect</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/hypergraph/wiring">Wiring: units into a graph</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/hypergraph/scopes">Scopes: fork, settle, hand over</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/hypergraph/observing">Observing: watch, inspect, describe</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/hypergraph/errors">Kinds, carriers and errors</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/hypergraph/hot-replacement">Hot replacement: the swap</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/hypergraph/server-rendering">Server rendering: a scope per request</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/hypergraph/testing">Testing a model: a scope per test</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/hypergraph/models">Models at scale: structure and identity</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/hypergraph/capstone">Capstone: a model, round-tripped</a>
-                </li>
-
-                <li class="lms-side-group">Coming from Effector</li>
-                <li class="">
-                    <a href="/hypergraph/coming-from-effector">Coming from Effector</a>
-                </li>
-
-
-                <li class="lms-side-sub">
-                    <a href="/hypergraph/coming-from-effector/units-and-wiring">Units and wiring</a>
-                </li>
-
-
-                <li class="lms-side-sub">
-                    <a href="/hypergraph/coming-from-effector/scopes-and-testing">Scopes and testing</a>
-                </li>
-
-
-                <li class="lms-side-sub">
-                    <a href="/hypergraph/coming-from-effector/frameworks">Frameworks, after effector-react</a>
-                </li>
-
-            </ul>
-        </details>
-        <details class="lms-side-course">
-            <summary>Content</summary>
-            <ul>
-                <li><a href="/content">Overview</a></li>
-
-                <li class="lms-side-group">The course map</li>
-                <li class="">
-                    <a href="/content/documents">Page documents: nodes, the schema and parseDocument</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/content/rendering">Rendering a document: renderDocument</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/content/blocks">The block catalog: nine groups, one registry</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/content/references">References, capabilities and responsive values</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/content/add-a-block">Add a block: the capstone</a>
-                </li>
-
-            </ul>
-        </details>
-        <details class="lms-side-course">
-            <summary>Live Mercury</summary>
-            <ul>
-                <li><a href="/live-mercury">Overview</a></li>
-
-                <li class="lms-side-group">The course</li>
-                <li class="">
-                    <a href="/live-mercury/islands">Islands: the element and its mount</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/live-mercury/liveview">An island in a LiveView: socket, hooks and events</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/live-mercury/building">Building islands with mx: no Node</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/live-mercury/props-and-streams">Props and streams: patches on the wire</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/live-mercury/server-rendering">Server rendering: what is there, and what is not</a>
-                </li>
-
-
-                <li class="">
-                    <a href="/live-mercury/testing">Testing islands: both sides of the element</a>
-                </li>
-
-            </ul>
-        </details>
-    </nav>
-    <main id="main" class="lms-main">
-        <nav class="lms-crumbs" aria-label="Breadcrumb">
-            <ol>
-
-
-                <li><a href="/mx">mx</a></li>
-
-
-                <li>The chapters</li>
-
-                <li aria-current="page">The Hypercompiler, one module at a time</li>
-
-
-            </ol>
+    <form class="lms-theme" method="post" action="/_lms/theme">
+      <input type="hidden" name="back" value="/mx/compile">
+      <button class="lms-theme-to-dark" type="submit" name="set" value="dark" aria-label="Dark theme" title="Dark theme">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"></path></svg>
+      </button>
+      <button class="lms-theme-to-light" type="submit" name="set" value="light" aria-label="Light theme" title="Light theme">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></g></svg>
+      </button>
+    </form>
+    <a class="lms-open-docs" href="/book">Design Book</a>
+    <details class="lms-drawer">
+      <summary>
+        <span class="lms-menu-label">Menu</span>
+        <svg class="lms-menu-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
+      </summary>
+      <div class="lms-drawer-panel">
+        <nav class="lms-menu-links" aria-label="Site">
+          <a class="lms-menu-docs" href="/book">Design Book</a>
+          <a href="/#principles">Principles</a><a href="/#foundations">Foundations</a><a href="/#components">Components</a><a href="/#usage">Usage</a>
+          <a href="/start/install-mx">Install Mercury</a>
         </nav>
-
+        <div class="lms-menu-language">
+          <details class="lms-lang">
+  <summary aria-label="Language">English</summary>
+  <ul>
+    <li>
+      <a href="/mx/compile" hreflang="en" lang="en" aria-current="true">English</a>
+      
+    </li><li>
+      <a href="/ru/mx/compile" hreflang="ru" lang="ru">Русский</a>
+      
+    </li>
+  </ul>
+</details>
+        </div>
+        <nav aria-label="Courses and pages">
+          <p class="lms-menu-heading">Courses</p>
+          <details class="lms-side-course">
+  <summary>Start</summary>
+  <ul>
+    <li><a href="/start">Overview</a></li>
+    
+      
+      <li class="">
+        <a href="/start/browser">A page in the browser</a>
+      </li>
+    
+      <li class="lms-side-group">The pieces</li>
+      <li class="">
+        <a href="/start/install-mx">Choose a route to mx</a>
+      </li>
+    
+      <li class="lms-side-group">Agent connection</li>
+      <li class="">
+        <a href="/start/mcp">Mercury documentation MCP server</a>
+      </li>
+    
+      <li class="lms-side-group">First steps</li>
+      <li class="">
+        <a href="/start/stability">Stability: Shipped, Preview, Planned</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/start/agents">Build a page with your agent</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/start/glossary">Glossary: the words this site uses</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/start/philosophy">Philosophy: native, not borrowed</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course" open>
+  <summary>mx</summary>
+  <ul>
+    <li><a href="/mx">Overview</a></li>
+    
+      <li class="lms-side-group">Install mx</li>
+      <li class="">
+        <a href="/mx/first-app">Your first Mercury page</a>
+      </li>
+    
+      <li class="lms-side-group">The chapters</li>
+      <li class="">
+        <a href="/mx/modules">Modules, mx.mod and mx.sum</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/mx/workspace">A workspace, mx.work</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/mx/dev">The dev loop, and hot replacement</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/mx/build">Build and ship, three kinds of build</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/mx/compile" aria-current="page">The Hypercompiler, one module at a time</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/mx/tools">The tools, test, lsap and run</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>Hyperscript</summary>
+  <ul>
+    <li><a href="/hyperscript">Overview</a></li>
+    
+      <li class="lms-side-group">What Hyperscript is</li>
+      <li class="">
+        <a href="/hyperscript/dom">The DOM contract</a>
+      </li>
+    
+      <li class="lms-side-group">The chapters</li>
+      <li class="">
+        <a href="/hyperscript/components">Components and render</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hyperscript/hooks">Hooks, state and effects in a function</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hyperscript/context">Context, portals and memo</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hyperscript/server">Rendering on the server</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hyperscript/testing">Testing and inspecting</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hyperscript/tested-component">A tested component</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>UI</summary>
+  <ul>
+    <li><a href="/ui">Overview</a></li>
+    
+      <li class="lms-side-group">The chapters</li>
+      <li class="">
+        <a href="/ui/tokens-and-themes">UI0, tokens and themes</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ui/foundations">UI1, where a subtree lives</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ui/actions-and-layout">UI2, actions and layout</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ui/inputs-and-forms">UI3, inputs and forms</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ui/selection">UI4, selection</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ui/feedback-and-data">UI5, feedback and data display</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ui/navigation">UI6, navigation</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>Hypergraph</summary>
+  <ul>
+    <li><a href="/hypergraph">Overview</a></li>
+    
+      <li class="lms-side-group">The chapters</li>
+      <li class="">
+        <a href="/hypergraph/units">Units: store, event and effect</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/wiring">Wiring: units into a graph</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/scopes">Scopes: fork, settle, hand over</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/observing">Observing: watch, inspect, describe</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/errors">Kinds, carriers and errors</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/hot-replacement">Hot replacement: the swap</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/server-rendering">Server rendering: a scope per request</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/testing">Testing a model: a scope per test</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/models">Models at scale: structure and identity</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/capstone">Capstone: a model, round-tripped</a>
+      </li>
+    
+      <li class="lms-side-group">Coming from Effector</li>
+      <li class="">
+        <a href="/hypergraph/coming-from-effector">Coming from Effector</a>
+      </li>
+    
+      
+      <li class="lms-side-sub">
+        <a href="/hypergraph/coming-from-effector/units-and-wiring">Units and wiring</a>
+      </li>
+    
+      
+      <li class="lms-side-sub">
+        <a href="/hypergraph/coming-from-effector/scopes-and-testing">Scopes and testing</a>
+      </li>
+    
+      
+      <li class="lms-side-sub">
+        <a href="/hypergraph/coming-from-effector/frameworks">Frameworks, after effector-react</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>Content</summary>
+  <ul>
+    <li><a href="/content">Overview</a></li>
+    
+      <li class="lms-side-group">The course map</li>
+      <li class="">
+        <a href="/content/documents">Page documents: nodes, the schema and parseDocument</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/content/rendering">Rendering a document: renderDocument</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/content/blocks">The block catalog: nine groups, one registry</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/content/references">References, capabilities and responsive values</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/content/add-a-block">Add a block: the capstone</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>Live Mercury</summary>
+  <ul>
+    <li><a href="/live-mercury">Overview</a></li>
+    
+      <li class="lms-side-group">The course</li>
+      <li class="">
+        <a href="/live-mercury/islands">Islands: the element and its mount</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/live-mercury/liveview">An island in a LiveView: socket, hooks and events</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/live-mercury/building">Building islands with mx: no Node</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/live-mercury/props-and-streams">Props and streams: patches on the wire</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/live-mercury/server-rendering">Server rendering: what is there, and what is not</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/live-mercury/testing">Testing islands: both sides of the element</a>
+      </li>
+    
+  </ul>
+</details>
+        </nav>
+      </div>
+    </details>
+  </div>
+</header>
+    <div class="lms-frame">
+      <nav class="lms-side" aria-label="Courses and pages">
+        <details class="lms-side-course">
+  <summary>Start</summary>
+  <ul>
+    <li><a href="/start">Overview</a></li>
+    
+      
+      <li class="">
+        <a href="/start/browser">A page in the browser</a>
+      </li>
+    
+      <li class="lms-side-group">The pieces</li>
+      <li class="">
+        <a href="/start/install-mx">Choose a route to mx</a>
+      </li>
+    
+      <li class="lms-side-group">Agent connection</li>
+      <li class="">
+        <a href="/start/mcp">Mercury documentation MCP server</a>
+      </li>
+    
+      <li class="lms-side-group">First steps</li>
+      <li class="">
+        <a href="/start/stability">Stability: Shipped, Preview, Planned</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/start/agents">Build a page with your agent</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/start/glossary">Glossary: the words this site uses</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/start/philosophy">Philosophy: native, not borrowed</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course" open>
+  <summary>mx</summary>
+  <ul>
+    <li><a href="/mx">Overview</a></li>
+    
+      <li class="lms-side-group">Install mx</li>
+      <li class="">
+        <a href="/mx/first-app">Your first Mercury page</a>
+      </li>
+    
+      <li class="lms-side-group">The chapters</li>
+      <li class="">
+        <a href="/mx/modules">Modules, mx.mod and mx.sum</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/mx/workspace">A workspace, mx.work</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/mx/dev">The dev loop, and hot replacement</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/mx/build">Build and ship, three kinds of build</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/mx/compile" aria-current="page">The Hypercompiler, one module at a time</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/mx/tools">The tools, test, lsap and run</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>Hyperscript</summary>
+  <ul>
+    <li><a href="/hyperscript">Overview</a></li>
+    
+      <li class="lms-side-group">What Hyperscript is</li>
+      <li class="">
+        <a href="/hyperscript/dom">The DOM contract</a>
+      </li>
+    
+      <li class="lms-side-group">The chapters</li>
+      <li class="">
+        <a href="/hyperscript/components">Components and render</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hyperscript/hooks">Hooks, state and effects in a function</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hyperscript/context">Context, portals and memo</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hyperscript/server">Rendering on the server</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hyperscript/testing">Testing and inspecting</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hyperscript/tested-component">A tested component</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>UI</summary>
+  <ul>
+    <li><a href="/ui">Overview</a></li>
+    
+      <li class="lms-side-group">The chapters</li>
+      <li class="">
+        <a href="/ui/tokens-and-themes">UI0, tokens and themes</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ui/foundations">UI1, where a subtree lives</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ui/actions-and-layout">UI2, actions and layout</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ui/inputs-and-forms">UI3, inputs and forms</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ui/selection">UI4, selection</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ui/feedback-and-data">UI5, feedback and data display</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/ui/navigation">UI6, navigation</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>Hypergraph</summary>
+  <ul>
+    <li><a href="/hypergraph">Overview</a></li>
+    
+      <li class="lms-side-group">The chapters</li>
+      <li class="">
+        <a href="/hypergraph/units">Units: store, event and effect</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/wiring">Wiring: units into a graph</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/scopes">Scopes: fork, settle, hand over</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/observing">Observing: watch, inspect, describe</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/errors">Kinds, carriers and errors</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/hot-replacement">Hot replacement: the swap</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/server-rendering">Server rendering: a scope per request</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/testing">Testing a model: a scope per test</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/models">Models at scale: structure and identity</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/hypergraph/capstone">Capstone: a model, round-tripped</a>
+      </li>
+    
+      <li class="lms-side-group">Coming from Effector</li>
+      <li class="">
+        <a href="/hypergraph/coming-from-effector">Coming from Effector</a>
+      </li>
+    
+      
+      <li class="lms-side-sub">
+        <a href="/hypergraph/coming-from-effector/units-and-wiring">Units and wiring</a>
+      </li>
+    
+      
+      <li class="lms-side-sub">
+        <a href="/hypergraph/coming-from-effector/scopes-and-testing">Scopes and testing</a>
+      </li>
+    
+      
+      <li class="lms-side-sub">
+        <a href="/hypergraph/coming-from-effector/frameworks">Frameworks, after effector-react</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>Content</summary>
+  <ul>
+    <li><a href="/content">Overview</a></li>
+    
+      <li class="lms-side-group">The course map</li>
+      <li class="">
+        <a href="/content/documents">Page documents: nodes, the schema and parseDocument</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/content/rendering">Rendering a document: renderDocument</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/content/blocks">The block catalog: nine groups, one registry</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/content/references">References, capabilities and responsive values</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/content/add-a-block">Add a block: the capstone</a>
+      </li>
+    
+  </ul>
+</details><details class="lms-side-course">
+  <summary>Live Mercury</summary>
+  <ul>
+    <li><a href="/live-mercury">Overview</a></li>
+    
+      <li class="lms-side-group">The course</li>
+      <li class="">
+        <a href="/live-mercury/islands">Islands: the element and its mount</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/live-mercury/liveview">An island in a LiveView: socket, hooks and events</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/live-mercury/building">Building islands with mx: no Node</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/live-mercury/props-and-streams">Props and streams: patches on the wire</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/live-mercury/server-rendering">Server rendering: what is there, and what is not</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/live-mercury/testing">Testing islands: both sides of the element</a>
+      </li>
+    
+  </ul>
+</details>
+      </nav>
+      <main id="main" class="lms-main">
+        <nav class="lms-crumbs" aria-label="Breadcrumb">
+  <ol>
+    
+      
+      <li><a href="/mx">mx</a></li>
+      
+    
+      
+      
+      <li>The chapters</li>
+    
+      <li aria-current="page">The Hypercompiler, one module at a time</li>
+      
+      
+    
+  </ol>
+</nav>
+        
         <h1 class="lms-title">The Hypercompiler, <em>one module at a time</em></h1>
-        <p class="lms-lede">Every module mx serves or bundles goes through one compiler. mx compile runs it on one file,
-            so you can see what the browser gets.</p>
-        <article class="lms-body"><p>The Hypercompiler is Mercury's compiler for one module: TypeScript, JSX, or both,
-            in; a plain ES module that runs on <code>@fiberfx/hyperscript</code>, out. It is a Rust crate linked into
-            mx, so every module <code>mx dev</code> serves and <code>mx build</code> bundles goes through the same code
-            that <code>mx compile</code> runs.</p>
-            <h2 id="what">What the Hypercompiler does</h2>
-            <ul>
-                <li><strong>It lowers TypeScript and JSX.</strong> Types are stripped, and JSX becomes calls into <code>@fiberfx/hyperscript/jsx-runtime</code>.
-                    That runtime is fixed: a <code>@jsx</code> pragma comment asking for another one is refused.
-                </li>
-                <li><strong>It reads the language from the extension.</strong> <code>.js</code>, <code>.jsx</code>,
-                    <code>.ts</code> and <code>.tsx</code> always compile as ES modules. <code>.cjs</code> and <code>.cts</code>
-                    keep their own mode, and a <code>.d.ts</code> is refused, because a declaration file is not an
-                    executable input.
-                </li>
-                <li><strong>On request, it adds two things:</strong> identity for state units (<code>sid</code>), and
-                    the development wiring that lets a rendering module replace itself in place (<code>roots</code>).
-                </li>
-            </ul>
-            <h2 id="usage">Run it with mx compile</h2>
-            <pre><code class="language-sh">usage: mx compile &lt;file&gt; [--options &lt;json&gt;] [--out &lt;file&gt;]
+        <p class="lms-lede">Every module mx serves or bundles goes through one compiler. mx compile runs it on one file, so you can see what the browser gets.</p>
+        <article class="lms-body"><p>The Hypercompiler is Mercury's compiler for one module: TypeScript, JSX, or both, in; a plain ES module that runs on <code>@fiberfx/hyperscript</code>, out. It is a Rust crate linked into mx, so every module <code>mx dev</code> serves and <code>mx build</code> bundles goes through the same code that <code>mx compile</code> runs.</p>
+<h2 id="what">What the Hypercompiler does</h2>
+<ul>
+<li><strong>It lowers TypeScript and JSX.</strong> Types are stripped, and JSX becomes calls into <code>@fiberfx/hyperscript/jsx-runtime</code>. That runtime is fixed: a <code>@jsx</code> pragma comment asking for another one is refused.</li>
+<li><strong>It reads the language from the extension.</strong> <code>.js</code>, <code>.jsx</code>, <code>.ts</code> and <code>.tsx</code> always compile as ES modules. <code>.cjs</code> and <code>.cts</code> keep their own mode, and a <code>.d.ts</code> is refused, because a declaration file is not an executable input.</li>
+<li><strong>On request, it adds two things:</strong> identity for state units (<code>sid</code>), and the development wiring that lets a rendering module replace itself in place (<code>roots</code>).</li>
+</ul>
+<h2 id="usage">Run it with mx compile</h2>
+<pre><code class="language-sh">usage: mx compile &lt;file&gt; [--options &lt;json&gt;] [--out &lt;file&gt;]
 </code></pre>
-            <ul>
-                <li>One file, and only one: a second gives <code>mx compile: one file, not b as well</code>.</li>
-                <li><code>--options &lt;json&gt;</code> passes the compiler's options as JSON.</li>
-                <li><code>--out &lt;file&gt;</code> writes the code to a file instead of stdout. It is written only on
-                    success.
-                </li>
-            </ul>
-            <p>The usage errors exit 2. A file mx can't read is mx's own refusal, with exit 1 and no JSON:</p>
-            <pre><code class="language-text">mx: no-such.ts: No such file or directory (os error 2)
+<ul>
+<li>One file, and only one: a second gives <code>mx compile: one file, not b as well</code>.</li>
+<li><code>--options &lt;json&gt;</code> passes the compiler's options as JSON.</li>
+<li><code>--out &lt;file&gt;</code> writes the code to a file instead of stdout. It is written only on success.</li>
+</ul>
+<p>The usage errors exit 2. A file mx can't read is mx's own refusal, with exit 1 and no JSON:</p>
+<pre><code class="language-text">mx: no-such.ts: No such file or directory (os error 2)
 </code></pre>
-            <h2 id="output">What comes out</h2>
-            <p><code>fiberfx/hypercompiler/tests/fixtures/native.tsx</code> is an eight-line component:</p>
-            <pre><code class="language-ts">type Props = { label: string; onInput: (event: Event) =&gt; void };
+<h2 id="output">What comes out</h2>
+<p><code>fiberfx/hypercompiler/tests/fixtures/native.tsx</code> is an eight-line component:</p>
+<pre><code class="language-ts">type Props = { label: string; onInput: (event: Event) =&gt; void };
 
 export function Field({ label, onInput }: Props) {
   return &lt;&gt;
@@ -853,8 +772,8 @@ export function Field({ label, onInput }: Props) {
   &lt;/&gt;;
 }
 </code></pre>
-            <p><code>mx compile fiberfx/hypercompiler/tests/fixtures/native.tsx</code> prints this, and exits 0:</p>
-            <pre><code class="language-ts">import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "@fiberfx/hyperscript/jsx-runtime";
+<p><code>mx compile fiberfx/hypercompiler/tests/fixtures/native.tsx</code> prints this, and exits 0:</p>
+<pre><code class="language-ts">import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "@fiberfx/hyperscript/jsx-runtime";
 export function Field({ label, onInput }) {
 	return _jsxs(_Fragment, { children: [_jsx("label", {
 		class: "field",
@@ -868,145 +787,107 @@ export function Field({ label, onInput }) {
 	})] });
 }
 </code></pre>
-            <p>The type is gone, the JSX is runtime calls, and the attributes pass through as written. <code>mx
-                compile</code> prints only the code. The compiler's full result also carries a source map and its
-                versions; <code>mx test</code> reads the map to point a failure back at its source line.</p>
-            <h2 id="refusals">What it refuses</h2>
-            <p>A refusal is one JSON object on stderr, with nothing on stdout and exit 1. <code>fiberfx/hypercompiler/tests/fixtures/invalid.tsx</code>
-                is <code>export const broken = &lt;div&gt;;</code>, and compiling it answers:</p>
-            <pre><code class="language-text">{"filename":"hypercompiler/tests/fixtures/invalid.tsx","details":[{"message":"Unexpected token","labels":[{"start":27,"end":29,"line":1,"column":27}]}],"phase":"parse","kind":"syntax","diagnostics":["\n  x Unexpected token\n   ,----\n 1 | export const broken = &lt;div&gt;;\n   :                            ^^\n   `----\n"]}
+<p>The type is gone, the JSX is runtime calls, and the attributes pass through as written. <code>mx compile</code> prints only the code. The compiler's full result also carries a source map and its versions; <code>mx test</code> reads the map to point a failure back at its source line.</p>
+<h2 id="refusals">What it refuses</h2>
+<p>A refusal is one JSON object on stderr, with nothing on stdout and exit 1. <code>fiberfx/hypercompiler/tests/fixtures/invalid.tsx</code> is <code>export const broken = &lt;div&gt;;</code>, and compiling it answers:</p>
+<pre><code class="language-text">{"filename":"hypercompiler/tests/fixtures/invalid.tsx","details":[{"message":"Unexpected token","labels":[{"start":27,"end":29,"line":1,"column":27}]}],"phase":"parse","kind":"syntax","diagnostics":["\n  x Unexpected token\n   ,----\n 1 | export const broken = &lt;div&gt;;\n   :                            ^^\n   `----\n"]}
 </code></pre>
-            <ul>
-                <li><strong><code>details</code></strong> are the messages, each with its <code>labels</code>. <code>start</code>
-                    and <code>end</code> are UTF-8 byte offsets, <code>line</code> is 1-based, and <code>column</code>
-                    is 0-based UTF-16.
-                </li>
-                <li><strong><code>diagnostics</code></strong> are the same messages rendered for a terminal.</li>
-                <li><strong><code>phase</code></strong> is where it stopped, and <strong><code>kind</code></strong> is
-                    what a tool acts on:
-                </li>
-            </ul>
-            <table>
-                <thead>
-                <tr>
-                    <th>kind</th>
-                    <th>phases</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td><code>syntax</code></td>
-                    <td><code>parse</code>, <code>semantic analysis</code>, <code>lowering</code></td>
-                </tr>
-                <tr>
-                    <td><code>input</code></td>
-                    <td><code>input</code>, <code>policy</code></td>
-                </tr>
-                <tr>
-                    <td><code>fuse</code></td>
-                    <td><code>fuse</code></td>
-                </tr>
-                <tr>
-                    <td><code>internal</code></td>
-                    <td>anything else</td>
-                </tr>
-                </tbody>
-            </table>
-            <p>Options are checked too. <code>--options '{"nope":1}'</code> is an <code>input</code> refusal:</p>
-            <pre><code class="language-text">{"filename":"hypercompiler/tests/fixtures/native.tsx","details":[{"message":"options: unknown field `nope`, expected `sid` or `roots` at line 1 column 7","labels":[]}],"phase":"input","kind":"input","diagnostics":["options: unknown field `nope`, expected `sid` or `roots` at line 1 column 7"]}
+<ul>
+<li><strong><code>details</code></strong> are the messages, each with its <code>labels</code>. <code>start</code> and <code>end</code> are UTF-8 byte offsets, <code>line</code> is 1-based, and <code>column</code> is 0-based UTF-16.</li>
+<li><strong><code>diagnostics</code></strong> are the same messages rendered for a terminal.</li>
+<li><strong><code>phase</code></strong> is where it stopped, and <strong><code>kind</code></strong> is what a tool acts on:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>kind</th>
+<th>phases</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>syntax</code></td>
+<td><code>parse</code>, <code>semantic analysis</code>, <code>lowering</code></td>
+</tr>
+<tr>
+<td><code>input</code></td>
+<td><code>input</code>, <code>policy</code></td>
+</tr>
+<tr>
+<td><code>fuse</code></td>
+<td><code>fuse</code></td>
+</tr>
+<tr>
+<td><code>internal</code></td>
+<td>anything else</td>
+</tr>
+</tbody>
+</table>
+<p>Options are checked too. <code>--options '{"nope":1}'</code> is an <code>input</code> refusal:</p>
+<pre><code class="language-text">{"filename":"hypercompiler/tests/fixtures/native.tsx","details":[{"message":"options: unknown field `nope`, expected `sid` or `roots` at line 1 column 7","labels":[]}],"phase":"input","kind":"input","diagnostics":["options: unknown field `nope`, expected `sid` or `roots` at line 1 column 7"]}
 </code></pre>
-            <p>A module may nest 256 levels and chain 1,024 links. Past either it is refused in phase <code>input</code>,
-                before the parser runs, with the same text on every host.</p>
-            <h2 id="options">The two options</h2>
-            <p><code>--options</code> takes at most these two keys, and refuses any other:</p>
-            <pre><code class="language-text">{"sid": {"package": "…", "module": "…"}, "roots": {"id": "…"}}
+<p>A module may nest 256 levels and chain 1,024 links. Past either it is refused in phase <code>input</code>, before the parser runs, with the same text on every host.</p>
+<h2 id="options">The two options</h2>
+<p><code>--options</code> takes at most these two keys, and refuses any other:</p>
+<pre><code class="language-text">{"sid": {"package": "…", "module": "…"}, "roots": {"id": "…"}}
 </code></pre>
-            <ul>
-                <li><strong><code>sid</code></strong> names the package and the module, for unit identity. A unit's key
-                    is the first 16 hex of SHA-256 over <code>mhs-sid/1|&lt;package&gt;|&lt;module&gt;|&lt;kind&gt;|&lt;line&gt;:&lt;column&gt;</code>,
-                    so it depends on where the unit is written and not on the machine. Today the sid pass lowers the
-                    calls of the legacy state package only; it does not recognize <code>@fiberfx/hypergraph</code>'s
-                    units yet.
-                </li>
-                <li><strong><code>roots</code></strong> is development only. In a module that imports
-                    <code>render</code> or <code>hydrate</code> from <code>@fiberfx/hyperscript</code>, the compiler
-                    swaps them for a handle from <code>@fiberfx/hyperscript/hmr</code> (<code>trackRoots(id, {render,
-                        hydrate})</code>), and the module accepts its own updates. The result then says <code>hmrRoot:
-                        true</code>. Any other module is left alone. The added statements carry no source spans, so the
-                    source map still describes only what you wrote.
-                </li>
-            </ul>
-            <h2 id="served">What mx dev and mx build pass</h2>
-            <table>
-                <thead>
-                <tr>
-                    <th>Command</th>
-                    <th><code>sid</code></th>
-                    <th><code>roots</code></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td><code>mx dev</code></td>
-                    <td>the package and the module's path</td>
-                    <td><code>{"id": &lt;the module's URL&gt;}</code></td>
-                </tr>
-                <tr>
-                    <td><code>mx build --bundle</code></td>
-                    <td>the package and the module's path</td>
-                    <td>none</td>
-                </tr>
-                <tr>
-                    <td><code>mx build --lib</code></td>
-                    <td>none</td>
-                    <td>none</td>
-                </tr>
-                </tbody>
-            </table>
-            <p>The package is the app's <code>mx.mod</code> module path, and the module is the file's path below the
-                root. For a member's file that runs from source, they are the member's package name and its path below
-                the member.</p>
-            <p>Under mx dev, the wiring is guarded by <code>if (import.meta.hot)</code>, so a module runs as written
-                until the hot client gives it a context. A bundle carries no wiring at all. MX2 covers how mx dev uses
-                <code>hmrRoot</code> to decide which edits are applied in place.</p>
-            <p>Until the seam moves to Hypergraph (mercury.hypergraph.2), the development wiring imports a helper from
-                the legacy state package. That is why a rendering app lists that package as a member under mx dev.</p>
-            <h2 id="limits">What it does not do</h2>
-            <ul>
-                <li><strong>No type checking.</strong> Types are removed, not checked.</li>
-                <li><strong>No optimizer.</strong> The output is lowered, not minified. <code>mx build --lib
-                    --minify</code> minifies a library's file.
-                </li>
-                <li><strong>No resolution.</strong> The compiler leaves imports as written. mx resolves them: under mx
-                    dev through the page's import map, in a bundle through its members.
-                </li>
-            </ul>
-        </article>
+<ul>
+<li><strong><code>sid</code></strong> names the package and the module, for unit identity. A unit's key is the first 16 hex of SHA-256 over <code>mhs-sid/1|&lt;package&gt;|&lt;module&gt;|&lt;kind&gt;|&lt;line&gt;:&lt;column&gt;</code>, so it depends on where the unit is written and not on the machine. Today the sid pass lowers the calls of the legacy state package only; it does not recognize <code>@fiberfx/hypergraph</code>'s units yet.</li>
+<li><strong><code>roots</code></strong> is development only. In a module that imports <code>render</code> or <code>hydrate</code> from <code>@fiberfx/hyperscript</code>, the compiler swaps them for a handle from <code>@fiberfx/hyperscript/hmr</code> (<code>trackRoots(id, {render, hydrate})</code>), and the module accepts its own updates. The result then says <code>hmrRoot: true</code>. Any other module is left alone. The added statements carry no source spans, so the source map still describes only what you wrote.</li>
+</ul>
+<h2 id="served">What mx dev and mx build pass</h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th><code>sid</code></th>
+<th><code>roots</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mx dev</code></td>
+<td>the package and the module's path</td>
+<td><code>{"id": &lt;the module's URL&gt;}</code></td>
+</tr>
+<tr>
+<td><code>mx build --bundle</code></td>
+<td>the package and the module's path</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>mx build --lib</code></td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<p>The package is the app's <code>mx.mod</code> module path, and the module is the file's path below the root. For a member's file that runs from source, they are the member's package name and its path below the member.</p>
+<p>Under mx dev, the wiring is guarded by <code>if (import.meta.hot)</code>, so a module runs as written until the hot client gives it a context. A bundle carries no wiring at all. MX2 covers how mx dev uses <code>hmrRoot</code> to decide which edits are applied in place.</p>
+<p>Until the seam moves to Hypergraph (mercury.hypergraph.2), the development wiring imports a helper from the legacy state package. That is why a rendering app lists that package as a member under mx dev.</p>
+<h2 id="limits">What it does not do</h2>
+<ul>
+<li><strong>No type checking.</strong> Types are removed, not checked.</li>
+<li><strong>No optimizer.</strong> The output is lowered, not minified. <code>mx build --lib --minify</code> minifies a library's file.</li>
+<li><strong>No resolution.</strong> The compiler leaves imports as written. mx resolves them: under mx dev through the page's import map, in a bundle through its members.</li>
+</ul></article>
         <nav class="lms-pager" aria-label="Previous and next">
-            <a class="lms-pager-prev" href="/mx/build" rel="prev"><span>Previous</span>Build and ship, three kinds of
-                build</a>
-            <a class="lms-pager-next" href="/mx/tools" rel="next"><span>Next</span>The tools, test, lsap and run</a>
-        </nav>
-    </main>
-    <aside class="lms-toc" aria-label="On this page">
+  <a class="lms-pager-prev" href="/mx/build" rel="prev"><span>Previous</span>Build and ship, three kinds of build</a>
+  <a class="lms-pager-next" href="/mx/tools" rel="next"><span>Next</span>The tools, test, lsap and run</a>
+</nav>
+      </main>
+      <aside class="lms-toc" aria-label="On this page">
         <p class="lms-toc-title">On this page</p>
         <ul>
-            <li><a href="#what">What the Hypercompiler does</a></li>
-            <li><a href="#usage">Run it with mx compile</a></li>
-            <li><a href="#output">What comes out</a></li>
-            <li><a href="#refusals">What it refuses</a></li>
-            <li><a href="#options">The two options</a></li>
-            <li><a href="#served">What mx dev and mx build pass</a></li>
-            <li><a href="#limits">What it does not do</a></li>
+          <li><a href="#what">What the Hypercompiler does</a></li><li><a href="#usage">Run it with mx compile</a></li><li><a href="#output">What comes out</a></li><li><a href="#refusals">What it refuses</a></li><li><a href="#options">The two options</a></li><li><a href="#served">What mx dev and mx build pass</a></li><li><a href="#limits">What it does not do</a></li>
         </ul>
-    </aside>
-</div>
-<footer class="lms-footer">
-    <p><a href="/agent/SKILL.md">SKILL.md</a><span> · <a href="/llms.txt">llms.txt</a></span> · <a href="/sitemap.xml">Sitemap</a>
-        · <a href="/examples/first-page.html">Browser example</a></p>
-    <p>For agents: <a href="/mx/compile/llms.txt">/mx/compile/llms.txt</a> is this page as plain text, hand-written. No
-        Node, no React.</p>
-
+      </aside>
+    </div>
+    <footer class="lms-footer">
+  <p><a href="/about">About</a> · <a href="/contact">Contact</a> · <a href="/privacy">Privacy</a> · <a href="/reference">Mercury API</a> · <a href="/start/mcp">MCP</a></p>
+  <p><a href="/agent/SKILL.md">SKILL.md</a><span> · <a href="/llms.txt">llms.txt</a></span> · <a href="/sitemap.xml">Sitemap</a> · <a href="/examples/first-page.html">Browser example</a></p>
+  <p>For agents: <a href="/mx/compile/llms.txt">/mx/compile/llms.txt</a> is this page as plain text, hand-written. No Node, no React.</p>
+  
 </footer>
-</body>
+  </body>
 </html>

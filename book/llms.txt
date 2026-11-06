@@ -7,8 +7,10 @@ Use this book when designing Mercury documentation, choosing semantic tokens, ch
 
 ## Read and build
 - [Interactive reader](https://mercury.jonnify.com/book): nine chapters and a Design Lab; no account required.
+- [Russian reader](https://mercury.jonnify.com/ru/book): full Russian text and interactive reader.
+- [Russian machine guide](https://mercury.jonnify.com/ru/book/llms.txt): Russian usage and resource index.
 - [Editable source](https://mercury.jonnify.com/book/mercury-brand-book.md): full source edition and references.
-- [PDF edition](https://mercury.jonnify.com/book/mercury-brand-book.pdf): visual edition, untagged; use HTML or Markdown for structured text.
+- [English PDF edition](https://mercury.jonnify.com/book/mercury-brand-book.pdf): visual edition, untagged; use HTML or Markdown for structured text.
 - [Source tokens](https://mercury.jonnify.com/book/tokens.json): light/dark semantic values and typography.
 - [Token CSS](https://mercury.jonnify.com/book/tokens.css): RGB-channel custom properties; application tokens remain separate.
 - [SVG mark](https://mercury.jonnify.com/book/mx-mark.svg): original geometry; retain proportions and inspect theme-color integration.

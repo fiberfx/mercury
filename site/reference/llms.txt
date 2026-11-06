@@ -1,0 +1,18 @@
+# Mercury API reference
+
+Use this page when looking up the Mercury API or mx CLI. It is an authored reference index, not a generated catalog of every symbol.
+
+- [Hyperscript API](/hyperscript/llms.txt): h, render, JSX and hooks.
+- [Mercury UI API](/ui/llms.txt): components and CSS tokens.
+- [Hypergraph units](/hypergraph/units/llms.txt): store, event and effect.
+- [mx CLI](/mx/llms.txt) and [installation](/start/install-mx/llms.txt).
+- [Live Mercury](/live-mercury/llms.txt): optional Phoenix and LiveView integration.
+- [Public HTTP API index](/api) and [OpenAPI 3.1 description](/openapi.json): read-only discovery, release metadata and the MCP HTTP boundary.
+- [MCP connection guide](/start/mcp/llms.txt): use MCP initialization and discovery; this is JSON-RPC, not a REST substitute. `/api` errors use RFC 9457; MCP errors retain JSON-RPC envelopes.
+- [Public distribution repository](https://github.com/fiberfx/mercury).
+
+Use the exact package entry points from each chapter. Preserve existing application pins and check current readiness before installing tools.
+
+[Read this page](/reference) · [Agent index](/llms.txt) · [Sitemap](/sitemap.xml)
+
+[All English companions](/llms-full.txt)

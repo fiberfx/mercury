@@ -2,13 +2,27 @@
 
 > Mercury combines mx (the native Rust toolchain), Hyperscript (its own DOM runtime), Hypergraph (state) and Mercury UI. Phoenix and LiveView integration is available through Live Mercury. The archive/image workflow invokes native mx without Node.js or npm CLI. The planned npm wrapper requires Node for each mx invocation. Mercury uses Hyperscript, not React.
 
-## Read this when
+## HTTP resources
 
-You are about to write, build or explain a Mercury app, and need to know which module does what and where its course is.
+- [API index](https://mercury.jonnify.com/api): public read-only resources and access policy.
+- [OpenAPI description](https://mercury.jonnify.com/openapi.json): HTTP contracts for discovery, release metadata and MCP.
+
+## When to use Mercury
+
+Use Mercury when the user wants to build or refine a browser interface with Hyperscript components, Mercury UI and CSS tokens; model reactive state with Hypergraph; or develop and bundle a Mercury app with the native mx CLI. Use Live Mercury when an existing Phoenix or LiveView application needs Mercury islands.
+
+Start by inspecting the user's existing application and dependency pins. For a standalone HTML page, follow the [browser guide](https://mercury.jonnify.com/start/browser/llms.txt). For native TSX development, check [installation readiness](https://mercury.jonnify.com/start/install-mx/llms.txt), then the [first-app workflow](https://mercury.jonnify.com/mx/first-app/llms.txt). Read the [Mercury API reference](https://mercury.jonnify.com/reference) for exact module contracts, and load the [Mercury skill](https://mercury.jonnify.com/agent/SKILL.md) for implementation and verification steps.
+
+Do not migrate an unrelated working framework without the user's request. The documentation also has a read-only MCP server at https://mercury.jonnify.com/mcp for skills, mx platform guidance and component prompts; [connection guide](/start/mcp). It does not execute commands or install software. Verify styling, keyboard access and the actual requested interaction in a browser; a successful import alone is insufficient.
 
 ## Choose a route
 
 Keep an existing app or working mx. Without a CLI, start with [browser HTML](/start/browser/llms.txt). For native TSX, check [npm and archive readiness](/start/install-mx/llms.txt). [The Mercury skill](/agent/SKILL.md) selects by environment and task; the counter is not a substitute for checking the user's requested interactions.
+
+## Design Book
+
+- [Mercury Design Book](https://mercury.jonnify.com/book): nine source-faithful chapters and an interactive Design Lab for SVG, typography, spacing and semantic colors.
+- [Book agent guide](https://mercury.jonnify.com/book/llms.txt): editable source, PDF, token files and reusable brand-book/design-builder skills.
 
 ## The modules
 
@@ -44,6 +58,11 @@ Start in a new directory on Linux x86_64. Keep the starter mx.mod and mx.sum. Im
 - [Agent index](/llms.txt)
 - [All English companions](/llms-full.txt)
 - [Sitemap](/sitemap.xml)
+- [Mercury API reference](/reference)
+- [About Mercury](/about)
+- [Contact](/contact)
+- [Privacy](/privacy)
+- [Public Mercury repository](https://github.com/fiberfx/mercury)
 - [/content](/content/llms.txt)
 - [/hypergraph](/hypergraph/llms.txt)
 - [/hyperscript](/hyperscript/llms.txt)
@@ -52,3 +71,5 @@ Start in a new directory on Linux x86_64. Keep the starter mx.mod and mx.sum. Im
 - [/start](/start/llms.txt)
 - [/ui](/ui/llms.txt)
 - [Русский индекс](/ru/llms.txt)
+
+- [Русская Дизайн книга](https://mercury.jonnify.com/ru/book): полный перевод девяти глав и лаборатории; [руководство для агентов](https://mercury.jonnify.com/ru/book/llms.txt).

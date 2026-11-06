@@ -1,7 +1,7 @@
 {
-  "site_revision": "332dba954079bd7a1d47f2f101db63a5df77e8f1",
+  "site_revision": "64449c5a1ab76cecacf21b5a3c0eab2a01c443e6",
   "playground_skill_revision": "d0d8f23eec4fec561f0cbf1931e8fb4889ad4ca9",
-  "site_kind": "Endpoint-rendered preview; 88 tests, 248 responses",
+  "site_kind": "Endpoint-rendered win-120 snapshot; 107 tests, 279 responses",
   "native_proof_revision": "1707a7884118ed6d3ab834057a178301e980662e",
   "public_network_native_test": "pending",
   "image_runtime_test": "passed: win-120, UID10001, network none, native verify/build and five HTTP routes",
@@ -33,5 +33,15 @@
     "job": "JOB0Rpyxc6rMSf",
     "result": "passed real optional-package selection and wrapper/native parity; publication blocked by registry E401"
   },
-  "design_builder_revision": "3d54ea8"
+  "design_builder_revision": "3d54ea8",
+  "design_book": {
+    "source_revision": "60d852105d4f0c55440ec7f1e4da3a8649c739e4",
+    "image_id": "sha256:11716dfbd0466fefae4d1547cec346e5926dddf17e73751eafa2fb72e8330cee",
+    "artifact_manifest": "book/provenance.json",
+    "languages": [
+      "en",
+      "ru"
+    ],
+    "publication": "awaiting live release verification"
+  }
 }

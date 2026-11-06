@@ -1,6 +1,6 @@
 # Mercury LMS: every companion, in course order
 
-> 60 companions. Each one is also served at its own address, named in the line above it.
+> 65 companions. Each one is also served at its own address, named in the line above it.
 
 <!-- /llms.txt -->
 
@@ -8,13 +8,27 @@
 
 > Mercury combines mx (the native Rust toolchain), Hyperscript (its own DOM runtime), Hypergraph (state) and Mercury UI. Phoenix and LiveView integration is available through Live Mercury. The archive/image workflow invokes native mx without Node.js or npm CLI. The planned npm wrapper requires Node for each mx invocation. Mercury uses Hyperscript, not React.
 
-## Read this when
+## HTTP resources
 
-You are about to write, build or explain a Mercury app, and need to know which module does what and where its course is.
+- [API index](https://mercury.jonnify.com/api): public read-only resources and access policy.
+- [OpenAPI description](https://mercury.jonnify.com/openapi.json): HTTP contracts for discovery, release metadata and MCP.
+
+## When to use Mercury
+
+Use Mercury when the user wants to build or refine a browser interface with Hyperscript components, Mercury UI and CSS tokens; model reactive state with Hypergraph; or develop and bundle a Mercury app with the native mx CLI. Use Live Mercury when an existing Phoenix or LiveView application needs Mercury islands.
+
+Start by inspecting the user's existing application and dependency pins. For a standalone HTML page, follow the [browser guide](https://mercury.jonnify.com/start/browser/llms.txt). For native TSX development, check [installation readiness](https://mercury.jonnify.com/start/install-mx/llms.txt), then the [first-app workflow](https://mercury.jonnify.com/mx/first-app/llms.txt). Read the [Mercury API reference](https://mercury.jonnify.com/reference) for exact module contracts, and load the [Mercury skill](https://mercury.jonnify.com/agent/SKILL.md) for implementation and verification steps.
+
+Do not migrate an unrelated working framework without the user's request. The documentation also has a read-only MCP server at https://mercury.jonnify.com/mcp for skills, mx platform guidance and component prompts; [connection guide](/start/mcp). It does not execute commands or install software. Verify styling, keyboard access and the actual requested interaction in a browser; a successful import alone is insufficient.
 
 ## Choose a route
 
 Keep an existing app or working mx. Without a CLI, start with [browser HTML](/start/browser/llms.txt). For native TSX, check [npm and archive readiness](/start/install-mx/llms.txt). [The Mercury skill](/agent/SKILL.md) selects by environment and task; the counter is not a substitute for checking the user's requested interactions.
+
+## Design Book
+
+- [Mercury Design Book](https://mercury.jonnify.com/book): nine source-faithful chapters and an interactive Design Lab for SVG, typography, spacing and semantic colors.
+- [Book agent guide](https://mercury.jonnify.com/book/llms.txt): editable source, PDF, token files and reusable brand-book/design-builder skills.
 
 ## The modules
 
@@ -50,6 +64,11 @@ Start in a new directory on Linux x86_64. Keep the starter mx.mod and mx.sum. Im
 - [Agent index](/llms.txt)
 - [All English companions](/llms-full.txt)
 - [Sitemap](/sitemap.xml)
+- [Mercury API reference](/reference)
+- [About Mercury](/about)
+- [Contact](/contact)
+- [Privacy](/privacy)
+- [Public Mercury repository](https://github.com/fiberfx/mercury)
 - [/content](/content/llms.txt)
 - [/hypergraph](/hypergraph/llms.txt)
 - [/hyperscript](/hyperscript/llms.txt)
@@ -58,6 +77,8 @@ Start in a new directory on Linux x86_64. Keep the starter mx.mod and mx.sum. Im
 - [/start](/start/llms.txt)
 - [/ui](/ui/llms.txt)
 - [Русский индекс](/ru/llms.txt)
+
+- [Русская Дизайн книга](https://mercury.jonnify.com/ru/book): полный перевод девяти глав и лаборатории; [руководство для агентов](https://mercury.jonnify.com/ru/book/llms.txt).
 
 <!-- /start/llms.txt -->
 
@@ -97,6 +118,10 @@ render(<Counter />, document.getElementById("app")!);
 - Write DOM names: `class`, `for`, `onInput` for each keystroke, `onChange` for the DOM's `change`.
 - Build native apps with mx; npm may bootstrap mx when its package is published. The browser-only route needs no build. Do not add Vite configs or imports from `react`, `react-dom`, `next`, `vue`, `solid-js` or `preact` to these Mercury examples.
 - `mx dev` hot-reloads: a saved module is updated in place, or the page reloads (/mx/dev). Hypergraph's state-keeping swap is not delivered yet (/hypergraph/hot-replacement); do not promise it.
+
+## MCP
+
+Public read-only Streamable HTTP endpoint: https://mercury.jonnify.com/mcp. Read the [connection guide](/start/mcp/llms.txt) for skills, mx platform guidance and component prompts.
 
 ## Next
 
@@ -231,6 +256,22 @@ Run `mx dev`, open its loopback URL, check Card/Button styling and click twice. 
 - [All English companions](/llms-full.txt)
 - [Sitemap](/sitemap.xml)
 - [Course companion](/start/llms.txt)
+
+<!-- /start/mcp/llms.txt -->
+
+# Mercury documentation MCP
+
+Use the public Streamable HTTP endpoint https://mercury.jonnify.com/mcp to read skill installation guidance, mx platform instructions and UI component prompts. This is an Elixir server behind the website edge. No auth, installation, execution or project mutation is offered.
+
+Initialize MCP 2025-11-25 (2025-06-18 also supported), send notifications/initialized, then tools/list. POST JSON with Accept: application/json, text/event-stream and the negotiated MCP-Protocol-Version header. GET/DELETE return 405; notifications return 202.
+
+Tools: mercury_skills (no arguments), mercury_installation ({platform}), mercury_component ({name}). Discover exact names in prompts/list; prompts/get has no arguments. resources/list and resources/read expose public lesson companions and skills only. Invalid inputs and unknown resources fail safely.
+
+Limits: 16 KiB request bodies, 120 requests/IP/minute/instance; Retry-After on 429. No session state or standalone SSE. Preserve existing apps and inspect package types before choosing props.
+
+[Connection guide](/start/mcp) · [API reference](/reference) · [Agent index](/llms.txt) · [Skills](/agent/skills.md)
+
+[Sitemap](/sitemap.xml) · [All English companions](/llms-full.txt)
 
 <!-- /start/stability/llms.txt -->
 
@@ -3423,3 +3464,56 @@ The hook tests, `island-check.mjs`, `f1-gate.mjs` and the built-bundle rows need
 - [All English companions](/llms-full.txt)
 - [Sitemap](/sitemap.xml)
 - [Course companion](/live-mercury/llms.txt)
+
+<!-- /about/llms.txt -->
+
+# About Mercury
+
+Mercury is maintained by Jonny Novikov. Public contact: mercury@jonnify.com. The official documentation is mercury.jonnify.com; the public distribution repository is https://github.com/fiberfx/mercury. No postal address is published.
+
+Read [API documentation](/reference), [current readiness](/start/stability), [contact](/contact) and [privacy](/privacy). Do not infer a registered company, office, support SLA or availability on an unverified platform.
+
+[Read this page](/about) · [Agent index](/llms.txt) · [Sitemap](/sitemap.xml)
+
+[All English companions](/llms-full.txt)
+
+<!-- /contact/llms.txt -->
+
+# Contact Mercury
+
+For Mercury support, documentation corrections and privacy questions, contact Jonny Novikov at [mercury@jonnify.com](mailto:mercury@jonnify.com). Public issues: https://github.com/fiberfx/mercury/issues. Include the page URL, package version, OS/CPU and minimal reproduction when relevant. Remove secrets and private data. No postal address or response-time guarantee is published.
+
+[Read this page](/contact) · [Agent index](/llms.txt) · [Sitemap](/sitemap.xml)
+
+[All English companions](/llms-full.txt)
+
+<!-- /privacy/llms.txt -->
+
+# Mercury website privacy
+
+Privacy contact: Jonny Novikov, mercury@jonnify.com. The website can record request information and, when tracking is enabled and permitted, IP, user-agent, referrer, country and visitor/session identifiers. Cookies: theme (one year), _ms_vid (two years), _ms_sid (30 idle minutes); the analytics layer honors _ma_optout=1. Cookie expiry does not establish server retention. Google Fonts and the UNPKG browser example are external resources. Read the full notice before making privacy claims; no server retention duration or postal address is published.
+
+[Read this page](/privacy) · [Agent index](/llms.txt) · [Sitemap](/sitemap.xml)
+
+[All English companions](/llms-full.txt)
+
+<!-- /reference/llms.txt -->
+
+# Mercury API reference
+
+Use this page when looking up the Mercury API or mx CLI. It is an authored reference index, not a generated catalog of every symbol.
+
+- [Hyperscript API](/hyperscript/llms.txt): h, render, JSX and hooks.
+- [Mercury UI API](/ui/llms.txt): components and CSS tokens.
+- [Hypergraph units](/hypergraph/units/llms.txt): store, event and effect.
+- [mx CLI](/mx/llms.txt) and [installation](/start/install-mx/llms.txt).
+- [Live Mercury](/live-mercury/llms.txt): optional Phoenix and LiveView integration.
+- [Public HTTP API index](/api) and [OpenAPI 3.1 description](/openapi.json): read-only discovery, release metadata and the MCP HTTP boundary.
+- [MCP connection guide](/start/mcp/llms.txt): use MCP initialization and discovery; this is JSON-RPC, not a REST substitute. `/api` errors use RFC 9457; MCP errors retain JSON-RPC envelopes.
+- [Public distribution repository](https://github.com/fiberfx/mercury).
+
+Use the exact package entry points from each chapter. Preserve existing application pins and check current readiness before installing tools.
+
+[Read this page](/reference) · [Agent index](/llms.txt) · [Sitemap](/sitemap.xml)
+
+[All English companions](/llms-full.txt)

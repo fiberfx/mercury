@@ -1,0 +1,7 @@
+# Contact Mercury
+
+For Mercury support, documentation corrections and privacy questions, contact Jonny Novikov at [mercury@jonnify.com](mailto:mercury@jonnify.com). Public issues: https://github.com/fiberfx/mercury/issues. Include the page URL, package version, OS/CPU and minimal reproduction when relevant. Remove secrets and private data. No postal address or response-time guarantee is published.
+
+[Read this page](/contact) · [Agent index](/llms.txt) · [Sitemap](/sitemap.xml)
+
+[All English companions](/llms-full.txt)

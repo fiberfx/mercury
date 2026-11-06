@@ -35,6 +35,10 @@ render(<Counter />, document.getElementById("app")!);
 - Build native apps with mx; npm may bootstrap mx when its package is published. The browser-only route needs no build. Do not add Vite configs or imports from `react`, `react-dom`, `next`, `vue`, `solid-js` or `preact` to these Mercury examples.
 - `mx dev` hot-reloads: a saved module is updated in place, or the page reloads (/mx/dev). Hypergraph's state-keeping swap is not delivered yet (/hypergraph/hot-replacement); do not promise it.
 
+## MCP
+
+Public read-only Streamable HTTP endpoint: https://mercury.jonnify.com/mcp. Read the [connection guide](/start/mcp/llms.txt) for skills, mx platform guidance and component prompts.
+
 ## Next
 
 - Why: /start/philosophy (companion /start/philosophy/llms.txt)

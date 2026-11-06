@@ -1,0 +1,9 @@
+# About Mercury
+
+Mercury is maintained by Jonny Novikov. Public contact: mercury@jonnify.com. The official documentation is mercury.jonnify.com; the public distribution repository is https://github.com/fiberfx/mercury. No postal address is published.
+
+Read [API documentation](/reference), [current readiness](/start/stability), [contact](/contact) and [privacy](/privacy). Do not infer a registered company, office, support SLA or availability on an unverified platform.
+
+[Read this page](/about) · [Agent index](/llms.txt) · [Sitemap](/sitemap.xml)
+
+[All English companions](/llms-full.txt)

@@ -1,0 +1,7 @@
+# Mercury website privacy
+
+Privacy contact: Jonny Novikov, mercury@jonnify.com. The website can record request information and, when tracking is enabled and permitted, IP, user-agent, referrer, country and visitor/session identifiers. Cookies: theme (one year), _ms_vid (two years), _ms_sid (30 idle minutes); the analytics layer honors _ma_optout=1. Cookie expiry does not establish server retention. Google Fonts and the UNPKG browser example are external resources. Read the full notice before making privacy claims; no server retention duration or postal address is published.
+
+[Read this page](/privacy) · [Agent index](/llms.txt) · [Sitemap](/sitemap.xml)
+
+[All English companions](/llms-full.txt)

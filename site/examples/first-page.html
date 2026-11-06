@@ -1,80 +1,59 @@
 <!doctype html>
 <html lang="en" class="light-theme">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My first Mercury browser page</title>
-    <meta name="description"
-          content="A Mercury Card and interactive Button using plain JavaScript, an import map and version-pinned public modules.">
-    <link rel="stylesheet" href="https://unpkg.com/@fiberfx/ui@4.0.0/dist/styles.css">
-    <style>
-        body {
-            margin: 0;
-            padding: var(--space-32, 2rem);
-            color: rgb(var(--fg-primary));
-            background: rgb(var(--bg-primary));
-            font-family: var(--font-primary, system-ui);
-        }
-
-        main, footer {
-            max-width: 40rem;
-            margin: var(--space-48, 3rem) auto;
-        }
-
-        footer {
-            font-size: 0.875rem;
-            line-height: 1.6;
-        }
-
-        a {
-            color: inherit;
-        }
-    </style>
-    <script type="importmap">
-        {
-          "imports": {
-            "@fiberfx/hyperscript": "https://unpkg.com/@fiberfx/hyperscript@4.0.0/dist/mhs.mjs",
-            "@fiberfx/hyperscript/hooks": "https://unpkg.com/@fiberfx/hyperscript@4.0.0/dist/hooks.mjs",
-            "@fiberfx/hyperscript/jsx-runtime": "https://unpkg.com/@fiberfx/hyperscript@4.0.0/dist/jsx-runtime.mjs",
-            "@fiberfx/core": "https://unpkg.com/@fiberfx/core@4.0.0/dist/index.js",
-            "@fiberfx/ui": "https://unpkg.com/@fiberfx/ui@4.0.0/dist/index.js"
-          }
-        }
-    </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My first Mercury browser page</title>
+  <meta name="description" content="A Mercury Card and interactive Button using plain JavaScript, an import map and version-pinned public modules.">
+  <link rel="stylesheet" href="https://unpkg.com/@fiberfx/ui@4.0.0/dist/styles.css">
+  <style>
+    body { margin: 0; padding: var(--space-32, 2rem); color: rgb(var(--fg-primary)); background: rgb(var(--bg-primary)); font-family: var(--font-primary, system-ui); }
+    header, main, footer { max-width: 40rem; margin: var(--space-48, 3rem) auto; }
+    footer { font-size: 0.875rem; line-height: 1.6; }
+    a { color: inherit; }
+  </style>
+  <script type="importmap">
+  {
+    "imports": {
+      "@fiberfx/hyperscript": "https://unpkg.com/@fiberfx/hyperscript@4.0.0/dist/mhs.mjs",
+      "@fiberfx/hyperscript/hooks": "https://unpkg.com/@fiberfx/hyperscript@4.0.0/dist/hooks.mjs",
+      "@fiberfx/hyperscript/jsx-runtime": "https://unpkg.com/@fiberfx/hyperscript@4.0.0/dist/jsx-runtime.mjs",
+      "@fiberfx/core": "https://unpkg.com/@fiberfx/core@4.0.0/dist/index.js",
+      "@fiberfx/ui": "https://unpkg.com/@fiberfx/ui@4.0.0/dist/index.js"
+    }
+  }
+  </script>
 </head>
 <body>
-<main id="app"><p>Loading Mercury. This example needs JavaScript, import-map support and network access to
-    unpkg.com.</p></main>
-<noscript>Enable JavaScript to run the interactive Mercury example.</noscript>
-<footer>
-    <p>This is a plain JavaScript page. The browser loads Mercury 4.0.0 modules and styles from unpkg.com; it needs
-        network access. No compiler or BEAM server runs this example.</p>
-    <p><a href="https://mercury.jonnify.com/examples/first-page.html" download="mercury-first-page.html">Download this
-        HTML</a> · <a href="https://mercury.jonnify.com/start/browser">Read the browser guide</a> · <a
-            href="https://mercury.jonnify.com/agent/SKILL.md">Agent skill</a></p>
-</footer>
-<script type="module">
-    import {h, render} from "@fiberfx/hyperscript";
-    import {useState} from "@fiberfx/hyperscript/hooks";
-    import {Card, Button} from "@fiberfx/ui";
+  <header><h1>My first Mercury browser page</h1></header>
+  <main id="app"><p>Loading Mercury. This example needs JavaScript, import-map support and network access to unpkg.com.</p></main>
+  <noscript>Enable JavaScript to run the interactive Mercury example.</noscript>
+  <footer>
+    <p>This is a plain JavaScript page. The browser loads Mercury 4.0.0 modules and styles from unpkg.com; it needs network access. No compiler or BEAM server runs this example.</p>
+    <p><a href="https://mercury.jonnify.com/examples/first-page.html" download="mercury-first-page.html">Download this HTML</a> · <a href="https://mercury.jonnify.com/start/browser">Read the browser guide</a> · <a href="https://mercury.jonnify.com/agent/SKILL.md">Agent skill</a></p>
+  </footer>
+  <script type="module">
+    import { h, render } from "@fiberfx/hyperscript";
+    import { useState } from "@fiberfx/hyperscript/hooks";
+    import { Card, Button } from "@fiberfx/ui";
 
     function Counter() {
-        const [count, setCount] = useState(0);
-        return h(Card, {title: "My first Mercury page", variant: "raised"},
-            h("p", {id: "count", "aria-live": "polite"}, `Count: ${count}`),
-            h(Button, {onClick: () => setCount(count + 1)}, "Increment")
-        );
+      const [count, setCount] = useState(0);
+      return h(Card, { title: "My first Mercury page", variant: "raised" },
+        h("p", { id: "count", "aria-live": "polite" }, `Count: ${count}`),
+        h(Button, { onClick: () => setCount(count + 1) }, "Increment")
+      );
     }
 
     const app = document.getElementById("app");
     const fallback = [...app.childNodes];
     app.replaceChildren();
     try {
-        render(h(Counter, null), app);
+      render(h(Counter, null), app);
     } catch (error) {
-        app.replaceChildren(...fallback);
-        throw error;
+      app.replaceChildren(...fallback);
+      throw error;
     }
-</script>
+  </script>
 </body>
 </html>
