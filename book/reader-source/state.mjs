@@ -57,3 +57,11 @@ export function inline(text) {
     return { type: 'text', text: part };
   });
 }
+
+// Focus the current reading surface without replacing its chapter fragment.
+export function skipReading(event, heading) {
+  if (!heading || event.defaultPrevented || event.button > 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  event.preventDefault();
+  heading.focus();
+  heading.scrollIntoView({ block: 'start' });
+}

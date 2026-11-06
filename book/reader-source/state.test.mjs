@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { defaults, decode, validate, hex, contrast, passes, toPx, tokens, css, inline, safeHref } from './state.mjs';
+import { defaults, decode, validate, hex, contrast, passes, toPx, tokens, css, inline, safeHref, skipReading } from './state.mjs';
 test('preferences round trip independently of the source book', () => assert.deepEqual(decode(JSON.stringify(defaults())), defaults()));
 test('reject malformed or future preferences', () => { for (const s of ['{', 'null', '{"version":2}']) assert.throws(() => decode(s)); });
 test('numeric limits cannot inject CSS or overflow the reader', () => { for (const size of [0, 3, NaN, '1;display:none']) assert.throws(() => validate({ ...defaults(), size })); });
@@ -11,3 +11,14 @@ test('source light and dark foregrounds pass text contrast', () => { assert(pass
 test('token export preserves Mercury RGB channel format and experiment status', () => { const t = tokens(defaults()); assert.equal(t.colors['--fg-brand'], '78 70 180'); assert.equal(t.status, 'reader-experiment'); assert.match(css(defaults()), /rgb\(var\(--fg-primary\)\)/); });
 test('inline book content preserves code, emphasis and links as data', () => { assert.deepEqual(inline('**Guide** `mx` [W3C](https://www.w3.org/)').map(x => x.type), ['strong', 'text', 'code', 'text', 'link']); assert.equal(inline('<script>bad()</script>')[0].type, 'text'); });
 test('unsafe links are not active', () => { for (const u of ['javascript:alert(1)', 'data:text/html,hi', 'http://example.com', 'https://a/"bad']) assert.equal(safeHref(u), null); });
+
+test('skip reading focuses the current heading without following a different chapter fragment', () => {
+  const calls = []; const heading = { focus: () => calls.push('focus'), scrollIntoView: options => calls.push(options.block) };
+  skipReading({button: 0, preventDefault: () => calls.push('prevent')}, heading);
+  assert.deepEqual(calls, ['prevent', 'focus', 'start']);
+  for (const modifier of ['metaKey','ctrlKey','shiftKey','altKey','defaultPrevented']) {
+    calls.length = 0; skipReading({[modifier]: true, preventDefault: () => calls.push('prevent')}, heading); assert.deepEqual(calls, []);
+  }
+  calls.length = 0; skipReading({button: 1, preventDefault: () => calls.push('prevent')}, heading); assert.deepEqual(calls, []);
+  skipReading({preventDefault: () => assert.fail('missing destination must keep native fallback')}, null);
+});

@@ -1,4 +1,5 @@
 """Parse the book's reviewed Markdown subset without executing embedded HTML."""
+from collections import Counter
 import hashlib
 import json
 import re
@@ -36,7 +37,9 @@ def blocks(raw):
         result.append({'type': 'paragraph', 'text': ' '.join(parts)})
     return result
 
-def parse(raw):
+def parse(raw, language="en"):
+    if language not in ("en", "ru"):
+        raise ValueError("Unsupported book language: " + language)
     parts = re.split(r'<!-- PAGE \d+: [^>]+ -->', raw)
     if len(parts) != 10:
         raise ValueError('Expected the nine numbered source chapters')
@@ -46,15 +49,36 @@ def parse(raw):
         if not match or int(match[1]) != index + 1:
             raise ValueError('Chapter order does not match the edition')
         chapters.append({'id': SLUGS[index], 'number': index + 1, 'title': match[2], 'blocks': blocks(match[3]), 'search': match[3]})
-    return {'title': 'Mercury', 'subtitle': 'A practical brand book for the documentation interface',
-            'edition': 'Interface edition 1.0 · 6 November 2026',
+    preamble = parts[0].strip().splitlines()
+    title = re.search(r'^# ([^\n]+)', parts[0], re.M)
+    subtitle = re.search(r'^## ([^\n]+)', parts[0], re.M)
+    scope_label = 'Scope' if language == 'en' else 'Область применения'
+    scope = re.search(r'\*\*' + re.escape(scope_label) + r'\.\*\* ([^\n]+)', parts[0])
+    edition = next((line.strip() for line in preamble if line.strip() and not line.startswith(('#', '**'))), '')
+    if not title or not subtitle or not scope or not edition:
+        raise ValueError('Missing localized title, subtitle, edition or scope')
+    return {'language': language, 'title': title[1], 'subtitle': subtitle[1], 'edition': edition,
             'sourceSha256': hashlib.sha256(raw.encode()).hexdigest(), 'intro': parts[0],
-            'scope': re.search(r'\*\*Scope\.\*\* ([^\n]+)', parts[0])[1], 'chapters': chapters}
+            'scope': scope[1], 'chapters': chapters}
+
+def bilingual(english, russian):
+    books = {'en': parse(english, 'en'), 'ru': parse(russian, 'ru')}
+    for left, right in zip(books['en']['chapters'], books['ru']['chapters']):
+        if [b['type'] for b in left['blocks']] != [b['type'] for b in right['blocks']]:
+            raise ValueError('Translated chapter structure differs: ' + left['id'])
+        for a, b in zip(left['blocks'], right['blocks']):
+            if a['type'] == 'table' and [len(r) for r in a['rows']] != [len(r) for r in b['rows']]:
+                raise ValueError('Translated table dimensions differ: ' + left['id'])
+    for pattern, label in [(r'\]\((https://[^)]+)\)', 'reference URLs'), (r'`([^`]+)`', 'code identifiers')]:
+        if Counter(re.findall(pattern, english)) != Counter(re.findall(pattern, russian)):
+            raise ValueError('Translated ' + label + ' differ from the source')
+    return books
 
 if __name__ == '__main__':
     import argparse
     ap = argparse.ArgumentParser()
     ap.add_argument('source', type=Path)
     ap.add_argument('out', type=Path)
+    ap.add_argument('--language', choices=['en', 'ru'], default='en')
     args = ap.parse_args()
-    args.out.write_text(json.dumps(parse(args.source.read_text()), ensure_ascii=False, indent=2) + '\n')
+    args.out.write_text(json.dumps(parse(args.source.read_text(), args.language), ensure_ascii=False, indent=2) + '\n')

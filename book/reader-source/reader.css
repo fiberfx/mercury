@@ -149,3 +149,37 @@ body { margin: 0; }
 .book-contents-icon { display:none; width:1.125rem; height:1.125rem; }
 .book-header button,.book-brand { min-inline-size:2.75rem; min-block-size:2.75rem; }
 @container (max-width:22em) { .book-header { padding-inline:.5rem; gap:.25rem; }.book-brand>span,.book-contents-label { display:none; }.book-contents-icon { display:inline-block; } }
+
+/* Global space controls stay compact; chapter tools belong beside the reading surface. */
+.book-header-actions { align-items:center; }
+.book-language { position:relative; font-size:.875rem; }
+.book-language summary { display:flex; align-items:center; justify-content:center; gap:.375rem; min-width:2.75rem; min-height:2.75rem; padding:.5rem; cursor:pointer; list-style:none; }
+.book-language summary::-webkit-details-marker { display:none; }
+.book-language nav { position:absolute; z-index:20; right:0; top:calc(100% + .5rem); min-width:9rem; padding:.375rem; border:1px solid var(--book-line); border-radius:.5rem; background:var(--book-paper); box-shadow:0 .5rem 1.5rem #0002; }
+.book-language nav a { display:block; min-height:2.75rem; padding:.625rem .75rem; text-decoration:none; }
+.book-language nav a[aria-current] { background:var(--book-soft); font-weight:700; border-radius:.25rem; }
+.book-language-short { display:none; }
+.book-theme-toggle { width:2.75rem; padding:.625rem; flex-shrink:0; }
+.book-theme-toggle svg { width:1.25rem; height:1.25rem; }
+.book-docs-link { display:inline-flex; min-height:2.75rem; align-items:center; justify-content:center; padding:.625rem 1rem; border-radius:.5rem; background:var(--book-ink); color:var(--book-paper)!important; font-size:.875rem; font-weight:700; line-height:1.5; text-decoration:none; }
+.book-docs-link:hover { opacity:.85; }
+.book-reading-actions { display:flex; align-items:center; justify-content:flex-end; gap:.5rem; margin:-1rem 0 1rem; }
+.book-reading-actions .book-settings-label { display:inline; }
+@media (max-width:50em) { .book-reading-actions { justify-content:space-between; margin:0 0 1.5rem; }.book-header-title { display:none; }.book-brand>span { display:none; }.book-header { gap:.5rem; }.book-language-full { display:none; }.book-language-short { display:inline; }.book-reading-actions .book-contents-label { display:inline; }.book-reading-actions .book-contents-icon { display:none; } }
+@container (max-width:22em) { .book-docs-link { padding-inline:.625rem; }.book-header-actions { gap:.125rem; }.book-reading-actions { flex-wrap:wrap; } }
+@container (max-width:17em) { .book-header { flex-wrap:wrap; }.book-header-actions { margin-left:0; flex:1; flex-wrap:wrap; }.book-docs-link { flex:1; }.book-header-title { display:none; }.book-language-full { display:none; }.book-language-short { display:inline; } }
+/* Enlarged text needs intentional rows, never a word squeezed into a vertical column. */
+.book-app button { max-inline-size:100%; white-space:normal; }
+.book-lab-toolbar { flex-wrap:wrap; }
+@container (max-width:17em) {
+  .book-header { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.25rem; }
+  .book-brand { justify-self:center; }
+  .book-header-actions { display:contents; }
+  .book-language { justify-self:center; }
+  .book-language summary { padding-inline:.25rem; white-space:nowrap; }
+  .book-theme-toggle { justify-self:center; }
+  .book-docs-link { grid-column:1 / -1; width:100%; overflow-wrap:normal; }
+  .book-language nav { left:50%; right:auto; transform:translateX(-50%); width:min(9rem,calc(100vw - 2rem)); min-width:0; }
+  .book-lab-toolbar { align-items:stretch; flex-direction:column; }
+  .book-draft-label { align-self:flex-start; }
+}
