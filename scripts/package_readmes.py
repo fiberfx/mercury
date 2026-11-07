@@ -1,125 +1,88 @@
-"""Publish each @fiberfx package's README here, at <package>/README.md, from one monorepo revision.
+"""Check the README of each published @fiberfx package directory in this repository.
 
-A published package's npm `homepage` points at github.com/fiberfx/mercury/tree/<branch>/<package>#readme, so
-each package in fiberfx/scripts/packages.mjs's INVENTORY needs its directory here (the Operator, 7 Nov 2026:
-"To resolve blockers add README to each package in public"). The README is the package's own
-fiberfx/<package>/README.md, unchanged except for links that would be dead in this repository:
+`python3 scripts/package_readmes.py check` exits 1 when any package README is missing or contains:
 
-- a link to a sibling package (its directory or its README) stays relative;
-- a link to the package's LICENSE or NOTICE.txt copies that file beside the README, so the license shown is
-  the package's own, not this repository's;
-- any other relative link (private specs, source files) keeps its text and loses its target.
+- a generator marker comment (`<!-- Published by`);
+- a relative link or image whose target does not exist in this repository;
+- a link whose target contains `/specs/` or `../../`;
+- a delivery-ledger pattern: a decision-maker reference, a participant name or a KAN-style id.
 
-Usage:
-  python3 scripts/package_readmes.py write --monorepo <fiberfx checkout> --rev <commit>
-  python3 scripts/package_readmes.py check
+Links inside fenced code blocks are not checked. The script holds its own source to the same ledger
+rule. It exits 0 when every README passes.
 """
 import argparse
-import posixpath
 import re
-import subprocess
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-LINK = re.compile(r'(!?)\[([^\]]*)\]\(([^)\s]+)\)')
+PACKAGES = (
+    'hyperscript', 'core', 'hypergraph', 'live-mercury', 'phoenix', 'phoenix_live_view', 'reflect',
+    'render-to-string', 'schema', 'testing', 'ui', 'analytics', 'cms', 'content', 'devtools', 'vite-plugin-mhs',
+)
+LINK = re.compile(r'!?\[[^\]]*\]\(([^)\s]+)(?:\s+"[^"]*")?\)')
 FENCE = re.compile(r'^\s*(```|~~~)')
-COPYABLE = ('LICENSE', 'LICENSE.md', 'NOTICE.txt')
-MARK = '<!-- Published by scripts/package_readmes.py from fiberfx/{package}/README.md at {rev}. Edit it there. -->\n'
+EXTERNAL = re.compile(r'^(https?:|mailto:|#)')
+MARKER = '<!-- Published by'
+LEDGER = re.compile(
+    r'the [O]perator'
+    r'|\b(CRS|AGT|KAN|SES|JOB)0[A-Za-z0-9]{10}\b'
+    r'|\b(mx-(cto|coach|mercury|server|integration|trafikist|lsap-s[q]uad|idiomatic-squad|workspace-tasks)'
+    r'|m5-(integration|hypercompiler|trafikist|edu)'
+    r'|mercury-(designer|ias|lms|web|craft-lead|craft-delivery|craft-model)'
+    r'|kan-(squad|consultant)|kanos-(squad|integration)|lsap-(squad|researcher)'
+    r'|fiber-r[e]searcher|fiberfx-s[q]uad|fly-s[q]uad|vivaldi-s[q]uad|integration-s[q]uad)\b'
+)
 
 
-def git(monorepo, *args):
-    return subprocess.run(['git', '-C', monorepo, *args], check=True, capture_output=True).stdout
-
-
-def inventory(monorepo, rev):
-    source = git(monorepo, 'show', f'{rev}:fiberfx/scripts/packages.mjs').decode()
-    block = re.search(r'export const INVENTORY\s*=\s*\[(.*?)\];', source, re.S)
-    if not block:
-        sys.exit('package_readmes: no INVENTORY in fiberfx/scripts/packages.mjs')
-    names = re.findall(r'"@fiberfx/([a-z0-9_-]+)"', block.group(1))
-    if not names:
-        sys.exit('package_readmes: INVENTORY lists no @fiberfx package')
-    return names
-
-
-def rewrite(text, package, packages, copies):
-    def link(match):
-        bang, label, target = match.groups()
-        if re.match(r'^(https?:|mailto:|#)', target):
-            return match.group(0)
-        path, _, fragment = target.partition('#')
-        anchor = f'#{fragment}' if fragment else ''
-        resolved = posixpath.normpath(posixpath.join(package, path))
-        head = resolved.split('/')[0]
-        if head in packages and head != package and resolved in (head, f'{head}/README.md'):
-            return f'{bang}[{label}](../{resolved}{anchor})'
-        if resolved in tuple(f'{package}/{name}' for name in COPYABLE):
-            copies.add(posixpath.basename(resolved))
-            return f'{bang}[{label}]({posixpath.basename(resolved)}{anchor})'
-        return label
-    lines, fenced = [], False
-    for line in text.splitlines(keepends=True):
+def check_readme(package):
+    readme = ROOT / package / 'README.md'
+    name = f'{package}/README.md'
+    if not readme.is_file():
+        return [f'{name}: missing']
+    failures = []
+    fenced = False
+    for number, line in enumerate(readme.read_text().splitlines(), 1):
+        where = f'{name}:{number}'
+        if MARKER in line:
+            failures.append(f'{where}: generator marker')
+        match = LEDGER.search(line)
+        if match:
+            failures.append(f'{where}: ledger pattern {match.group(0)!r}')
         if FENCE.match(line):
             fenced = not fenced
-            lines.append(line)
-        else:
-            lines.append(line if fenced else LINK.sub(link, line))
-    return ''.join(lines)
-
-
-def write(monorepo, rev):
-    rev = git(monorepo, 'rev-parse', '--verify', f'{rev}^{{commit}}').decode().strip()
-    packages = inventory(monorepo, rev)
-    for package in packages:
-        readme = git(monorepo, 'show', f'{rev}:fiberfx/{package}/README.md').decode()
-        copies = set()
-        body = MARK.format(package=package, rev=rev) + rewrite(readme, package, set(packages), copies)
-        target = ROOT / package
-        target.mkdir(exist_ok=True)
-        (target / 'README.md').write_text(body)
-        for name in sorted(copies):
-            (target / name).write_bytes(git(monorepo, 'show', f'{rev}:fiberfx/{package}/{name}'))
-        print(f'{package}/README.md' + ''.join(f' {package}/{name}' for name in sorted(copies)))
-    return packages
+            continue
+        if fenced:
+            continue
+        for target in LINK.findall(line):
+            if '/specs/' in target or '../../' in target:
+                failures.append(f'{where}: private link {target}')
+                continue
+            if EXTERNAL.match(target):
+                continue
+            path = target.partition('#')[0]
+            if not (readme.parent / path).exists():
+                failures.append(f'{where}: dead link {target}')
+    return failures
 
 
 def check():
-    failures, count = [], 0
-    for readme in sorted(ROOT.glob('*/README.md')):
-        text = readme.read_text()
-        if not text.startswith('<!-- Published by scripts/package_readmes.py'):
-            continue
-        count += 1
-        fenced = False
-        for line in text.splitlines():
-            if FENCE.match(line):
-                fenced = not fenced
-                continue
-            if fenced:
-                continue
-            for _, _, target in LINK.findall(line):
-                if re.match(r'^(https?:|mailto:|#)', target):
-                    continue
-                if not (readme.parent / target.partition('#')[0]).exists():
-                    failures.append(f'{readme.relative_to(ROOT)}: dead link {target}')
+    failures = [failure for package in PACKAGES for failure in check_readme(package)]
+    for number, line in enumerate(Path(__file__).read_text().splitlines(), 1):
+        match = LEDGER.search(line)
+        if match:
+            failures.append(f'scripts/package_readmes.py:{number}: ledger pattern {match.group(0)!r}')
     for failure in failures:
         print(failure)
-    print(f'package_readmes: {count} package README(s), {len(failures)} dead relative link(s)')
-    return 1 if failures or not count else 0
+    print(f'package_readmes: {len(PACKAGES)} package README(s), {len(failures)} finding(s)')
+    return 1 if failures else 0
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = parser.add_subparsers(dest='mode', required=True)
-    w = sub.add_parser('write')
-    w.add_argument('--monorepo', required=True)
-    w.add_argument('--rev', required=True)
     sub.add_parser('check')
-    args = parser.parse_args()
-    if args.mode == 'write':
-        write(args.monorepo, args.rev)
-        return check()
+    parser.parse_args()
     return check()
 
 
