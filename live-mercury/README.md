@@ -1,42 +1,26 @@
-<!-- Published by scripts/package_readmes.py from fiberfx/live-mercury/README.md at c07b674ab30651fb465cf81a1bba7c6aac6d7d5c. Edit it there. -->
 # @fiberfx/live-mercury
 
-Live Mercury's browser client for Phoenix LiveView islands, on Mercury hyperscript: `MercuryHook`, the
-island lifecycle, and the two renderer-independent codecs a live island's props arrive through.
+Live Mercury's browser client: `MercuryHook`, the native Hyperscript lifecycle that mounts Mercury islands in Phoenix LiveView pages, and the patch codecs their updates arrive in.
 
-## The hook
+[![npm](https://img.shields.io/npm/v/@fiberfx/live-mercury?label=npm)](https://www.npmjs.com/package/@fiberfx/live-mercury) [![license](https://img.shields.io/npm/l/@fiberfx/live-mercury)](LICENSE)
 
-- `getHooks(components)` returns `{ MercuryHook }` for LiveSocket's `hooks`. Each `<.mercury name="X">`
-  island (`phx-hook="MercuryHook"`, `data-name="X"`) renders `components.X` with its props, its streams,
-  the hook's six functions (`pushEvent`, `pushEventTo`, `handleEvent`, `removeHandleEvent`, `upload`,
-  `uploadTo`) and its default slot.
-- `createMercuryHook(resolve)` is the same lifecycle given a function from the island's element to its
-  component, or to a promise of it (a bundle imported per island). Updates that arrive first still
-  apply; the first render shows them; after `destroyed()` nothing renders.
-- `useLiveMercury()` gives any component under an island the hook's functions (null outside one);
-  `LiveMercuryProvider` is the context the hook renders.
-- `Link` maps `href`, `patch`, `navigate` and `replace` to LiveView's `data-phx-link` attributes.
+![The Live Mercury overview page of the Mercury documentation](../assets/screenshots/live-mercury.png)
 
-`@fiberfx/hyperscript` is a peer: the island renders with the page's one runtime.
+*The [Live Mercury overview](https://mercury.jonnify.com/live-mercury) on mercury.jonnify.com.*
 
-## The codecs
+## Overview
 
-- `decodeCompactPatch`, `decodeCompactJson`: the compact patch wire format, decoded into JSON Patch
-  operations.
-- `applyPatch`, `applyOperation`, `getValueByPointer`: JSON Patch (RFC 6902) with Live Mercury's
-  extensions — `upsert`, `limit` and `$$<id>` path segments that address an array item by
-  `__dom_id`. `applyPatch` copies on write below the root: every container on a touched path is cloned
-  once per batch, so a nested reference an earlier render kept never changes. The root itself is
-  mutated in place and returned (its identity is stable), so a consumer that needs a new value per
-  update makes one.
+Live Mercury puts Mercury components on pages that Phoenix renders. The server writes one element and tells LiveView to leave it alone; this client's hook mounts a Mercury Hyperscript component into it, gives it the server's props, and keeps it current as the LiveView's assigns change. So a page reads without JavaScript, the server stays the owner of the data, and only the part that needs a client runs one. It pairs with [`@fiberfx/phoenix`](../phoenix/) and [`@fiberfx/phoenix_live_view`](../phoenix_live_view/), the socket clients.
 
 ## Install
 
-```bash
-npm i @fiberfx/live-mercury
+```sh
+npm install @fiberfx/live-mercury @fiberfx/hyperscript
 ```
 
-## Use
+`@fiberfx/hyperscript` is a peer dependency: an island renders with the page's one runtime. A LiveView page also uses `@fiberfx/phoenix` and `@fiberfx/phoenix_live_view`.
+
+## Usage
 
 ```ts
 import { Socket } from "@fiberfx/phoenix";
@@ -48,7 +32,9 @@ const liveSocket = new LiveSocket("/live", Socket, { hooks: getHooks({ Counter }
 liveSocket.connect();
 ```
 
-The codecs on their own:
+Each island element (`phx-hook="MercuryHook"`, `data-name="Counter"`) renders `components.Counter` with its props, its streams, the hook's six functions (`pushEvent`, `pushEventTo`, `handleEvent`, `removeHandleEvent`, `upload`, `uploadTo`) and its default slot. `useLiveMercury()` gives any component under an island those functions, and `Link` maps `href`, `patch`, `navigate` and `replace` to LiveView's `data-phx-link` attributes.
+
+The codecs work on their own too:
 
 ```ts
 import { applyPatch, decodeCompactPatch } from "@fiberfx/live-mercury";
@@ -56,8 +42,30 @@ import { applyPatch, decodeCompactPatch } from "@fiberfx/live-mercury";
 const next = applyPatch(props, decodeCompactPatch(payload));
 ```
 
-## Origin
+`applyPatch` is JSON Patch (RFC 6902) with Live Mercury's extensions (`upsert`, `limit` and `$$<id>` path segments that address an array item by `__dom_id`). It copies on write below the root; the root itself is mutated in place and returned.
 
-Ported to TypeScript from [live_react](https://github.com/mrdotb/live_react) (MIT, Mrdotb) by way
-of `echo/apps/live_mercury`: the codecs with their behaviour unchanged, the hook moved from React to
-Mercury hyperscript (mercury.81). See [LICENSE](LICENSE).
+## Entry points
+
+| Import | Provides |
+| --- | --- |
+| `@fiberfx/live-mercury` | `getHooks`, `createMercuryHook` (the same lifecycle from a resolver, sync or async), `useLiveMercury`, `LiveMercuryProvider`, `LiveMercuryContext`, `Link`; the codecs `decodeCompactPatch`, `decodeCompactJson`, `applyPatch`, `applyOperation`, `getValueByPointer`; and their types |
+
+## Documentation
+
+- [Live Mercury overview](https://mercury.jonnify.com/live-mercury)
+- [Islands: the element and its mount](https://mercury.jonnify.com/live-mercury/islands)
+- [An island in a LiveView](https://mercury.jonnify.com/live-mercury/liveview)
+- [Props and streams](https://mercury.jonnify.com/live-mercury/props-and-streams)
+- [Server rendering](https://mercury.jonnify.com/live-mercury/server-rendering), [building islands with mx](https://mercury.jonnify.com/live-mercury/building) and [testing islands](https://mercury.jonnify.com/live-mercury/testing)
+
+For coding agents, every documentation page is also served as Markdown at `<page>/llms.txt`; start from the [agent index](https://mercury.jonnify.com/llms.txt).
+
+## Related packages
+
+- [`@fiberfx/phoenix`](../phoenix/) and [`@fiberfx/phoenix_live_view`](../phoenix_live_view/): the Phoenix and LiveView clients
+- [`@fiberfx/hyperscript`](../hyperscript/): the runtime islands render with
+- [`@fiberfx/analytics`](../analytics/): a dashboard whose islands mount through `MercuryHook`
+
+## License
+
+MIT. Ported to TypeScript from [live_react](https://github.com/mrdotb/live_react) (MIT, Mrdotb): the codecs with their behaviour unchanged, the hook rewritten for Mercury Hyperscript. See [LICENSE](LICENSE).

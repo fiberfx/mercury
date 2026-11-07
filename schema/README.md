@@ -1,11 +1,26 @@
-<!-- Published by scripts/package_readmes.py from fiberfx/schema/README.md at c07b674ab30651fb465cf81a1bba7c6aac6d7d5c. Edit it there. -->
 # @fiberfx/schema
 
-The portable document format of the **Mercury** design system: versioned, JSON-safe page data
-with block schemas, validation at declared limits, and one command layer that applies edits
-atomically or refuses them. No React, no Effector, no DOM: a renderer, an editor and a server
-read the same documents. The contract is the AUS
-mercury.20.
+Mercury documents: the portable, versioned, JSON-safe page format, with block schemas, validation at declared limits, atomic commands and migrations.
+
+[![npm](https://img.shields.io/npm/v/@fiberfx/schema?label=npm)](https://www.npmjs.com/package/@fiberfx/schema) [![license](https://img.shields.io/npm/l/@fiberfx/schema)](../LICENSE)
+
+![The page documents chapter of the Mercury documentation](../assets/screenshots/content-documents.png)
+
+*[Page documents: nodes, the schema and parseDocument](https://mercury.jonnify.com/content/documents) on mercury.jonnify.com.*
+
+## Overview
+
+A Mercury page is not a component tree in code: it is a JSON document that a server can store, a renderer can read and an editor can change, with the same checks everywhere. `@fiberfx/schema` defines that document, the registry of block schemas it is checked against, and one command layer that applies edits atomically or refuses them. It has no DOM handles and no UI dependency; [`@fiberfx/content`](../content/) renders the documents it parses.
+
+## Install
+
+```sh
+npm install @fiberfx/schema
+```
+
+It has no peer dependencies.
+
+## Usage
 
 ```ts
 import { applyCommand, createSchemaRegistry, parseDocument } from "@fiberfx/schema";
@@ -27,30 +42,35 @@ if (parsed.ok) {
 }
 ```
 
-- **Document:** `format`, `id`, `kind` (`page`, `fragment`, `template`), ordered `roots` and a flat
-  `nodes` map. A node has `id`, `type`, `version`, JSON `props` and named `slots` of child IDs.
-  Fields the format does not name are kept as they are.
-- **Refusals** share one shape: a typed `code`, a JSON Pointer `path` in its URI-fragment form
-  (`#/…`, percent-encoded), a `reason`, the `subject` the path points into (`document`, `command`
-  or `state`) and, when there is one, the `node`. Parsing, commands and migration never return a
-  partial document, and hostile input (a throwing getter, a revoked proxy) is refused, not thrown.
-- **Commands:** insert, remove, move, duplicate and set-properties, each against an expected
-  local revision. Duplicate mints fresh node IDs and keeps references. An edit to a fragment
-  reports every document that references it.
-- **Limits** (`maxDepth`, `maxBytes`, `maxNodes`, `maxPropDepth`) are declared per registry and
-  hold for every result: an edit or a migration that would outgrow them is refused. `maxBytes`
-  counts the document's compact JSON, so whitespace never changes a verdict.
-- **Tokens:** a `token` prop admits only a name from a set the registry declares (`tokens`).
-- **Migration:** `migrateDocument` steps older block versions forward through each definition's
-  deterministic migrations, on a copy; a refusal hands back the untouched `original`, and a step
-  that drops data needs `{ allowLossy: true }`. Format 1 is the first portable format.
-- **Unknown blocks** (an unregistered type or a newer version) are kept unchanged through parsing,
-  edits elsewhere, saves and migration, their slots included; `inspectDocument` reports them
-  `unsupported`.
-- **References** (`{ "$ref": "asset" | "route" | "entity" | "fragment", "id" }`, plus any JSON fields
-  a later version adds) resolve beside the document with `resolveReferences`; an `unauthorized`
-  target keeps only its identity. `indexConsumers` follows fragments inside fragments.
-- **Responsive values** (`{ "$responsive": { "base", "overrides" } }`) keep absent, explicit and
-  removed (`{ "$removed": true }`) distinct; `resolveResponsive` reads one width and writes nothing.
+- **Document:** `format`, `id`, `kind` (`page`, `fragment`, `template`), ordered `roots` and a flat `nodes` map. A node has `id`, `type`, `version`, JSON `props` and named `slots` of child IDs.
+- **Refusals** share one shape: a typed `code`, a JSON Pointer `path`, a `reason`, the `subject` it points into and, when there is one, the `node`. Parsing, commands and migration never return a partial document.
+- **Commands:** insert, remove, move, duplicate and set-properties, each against an expected local revision.
+- **Limits** (`maxDepth`, `maxBytes`, `maxNodes`, `maxPropDepth`) are declared per registry and hold for every result.
+- **Migration:** `migrateDocument` steps older block versions forward on a copy; a lossy step needs `{ allowLossy: true }`.
+- **Unknown blocks** are kept unchanged through parsing, edits, saves and migration; `inspectDocument` reports them `unsupported`.
+- **References** (`{ "$ref": "asset" | "route" | "entity" | "fragment", "id" }`) resolve beside the document with `resolveReferences`; **responsive values** (`{ "$responsive": { "base", "overrides" } }`) are read with `resolveResponsive`.
 
 Client validation helps authors; the host still authorizes every change on its server.
+
+## Entry points
+
+| Import | Provides |
+| --- | --- |
+| `@fiberfx/schema` | `parseDocument`, `createSchemaRegistry`, `createRuntimeRegistry`, `createNode`, `applyCommand`, `validateCommand`, `migrateDocument`, `inspectDocument`, `resolveReferences`, `resolveResponsive`, `collectReferences`, `indexConsumers`, `documentCodec`, `FORMAT_VERSION`, `DEFAULT_LIMITS`, and their types |
+
+## Documentation
+
+- [Page documents: nodes, the schema and parseDocument](https://mercury.jonnify.com/content/documents)
+- [References, capabilities and responsive values](https://mercury.jonnify.com/content/references)
+- [Rendering a document](https://mercury.jonnify.com/content/rendering) and [the block catalog](https://mercury.jonnify.com/content/blocks)
+- [Content overview](https://mercury.jonnify.com/content)
+
+For coding agents, every documentation page is also served as Markdown at `<page>/llms.txt`; start from the [agent index](https://mercury.jonnify.com/llms.txt).
+
+## Related packages
+
+- [`@fiberfx/content`](../content/): renders parsed documents with a block catalog
+
+## License
+
+MIT. See [LICENSE](../LICENSE).

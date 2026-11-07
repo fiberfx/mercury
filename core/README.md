@@ -1,36 +1,59 @@
-<!-- Published by scripts/package_readmes.py from fiberfx/core/README.md at c07b674ab30651fb465cf81a1bba7c6aac6d7d5c. Edit it there. -->
 # @fiberfx/core
 
-The UI-free foundation of the **Mercury** design system: a class utility (`cx`),
-locale-aware date formatters, headless behaviour hooks, and the shared type kit.
-No UI components or styles; no React dependency.
+Mercury's UI-free foundation: a class utility, shared types, headless hooks and locale-aware date formatters. No components, no styles.
 
-[`@fiberfx/ui`](https://www.npmjs.com/package/@fiberfx/ui) declares this package
-as a peer. Install it explicitly for a UI consumer, or use it directly for
-the utilities without UI styles.
+[![npm](https://img.shields.io/npm/v/@fiberfx/core?label=npm)](https://www.npmjs.com/package/@fiberfx/core) [![license](https://img.shields.io/npm/l/@fiberfx/core)](../LICENSE)
+
+![The Mercury UI overview page of the Mercury documentation](../assets/screenshots/ui.png)
+
+*The [Mercury UI overview](https://mercury.jonnify.com/ui) on mercury.jonnify.com; Mercury UI's components are built on this package.*
+
+## Overview
+
+`@fiberfx/core` is the layer under Mercury UI that carries no markup or CSS: the `cx` class utility, locale-aware date formatters and date values, headless behaviour hooks (focus trapping, dismissal, anchored positioning, presence, arrow-key navigation, calendars and date fields) and the shared type kit. [`@fiberfx/ui`](../ui/) declares it as a peer; you can also use it on its own for the utilities, without Mercury UI's styles. Its hooks run on Mercury Hyperscript.
 
 ## Install
 
-```bash
-npm install @fiberfx/core@4.0.0 @fiberfx/hyperscript@4.0.0
+```sh
+npm install @fiberfx/core @fiberfx/hyperscript
 ```
 
-Version 4.0.0 declares `@fiberfx/hyperscript@4.0.0` as its only peer.
-For an existing mx app, preserve `mx.mod` and `mx.sum` and use `mx install`.
+`@fiberfx/hyperscript` is its only peer dependency. In a native Mercury app, keep the app's `mx.mod` and `mx.sum` and use `mx install` instead.
 
-## Use
+## Usage
 
 ```ts
 import { cx, createFormatter } from "@fiberfx/core";
 
-cx("btn", isActive && "btn--active");   // conditional classNames
-const fmt = createFormatter("en-US");   // locale-aware Intl wrapper
+const className = cx("btn", isActive && "btn--active"); // conditional class names
+
+const fmt = createFormatter({ locale: "en-US" });       // locale-aware Intl wrapper
+fmt.fullMonthAndYear(new Date());
 ```
 
-Ships as a single ES-module bundle (`dist/index.js`) with type
-declarations. `@fiberfx/hyperscript` is external as a peer; there is no React
-peer and no `dependencies` entry. The date module is in `src/internal/date/`.
+`createFormatter` takes a `locale` (a string, or a live source to follow a locale store) and optional `monthFormat` and `yearFormat`; every method formats through `Intl.DateTimeFormat` at the current locale.
+
+## Entry points
+
+| Import | Provides |
+| --- | --- |
+| `@fiberfx/core` | `cx`; the date formatters (`createFormatter`, `createTimeFormatter`) and date values (`CalendarDate`, `parseDate`); headless hooks such as `useFocusTrap`, `useDismiss`, `useAnchoredPosition`, `usePresence`, `useArrowNavigation`, `useCalendar`, `useDateField` and `useId`; and their types |
+
+It ships as a single ES module bundle with type declarations. `@fiberfx/hyperscript` stays external as a peer.
+
+## Documentation
+
+- [Mercury UI overview](https://mercury.jonnify.com/ui) and [foundations](https://mercury.jonnify.com/ui/foundations)
+- [Hooks, state and effects](https://mercury.jonnify.com/hyperscript/hooks)
+- [API reference](https://mercury.jonnify.com/reference)
+
+For coding agents, every documentation page is also served as Markdown at `<page>/llms.txt`; start from the [agent index](https://mercury.jonnify.com/llms.txt).
+
+## Related packages
+
+- [`@fiberfx/ui`](../ui/): the component library built on this package
+- [`@fiberfx/hyperscript`](../hyperscript/): the runtime its hooks use
 
 ## License
 
-MIT
+MIT. See [LICENSE](../LICENSE).
