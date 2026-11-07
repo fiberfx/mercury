@@ -10,6 +10,29 @@ For a source-workspace build, discover real module directories rather than assum
 
 Some compiler versions emitted additional runtime imports such as `@fiberfx/effector/compiler`. Inspect the actual output and dependency graph before adding dependencies. Resolve a required import to its real compatible module; do not stub it or mandate that dependency for every Mercury app. Keep upstream compiler/package fixes separate from application changes unless the task authorizes them.
 
+## Native playground previews
+
+When migration to native mx is requested, first try the app's existing `index.html` and `mx.mod` with
+`mx dev --root path/to/playground --port 4800`, following the host's workspace and isolation rules. Five
+existing Mercury playgrounds needed no wrapper or application changes. Keep remote stand listeners on
+loopback and use the established SSH forwarding route; do not expose a source server as a public release.
+
+Check a real interaction after the page mounts. Then edit one harmless style in an isolated copy and observe
+both the visual change and retained input. Some qualified mx versions reload the whole page for CSS changes;
+others may provide CSS HMR. Report the observed policy and return a missing native capability to the mx owner
+instead of adding app-specific reload/persistence code. Restore the probe exactly. Preserve existing user tabs
+and unsaved drafts by using a separate review origin.
+
+Source preview and release preview can have different contracts. Checked-in graph/catalog data is not refreshed
+by starting a server. A standalone app root may not serve a packaged companion, website route, release metadata
+or no-JavaScript fallback. Verify those against the real built site and keep its public filename allowlist.
+Changing the port changes the storage origin: export retained review work before moving it.
+
+Use `mx run serve` only when the actual binary and project configuration support its contract. Let native mx
+own orchestration through existing project configuration; preserve an application's real server and route
+boundaries. Do not invent a server key, proxy prefix, pathname fallback or a new launcher to imitate an
+unlanded capability. A root page returning 200 does not establish multi-page navigation or backend readiness.
+
 ## Obtaining mx
 
 The compiler is a Rust binary. Its npm delivery contract is a root `@fiberfx/mx` package with a small Node launcher and optional platform packages. npm selects compatible packages using their OS/CPU metadata (and libc metadata where relevant); the launcher uses `require.resolve` to locate and execute the native binary. This route uses Node for the launcher, with no `postinstall` script and no download from GitHub Releases.

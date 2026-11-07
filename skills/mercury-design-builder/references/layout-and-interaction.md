@@ -38,6 +38,19 @@ Use semantic colors from the installed tokens, and preserve the host's theme. Do
 
 For reading/layout changes, use the Book’s relevant stress conditions: ordinary content at 320 CSS px equivalent width, text enlarged to 200%, and combined user text-spacing overrides. Name the actual method—browser zoom, changed root size or body-only scale—and do not claim they establish identical evidence. These checks should preserve content and actions, not enforce a preferred line length or line-height. See [W3C Reflow](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html) and [Text Spacing](https://www.w3.org/WAI/WCAG22/Understanding/text-spacing.html).
 
+## Native fields and focus ownership
+
+Inspect the actual control and its field container when a focus frame looks doubled. Mercury's native Select
+can use a container ring while the inner `select` suppresses its outline. A broad host rule such as
+`.app :focus-visible` can override that suppression and add a second frame. Keep a host fallback at zero
+specificity, for example `:where(.app :focus-visible)`, so the component's own focus rules and forced-colors
+system outline can win. Preserve the fallback for ordinary application controls.
+
+Verify keyboard opening and selection, the resulting application state, and one visible component ring.
+Check forced-colors separately: an explicit exclusion with greater specificity can accidentally suppress the
+system outline even when the normal theme looks correct. Keep the native control and its accessible label;
+do not replace it with a fake dropdown or remove all focus indicators to satisfy a screenshot.
+
 ## Feedback and motion
 
 Make typing, filtering, and repeated keyboard work immediate. Add motion only when it explains position, state, or feedback; keep it short and interruptible. Prefer transform/opacity to layout animation, list the properties being animated, honor reduced motion, and gate hover-only effects to capable pointers. Do not add an animation framework solely for polish.
