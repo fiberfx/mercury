@@ -1,6 +1,6 @@
 # Mercury
 
-Mercury builds browser interfaces with Hyperscript, Mercury UI and the native `mx` toolchain. Phoenix and LiveView are optional integrations. The public `@fiberfx` browser packages are at 4.0.0.
+Mercury builds browser interfaces with Hyperscript, Mercury UI and the native `mx` toolchain. Phoenix and LiveView are optional integrations. The public `@fiberfx` browser packages are released together at one version; [mercury/](mercury/) lists every module and [mx/](mx/) the toolchain.
 
 This repository is a **consumer distribution hub**, not a checkout of all Mercury package sources. It provides the bootstrap tools and release instructions for documentation, agent skills, examples and native tools. There are no package source directories here to build with pnpm.
 
