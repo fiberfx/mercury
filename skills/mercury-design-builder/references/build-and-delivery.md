@@ -53,6 +53,14 @@ Escape embedded data and closing script/style sequences for their HTML contexts.
 
 Load the packaged result and exercise its essential interactions with network requests unavailable. Inspect requests and failures rather than equating a successful build with offline behavior. If only a loopback-served artifact with blocked remote requests was tested, say so; it does not establish a direct `file://` launch. Respect browser access restrictions.
 
+## Native test evidence
+
+When a native runner is new, being qualified, or suspected of hiding errors, verify its failure boundary before relying on a green consumer suite. Keep a valid, explicitly handled-error control alongside an uncaught DOM callback, an unhandled rejection, and an observed error after the last case. The first control should pass; the others must fail the case or file with their original diagnostic. A DOM assertion can pass even when its event handler throws. Do not add an application-wide error trap to compensate for the runner.
+
+Name the actual compiler and peer versions used. A suite run with an unlanded package overlay is candidate evidence, even if the application source is unchanged. An unavailable test export is a dependency failure: keep the affected cases visible and report which assertions ran, which could not load, and the full command outcome. Do not silently skip them or infer release readiness from the passing subset.
+
+Synthetic events establish their named assertions, not native keyboard modality, forced-colors behavior or screenshot geometry. Run the relevant real-input checks when those are the acceptance boundary. A scaled browser preview can support visual review; target identity, measured viewport and image dimensions must agree before it counts as native capture evidence.
+
 ## Evidence to retain
 
 Record the relevant source/package versions, actual successful command, host/platform, output entry point, and observed checks. Include compiler provenance or artifact hashes when distribution/reproducibility is part of the task. Do not import private source data into a reusable public skill or bundle just because it was present during development.
