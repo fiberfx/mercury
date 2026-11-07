@@ -1,0 +1,35 @@
+@fiberfx/analytics third-party notices
+======================================
+
+@fiberfx/analytics's dist/ bundles the engine of @fiberfx/effector, which its islands and models run on. @fiberfx/effector is
+Mercury's own module, but it is not published in v4 (the Operator, 5 Nov 2026), so its code ships here,
+and with it the notice of the upstream it was vendored from. @fiberfx/effector's NOTICE.txt lists the
+files still modified from upstream.
+
+Third-party notice. src/effector (the engine) and src/hyperscript (the bindings, ported
+from effector-react to @fiberfx/hyperscript) are vendored from effector at
+93dd907eb07c1f8b7cf8ec56691c4a58935b8225 (https://github.com/effector/effector), whose
+license follows unchanged. The Mercury port is covered by the notice above.
+
+(The MIT License)
+
+Copyright (c) 2019 Zero Bias https://github.com/zerobias
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

@@ -2,7 +2,7 @@
 
 Mercury Analytics' browser client: the dashboard's islands on Mercury UI and Hyperscript, with a state scope per mount, mounted by Live Mercury's `MercuryHook`.
 
-[![npm](https://img.shields.io/npm/v/@fiberfx/analytics?label=npm)](https://www.npmjs.com/package/@fiberfx/analytics) [![license](https://img.shields.io/npm/l/@fiberfx/analytics)](https://www.npmjs.com/package/@fiberfx/analytics)
+[![npm](https://img.shields.io/npm/v/@fiberfx/analytics?label=npm)](https://www.npmjs.com/package/@fiberfx/analytics) [![license](https://img.shields.io/npm/l/@fiberfx/analytics)](LICENSE)
 
 ![The Live Mercury overview page of the Mercury documentation](../assets/screenshots/live-mercury.png)
 
@@ -60,4 +60,4 @@ For coding agents, every documentation page is also served as Markdown at `<page
 
 ## License
 
-Apache-2.0, as the package declares. The islands are ported from phoenix_analytics 0.4.2 by lalabuy948 (Apache-2.0); the npm package carries the LICENSE and NOTICE.txt files.
+Apache-2.0, as the package declares. The islands are ported from phoenix_analytics 0.4.2 by lalabuy948 (Apache-2.0); see [LICENSE](LICENSE) and [NOTICE.txt](NOTICE.txt), which the npm package carries too.

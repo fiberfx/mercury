@@ -64,7 +64,6 @@ socket.onmessage = (event) => console.log(event.data);
 | `@fiberfx/testing` | `render`, `cleanup`, `act`, `fireEvent`, `typeInto`, `renderHook`, `guardRenders`, `inspectFocus`, `FocusEvidenceError` and the DOM Testing Library queries |
 | `@fiberfx/testing/matchers` | `matchers` for `expect.extend`: `toBeInTheDocument`, `toHaveAttribute`, `toHaveFocus`, `toHaveTextContent`, `toBeDisabled`, `toBeEnabled`, `toHaveClass`, `toHaveValue` |
 | `@fiberfx/testing/socket` | `WebSocket`, `Server` and `init`: an RFC 6455 engine built to WebAssembly, for tests; call `await init()` once first |
-| `@fiberfx/testing/host`, `@fiberfx/testing/environment` | The DOM host used inside the Mercury repository's own suites; the published package does not include their files, so bring your own DOM environment |
 
 ## Documentation
 

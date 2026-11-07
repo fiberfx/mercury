@@ -19,6 +19,7 @@ ROOT = Path(__file__).resolve().parent.parent
 PACKAGES = (
     'hyperscript', 'core', 'hypergraph', 'live-mercury', 'phoenix', 'phoenix_live_view', 'reflect',
     'render-to-string', 'schema', 'testing', 'ui', 'analytics', 'cms', 'content', 'devtools', 'vite-plugin-mhs',
+    'mercury', 'mx',
 )
 LINK = re.compile(r'!?\[[^\]]*\]\(([^)\s]+)(?:\s+"[^"]*")?\)')
 FENCE = re.compile(r'^\s*(```|~~~)')
