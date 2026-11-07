@@ -50,6 +50,29 @@ This demonstrates state contracts, not persistence or a complete starter. Keep h
 
 An omitted optional prop is not necessarily equivalent to `false`, `0`, or an empty string. Inspect defaults before passing values. In an explorer, offer “Component default” by genuinely omitting the prop; keep invalid numeric drafts separate from the last valid preview. Reset both draft/error state and committed state, even when the committed value did not change.
 
+## Reflect composition and identity
+
+When the installed `@fiberfx/reflect` contract exposes `mapProps`, try ordinary component props before adding
+a slot abstraction. Source and native-built Reflect consumers verified this pattern; that evidence does not
+establish availability in a registry package. Read the installed Reflect prompt and types first.
+
+Keep a stable component registry outside render and store a serializable selection ID. For keyed rows, pass
+the whole item through `mapItem: {item: item => item}` and select a component with
+`mapProps: {RowView: {source: {}, fn: (_, props) => registry[props.item.kind]}}`. The view owns where it renders
+`RowView`. An empty source uses incoming props only; a store source can select one shared component for all rows.
+Validate external IDs with an own-property check and an explicit fallback or rejection.
+
+`mapProps` preserves returned function/class constructors and callback refs. Raw functions in `bind` and
+`mapItem` are scoped actions, so they are not interchangeable with identity-sensitive component values.
+Stable keys plus stable constructors preserve child DOM/local state through reorder and replacement item
+objects. Choosing a different constructor intentionally remounts that child. Avoid constructing a new view
+function during projection, and test required component props rather than erasing them with `any`.
+
+A projected component uses context where it renders. Its own `useUnit` can act in a nested Provider; a callback
+already bound by an outer Reflect view retains the outer scope. Projected raw events/effects keep identity and
+methods but are not bound for invocation. Verify reorder/local state/ref behavior, nested scope isolation and
+SSR silence at the changed boundary; do not infer a new lifecycle or slot API from a working recipe.
+
 ## Overlays and reusable examples
 
 Controlled dialogs need an owner that changes `open`; passing `open={true}` and displaying a close button does not create dismissal. Standalone demonstrations normally start closed with a launch action. Observed `Modal` and `Dialog` facades call `onOpenChange(false)` and then `onClose`; avoid duplicate side effects when wiring both. Verify focus returns to the launch control.

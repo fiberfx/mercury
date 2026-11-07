@@ -12,6 +12,8 @@ Use this traversal for a comprehensive audit or when discovery/navigation change
 4. Compare graph reachability with sitemap entries and the source route inventory when available. Identify broken links, unresolved fragments, redirect loops, sitemap-only pages and public routes with no incoming path. A link status of 200 is insufficient if it is a soft error or wrong representation.
 5. Export the graph in a machine-readable form plus a compact summary; DOT/Mermaid is optional. Set `complete: false` and record unexplored nodes when capped, timed out or blocked. “No broken links in 200 sampled pages” is not “the whole site has no broken links.”
 
+For localized books or other generated spaces, include their canonical locale entry points, return links and machine companions in the bounded scope. Distinguish lesson routes from generated routes; a fallback to a valid homepage can hide a broken destination. Check intended final path and content language, not just status. Validate static fragments from source; when a meaningful target exists only after script runs, record a separate browser observation instead of silently ignoring it.
+
 Do not add every possible query variant or crawl external sites recursively. Avoid sensitive URLs in public evidence. A count of links is not proof that the primary agent journey works.
 
 ## Verification matrix
@@ -21,6 +23,7 @@ Choose rows affected by the change; do not run unrelated suites as ceremony.
 | Boundary | Positive evidence | Relevant violating case |
 | --- | --- | --- |
 | Content/discovery | Linked canonical page and machine variant agree | Missing page, bad link/fragment, wrong media type, private route |
+| Localized/generated space | Correct-language page, counterpart and return destination; full source available | Localized URL with English-only body, missing section, route silently falling back to home |
 | Negotiation/cache | HTML and Markdown requests return their intended bodies with correct Vary | Mixed Accept preferences and sequential requests through the cache |
 | Structured data | Parser/validator accepts real visible facts | Missing required field or fixture with a mismatched visible value |
 | API | Schema-valid success from a real operation | Invalid body/argument, unknown route, unsupported method, enforced limits |

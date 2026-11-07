@@ -4,7 +4,7 @@ Mercury means the actual `@fiberfx/hyperscript` runtime, hooks from `@fiberfx/hy
 
 ## Read the installed version
 
-Locate `fiberfx/CLAUDE.md` (or the equivalent module instructions), `hyperscript/package.json`, `ui/package.json`, current `mx.mod`/`mx.work`, and the used components' source and contracts. Do not hardcode this machine's checkout path into the skill or generated application. Do not treat legacy package scripts as authorization to replace the native `mx` build with pnpm, npm, Vite, or React.
+Read the host instructions and dependency evidence that actually exist. In a native source workspace, locate module guidance, package manifests, `mx.mod`/`mx.work`, and the used components’ source and contracts. For an installed or browser-only consumer, inspect pinned exports/types and matching bundled or public component documentation; a missing monorepo is not a blocker by itself. Do not hardcode a machine’s checkout path or treat legacy scripts as authorization to replace a working native `mx` build with another toolchain.
 
 The observed UI source exports `Button`, `Input`, `Textarea`, and `Checkbox` through `@fiberfx/ui`. Styles are exposed as `@fiberfx/ui/styles.css`; confirm the current manifest's export target before building. The library's own `.mx-*` classes are private implementation details.
 
@@ -37,7 +37,13 @@ function SearchControl() {
 
 This is an API illustration, not a complete build scaffold. Use the host application's verified mount and compiler setup. Keep hooks at component scope; do not mutate a state object in place or rebuild the full DOM on each keystroke.
 
-Mount into an empty application host. In the observed runtime, `render` appends into its host; static loading children left inside that host remain alongside the application. Put a JavaScript-disabled explanation in a separate `noscript` element, or remove an intentional fallback before the first render.
+For a client-only playground, mount into an empty application host. For server-rendered content, follow the host hydration contract instead of clearing its DOM. In the observed runtime, `render` appends into its host; static loading children left inside that host remain alongside the application. Put a JavaScript-disabled explanation in a separate `noscript` element, or remove an intentional fallback before the first render.
+
+## Choose the host route
+
+Use the existing Mercury host when available. For an explicitly browser-only page, use a version-matched complete import map and stylesheet from the supported browser starter; write plain JavaScript `h`/`render`, because browsers do not compile TSX. Retain transitive import pins and test actual browser resolution. This route requires its remote assets and does not establish an offline or native build.
+
+For a compatible native starter/source checkout, follow the recipe below after checking its current manifests and help. Native mx is the Rust toolchain; the resulting interactive page still runs JavaScript in the browser. If the `mercury-design-builder` skill is available, its build reference offers additional packaging detail; it is not a required dependency.
 
 ## Native build recipe: verified boundary
 
