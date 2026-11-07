@@ -1,0 +1,16 @@
+{
+  "name": "@mercury-examples/access",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@fiberfx/core": "4.0.0",
+    "@fiberfx/hyperscript": "4.0.0",
+    "@fiberfx/ui": "4.0.0",
+    "@fiberfx/hypergraph": "4.0.0",
+    "@fiberfx/reflect": "4.0.0"
+  },
+  "devDependencies": {
+    "@fiberfx/testing": "4.0.0"
+  }
+}

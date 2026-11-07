@@ -1,0 +1,29 @@
+:root {color-scheme:light;}
+:root.dark-theme {color-scheme:dark;}
+* {box-sizing:border-box;}
+body {margin:0;background:rgb(var(--bg-primary));color:rgb(var(--fg-primary));}
+.access-app {min-height:100dvh;display:flex;flex-direction:column;font:1rem/1.5 var(--font-primary);}
+.access-app p {margin:0;}
+.access-header {display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:4.5rem;padding:1rem clamp(1rem,4vw,3rem);}
+.access-brand {display:flex;align-items:center;gap:.5rem;color:inherit;text-decoration:none;font-size:1.625rem;font-weight:600;letter-spacing:-.04em;}
+.access-accent {stroke:rgb(var(--fg-brand));}
+.access-header-actions {display:flex;align-items:center;gap:.5rem;}
+.access-theme {min-height:2.75rem;min-width:2.75rem;padding:.5rem;}
+.access-app main {display:grid;place-items:center;flex:1;padding:2.5rem 1.5rem 4rem;}
+.access-form {width:100%;max-width:23rem;}
+.access-form-intro {display:grid;gap:.75rem;margin-bottom:2rem;}
+.access-form-intro h1 {margin:0;font:650 clamp(1.875rem,4vw,2.25rem)/1.15 var(--font-primary);letter-spacing:-.045em;text-wrap:balance;}
+.access-form-intro > p:last-child {font:1rem/1.6 var(--font-primary);color:rgb(var(--fg-secondary));}
+.access-eyebrow {font:.8125rem/1.5 var(--font-primary);font-weight:500;color:rgb(var(--fg-brand));}
+.access-stack {display:grid;gap:1.25rem;}
+.access-field {max-width:none;}
+.access-recovery-link {display:flex;justify-content:flex-end;margin-top:-.75rem;}
+.access-error-summary {font-size:.875rem;color:rgb(var(--fg-negative));}
+.access-status {font-size:.875rem;color:rgb(var(--fg-secondary));}
+.access-status:empty {display:none;}
+.access-footer {padding:1rem 1.5rem 1.5rem;text-align:center;color:rgb(var(--fg-secondary));font:.8125rem/1.5 var(--font-primary);}
+.access-skip {position:absolute;top:.5rem;left:1rem;transform:translateY(-200%);z-index:2;padding:.5rem 1rem;background:rgb(var(--bg-primary));color:rgb(var(--fg-primary));}
+.access-skip:focus {transform:none;}
+:where(.access-app a:focus-visible,.access-app h1:focus-visible) {outline:2px solid rgb(var(--border-focus));outline-offset:.25rem;}
+@media(max-width:36rem){.access-header{padding:.875rem 1rem;gap:.5rem}.access-brand{font-size:1.25rem;gap:.375rem}.access-brand svg{width:1.5rem}.access-header-actions{gap:.125rem}.access-app main{padding:2rem 1.5rem 3rem;align-items:start}.access-form{margin-top:clamp(1rem,7vh,4rem)}}
+@media(max-height:40rem){.access-app main{align-items:start;padding-block:1.5rem}.access-form{margin-top:0}}
