@@ -4,13 +4,13 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "@fiberfx/core": "4.0.0",
-    "@fiberfx/hyperscript": "4.0.0",
-    "@fiberfx/ui": "4.0.0",
-    "@fiberfx/hypergraph": "4.0.0",
-    "@fiberfx/reflect": "4.0.0"
+    "@fiberfx/core": "4.1.1",
+    "@fiberfx/hyperscript": "4.1.1",
+    "@fiberfx/ui": "4.1.1",
+    "@fiberfx/hypergraph": "4.1.1",
+    "@fiberfx/reflect": "4.1.1"
   },
   "devDependencies": {
-    "@fiberfx/testing": "4.0.0"
+    "@fiberfx/testing": "4.1.1"
   }
 }

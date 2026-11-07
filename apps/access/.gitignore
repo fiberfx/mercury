@@ -1,6 +1,2 @@
 dist/
 .mx/
-mx.work
-mx.work.sum
-node_modules/
-__pycache__/

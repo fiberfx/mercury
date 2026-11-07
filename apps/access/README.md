@@ -10,15 +10,15 @@ Connect a reviewed server adapter through `App`'s `service` property. Resolve `s
 
 ## Native development
 
-This source example uses the Mercury 4.0.0 module set. The public documentation repository does not contain those modules. Use a reviewed Mercury source workspace with a compatible native MX binary; no Node-based development server is used.
+This example uses the Mercury 4.1.1 modules, which mx installs from its module proxy. Nothing here needs Node, npm or a Python helper.
 
 ```sh
-python3 workspace.py ../native-modules --output ../access.work
-MXWORK="$PWD/../access.work" mx dev --root . --port 4819
-MXWORK="$PWD/../access.work" mx test --root . --timeout 120
-MXWORK="$PWD/../access.work" mx build --bundle --root . --out dist
+mx install   # the modules mx.mod requires, checked against mx.sum
+mx dev       # serves the app with hot reload and prints its URL
+mx test      # the tests in a headless Chromium
+mx build     # a bundle in dist/
 ```
 
-Keep the app and reviewed module sources beneath one development directory. The generated workspace file must sit at that common parent; do not place it at the filesystem root. `workspace.py` refuses missing modules, paths outside the workspace and overwriting an existing file. Keep generated workspaces out of source control. An Inspector-capable MX candidate can add `--inspect` to the development command; this is not assumed to be available in the published CLI. The Inspector is a development aid, not part of the sign-in flow.
+An Inspector-capable MX can add `--inspect` to `mx dev`; the published CLI doesn't assume it. The Inspector is a development aid, not part of the sign-in flow.
 
 Tests cover invalid input, unavailable/rejected service responses, confirmed completion, duplicate prevention, cancellation, recovery, translations and draft retention. Injected test services are test fixtures, not a shipped backend.
